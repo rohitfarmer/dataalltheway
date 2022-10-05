@@ -1,0 +1,15 @@
+---
+title: Tweets from heads of governments and states
+author: "Rohit Farmer"
+date: "2022-10-05"
+categories: [Datasets, Kaggle, Twitter]
+---
+Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments and offices (worldwide) followed by https://twitter.com/headoffice. It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at https://doi.org/10.34740/KAGGLE/DSV/4208877 for the community to use.
+
+The dataset contains an Excel workbook per year with data points on the rows and features on the columns. Features include the timestamp (UTC), language in which the tweet is written, user id, user name, tweet id, and tweet text. The first version includes the data from October 2018 until September 15, 2022. After that, future releases will be quarterly. It is a textual dataset and is primarily useful for analyses related to natural language processing.
+
+In the Kaggle submission, I have also included a notebook (https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing) with the Python code that collected the tweets and the additional code that I used to pre-process the data before submission. After releasing the first data set, I updated the code and moved the bot from Python to R using the \`rtweet\` library instead of \`tweepy\`. I found \`rtweet\` to perform better, especially in filtering out duplicated tweets.
+
+In the current setup (https://github.com/rohitfarmer/government-tweets) that is still running on my Raspberry Pi 3B+, the main bot script runs every fifteen minutes via \`crontab\` and fetches data that is more recent than the latest tweet collected in the previous run. The data is stored in an SQLite database which is backed up to MEGA cloud storage via Rclone once every midnight ET.
+
+I enjoyed the process of creating the bot and being able to run it for a couple of years, and I hope I will soon find some time to look into the data and fetch some exciting insights. But, until then, the data is available to the data science community to utilize as they please. So, please open a discussion on the Kaggle page for questions, comments, or collaborations.

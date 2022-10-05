@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "posts/tweets-from-heads-of-governments-and-states/index.html",
+    "href": "posts/tweets-from-heads-of-governments-and-states/index.html",
+    "title": "Tweets from heads of governments and states",
+    "section": "",
+    "text": "The dataset contains an Excel workbook per year with data points on the rows and features on the columns. Features include the timestamp (UTC), language in which the tweet is written, user id, user name, tweet id, and tweet text. The first version includes the data from October 2018 until September 15, 2022. After that, future releases will be quarterly. It is a textual dataset and is primarily useful for analyses related to natural language processing.\nIn the Kaggle submission, I have also included a notebook (https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing) with the Python code that collected the tweets and the additional code that I used to pre-process the data before submission. After releasing the first data set, I updated the code and moved the bot from Python to R using the `rtweet` library instead of `tweepy`. I found `rtweet` to perform better, especially in filtering out duplicated tweets.\nIn the current setup (https://github.com/rohitfarmer/government-tweets) that is still running on my Raspberry Pi 3B+, the main bot script runs every fifteen minutes via `crontab` and fetches data that is more recent than the latest tweet collected in the previous run. The data is stored in an SQLite database which is backed up to MEGA cloud storage via Rclone once every midnight ET.\nI enjoyed the process of creating the bot and being able to run it for a couple of years, and I hope I will soon find some time to look into the data and fetch some exciting insights. But, until then, the data is available to the data science community to utilize as they please. So, please open a discussion on the Kaggle page for questions, comments, or collaborations."
+  },
+  {
     "objectID": "posts/data-transformation/index.html",
     "href": "posts/data-transformation/index.html",
     "title": "Data Transformation",
@@ -53,6 +60,6 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nOct 5, 2022\n\n\nData Transformation\n\n\nRohit Farmer\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nOct 5, 2022\n\n\nTweets from heads of governments and states\n\n\nRohit Farmer\n\n\n\n\nOct 5, 2022\n\n\nData Transformation\n\n\nRohit Farmer\n\n\n\n\n\n\nNo matching items"
   }
 ]
