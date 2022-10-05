@@ -1,14 +1,15 @@
 ---
-title: "Data All The Way"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
 page-layout: full
-title-block-banner: true
+title-block-banner: false
+comments: false
 ---
 
-Hello welcome to data all the way.
+Welcome!
+
+This is a tutorial website with concepts and ready code (R or Python) on various topics related to data science, statistics, and machine learning. I started this website to document the code I saved in GitHub gists. However, after a while, I realized that too many GitHub gists are harder to manage, and also search engines might not index them for others to use. Therefore, a website like this would serve both purposes.
+
+I intend to write posts as complete and explanatory as possible. However, many posts could just be code with a minimal description. If you want to get involved and help improve an article, please leave a comment or open a pull request at <https://github.com/rohitfarmer/dataalltheway>.
+
+I hope you will find this resource helpful.
+
+To know more about my other projects and research, please visit at [www.rohitfarmer.com](www.rohitfarmer.com).
