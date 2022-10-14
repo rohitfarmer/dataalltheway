@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.dataalltheway.com/posts/how-to-download-a-shared-file-from-googledrive-in-r/index.html</loc>
+    <lastmod>2022-10-14T21:10:16.530Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.dataalltheway.com/posts/tweets-from-heads-of-governments-and-states/index.html</loc>
-    <lastmod>2022-10-05T21:20:26.690Z</lastmod>
+    <lastmod>2022-10-14T21:10:17.606Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/data-transformation/index.html</loc>
-    <lastmod>2022-10-05T21:20:30.291Z</lastmod>
+    <lastmod>2022-10-14T21:10:19.964Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/index.html</loc>
-    <lastmod>2022-10-05T21:20:31.036Z</lastmod>
+    <lastmod>2022-10-14T21:10:20.325Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/blog.html</loc>
-    <lastmod>2022-10-05T21:20:31.995Z</lastmod>
+    <lastmod>2022-10-14T21:10:20.738Z</lastmod>
   </url>
 </urlset>

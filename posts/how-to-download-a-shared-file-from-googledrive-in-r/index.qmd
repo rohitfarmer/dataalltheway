@@ -1,0 +1,42 @@
+---
+title: "How to download a shared file from Google Drive in R"
+author: "Rohit Farmer"
+date: "2022-10-14"
+categories: [How To]
+format:
+  html:
+    code-fold: false
+    code-tools: true
+
+---
+
+# Introduction
+
+To download a shared file with "anyone with the link" access rights from Google Drive in R, we can utilize the `googledrive` library from the `tidyverse` package. The method described here will utilize the file ID copied from the shared link. Typically `googledrive` package is used to work with a Google Drive of an authenticated user. However, since we are downloading a publicly shared file in this tutorial, we will work without user authentication. So, please follow the steps below.
+
+## Step 1: Copy the file ID from the share link.
+
+Below is a share link from my Google Drive pointing to an R data frame.
+
+`https://drive.google.com/file/d/1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4/view?usp=sharing`
+
+This string `1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4` is the file ID that we will use to download.
+
+## Step 2: Download the file using an authenticated connection.
+
+```{R eval=FALSE}
+if(!require(googledrive)) install.packages("googledrive")
+library(googledrive)
+
+drive_deauth()
+drive_user()
+public_file <-  drive_get(as_id("1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4"))
+drive_download(public_file, overwrite = TRUE)
+```
+
+The downloaded data frame.
+
+```{R}
+library(DT)
+datatable(readRDS("hdstim-example-data.rds"))
+```

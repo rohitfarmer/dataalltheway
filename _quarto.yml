@@ -15,7 +15,13 @@ website:
       - icon: rss
         href: blog.xml
   page-footer: "Made with ✌️❤️☕  \nCopyright CC BY-NC-SA 4.0"
-
+  cookie-consent:
+    type: implied 
+    style: simple
+    palette: dark
+  google-analytics:
+    tracking-id: "G-N6RK0VE0J6"
+    anonymize-ip: true
 format:
   html:
     theme: 

@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "posts/how-to-download-a-shared-file-from-googledrive-in-r/index.html",
+    "href": "posts/how-to-download-a-shared-file-from-googledrive-in-r/index.html",
+    "title": "How to download a shared file from Google Drive in R",
+    "section": "",
+    "text": "To download a shared file with “anyone with the link” access rights from Google Drive in R, we can utilize the googledrive library from the tidyverse package. The method described here will utilize the file ID copied from the shared link. Typically googledrive package is used to work with a Google Drive of an authenticated user. However, since we are downloading a publicly shared file in this tutorial, we will work without user authentication. So, please follow the steps below.\n\n\nBelow is a share link from my Google Drive pointing to an R data frame.\nhttps://drive.google.com/file/d/1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4/view?usp=sharing\nThis string 1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4 is the file ID that we will use to download.\n\n\n\n\nif(!require(googledrive)) install.packages(\"googledrive\")\nlibrary(googledrive)\n\ndrive_deauth()\ndrive_user()\npublic_file <-  drive_get(as_id(\"1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4\"))\ndrive_download(public_file, overwrite = TRUE)\n\nThe downloaded data frame.\n\nlibrary(DT)\ndatatable(readRDS(\"hdstim-example-data.rds\"))"
+  },
+  {
     "objectID": "posts/tweets-from-heads-of-governments-and-states/index.html",
     "href": "posts/tweets-from-heads-of-governments-and-states/index.html",
     "title": "Tweets from heads of governments and states",
@@ -60,6 +67,6 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nOct 5, 2022\n\n\nTweets from heads of governments and states\n\n\nRohit Farmer\n\n\n\n\nOct 5, 2022\n\n\nData Transformation\n\n\nRohit Farmer\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nOct 14, 2022\n\n\nHow to download a shared file from Google Drive in R\n\n\nRohit Farmer\n\n\n\n\nOct 5, 2022\n\n\nTweets from heads of governments and states\n\n\nRohit Farmer\n\n\n\n\nOct 5, 2022\n\n\nData Transformation\n\n\nRohit Farmer\n\n\n\n\n\n\nNo matching items"
   }
 ]
