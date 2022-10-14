@@ -7,7 +7,6 @@ format:
   html:
     code-fold: false
     code-tools: true
-
 ---
 
 # Introduction
@@ -34,9 +33,14 @@ public_file <-  drive_get(as_id("1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4"))
 drive_download(public_file, overwrite = TRUE)
 ```
 
+    File downloaded:
+    • hdstim-example-data.rds <id: 1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4>
+    Saved locally as:
+    • hdstim-example-data.rds
+
 The downloaded data frame.
 
 ```{R}
 library(DT)
-datatable(readRDS("hdstim-example-data.rds"))
+datatable(head(readRDS("hdstim-example-data.rds")))
 ```
