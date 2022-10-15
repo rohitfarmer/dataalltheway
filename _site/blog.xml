@@ -9,8 +9,329 @@
 <link>https://www.dataalltheway.com/blog.html</link>
 <atom:link href="https://www.dataalltheway.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A tutorial website with concepts and ready code.</description>
-<generator>quarto-1.0.36</generator>
-<lastBuildDate>Fri, 14 Oct 2022 04:00:00 GMT</lastBuildDate>
+<generator>quarto-1.2.215</generator>
+<lastBuildDate>Sat, 15 Oct 2022 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Classify the bitter or sweet taste of compounds</title>
+  <dc:creator>Rohit Farmer</dc:creator>
+  <link>https://www.dataalltheway.com/posts/classify-the-bitter-or-sweet-taste-of-compounds/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><em>Originally posted on Kaggle at <a href="https://www.kaggle.com/datasets/rohitfarmer/classify-the-bitter-or-sweet-taste-of-compounds" class="uri">https://www.kaggle.com/datasets/rohitfarmer/classify-the-bitter-or-sweet-taste-of-compounds</a></em></p>
+<section id="context" class="level1">
+<h1>Context</h1>
+<p>Throughout human evolution, we have been drawn toward sweet-tasting foods and averted from bitter tastes - sweet is good or desirable, bitter is undesirable, ear wax or medicinal. Therefore, a better understanding of molecular features that determine the bitter-sweet taste of substances is crucial for identifying natural and synthetic compounds for various purposes.</p>
+</section>
+<section id="sources" class="level1">
+<h1>Sources</h1>
+<p>This dataset <a href="https://doi.org/10.34740/KAGGLE/DSV/4234193" class="uri">https://doi.org/10.34740/KAGGLE/DSV/4234193</a> is adapted from <a href="https://github.com/cosylabiiit/bittersweet" class="uri">https://github.com/cosylabiiit/bittersweet</a>, <a href="https://www.nature.com/articles/s41598-019-43664-y" class="uri">https://www.nature.com/articles/s41598-019-43664-y</a>. In chemoinformatics, molecules are often represented as compact <a href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> strings. In this dataset, SMILES structures, along with their names and targets (bitter, sweet, tasteless, and non-bitter), were obtained from the original study. Subsequently, SMILES were converted into canonical SMILES using RDKit, and the features (molecular descriptors, both 2D and 3D) were calculated using <a href="https://github.com/mordred-descriptor/mordred">Mordred</a>. Secondly, tasteless and non-bitter categories were merged into a single category of non-bitter-sweet. Finally, since many of the compounds were missing names, IUPAC names were fetched using <a href="https://pubchempy.readthedocs.io/en/latest/">PubChemPy</a> for all the compounds, and for still missing names, a generic compound + incrementor name was assigned.</p>
+</section>
+<section id="inspiration" class="level1">
+<h1>Inspiration</h1>
+<p>This is a classification dataset with the first three columns carrying names, SMILES, and canonical SMILES. Any of these columns can be used to refer to a molecule. The fourth column is the target (taste category). And all numeric features are from the 5th column until the end of the file. Many features have cells with string annotations due to errors produced by Mordred. Therefore, the following data science techniques can be learned while working on this dataset:</p>
+<ol type="1">
+<li>Data cleanup</li>
+<li>Features selection (since the number of features is quite large in proportion to the data points)</li>
+<li>Feature scaling/transformation/normalization</li>
+<li>Dimensionality reduction</li>
+<li>Binomial classification (bitter vs.&nbsp;sweet) - utilize non-bitter-sweet as a negative class.</li>
+<li>Multinomial classification (bitter vs.&nbsp;sweet vs.&nbsp;non-bitter-sweet)</li>
+<li>Since SMILES can be converted into molecular graphs, graph-based modeling should also be possible.</li>
+</ol>
+</section>
+<section id="initial-data-preparation" class="level1">
+<h1>Initial data preparation</h1>
+<p>A copy of the original dataset and the scripts and notebooks used to convert SMILES to canonical SMILES, generate features, fetch names, and export the final TSV file for Kaggle is loosely maintained at <a href="https://github.com/rohitfarmer/bittersweet" class="uri">https://github.com/rohitfarmer/bittersweet</a>.</p>
+
+
+<!-- -->
+
+</section>
+
+ ]]></description>
+  <category>Datasets</category>
+  <category>Kaggle</category>
+  <category>Classification</category>
+  <guid>https://www.dataalltheway.com/posts/classify-the-bitter-or-sweet-taste-of-compounds/index.html</guid>
+  <pubDate>Sat, 15 Oct 2022 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>How to use Neovim or VIM editor as an IDE for R</title>
+  <dc:creator>Rohit Farmer</dc:creator>
+  <link>https://www.dataalltheway.com/posts/how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/nm45WagtV3w" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><em>Note: This tutorial is written for Linux based systems.</em></p>
+<section id="requirements" class="level2">
+<h2 class="anchored" data-anchor-id="requirements">Requirements</h2>
+<section id="r-3.0.0" class="level3">
+<h3 class="anchored" data-anchor-id="r-3.0.0">R &gt;= 3.0.0</h3>
+<p>To install the latest version of R please follow the download and install instructions at <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a></p>
+</section>
+<section id="neovim-0.2.0" class="level3">
+<h3 class="anchored" data-anchor-id="neovim-0.2.0">Neovim &gt;= 0.2.0</h3>
+<p><a href="https://neovim.io/">Neovim</a> (nvim) is the continuation and extension of Vim editor with the aim to keep the good parts of Vim and add more features. In this tutorial I will be using Neovim (nvim), however, most of the steps are equally applicable to Vim also. Please follow download and installation instructions on nvim’s GitHub wiki <a href="https://github.com/neovim/neovim/wiki/Installing-Neovim" class="uri">https://github.com/neovim/neovim/wiki/Installing-Neovim</a>.</p>
+<p><strong>OR</strong></p>
+</section>
+<section id="vim-8.1" class="level3">
+<h3 class="anchored" data-anchor-id="vim-8.1">Vim &gt;= 8.1</h3>
+<p><a href="https://github.com/vim/vim">Vim</a> usually comes installed in most of the Linux based operating system. However, it may not be the latest one. Therefore, to install the latest version please download and install it from Vim’s GitHub repository as mentioned below or a method that is more confortable to you.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;">git</span> clone https://github.com/vim/vim.git</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">make</span> <span class="at" style="color: #657422;">-C</span> vim/</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">sudo</span> make install <span class="at" style="color: #657422;">-C</span> vim/</span></code></pre></div>
+</section>
+<section id="plugin-manager" class="level3">
+<h3 class="anchored" data-anchor-id="plugin-manager">Plugin Manager</h3>
+<p>There are more than one plugin manager’s available for Vim that can be used to install the required plugins. In this tutorial I will be using <a href="https://github.com/junegunn/vim-plug">vim-plug</a> pluggin manager.</p>
+</section>
+<section id="plugins" class="level3">
+<h3 class="anchored" data-anchor-id="plugins">Plugins</h3>
+<p>In the end below are the plugins that we would need to convert Vim editor into a fully functional IDE for R.</p>
+<ol type="1">
+<li>Nvim-R: <a href="https://github.com/jalvesaq/Nvim-R" class="uri">https://github.com/jalvesaq/Nvim-R</a>
+<ul>
+<li>Nvim-R is the main plugin that will add the functionality to execute R code from within the Vim editor.</li>
+</ul></li>
+<li>Ncm-R: <a href="https://github.com/gaalcaras/ncm-R" class="uri">https://github.com/gaalcaras/ncm-R</a>
+<ul>
+<li>Ncm-R adds synchronous auto completion features for R.</li>
+<li>It is based on <a href="https://github.com/ncm2/ncm2">ncm2</a> and <a href="https://github.com/roxma/nvim-yarp">nvim-yarp</a> plugins.</li>
+</ul></li>
+<li>Nerd Tree: <a href="https://github.com/preservim/nerdtree" class="uri">https://github.com/preservim/nerdtree</a>
+<ul>
+<li>Nerd Tree will be used to toggle file explorer in the side panel.</li>
+</ul></li>
+<li>DelimitMate: <a href="https://github.com/Raimondi/delimitMate" class="uri">https://github.com/Raimondi/delimitMate</a>
+<ul>
+<li>This plug-in provides automatic closing of quotes, parenthesis, brackets, etc.</li>
+</ul></li>
+<li>Vim-monokai-tasty: <a href="https://github.com/patstockwell/vim-monokai-tasty" class="uri">https://github.com/patstockwell/vim-monokai-tasty</a>
+<ul>
+<li>Monokai color scheme inspired by Sublime Text’s interpretation of monokai.</li>
+</ul></li>
+<li>Lightline.vim: <a href="https://github.com/itchyny/lightline.vim" class="uri">https://github.com/itchyny/lightline.vim</a>
+<ul>
+<li>Lineline.vim adds asthetic enhancements to Vim’s statusline/tabline.</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="procedure" class="level2">
+<h2 class="anchored" data-anchor-id="procedure">Procedure</h2>
+<ol type="1">
+<li>Make sure that you have <code>R &gt;=3.0.0</code> installed.</li>
+<li>Make sure that you have <code>Neovim &gt;= 0.2.0</code> installed.</li>
+<li>Install the <code>vim-plug</code> plugin manager.</li>
+</ol>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;">curl</span> <span class="at" style="color: #657422;">-fLo</span> ~/.local/share/nvim/site/autoload/plug.vim <span class="at" style="color: #657422;">--create-dirs</span> <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-2">    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span></code></pre></div>
+<ol start="4" type="1">
+<li>Install the required plugins.</li>
+</ol>
+<p>First, create an <code>init.vim</code> file in <code>~/.config/nvim</code> folder (create the folder if it doesn’t exist). This file is equivalent to a <code>.vimrc</code> file in the traditional Vim environment. To <code>init.vim</code> file start adding:</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1">" Specify a directory for plugins</span>
+<span id="cb3-2">" - Avoid using standard Vim directory names like 'plugin'</span>
+<span id="cb3-3">call plug#begin('~/.vim/plugged')</span>
+<span id="cb3-4"></span>
+<span id="cb3-5">" List of plugins.</span>
+<span id="cb3-6">" Make sure you use single quotes</span>
+<span id="cb3-7"></span>
+<span id="cb3-8">" Shorthand notation</span>
+<span id="cb3-9">Plug 'jalvesaq/Nvim-R'</span>
+<span id="cb3-10">Plug 'ncm2/ncm2'</span>
+<span id="cb3-11">Plug 'roxma/nvim-yarp'</span>
+<span id="cb3-12">Plug 'gaalcaras/ncm-R'</span>
+<span id="cb3-13">Plug 'preservim/nerdtree'</span>
+<span id="cb3-14">Plug 'Raimondi/delimitMate'</span>
+<span id="cb3-15">Plug 'patstockwell/vim-monokai-tasty'</span>
+<span id="cb3-16">Plug 'itchyny/lightline.vim'</span>
+<span id="cb3-17"></span>
+<span id="cb3-18">" Initialize plugin system</span>
+<span id="cb3-19">call plug#end()</span></code></pre></div>
+<ol start="5" type="1">
+<li>Update and add more features to the <code>init.vim</code> file.</li>
+</ol>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1">" Set a Local Leader</span>
+<span id="cb4-2"></span>
+<span id="cb4-3">" With a map leader it's possible to do extra key combinations</span>
+<span id="cb4-4">" like &lt;leader&gt;w saves the current file</span>
+<span id="cb4-5">let mapleader = ","</span>
+<span id="cb4-6">let g:mapleader = ","</span>
+<span id="cb4-7"></span>
+<span id="cb4-8"></span>
+<span id="cb4-9">" Plugin Related Settings</span>
+<span id="cb4-10"></span>
+<span id="cb4-11">" NCM2</span>
+<span id="cb4-12">autocmd BufEnter * call ncm2#enable_for_buffer()    " To enable ncm2 for all buffers.</span>
+<span id="cb4-13">set completeopt=noinsert,menuone,noselect           " :help Ncm2PopupOpen for more</span>
+<span id="cb4-14">                                                    " information.</span>
+<span id="cb4-15"></span>
+<span id="cb4-16">" NERD Tree</span>
+<span id="cb4-17">map &lt;leader&gt;nn :NERDTreeToggle&lt;CR&gt;                  " Toggle NERD tree.</span>
+<span id="cb4-18"></span>
+<span id="cb4-19">" Monokai-tasty</span>
+<span id="cb4-20">let g:vim_monokai_tasty_italic = 1                  " Allow italics.</span>
+<span id="cb4-21">colorscheme vim-monokai-tasty                       " Enable monokai theme.</span>
+<span id="cb4-22"></span>
+<span id="cb4-23">" LightLine.vim </span>
+<span id="cb4-24">set laststatus=2              " To tell Vim we want to see the statusline.</span>
+<span id="cb4-25">let g:lightline = {</span>
+<span id="cb4-26">   \ 'colorscheme':'monokai_tasty',</span>
+<span id="cb4-27">   \ }</span>
+<span id="cb4-28"></span>
+<span id="cb4-29"></span>
+<span id="cb4-30">" General NVIM/VIM Settings</span>
+<span id="cb4-31"></span>
+<span id="cb4-32">" Mouse Integration</span>
+<span id="cb4-33">set mouse=i                   " Enable mouse support in insert mode.</span>
+<span id="cb4-34"></span>
+<span id="cb4-35">" Tabs &amp; Navigation</span>
+<span id="cb4-36">map &lt;leader&gt;nt :tabnew&lt;cr&gt;    " To create a new tab.</span>
+<span id="cb4-37">map &lt;leader&gt;to :tabonly&lt;cr&gt;     " To close all other tabs (show only the current tab).</span>
+<span id="cb4-38">map &lt;leader&gt;tc :tabclose&lt;cr&gt;    " To close the current tab.</span>
+<span id="cb4-39">map &lt;leader&gt;tm :tabmove&lt;cr&gt;     " To move the current tab to next position.</span>
+<span id="cb4-40">map &lt;leader&gt;tn :tabn&lt;cr&gt;        " To swtich to next tab.</span>
+<span id="cb4-41">map &lt;leader&gt;tp :tabp&lt;cr&gt;        " To switch to previous tab.</span>
+<span id="cb4-42"></span>
+<span id="cb4-43"></span>
+<span id="cb4-44">" Line Numbers &amp; Indentation</span>
+<span id="cb4-45">set backspace=indent,eol,start  " To make backscape work in all conditions.</span>
+<span id="cb4-46">set ma                          " To set mark a at current cursor location.</span>
+<span id="cb4-47">set number                      " To switch the line numbers on.</span>
+<span id="cb4-48">set expandtab                   " To enter spaces when tab is pressed.</span>
+<span id="cb4-49">set smarttab                    " To use smart tabs.</span>
+<span id="cb4-50">set autoindent                  " To copy indentation from current line </span>
+<span id="cb4-51">                                " when starting a new line.</span>
+<span id="cb4-52">set si                          " To switch on smart indentation.</span>
+<span id="cb4-53"></span>
+<span id="cb4-54"></span>
+<span id="cb4-55">" Search</span>
+<span id="cb4-56">set ignorecase                  " To ignore case when searching.</span>
+<span id="cb4-57">set smartcase                   " When searching try to be smart about cases.</span>
+<span id="cb4-58">set hlsearch                    " To highlight search results.</span>
+<span id="cb4-59">set incsearch                   " To make search act like search in modern browsers.</span>
+<span id="cb4-60">set magic                       " For regular expressions turn magic on.</span>
+<span id="cb4-61"></span>
+<span id="cb4-62"></span>
+<span id="cb4-63">" Brackets</span>
+<span id="cb4-64">set showmatch                   " To show matching brackets when text indicator </span>
+<span id="cb4-65">                                " is over them.</span>
+<span id="cb4-66">set mat=2                       " How many tenths of a second to blink </span>
+<span id="cb4-67">                                " when matching brackets.</span>
+<span id="cb4-68"></span>
+<span id="cb4-69"></span>
+<span id="cb4-70">" Errors</span>
+<span id="cb4-71">set noerrorbells                " No annoying sound on errors.</span>
+<span id="cb4-72"></span>
+<span id="cb4-73"></span>
+<span id="cb4-74">" Color &amp; Fonts</span>
+<span id="cb4-75">syntax enable                   " Enable syntax highlighting.</span>
+<span id="cb4-76">set encoding=utf8                " Set utf8 as standard encoding and </span>
+<span id="cb4-77">                                 " en_US as the standard language.</span>
+<span id="cb4-78"></span>
+<span id="cb4-79">" Enable 256 colors palette in Gnome Terminal.</span>
+<span id="cb4-80">if $COLORTERM == 'gnome-terminal'</span>
+<span id="cb4-81">    set t_Co=256</span>
+<span id="cb4-82">endif</span>
+<span id="cb4-83"></span>
+<span id="cb4-84">try</span>
+<span id="cb4-85">    colorscheme desert</span>
+<span id="cb4-86">catch</span>
+<span id="cb4-87">endtry</span>
+<span id="cb4-88"></span>
+<span id="cb4-89"></span>
+<span id="cb4-90">" Files &amp; Backup</span>
+<span id="cb4-91">set nobackup                     " Turn off backup.</span>
+<span id="cb4-92">set nowb                         " Don't backup before overwriting a file.</span>
+<span id="cb4-93">set noswapfile                   " Don't create a swap file.</span>
+<span id="cb4-94">set ffs=unix,dos,mac             " Use Unix as the standard file type.</span>
+<span id="cb4-95"></span>
+<span id="cb4-96"></span>
+<span id="cb4-97">" Return to last edit position when opening files</span>
+<span id="cb4-98">au BufReadPost * if line("'\"") &gt; 1 &amp;&amp; line("'\"") &lt;= line("$") | exe "normal! g'\"" | endif</span></code></pre></div>
+</section>
+<section id="frequently-used-keyboard-shortcutscommands" class="level2">
+<h2 class="anchored" data-anchor-id="frequently-used-keyboard-shortcutscommands">Frequently Used Keyboard Shortcuts/Commands</h2>
+<p>Note: The commands below are according to the <code>init.vim</code> settings mentioned in this Gist.</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb5-1"># Nvim-R</span>
+<span id="cb5-2">\rf               " Connect to R console.</span>
+<span id="cb5-3">\rq               " Quit R console.</span>
+<span id="cb5-4">\ro               " Open object bowser.</span>
+<span id="cb5-5">\d                " Execute current line of code and move to the next line.</span>
+<span id="cb5-6">\ss               " Execute a block of selected code.</span>
+<span id="cb5-7">\aa               " Execute the entire script. This is equivalent to source().</span>
+<span id="cb5-8">\xx               " Toggle comment in an R script.</span>
+<span id="cb5-9"></span>
+<span id="cb5-10"># NERDTree</span>
+<span id="cb5-11">,nn               " Toggle NERDTree.</span></code></pre></div>
+</section>
+<section id="example-code" class="level2">
+<h2 class="anchored" data-anchor-id="example-code">Example Code</h2>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb6-2"><span class="co" style="color: #5E5E5E;"># \rf               " Connect to R console.</span></span>
+<span id="cb6-3"><span class="co" style="color: #5E5E5E;"># \rq               " Quit R console.</span></span>
+<span id="cb6-4"><span class="co" style="color: #5E5E5E;"># \ro               " Open object bowser.</span></span>
+<span id="cb6-5"><span class="co" style="color: #5E5E5E;"># \d \ss \aa        " Execution modes. </span></span>
+<span id="cb6-6"><span class="co" style="color: #5E5E5E;"># ?help</span></span>
+<span id="cb6-7"><span class="co" style="color: #5E5E5E;"># ,nn               " NERDTree.</span></span>
+<span id="cb6-8"><span class="co" style="color: #5E5E5E;"># ,nt, tp, tn       " Tab navigation.</span></span>
+<span id="cb6-9"></span>
+<span id="cb6-10"><span class="fu" style="color: #4758AB;">theme_set</span>(<span class="fu" style="color: #4758AB;">theme_bw</span>())</span>
+<span id="cb6-11"><span class="fu" style="color: #4758AB;">data</span>(<span class="st" style="color: #20794D;">"midwest"</span>, <span class="at" style="color: #657422;">package =</span> <span class="st" style="color: #20794D;">"ggplot2"</span>)</span>
+<span id="cb6-12"></span>
+<span id="cb6-13">gg  <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">ggplot</span>(midwest, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span>area, <span class="at" style="color: #657422;">y =</span> poptotal)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-14">        <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">col =</span> state, <span class="at" style="color: #657422;">size =</span> popdensity)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-15">        <span class="fu" style="color: #4758AB;">geom_smooth</span>(<span class="at" style="color: #657422;">method =</span> <span class="st" style="color: #20794D;">"loess"</span>, <span class="at" style="color: #657422;">se =</span> F) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-16">        <span class="fu" style="color: #4758AB;">xlim</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="fl" style="color: #AD0000;">0.1</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-17">        <span class="fu" style="color: #4758AB;">ylim</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">500000</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-18">        <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">subtitle =</span> <span class="st" style="color: #20794D;">"Area Vs Population"</span>,</span>
+<span id="cb6-19">             <span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"Population"</span>,</span>
+<span id="cb6-20">             <span class="at" style="color: #657422;">x =</span> <span class="st" style="color: #20794D;">"Area"</span>,</span>
+<span id="cb6-21">             <span class="at" style="color: #657422;">title =</span> <span class="st" style="color: #20794D;">"Scatterplot"</span>,</span>
+<span id="cb6-22">             <span class="at" style="color: #657422;">caption =</span> <span class="st" style="color: #20794D;">"Source: midwest"</span>)</span>
+<span id="cb6-23"></span>
+<span id="cb6-24"><span class="fu" style="color: #4758AB;">plot</span>(gg) <span class="co" style="color: #5E5E5E;"># Opens an external window with the plot.</span></span>
+<span id="cb6-25"></span>
+<span id="cb6-26">midwest<span class="sc" style="color: #5E5E5E;">$</span>county <span class="co" style="color: #5E5E5E;"># To show synchronous auto completion. </span></span>
+<span id="cb6-27"></span>
+<span id="cb6-28"><span class="fu" style="color: #4758AB;">View</span>(midwest) <span class="co" style="color: #5E5E5E;"># Opens an external window to display a portion of the tibble.</span></span></code></pre></div>
+</section>
+<section id="add-colour-etc.-to-vim-in-a-screen-session-optional" class="level2">
+<h2 class="anchored" data-anchor-id="add-colour-etc.-to-vim-in-a-screen-session-optional">Add Colour etc. to VIM in a Screen Session (optional)</h2>
+<p>Add these lines to <code>~/.screenrc</code> file.</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb7-1"># Use 256 colors</span>
+<span id="cb7-2">attrcolor b ".I"    # allow bold colors - necessary for some reason</span>
+<span id="cb7-3">termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'   # tell screen how to set colors. AB = background, AF=foreground</span>
+<span id="cb7-4">defbce on    # use current bg color for erased chars]]'</span>
+<span id="cb7-5"></span>
+<span id="cb7-6"># Informative statusbar</span>
+<span id="cb7-7">hardstatus off</span>
+<span id="cb7-8">hardstatus alwayslastline</span>
+<span id="cb7-9">hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W} %c %{g}]'</span>
+<span id="cb7-10"></span>
+<span id="cb7-11"># Use X scrolling mechanism</span>
+<span id="cb7-12">termcapinfo xterm* ti@:te@</span>
+<span id="cb7-13"></span>
+<span id="cb7-14"># Fix for residual editor text</span>
+<span id="cb7-15">altscreen on</span></code></pre></div>
+
+
+<!-- -->
+
+</section>
+
+ ]]></description>
+  <category>How To</category>
+  <category>IDE</category>
+  <category>R</category>
+  <guid>https://www.dataalltheway.com/posts/how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</guid>
+  <pubDate>Sat, 15 Oct 2022 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>How to download a shared file from Google Drive in R</title>
   <dc:creator>Rohit Farmer</dc:creator>
@@ -73,10 +394,10 @@ Saved locally as:
 
 
 
-<p>Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments and offices (worldwide) followed by https://twitter.com/headoffice. It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at https://doi.org/10.34740/KAGGLE/DSV/4208877 for the community to use.</p>
+<p>Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments and offices (worldwide) followed by <a href="https://twitter.com/headoffice" class="uri">https://twitter.com/headoffice</a> It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877" class="uri">https://doi.org/10.34740/KAGGLE/DSV/4208877</a>for the community to use.</p>
 <p>The dataset contains an Excel workbook per year with data points on the rows and features on the columns. Features include the timestamp (UTC), language in which the tweet is written, user id, user name, tweet id, and tweet text. The first version includes the data from October 2018 until September 15, 2022. After that, future releases will be quarterly. It is a textual dataset and is primarily useful for analyses related to natural language processing.</p>
-<p>In the Kaggle submission, I have also included a notebook (https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing) with the Python code that collected the tweets and the additional code that I used to pre-process the data before submission. After releasing the first data set, I updated the code and moved the bot from Python to R using the `rtweet` library instead of `tweepy`. I found `rtweet` to perform better, especially in filtering out duplicated tweets.</p>
-<p>In the current setup (https://github.com/rohitfarmer/government-tweets) that is still running on my Raspberry Pi 3B+, the main bot script runs every fifteen minutes via `crontab` and fetches data that is more recent than the latest tweet collected in the previous run. The data is stored in an SQLite database which is backed up to MEGA cloud storage via Rclone once every midnight ET.</p>
+<p>In the Kaggle submission, I have also included a notebook (<a href="https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing" class="uri">https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing</a>) with the Python code that collected the tweets and the additional code that I used to pre-process the data before submission. After releasing the first data set, I updated the code and moved the bot from Python to R using the <code>rtweet</code> library instead of <code>tweepy</code>. I found <code>rtweet</code> to perform better, especially in filtering out duplicated tweets.</p>
+<p>In the current setup (<a href="https://github.com/rohitfarmer/government-tweets" class="uri">https://github.com/rohitfarmer/government-tweets</a>) that is still running on my Raspberry Pi 3B+, the main bot script runs every fifteen minutes via <code>crontab</code> and fetches data that is more recent than the latest tweet collected in the previous run. The data is stored in an SQLite database which is backed up to MEGA cloud storage via Rclone once every midnight ET.</p>
 <p>I enjoyed the process of creating the bot and being able to run it for a couple of years, and I hope I will soon find some time to look into the data and fetch some exciting insights. But, until then, the data is available to the data science community to utilize as they please. So, please open a discussion on the Kaggle page for questions, comments, or collaborations.</p>
 
 
@@ -118,8 +439,6 @@ Saved locally as:
 <p><em>Log Transformation:</em> <img src="https://latex.codecogs.com/png.latex?x'%20=%20log(x)"></p>
 <p><em>Power Transformation:</em> <img src="https://latex.codecogs.com/png.latex?x'%20=%20x%5En"></p>
 <div id="load-packages-generate-random-data" class="cell" data-execution_count="1">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span>
 <span id="cb1-2"><span class="im" style="color: #00769E;">import</span> pandas <span class="im" style="color: #00769E;">as</span> pd</span>
 <span id="cb1-3"><span class="im" style="color: #00769E;">from</span> scipy <span class="im" style="color: #00769E;">import</span> stats</span>
@@ -141,11 +460,8 @@ Saved locally as:
 <span id="cb1-19"><span class="co" style="color: #5E5E5E;">#print('Skewness for the positively skewed data after transformation : ', round(skew(log_data_pos), 2)) </span></span>
 <span id="cb1-20">log_data_neg <span class="op" style="color: #5E5E5E;">=</span> np.log(data_neg)</span>
 <span id="cb1-21"><span class="co" style="color: #5E5E5E;">#print('Skewness for the negatively skewed data after transformation : ', round(skew(log_data_neg), 2)) </span></span></code></pre></div>
-</details>
 </div>
 <div class="cell" data-execution_count="2">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">fig, axs <span class="op" style="color: #5E5E5E;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2</span>, sharey <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"all"</span>)</span>
 <span id="cb2-2">fig.set_size_inches(<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">4</span>)</span>
 <span id="cb2-3">sns.set_context(context <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"paper"</span>, font_scale <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.5</span>)</span>
@@ -160,19 +476,16 @@ Saved locally as:
 <span id="cb2-12">h2.xaxis.set_major_locator(ticker.MultipleLocator(<span class="fl" style="color: #AD0000;">0.4</span>))</span>
 <span id="cb2-13">h2.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
 <span id="cb2-14">plt.show()</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div id="fig-log-hist-pos" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://www.dataalltheway.com/posts/data-transformation/index_files/figure-html/fig-log-hist-pos-output-1.png" width="974" height="378" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure 1: Histogram of the positively skewed data and its log transformation. The skewness for the non-transformed data (left) is 0.9 and for the log-transformed data (right) is 0.2.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Histogram of the positively skewed data and its log transformation. The skewness for the non-transformed data (left) is 0.9 and for the log-transformed data (right) is 0.2.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">fig, axs <span class="op" style="color: #5E5E5E;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2</span>, sharey <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"all"</span>)</span>
 <span id="cb3-2">fig.set_size_inches(<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">4</span>)</span>
 <span id="cb3-3">sns.set_context(context <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"paper"</span>, font_scale <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.5</span>)</span>
@@ -186,19 +499,16 @@ Saved locally as:
 <span id="cb3-11">h2.set_title(<span class="st" style="color: #20794D;">"Log-Transformed Data"</span>)</span>
 <span id="cb3-12">h2.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
 <span id="cb3-13">plt.show()</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div id="fig-log-hist-neg" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://www.dataalltheway.com/posts/data-transformation/index_files/figure-html/fig-log-hist-neg-output-1.png" width="991" height="388" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure 2: Histogram of the negatively skewed data and its log transformation. The skewness for the non-transformed data (left) is -0.9 and for the log-transformed data (right) is -1.2.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Histogram of the negatively skewed data and its log transformation. The skewness for the non-transformed data (left) is -0.9 and for the log-transformed data (right) is -1.2.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-execution_count="4">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;"># Square data.</span></span>
 <span id="cb4-2">pow_data_neg <span class="op" style="color: #5E5E5E;">=</span> np.power(data_neg, <span class="dv" style="color: #AD0000;">6</span>)</span>
 <span id="cb4-3"><span class="co" style="color: #5E5E5E;">#print('Skewness for the negatively skewed data after transformation : ', round(skew(pow_data_neg), 2)) </span></span>
@@ -216,12 +526,11 @@ Saved locally as:
 <span id="cb4-15">h2.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
 <span id="cb4-16">h2.xaxis.set_major_locator(ticker.MultipleLocator(<span class="dv" style="color: #AD0000;">400000</span>))</span>
 <span id="cb4-17">plt.show()</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div id="fig-pow-hist-neg" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://www.dataalltheway.com/posts/data-transformation/index_files/figure-html/fig-pow-hist-neg-output-1.png" width="996" height="388" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure 3: Histogram of the negatively skewed data and its power transformation. Data is raised to the power ot 6. The skewness for the non-transformed data (left) is -0.9 and for the power-transformed data (right) is -0.3.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Histogram of the negatively skewed data and its power transformation. Data is raised to the power ot 6. The skewness for the non-transformed data (left) is -0.9 and for the power-transformed data (right) is -0.3.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -236,8 +545,6 @@ Saved locally as:
 <p>For all real x: <img src="https://latex.codecogs.com/png.latex?arcsinh(x)%20=%20log(x%20+%20%5Csqrt%7Bx%5E2%20+%201%7D)"></p>
 <p>Let’s use similar positively skewed data as in the log transformation to visualize how an arcsinh transformation affects the shape of the distribution. The only change that I would want to do in this data set is to add few negative values. As I mentioned earlier that our mathematical laws doesn’t allow us to take log on negative numbers arcsinh transformation is capable of transforming small negative values closer to zero. Figures Figure&nbsp;4 and Figure&nbsp;5 show the histograms comparing the original and the arcsinh transformed data for positive and negatively skewed data respectively. From the figures it’s evident that unlike log, arcsinh transformation works on both positively and negatively skewed data equally well.</p>
 <div class="cell" data-execution_count="5">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;"># Generate random data points from a skewed normal distribution</span></span>
 <span id="cb5-2">data_pos <span class="op" style="color: #5E5E5E;">=</span> np.<span class="bu" style="color: null;">round</span>(skewnorm.rvs(<span class="dv" style="color: #AD0000;">10</span>, size<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">10000</span>, loc<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span>, random_state <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">101</span>), decimals <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">2</span>)</span>
 <span id="cb5-3"><span class="co" style="color: #5E5E5E;">#print('Skewness for the positively (right) skewed data before transformation : ', round(skew(data_pos), 2))</span></span>
@@ -249,11 +556,8 @@ Saved locally as:
 <span id="cb5-9"><span class="co" style="color: #5E5E5E;">#print('Skewness for the positively skewed data after transformation : ', round(skew(arcsinh_data_pos), 2)) </span></span>
 <span id="cb5-10">arcsinh_data_neg <span class="op" style="color: #5E5E5E;">=</span> np.arcsinh(data_neg)</span>
 <span id="cb5-11"><span class="co" style="color: #5E5E5E;">#print('Skewness for the negatively skewed data after transformation : ', round(skew(arcsinh_data_neg), 2)) </span></span></code></pre></div>
-</details>
 </div>
 <div class="cell" data-execution_count="6">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">fig, axs <span class="op" style="color: #5E5E5E;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2</span>, sharey <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"all"</span>)</span>
 <span id="cb6-2">fig.set_size_inches(<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">4</span>)</span>
 <span id="cb6-3">sns.set_context(context <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"paper"</span>, font_scale <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.5</span>)</span>
@@ -268,19 +572,16 @@ Saved locally as:
 <span id="cb6-12">h2.xaxis.set_major_locator(ticker.MultipleLocator(<span class="fl" style="color: #AD0000;">0.4</span>))</span>
 <span id="cb6-13">h2.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
 <span id="cb6-14">plt.show()</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div id="fig-arc-hist-pos" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://www.dataalltheway.com/posts/data-transformation/index_files/figure-html/fig-arc-hist-pos-output-1.png" width="991" height="388" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure 4: Histogram of the positively skewed data and its arcsinh transformation. The skewness for the non-transformed data (left) is 0.9 and for the arcsinh-transformed data (right) is 0.3.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: Histogram of the positively skewed data and its arcsinh transformation. The skewness for the non-transformed data (left) is 0.9 and for the arcsinh-transformed data (right) is 0.3.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-execution_count="7">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">fig, axs <span class="op" style="color: #5E5E5E;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2</span>, sharey <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"all"</span>)</span>
 <span id="cb7-2">fig.set_size_inches(<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">4</span>)</span>
 <span id="cb7-3">sns.set_context(context <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"paper"</span>, font_scale <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.5</span>)</span>
@@ -294,12 +595,11 @@ Saved locally as:
 <span id="cb7-11">h2.set_title(<span class="st" style="color: #20794D;">"Arcsinh-Transformed Data"</span>)</span>
 <span id="cb7-12">h2.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
 <span id="cb7-13">plt.show()</span></code></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div id="fig-arc-hist-neg" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://www.dataalltheway.com/posts/data-transformation/index_files/figure-html/fig-arc-hist-neg-output-1.png" width="991" height="388" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure 5: Histogram of the negatively skewed data and its arcsinh transformation. The skewness for the non-transformed data (left) is -0.9 and for the arcsinh-transformed data (right) is -0.3.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5: Histogram of the negatively skewed data and its arcsinh transformation. The skewness for the non-transformed data (left) is -0.9 and for the arcsinh-transformed data (right) is -0.3.</figcaption><p></p>
 </figure>
 </div>
 </div>

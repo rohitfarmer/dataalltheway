@@ -1,0 +1,32 @@
+---
+title: Classify the bitter or sweet taste of compounds
+author: "Rohit Farmer"
+date: "2022-10-15"
+categories: [Datasets, Kaggle, Classification]
+---
+
+*Originally posted on Kaggle at <https://www.kaggle.com/datasets/rohitfarmer/classify-the-bitter-or-sweet-taste-of-compounds>*
+
+# Context
+
+Throughout human evolution, we have been drawn toward sweet-tasting foods and averted from bitter tastes - sweet is good or desirable, bitter is undesirable, ear wax or medicinal. Therefore, a better understanding of molecular features that determine the bitter-sweet taste of substances is crucial for identifying natural and synthetic compounds for various purposes.
+
+# Sources
+
+This dataset <https://doi.org/10.34740/KAGGLE/DSV/4234193> is adapted from <https://github.com/cosylabiiit/bittersweet>, <https://www.nature.com/articles/s41598-019-43664-y>. In chemoinformatics, molecules are often represented as compact [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) strings. In this dataset, SMILES structures, along with their names and targets (bitter, sweet, tasteless, and non-bitter), were obtained from the original study. Subsequently, SMILES were converted into canonical SMILES using RDKit, and the features (molecular descriptors, both 2D and 3D) were calculated using [Mordred](https://github.com/mordred-descriptor/mordred). Secondly, tasteless and non-bitter categories were merged into a single category of non-bitter-sweet. Finally, since many of the compounds were missing names, IUPAC names were fetched using [PubChemPy](https://pubchempy.readthedocs.io/en/latest/) for all the compounds, and for still missing names, a generic compound + incrementor name was assigned.
+
+# Inspiration
+
+This is a classification dataset with the first three columns carrying names, SMILES, and canonical SMILES. Any of these columns can be used to refer to a molecule. The fourth column is the target (taste category). And all numeric features are from the 5th column until the end of the file. Many features have cells with string annotations due to errors produced by Mordred. Therefore, the following data science techniques can be learned while working on this dataset:
+
+1.  Data cleanup
+2.  Features selection (since the number of features is quite large in proportion to the data points)
+3.  Feature scaling/transformation/normalization
+4.  Dimensionality reduction
+5.  Binomial classification (bitter vs. sweet) - utilize non-bitter-sweet as a negative class.
+6.  Multinomial classification (bitter vs. sweet vs. non-bitter-sweet)
+7.  Since SMILES can be converted into molecular graphs, graph-based modeling should also be possible.
+
+# Initial data preparation
+
+A copy of the original dataset and the scripts and notebooks used to convert SMILES to canonical SMILES, generate features, fetch names, and export the final TSV file for Kaggle is loosely maintained at <https://github.com/rohitfarmer/bittersweet>.

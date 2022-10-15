@@ -12,5 +12,5 @@ toc-depth: 3
 
 format:
   html:
-    code-fold: true
+    code-fold: false
     code-tools: true

@@ -4,12 +4,18 @@ title-block-banner: false
 comments: false
 ---
 
-Welcome!
+Welcome to "data all the way," a tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics. This website, for me, is an attempt to deepen my understanding of data science by teaching core concepts and practical code. I intend to write blog posts that are as complete and explanatory as possible. However, many posts could just be codes with a minimal description initially, eventually evolving into more comprehensive articles. Therefore, most of the posts here are in a state of continuous development. If you want to get involved and help improve an article, please leave a comment or open a pull request at <https://github.com/rohitfarmer/dataalltheway>. To learn more about my other projects and research, please visit <https://www.rohitfarmer.com>.
 
-This is a tutorial website with concepts and ready code (R or Python) on various topics related to data science, statistics, and machine learning. I started this website to document the code I saved in GitHub gists. However, after a while, I realized that too many GitHub gists are harder to manage, and also search engines might not index them for others to use. Therefore, a website like this would serve both purposes.
+<br />
 
-I intend to write posts as complete and explanatory as possible. However, many posts could just be code with a minimal description. If you want to get involved and help improve an article, please leave a comment or open a pull request at <https://github.com/rohitfarmer/dataalltheway>.
+## Featured posts
 
-I hope you will find this resource helpful.
+---
+listing:
+  type: grid
+  contents:
+    - "posts/data-transformation/*.qmd"
+    - "posts/classify-the-bitter-or-sweet-taste-of-compounds/*.qmd"
+    - "posts/tweets-from-heads-of-governments-and-states/*.qmd"
 
-To know more about my other projects and research, please visit at [www.rohitfarmer.com](www.rohitfarmer.com).
+---
