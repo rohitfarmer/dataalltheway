@@ -1,14 +1,15 @@
 ---
 title: "Data Transformation"
-description: "Data transformation is a process of performing a mathematical function on each data point used in a statistical or machine learning analysis to either satisfy the underlying assumptions of a statistical test (e.g., normal distribution for a t-test), help a machine-learning algorithm to converge faster and or make a visualization interpretable."
-author: "Rohit Farmer"
+description: "Data transformation is a process of performing a mathematical function on each data point used in a statistical or machine learning analysis to either satisfy the underlying assumptions, help a machine-learning algorithm to converge faster and or make a visualization interpretable."
+author: 
+  - name: "Rohit Farmer"
+    orcid: "0000-0003-4197-3047"
 date: "2022-10-05"
 categories: [Concepts, Data Transformation]
 format:
   html:
     code-fold: true
     code-tools: true
-draft: true
 ---
 
 # Introduction
@@ -41,7 +42,7 @@ For example, let's visualize the effect of log transformation on a synthetically
 
 *Power Transformation:* $$x' = x^n$$
 
-```python 
+```{python}
 #| label: load-packages-generate-random-data
 
 import numpy as np
@@ -52,7 +53,6 @@ from scipy.stats import skew
 import math
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-import seaborn as sns
 
 # Generate random data points from a skewed normal distribution
 data_pos = np.round(skewnorm.rvs(10, size=10000, loc=1, random_state = 101), decimals = 2)
@@ -66,64 +66,51 @@ log_data_pos = np.log(data_pos)
 log_data_neg = np.log(data_neg)
 #print('Skewness for the negatively skewed data after transformation : ', round(skew(log_data_neg), 2)) 
 ```
-
-```python 
+```{python}
 #| label: fig-log-hist-pos
 #| fig-cap: "Histogram of the positively skewed data and its log transformation. The skewness for the non-transformed data (left) is 0.9 and for the log-transformed data (right) is 0.2."
-fig, axs = plt.subplots(ncols=2, sharey = "all")
-fig.set_size_inches(12,4)
-sns.set_context(context = "paper", font_scale = 1.5)
-sns.set_palette('Dark2')
-h1 = sns.histplot(data_pos, bins = 20, ax=axs[0], kde = False)
-h1.set_title("Non-Transformed Data")
-h1.set_xlabel("Feature")
-h1.xaxis.set_major_locator(ticker.MultipleLocator(0.5))
-h1.set_ylabel("Frequency")
-h2 = sns.histplot(log_data_pos, bins = 20, ax=axs[1], kde = False)
-h2.set_title("Log-Transformed Data")
-h2.xaxis.set_major_locator(ticker.MultipleLocator(0.4))
-h2.set_xlabel("Feature")
+fig, axs = plt.subplots(1, 2, sharey=True, tight_layout=True)
+
+# We can set the number of bins with the *bins* keyword argument.
+axs[0].hist(data_pos, bins=20, edgecolor='black', linewidth=1.0)
+axs[0].set_title("Non-Transformed Data")
+axs[0].set_xlabel("Feature")
+axs[0].set_ylabel("Frequency")
+axs[1].hist(log_data_pos, bins=20, edgecolor='black', linewidth=1.0)
+axs[1].set_title("Log-Transformed Data")
+axs[1].set_xlabel("Feature")
 plt.show()
 ```
 
-```python
+```{python}
 #| label: fig-log-hist-neg
 #| fig-cap: "Histogram of the negatively skewed data and its log transformation. The skewness for the non-transformed data (left) is -0.9 and for the log-transformed data (right) is -1.2."
-fig, axs = plt.subplots(ncols=2, sharey = "all")
-fig.set_size_inches(12,4)
-sns.set_context(context = "paper", font_scale = 1.5)
-sns.set_palette('Dark2')
-h1 = sns.histplot(data_neg, bins = 20, ax=axs[0], kde = False)
-h1.set_title("Non-Transformed Data")
-h1.set_xlabel("Feature")
-h1.xaxis.set_major_locator(ticker.MultipleLocator(0.5))
-h1.set_ylabel("Frequency")
-h2 = sns.histplot(log_data_neg, bins = 20, ax=axs[1], kde = False)
-h2.set_title("Log-Transformed Data")
-h2.set_xlabel("Feature")
+fig, axs = plt.subplots(1, 2, sharey=True, tight_layout=True)
+axs[0].hist(data_neg, bins = 20, edgecolor='black', linewidth=1.0)
+axs[0].set_title("Non-Transformed Data")
+axs[0].set_xlabel("Feature")
+axs[0].set_ylabel("Frequency")
+axs[1].hist(log_data_neg, bins = 20, edgecolor='black', linewidth=1.0)
+axs[1].set_title("Log-Transformed Data")
+axs[1].set_xlabel("Feature")
 plt.show()
 ```
 
-```python
+```{python}
 #| label: fig-pow-hist-neg
 #| fig-cap: "Histogram of the negatively skewed data and its power transformation. Data is raised to the power ot 6. The skewness for the non-transformed data (left) is -0.9 and for the power-transformed data (right) is -0.3."
 
 # Square data.
 pow_data_neg = np.power(data_neg, 6)
 #print('Skewness for the negatively skewed data after transformation : ', round(skew(pow_data_neg), 2)) 
-fig, axs = plt.subplots(ncols=2, sharey = "all")
-fig.set_size_inches(12,4)
-sns.set_context(context = "paper", font_scale = 1.5)
-sns.set_palette('Dark2')
-h1 = sns.histplot(data_neg, bins = 20, ax=axs[0], kde = False)
-h1.set_title("Non-Transformed Data")
-h1.set_xlabel("Feature")
-h1.xaxis.set_major_locator(ticker.MultipleLocator(0.5))
-h1.set_ylabel("Frequency")
-h2 = sns.histplot(pow_data_neg, bins = 20, ax=axs[1], kde = False)
-h2.set_title("Power-Transformed Data")
-h2.set_xlabel("Feature")
-h2.xaxis.set_major_locator(ticker.MultipleLocator(400000))
+fig, axs = plt.subplots(ncols=2, sharey = "all", tight_layout=True)
+axs[0].hist(data_neg, bins = 20, edgecolor='black', linewidth=1.0)
+axs[0].set_title("Non-Transformed Data")
+axs[0].set_xlabel("Feature")
+axs[0].set_ylabel("Frequency")
+axs[1].hist(pow_data_neg, bins = 20, edgecolor='black', linewidth=1.0)
+axs[1].set_title("Power-Transformed Data")
+axs[1].set_xlabel("Feature")
 plt.show()
 ```
 
@@ -141,7 +128,7 @@ For all real x: $$arcsinh(x) = log(x + \sqrt{x^2 + 1})$$
 
 Let's use similar positively skewed data as in the log transformation to visualize how an arcsinh transformation affects the shape of the distribution. The only change that I would want to do in this data set is to add few negative values. As I mentioned earlier that our mathematical laws doesn't allow us to take log on negative numbers arcsinh transformation is capable of transforming small negative values closer to zero. Figures @fig-arc-hist-pos and @fig-arc-hist-neg show the histograms comparing the original and the arcsinh transformed data for positive and negatively skewed data respectively. From the figures it's evident that unlike log, arcsinh transformation works on both positively and negatively skewed data equally well.
 
-```python
+```{python}
 # Generate random data points from a skewed normal distribution
 data_pos = np.round(skewnorm.rvs(10, size=10000, loc=0, random_state = 101), decimals = 2)
 #print('Skewness for the positively (right) skewed data before transformation : ', round(skew(data_pos), 2))
@@ -155,40 +142,31 @@ arcsinh_data_neg = np.arcsinh(data_neg)
 #print('Skewness for the negatively skewed data after transformation : ', round(skew(arcsinh_data_neg), 2)) 
 ```
 
-```python
+```{python}
 #| label: fig-arc-hist-pos
 #| fig-cap: "Histogram of the positively skewed data and its arcsinh transformation. The skewness for the non-transformed data (left) is 0.9 and for the arcsinh-transformed data (right) is 0.3."
-fig, axs = plt.subplots(ncols=2, sharey = "all")
-fig.set_size_inches(12,4)
-sns.set_context(context = "paper", font_scale = 1.5)
-sns.set_palette('Dark2')
-h1 = sns.histplot(data_pos, bins = 20, ax=axs[0], kde = False)
-h1.set_title("Non-Transformed Data")
-h1.set_xlabel("Feature")
-h1.xaxis.set_major_locator(ticker.MultipleLocator(0.5))
-h1.set_ylabel("Frequency")
-h2 = sns.histplot(arcsinh_data_pos, bins = 20, ax=axs[1], kde = False)
-h2.set_title("Arcsinh-Transformed Data")
-h2.xaxis.set_major_locator(ticker.MultipleLocator(0.4))
-h2.set_xlabel("Feature")
+fig, axs = plt.subplots(ncols=2, sharey = "all", tight_layout=True)
+axs[0].hist(data_pos, bins = 20, edgecolor='black', linewidth=1.0)
+axs[0].set_title("Non-Transformed Data")
+axs[0].set_xlabel("Feature")
+axs[0].set_ylabel("Frequency")
+axs[1].hist(arcsinh_data_pos, bins = 20, edgecolor='black', linewidth=1.0)
+axs[1].set_title("Arcsinh-Transformed Data")
+axs[1].set_xlabel("Feature")
 plt.show()
 ```
 
-```python
+```{python}
 #| label: fig-arc-hist-neg
 #| fig-cap: "Histogram of the negatively skewed data and its arcsinh transformation. The skewness for the non-transformed data (left) is -0.9 and for the arcsinh-transformed data (right) is -0.3."
-fig, axs = plt.subplots(ncols=2, sharey = "all")
-fig.set_size_inches(12,4)
-sns.set_context(context = "paper", font_scale = 1.5)
-sns.set_palette('Dark2')
-h1 = sns.histplot(data_neg, bins = 20, ax=axs[0], kde = False)
-h1.set_title("Non-Transformed Data")
-h1.set_xlabel("Feature")
-h1.xaxis.set_major_locator(ticker.MultipleLocator(0.5))
-h1.set_ylabel("Frequency")
-h2 = sns.histplot(arcsinh_data_neg, bins = 20, ax=axs[1], kde = False)
-h2.set_title("Arcsinh-Transformed Data")
-h2.set_xlabel("Feature")
+fig, axs = plt.subplots(ncols=2, sharey = "all", tight_layout=True)
+axs[0].hist(data_neg, bins = 20, edgecolor='black', linewidth=1.0)
+axs[0].set_title("Non-Transformed Data")
+axs[0].set_xlabel("Feature")
+axs[0].set_ylabel("Frequency")
+axs[1].hist(arcsinh_data_neg, bins = 20, edgecolor='black', linewidth=1.0)
+axs[1].set_title("Arcsinh-Transformed Data")
+axs[1].set_xlabel("Feature")
 plt.show()
 ```
 

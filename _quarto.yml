@@ -2,6 +2,7 @@ project:
   type: website
 
 website:
+  favicon: favicon.ico
   title: "Data All The Way"
   site-url: https://www.dataalltheway.com
   description: "A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics."
