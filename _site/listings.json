@@ -2,19 +2,18 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/classify-the-bitter-or-sweet-taste-of-compounds/index.html",
-      "/posts/data-transformation/index.html",
-      "/posts/tweets-from-heads-of-governments-and-states/index.html"
+      "/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html",
+      "/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html",
+      "/posts/002-tweets-from-heads-of-governments-and-states/index.html"
     ]
   },
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/classify-the-bitter-or-sweet-taste-of-compounds/index.html",
-      "/posts/how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html",
-      "/posts/how-to-download-a-shared-file-from-googledrive-in-r/index.html",
-      "/posts/tweets-from-heads-of-governments-and-states/index.html",
-      "/posts/data-transformation/index.html"
+      "/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html",
+      "/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html",
+      "/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html",
+      "/posts/002-tweets-from-heads-of-governments-and-states/index.html"
     ]
   }
 ]

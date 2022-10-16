@@ -14,8 +14,8 @@ Welcome to "data all the way," a tutorial website with concepts, methods, and ex
 listing:
   type: grid
   contents:
-    - "posts/data-transformation/*.qmd"
-    - "posts/classify-the-bitter-or-sweet-taste-of-compounds/*.qmd"
-    - "posts/tweets-from-heads-of-governments-and-states/*.qmd"
-
+    - "posts/001-data-transformation/*.qmd"
+    - "posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/*.qmd"
+    - "posts/005-classify-the-bitter-or-sweet-taste-of-compounds/*.qmd"
+    - "posts/002-tweets-from-heads-of-governments-and-states/*.qmd"
 ---

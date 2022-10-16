@@ -4,7 +4,7 @@ project:
 website:
   title: "Data All The Way"
   site-url: https://www.dataalltheway.com
-  description: "A tutorial website with concepts and ready code."
+  description: "A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics."
   navbar:
     right:
       - blog.qmd
@@ -23,6 +23,8 @@ website:
     tracking-id: "G-N6RK0VE0J6"
     anonymize-ip: true
   twitter-card: true
+  open-graph: true
+
 
 format:
   html:

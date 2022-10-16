@@ -1,11 +1,12 @@
 ---
-title: Tweets from heads of governments and states
+title: "Tweets from heads of governments and states"
+description: "A Twitter dataset for NLP analysis."
 author: "Rohit Farmer"
 date: "2022-10-05"
 categories: [Datasets, Kaggle, Twitter]
 ---
 
-Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments and offices (worldwide) followed by <https://twitter.com/headoffice> It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at <https://doi.org/10.34740/KAGGLE/DSV/4208877>for the community to use.
+Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments (worldwide) followed by <https://twitter.com/headoffice>. It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at <https://doi.org/10.34740/KAGGLE/DSV/4208877>for the community to use.
 
 The dataset contains an Excel workbook per year with data points on the rows and features on the columns. Features include the timestamp (UTC), language in which the tweet is written, user id, user name, tweet id, and tweet text. The first version includes the data from October 2018 until September 15, 2022. After that, future releases will be quarterly. It is a textual dataset and is primarily useful for analyses related to natural language processing.
 

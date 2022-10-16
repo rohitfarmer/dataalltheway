@@ -7,9 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rohit Farmer">
-<meta name="dcterms.date" content="2022-10-05">
+<meta name="dcterms.date" content="2022-10-15">
+<meta name="description" content="A dataset for the classification of the bitter or sweet taste of compounds.">
 
-<title>Data All The Way - Tweets from heads of governments and states</title>
+<title>Data All The Way - Classify the bitter or sweet taste of compounds</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -155,8 +156,11 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Data All The Way - Tweets from heads of governments and states">
-<meta name="twitter:description" content="Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments and offices (worldwide) followed by…">
+<meta property="og:title" content="Data All The Way - Classify the bitter or sweet taste of compounds">
+<meta property="og:description" content="A dataset for the classification of the bitter or sweet taste of compounds.">
+<meta property="og:site-name" content="Data All The Way">
+<meta name="twitter:title" content="Data All The Way - Classify the bitter or sweet taste of compounds">
+<meta name="twitter:description" content="A dataset for the classification of the bitter or sweet taste of compounds.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -209,21 +213,35 @@ cookieconsent.run({
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#context" id="toc-context" class="nav-link active" data-scroll-target="#context">Context</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
+  <li><a href="#inspiration" id="toc-inspiration" class="nav-link" data-scroll-target="#inspiration">Inspiration</a></li>
+  <li><a href="#initial-data-preparation" id="toc-initial-data-preparation" class="nav-link" data-scroll-target="#initial-data-preparation">Initial data preparation</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Tweets from heads of governments and states</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Classify the bitter or sweet taste of compounds</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
   <div class="quarto-categories">
     <div class="quarto-category">Datasets</div>
     <div class="quarto-category">Kaggle</div>
-    <div class="quarto-category">Twitter</div>
+    <div class="quarto-category">Classification</div>
   </div>
   </div>
 
+<div>
+  <div class="description">
+    A dataset for the classification of the bitter or sweet taste of compounds.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -238,7 +256,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 5, 2022</p>
+      <p class="date">October 15, 2022</p>
     </div>
   </div>
   
@@ -248,15 +266,36 @@ cookieconsent.run({
 
 </header>
 
-<p>Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments and offices (worldwide) followed by <a href="https://twitter.com/headoffice" class="uri">https://twitter.com/headoffice</a> It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877" class="uri">https://doi.org/10.34740/KAGGLE/DSV/4208877</a>for the community to use.</p>
-<p>The dataset contains an Excel workbook per year with data points on the rows and features on the columns. Features include the timestamp (UTC), language in which the tweet is written, user id, user name, tweet id, and tweet text. The first version includes the data from October 2018 until September 15, 2022. After that, future releases will be quarterly. It is a textual dataset and is primarily useful for analyses related to natural language processing.</p>
-<p>In the Kaggle submission, I have also included a notebook (<a href="https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing" class="uri">https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing</a>) with the Python code that collected the tweets and the additional code that I used to pre-process the data before submission. After releasing the first data set, I updated the code and moved the bot from Python to R using the <code>rtweet</code> library instead of <code>tweepy</code>. I found <code>rtweet</code> to perform better, especially in filtering out duplicated tweets.</p>
-<p>In the current setup (<a href="https://github.com/rohitfarmer/government-tweets" class="uri">https://github.com/rohitfarmer/government-tweets</a>) that is still running on my Raspberry Pi 3B+, the main bot script runs every fifteen minutes via <code>crontab</code> and fetches data that is more recent than the latest tweet collected in the previous run. The data is stored in an SQLite database which is backed up to MEGA cloud storage via Rclone once every midnight ET.</p>
-<p>I enjoyed the process of creating the bot and being able to run it for a couple of years, and I hope I will soon find some time to look into the data and fetch some exciting insights. But, until then, the data is available to the data science community to utilize as they please. So, please open a discussion on the Kaggle page for questions, comments, or collaborations.</p>
+<p><em>Originally posted on Kaggle at <a href="https://www.kaggle.com/datasets/rohitfarmer/classify-the-bitter-or-sweet-taste-of-compounds" class="uri">https://www.kaggle.com/datasets/rohitfarmer/classify-the-bitter-or-sweet-taste-of-compounds</a></em></p>
+<section id="context" class="level1">
+<h1>Context</h1>
+<p>Throughout human evolution, we have been drawn toward sweet-tasting foods and averted from bitter tastes - sweet is good or desirable, bitter is undesirable, ear wax or medicinal. Therefore, a better understanding of molecular features that determine the bitter-sweet taste of substances is crucial for identifying natural and synthetic compounds for various purposes.</p>
+</section>
+<section id="sources" class="level1">
+<h1>Sources</h1>
+<p>This dataset <a href="https://doi.org/10.34740/KAGGLE/DSV/4234193" class="uri">https://doi.org/10.34740/KAGGLE/DSV/4234193</a> is adapted from <a href="https://github.com/cosylabiiit/bittersweet" class="uri">https://github.com/cosylabiiit/bittersweet</a>, <a href="https://www.nature.com/articles/s41598-019-43664-y" class="uri">https://www.nature.com/articles/s41598-019-43664-y</a>. In chemoinformatics, molecules are often represented as compact <a href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> strings. In this dataset, SMILES structures, along with their names and targets (bitter, sweet, tasteless, and non-bitter), were obtained from the original study. Subsequently, SMILES were converted into canonical SMILES using RDKit, and the features (molecular descriptors, both 2D and 3D) were calculated using <a href="https://github.com/mordred-descriptor/mordred">Mordred</a>. Secondly, tasteless and non-bitter categories were merged into a single category of non-bitter-sweet. Finally, since many of the compounds were missing names, IUPAC names were fetched using <a href="https://pubchempy.readthedocs.io/en/latest/">PubChemPy</a> for all the compounds, and for still missing names, a generic compound + incrementor name was assigned.</p>
+</section>
+<section id="inspiration" class="level1">
+<h1>Inspiration</h1>
+<p>This is a classification dataset with the first three columns carrying names, SMILES, and canonical SMILES. Any of these columns can be used to refer to a molecule. The fourth column is the target (taste category). And all numeric features are from the 5th column until the end of the file. Many features have cells with string annotations due to errors produced by Mordred. Therefore, the following data science techniques can be learned while working on this dataset:</p>
+<ol type="1">
+<li>Data cleanup</li>
+<li>Features selection (since the number of features is quite large in proportion to the data points)</li>
+<li>Feature scaling/transformation/normalization</li>
+<li>Dimensionality reduction</li>
+<li>Binomial classification (bitter vs.&nbsp;sweet) - utilize non-bitter-sweet as a negative class.</li>
+<li>Multinomial classification (bitter vs.&nbsp;sweet vs.&nbsp;non-bitter-sweet)</li>
+<li>Since SMILES can be converted into molecular graphs, graph-based modeling should also be possible.</li>
+</ol>
+</section>
+<section id="initial-data-preparation" class="level1">
+<h1>Initial data preparation</h1>
+<p>A copy of the original dataset and the scripts and notebooks used to convert SMILES to canonical SMILES, generate features, fetch names, and export the final TSV file for Kaggle is loosely maintained at <a href="https://github.com/rohitfarmer/bittersweet" class="uri">https://github.com/rohitfarmer/bittersweet</a>.</p>
 
 
 <!-- -->
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -561,21 +600,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <script src="https://giscus.app/client.js" data-repo="rohitfarmer/dataalltheway" data-repo-id="R_kgDOIIcYEA" data-category="General" data-category-id="DIC_kwDOIIcYEM4CR0PA" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Tweets from heads of governments and states</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Rohit Farmer"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-10-05"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [Datasets, Kaggle, Twitter]</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments and offices (worldwide) followed by <span class="ot">&lt;https://twitter.com/headoffice&gt;</span> It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at <span class="ot">&lt;https://doi.org/10.34740/KAGGLE/DSV/4208877&gt;</span>for the community to use.</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>The dataset contains an Excel workbook per year with data points on the rows and features on the columns. Features include the timestamp (UTC), language in which the tweet is written, user id, user name, tweet id, and tweet text. The first version includes the data from October 2018 until September 15, 2022. After that, future releases will be quarterly. It is a textual dataset and is primarily useful for analyses related to natural language processing.</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>In the Kaggle submission, I have also included a notebook (<span class="ot">&lt;https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing&gt;</span>) with the Python code that collected the tweets and the additional code that I used to pre-process the data before submission. After releasing the first data set, I updated the code and moved the bot from Python to R using the <span class="in">`rtweet`</span> library instead of <span class="in">`tweepy`</span>. I found <span class="in">`rtweet`</span> to perform better, especially in filtering out duplicated tweets.</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>In the current setup (<span class="ot">&lt;https://github.com/rohitfarmer/government-tweets&gt;</span>) that is still running on my Raspberry Pi 3B+, the main bot script runs every fifteen minutes via <span class="in">`crontab`</span> and fetches data that is more recent than the latest tweet collected in the previous run. The data is stored in an SQLite database which is backed up to MEGA cloud storage via Rclone once every midnight ET.</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>I enjoyed the process of creating the bot and being able to run it for a couple of years, and I hope I will soon find some time to look into the data and fetch some exciting insights. But, until then, the data is available to the data science community to utilize as they please. So, please open a discussion on the Kaggle page for questions, comments, or collaborations.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Classify the bitter or sweet taste of compounds"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "A dataset for the classification of the bitter or sweet taste of compounds."</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Rohit Farmer"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-10-15"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [Datasets, Kaggle, Classification]</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>*Originally posted on Kaggle at &lt;https://www.kaggle.com/datasets/rohitfarmer/classify-the-bitter-or-sweet-taste-of-compounds&gt;*</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># Context</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>Throughout human evolution, we have been drawn toward sweet-tasting foods and averted from bitter tastes - sweet is good or desirable, bitter is undesirable, ear wax or medicinal. Therefore, a better understanding of molecular features that determine the bitter-sweet taste of substances is crucial for identifying natural and synthetic compounds for various purposes.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu"># Sources</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>This dataset <span class="ot">&lt;https://doi.org/10.34740/KAGGLE/DSV/4234193&gt;</span> is adapted from <span class="ot">&lt;https://github.com/cosylabiiit/bittersweet&gt;</span>, <span class="ot">&lt;https://www.nature.com/articles/s41598-019-43664-y&gt;</span>. In chemoinformatics, molecules are often represented as compact <span class="co">[</span><span class="ot">SMILES</span><span class="co">](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system)</span> strings. In this dataset, SMILES structures, along with their names and targets (bitter, sweet, tasteless, and non-bitter), were obtained from the original study. Subsequently, SMILES were converted into canonical SMILES using RDKit, and the features (molecular descriptors, both 2D and 3D) were calculated using <span class="co">[</span><span class="ot">Mordred</span><span class="co">](https://github.com/mordred-descriptor/mordred)</span>. Secondly, tasteless and non-bitter categories were merged into a single category of non-bitter-sweet. Finally, since many of the compounds were missing names, IUPAC names were fetched using <span class="co">[</span><span class="ot">PubChemPy</span><span class="co">](https://pubchempy.readthedocs.io/en/latest/)</span> for all the compounds, and for still missing names, a generic compound + incrementor name was assigned.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># Inspiration</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>This is a classification dataset with the first three columns carrying names, SMILES, and canonical SMILES. Any of these columns can be used to refer to a molecule. The fourth column is the target (taste category). And all numeric features are from the 5th column until the end of the file. Many features have cells with string annotations due to errors produced by Mordred. Therefore, the following data science techniques can be learned while working on this dataset:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Data cleanup</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Features selection (since the number of features is quite large in proportion to the data points)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Feature scaling/transformation/normalization</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Dimensionality reduction</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Binomial classification (bitter vs. sweet) - utilize non-bitter-sweet as a negative class.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>Multinomial classification (bitter vs. sweet vs. non-bitter-sweet)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>Since SMILES can be converted into molecular graphs, graph-based modeling should also be possible.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu"># Initial data preparation</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>A copy of the original dataset and the scripts and notebooks used to convert SMILES to canonical SMILES, generate features, fetch names, and export the final TSV file for Kaggle is loosely maintained at <span class="ot">&lt;https://github.com/rohitfarmer/bittersweet&gt;</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

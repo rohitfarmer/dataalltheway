@@ -8,13 +8,13 @@
 <title>Data All The Way</title>
 <link>https://www.dataalltheway.com/blog.html</link>
 <atom:link href="https://www.dataalltheway.com/blog.xml" rel="self" type="application/rss+xml"/>
-<description>A tutorial website with concepts and ready code.</description>
+<description>A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics.</description>
 <generator>quarto-1.2.215</generator>
 <lastBuildDate>Sat, 15 Oct 2022 04:00:00 GMT</lastBuildDate>
 <item>
   <title>Classify the bitter or sweet taste of compounds</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/classify-the-bitter-or-sweet-taste-of-compounds/index.html</link>
+  <link>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</link>
   <description><![CDATA[ 
 
 
@@ -54,13 +54,13 @@
   <category>Datasets</category>
   <category>Kaggle</category>
   <category>Classification</category>
-  <guid>https://www.dataalltheway.com/posts/classify-the-bitter-or-sweet-taste-of-compounds/index.html</guid>
+  <guid>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</guid>
   <pubDate>Sat, 15 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to use Neovim or VIM editor as an IDE for R</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</link>
+  <link>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</link>
   <description><![CDATA[ 
 
 
@@ -329,13 +329,13 @@
   <category>How To</category>
   <category>IDE</category>
   <category>R</category>
-  <guid>https://www.dataalltheway.com/posts/how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</guid>
+  <guid>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</guid>
   <pubDate>Sat, 15 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to download a shared file from Google Drive in R</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/how-to-download-a-shared-file-from-googledrive-in-r/index.html</link>
+  <link>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</link>
   <description><![CDATA[ 
 
 
@@ -370,8 +370,8 @@ Saved locally as:
 <span id="cb3-2"><span class="fu" style="color: #4758AB;">datatable</span>(<span class="fu" style="color: #4758AB;">head</span>(<span class="fu" style="color: #4758AB;">readRDS</span>(<span class="st" style="color: #20794D;">"hdstim-example-data.rds"</span>)))</span></code></pre></div>
 <div class="cell-output-display">
 
-<div id="htmlwidget-85b2bb4e039a830ff06f" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-85b2bb4e039a830ff06f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6"],[79,70,69,69,79,70],["CHI-011_1_2_A","CHI-011_1_1_A","CHI-011_3_10_A","CHI-011_3_10_A","CHI-011_4_12_A","CHI-011_2_6_A"],["CHI","CHI","CHI","CHI","CHI","CHI"],["CHI-011","CHI-011","CHI-011","CHI-011","CHI-011","CHI-011"],["A","A","A","A","A","A"],["CD11c CD14 CD38","CD11c CD14 CD38","CD11c CD14 CD38","CD11c CD14 CD38","CD11c CD14 CD38","CD11c CD14 CD38"],[3.11045985421461,3.756624119687,2.91172235059654,2.91947229958479,2.86243065529249,3.55471947848649],[2.60148450148647,1.96048766745817,1.31056430339826,1.37664270971998,1.73146179281805,2.64596916043389],[0.0511450206524779,0,0,0,0,0.934134878137762],[0.715850432612773,1.51468188723134,0,0,0.669274125232149,2.00748803888894],[1.60813176535096,0.891298069339495,0.663531561388978,0.613685355494012,2.00600285681816,1.08640795105961],[0,0,0,0.0400610034810615,0,0.144533362423892],[0,0,0,0,0,1.02057586670544],[0,0,0,0,0,0],[1.89939855959742,1.89740531143859,1.56083906701903,0,2.6283066495904,1.31582184236677],[0.253135536308388,1.18031265876627,1.14908639988457,0,0.60203455150163,1.31237331717289],[0.00369789949684945,1.42019379932966,0,0,0.292015878088941,0.747486538463715],[2.77331385345949,2.93516801403964,2.5077399892511,0,3.45956660590574,2.94476517349483],[0.818611130642736,0.288584492803405,0.41501690804668,0,0.397712653480103,0.717444487617541],[0.0708149411973731,0.559664627192441,0.711616749962613,1.66051446554381,2.30527976834,0.696557609808028],[0.0901644255041056,0.00285677018361897,0.511134647868454,0.0942685197420495,0.311234857890093,0],[1.72235731390904,2.03777931774125,1.2700510284353,0,1.65866992641687,2.49664130943363],[3.40026665462511,4.03268409388972,3.0127038002041,2.81608677589958,2.77497552695861,4.03455731237916],[3.60282931883905,3.72725122856332,3.23658833838627,1.92574695650221,3.37962998140363,3.41817022500882],[0,0,0.849363667161433,0,0,0.627406323811345],[2.47972008953098,3.05787535046539,1.32520533309986,1.3148934902373,1.46992626340919,2.11677383380288],[2.66213996356576,3.15170556980942,2.39801188953494,3.69386784866135,3.43625900221516,3.16288601115814],[0.0950055541308778,0,0,0,0.939884898249729,0],[2.31739627910986,0.988323168803844,1.73054962242106,2.50562978108194,0.494880999733125,0.756875322111951],[0.2970177575127,0.151289230433248,0.34647837052365,0,0,0],[0.193044912034295,1.14117991839873,0,0,0.0967478007059818,0.0639216025738452],[1.78627826892672,1.7993181167102,1.5975398105791,0.0230695735225738,0.443138595036129,1.42091355155696],[0.0423608708300761,0.0332365590723134,0,0,0,0.545795251581206],[2.76745995134643,3.87372990643494,1.91760799908439,0.511052067275238,3.3273032053323,4.55268565548227],[0,0,0,0.506312435220727,0,0.279160588121949],[0.328853956585871,0.269252468564148,0,0,0.605908439695913,0.286081128375009],[1659,1659,1659,1659,1659,1659]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>cluster_id<\/th>\n      <th>sample_id<\/th>\n      <th>condition<\/th>\n      <th>patient_id<\/th>\n      <th>stim_type<\/th>\n      <th>merging1<\/th>\n      <th>CD45<\/th>\n      <th>CD7<\/th>\n      <th>CD19<\/th>\n      <th>pPLCg2<\/th>\n      <th>CD4<\/th>\n      <th>IgD<\/th>\n      <th>CD20<\/th>\n      <th>CD25<\/th>\n      <th>pSTAT5<\/th>\n      <th>CD123<\/th>\n      <th>AKT<\/th>\n      <th>pSTAT1<\/th>\n      <th>CD27<\/th>\n      <th>pP38<\/th>\n      <th>CD24<\/th>\n      <th>pSTAT3<\/th>\n      <th>CD11c<\/th>\n      <th>CD14<\/th>\n      <th>CD56<\/th>\n      <th>IkBa<\/th>\n      <th>pCREB<\/th>\n      <th>CD16<\/th>\n      <th>CD38<\/th>\n      <th>CD8<\/th>\n      <th>CD45RA<\/th>\n      <th>CD3<\/th>\n      <th>pERK1_2<\/th>\n      <th>HLA_DR<\/th>\n      <th>pS6<\/th>\n      <th>CD127<\/th>\n      <th>ncount<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-db7b07880a7a2f2442fa" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-db7b07880a7a2f2442fa">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6"],[79,70,69,69,79,70],["CHI-011_1_2_A","CHI-011_1_1_A","CHI-011_3_10_A","CHI-011_3_10_A","CHI-011_4_12_A","CHI-011_2_6_A"],["CHI","CHI","CHI","CHI","CHI","CHI"],["CHI-011","CHI-011","CHI-011","CHI-011","CHI-011","CHI-011"],["A","A","A","A","A","A"],["CD11c CD14 CD38","CD11c CD14 CD38","CD11c CD14 CD38","CD11c CD14 CD38","CD11c CD14 CD38","CD11c CD14 CD38"],[3.11045985421461,3.756624119687,2.91172235059654,2.91947229958479,2.86243065529249,3.55471947848649],[2.60148450148647,1.96048766745817,1.31056430339826,1.37664270971998,1.73146179281805,2.64596916043389],[0.0511450206524779,0,0,0,0,0.934134878137762],[0.715850432612773,1.51468188723134,0,0,0.669274125232149,2.00748803888894],[1.60813176535096,0.891298069339495,0.663531561388978,0.613685355494012,2.00600285681816,1.08640795105961],[0,0,0,0.0400610034810615,0,0.144533362423892],[0,0,0,0,0,1.02057586670544],[0,0,0,0,0,0],[1.89939855959742,1.89740531143859,1.56083906701903,0,2.6283066495904,1.31582184236677],[0.253135536308388,1.18031265876627,1.14908639988457,0,0.60203455150163,1.31237331717289],[0.00369789949684945,1.42019379932966,0,0,0.292015878088941,0.747486538463715],[2.77331385345949,2.93516801403964,2.5077399892511,0,3.45956660590574,2.94476517349483],[0.818611130642736,0.288584492803405,0.41501690804668,0,0.397712653480103,0.717444487617541],[0.0708149411973731,0.559664627192441,0.711616749962613,1.66051446554381,2.30527976834,0.696557609808028],[0.0901644255041056,0.00285677018361897,0.511134647868454,0.0942685197420495,0.311234857890093,0],[1.72235731390904,2.03777931774125,1.2700510284353,0,1.65866992641687,2.49664130943363],[3.40026665462511,4.03268409388972,3.0127038002041,2.81608677589958,2.77497552695861,4.03455731237916],[3.60282931883905,3.72725122856332,3.23658833838627,1.92574695650221,3.37962998140363,3.41817022500882],[0,0,0.849363667161433,0,0,0.627406323811345],[2.47972008953098,3.05787535046539,1.32520533309986,1.3148934902373,1.46992626340919,2.11677383380288],[2.66213996356576,3.15170556980942,2.39801188953494,3.69386784866135,3.43625900221516,3.16288601115814],[0.0950055541308778,0,0,0,0.939884898249729,0],[2.31739627910986,0.988323168803844,1.73054962242106,2.50562978108194,0.494880999733125,0.756875322111951],[0.2970177575127,0.151289230433248,0.34647837052365,0,0,0],[0.193044912034295,1.14117991839873,0,0,0.0967478007059818,0.0639216025738452],[1.78627826892672,1.7993181167102,1.5975398105791,0.0230695735225738,0.443138595036129,1.42091355155696],[0.0423608708300761,0.0332365590723134,0,0,0,0.545795251581206],[2.76745995134643,3.87372990643494,1.91760799908439,0.511052067275238,3.3273032053323,4.55268565548227],[0,0,0,0.506312435220727,0,0.279160588121949],[0.328853956585871,0.269252468564148,0,0,0.605908439695913,0.286081128375009],[1659,1659,1659,1659,1659,1659]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>cluster_id<\/th>\n      <th>sample_id<\/th>\n      <th>condition<\/th>\n      <th>patient_id<\/th>\n      <th>stim_type<\/th>\n      <th>merging1<\/th>\n      <th>CD45<\/th>\n      <th>CD7<\/th>\n      <th>CD19<\/th>\n      <th>pPLCg2<\/th>\n      <th>CD4<\/th>\n      <th>IgD<\/th>\n      <th>CD20<\/th>\n      <th>CD25<\/th>\n      <th>pSTAT5<\/th>\n      <th>CD123<\/th>\n      <th>AKT<\/th>\n      <th>pSTAT1<\/th>\n      <th>CD27<\/th>\n      <th>pP38<\/th>\n      <th>CD24<\/th>\n      <th>pSTAT3<\/th>\n      <th>CD11c<\/th>\n      <th>CD14<\/th>\n      <th>CD56<\/th>\n      <th>IkBa<\/th>\n      <th>pCREB<\/th>\n      <th>CD16<\/th>\n      <th>CD38<\/th>\n      <th>CD8<\/th>\n      <th>CD45RA<\/th>\n      <th>CD3<\/th>\n      <th>pERK1_2<\/th>\n      <th>HLA_DR<\/th>\n      <th>pS6<\/th>\n      <th>CD127<\/th>\n      <th>ncount<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -383,18 +383,18 @@ Saved locally as:
 
  ]]></description>
   <category>How To</category>
-  <guid>https://www.dataalltheway.com/posts/how-to-download-a-shared-file-from-googledrive-in-r/index.html</guid>
+  <guid>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</guid>
   <pubDate>Fri, 14 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Tweets from heads of governments and states</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/tweets-from-heads-of-governments-and-states/index.html</link>
+  <link>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</link>
   <description><![CDATA[ 
 
 
 
-<p>Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments and offices (worldwide) followed by <a href="https://twitter.com/headoffice" class="uri">https://twitter.com/headoffice</a> It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877" class="uri">https://doi.org/10.34740/KAGGLE/DSV/4208877</a>for the community to use.</p>
+<p>Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments (worldwide) followed by <a href="https://twitter.com/headoffice" class="uri">https://twitter.com/headoffice</a>. It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877" class="uri">https://doi.org/10.34740/KAGGLE/DSV/4208877</a>for the community to use.</p>
 <p>The dataset contains an Excel workbook per year with data points on the rows and features on the columns. Features include the timestamp (UTC), language in which the tweet is written, user id, user name, tweet id, and tweet text. The first version includes the data from October 2018 until September 15, 2022. After that, future releases will be quarterly. It is a textual dataset and is primarily useful for analyses related to natural language processing.</p>
 <p>In the Kaggle submission, I have also included a notebook (<a href="https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing" class="uri">https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing</a>) with the Python code that collected the tweets and the additional code that I used to pre-process the data before submission. After releasing the first data set, I updated the code and moved the bot from Python to R using the <code>rtweet</code> library instead of <code>tweepy</code>. I found <code>rtweet</code> to perform better, especially in filtering out duplicated tweets.</p>
 <p>In the current setup (<a href="https://github.com/rohitfarmer/government-tweets" class="uri">https://github.com/rohitfarmer/government-tweets</a>) that is still running on my Raspberry Pi 3B+, the main bot script runs every fifteen minutes via <code>crontab</code> and fetches data that is more recent than the latest tweet collected in the previous run. The data is stored in an SQLite database which is backed up to MEGA cloud storage via Rclone once every midnight ET.</p>
@@ -408,255 +408,7 @@ Saved locally as:
   <category>Datasets</category>
   <category>Kaggle</category>
   <category>Twitter</category>
-  <guid>https://www.dataalltheway.com/posts/tweets-from-heads-of-governments-and-states/index.html</guid>
-  <pubDate>Wed, 05 Oct 2022 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Data Transformation</title>
-  <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/data-transformation/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>Data transformation is a process of performing a mathematical function on each data point used in a statistical or machine learning analysis to either satisfy the underlying assumptions of a statistical test (e.g., normal distribution for a t-test), help a machine-learning algorithm to converge faster and or make a visualization interpretable. In addition to statistical analyses and modeling, data transformation can also be helpful in data visualization, for example, performing a log transformation on a skewed data set to plot it in a relatively unskewed and visually appealing scatter plot. Most of the data transformation methods are invertible and original values of a data set can be recovered by implementing a counter mathematical function. In mathematical form it can be expressed as:</p>
-<p><img src="https://latex.codecogs.com/png.latex?x'%20=%20f(x)"></p>
-<p>Where <img src="https://latex.codecogs.com/png.latex?x"> is the original data, <img src="https://latex.codecogs.com/png.latex?x'"> is the transformed data, and <img src="https://latex.codecogs.com/png.latex?f(x)"> is a mathematical function performed on <img src="https://latex.codecogs.com/png.latex?x">.</p>
-<p>In data science, data transformation is also sometimes combined with the data cleaning step. In addition to performing a mathematical function to the data points, they are also checked for quality, for example, checking for missing values. I will discuss data cleaning procedures elsewhere. Data transformation can be considered as an umbrella term for both data scaling and data normalization. They are frequently used interchangeably, sometimes referring to the same mathematical operation. Although data scaling and normalization are used to achieve a similar result, it is better to understand them as two different operations that are happening under the hood.</p>
-<p>Although every data transformation method performs a mathematical operation on every data point (e.i. element wise), for some, this operation is not influenced if data points are either removed or added to the data set. Let’s consider a data set in the form of a two-dimensional data table with samples on the row and features on the column. Now take two methods to compare 1) log transformation 2) min-max scaling. In log transformation <img src="https://latex.codecogs.com/png.latex?log(x)">, a log is taken for every data point individually, and the result will not change if some rows or columns are dropped or added in our example data table. However, in min-max scaling</p>
-<p><img src="https://latex.codecogs.com/png.latex?x'%20=%20x-min(x)/max(x)-min(x)"></p>
-<p>that is performed feature-wise (columns); if the data point that was selected as a min or max in a previous transformation is removed, then re-doing the transformation will change the result. The removal of a data point may happen; for example, if the min or max value selected in the first iteration was an outlier or that a particular sample had multiple missing values, and therefore, it had to be removed, amongst others. Min-max scaling will also influence if more data points are added to our data set. It may bring a new min or max data point and hence will change the scaling. Therefore while selecting a data transformation method, it must be noted if data points are dropped in the subsequent analysis, then should you perform the transformation again as a result of data point loss or it will be indifferent.</p>
-</section>
-<section id="element-wise-data-transformation" class="level1">
-<h1>Element Wise Data Transformation</h1>
-<p>As mentioned in the general introduction above, element wise data transformation happens per element without utilizing any information from the rest of the elements in a feature (column) or in a sample (row). These methods are therefore immune to any change in the size of the data hence if some features or samples are removed after the transformation will not affect the subsequent analysis.</p>
-<section id="log-transformation" class="level2">
-<h2 class="anchored" data-anchor-id="log-transformation">Log Transformation</h2>
-<p>In a <a href="https://en.wikipedia.org/wiki/Logarithm">log</a> transformation, logarithm is calculated for every value in the data set. Traditionally, log transformation is carried out to reduce the skewness of data or to bring data closer to a normal distribution. Usually the base to the log doesn’t matter unless it is a domain specific requirement. However, every feature of the data set should be transformed with the same base. Most of the programming languages have a core function to calculate the log of a number. In programming languages that support vector operation, for example, R, the same log function can be performed on both a single value or on all the values within a data frame, vector or matrix.</p>
-<p>For example, let’s visualize the effect of log transformation on a synthetically generated dummy data. To generated figures Figure&nbsp;1 and Figure&nbsp;2, I have randomly sampled 10,000 positive real numbers from a skewed (positive and negative) normal distribution and performed a log transformation on every data point. The left sub-panel shows a histogram of the non-transformed data, and the right sub-panel shows a histogram of the log-transformed data. Although log transformation is known for reducing the skewness of the data and making the distribution more symmetric around the mean, it holds only for the positively skewed data. If the data are negatively skewed a log transformation will skew it further. In case of a negatively skewed data doing a power transformation may help to reduce the skewness (figure Figure&nbsp;3). Usually raising the data to a power of 2 has slight effect on the skewness; a higher number may be required. In addition to the visual inspection, we can also numerically quantify the skewness of the data; that is mentioned in the figure caption.</p>
-<p><em>Log Transformation:</em> <img src="https://latex.codecogs.com/png.latex?x'%20=%20log(x)"></p>
-<p><em>Power Transformation:</em> <img src="https://latex.codecogs.com/png.latex?x'%20=%20x%5En"></p>
-<div id="load-packages-generate-random-data" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span>
-<span id="cb1-2"><span class="im" style="color: #00769E;">import</span> pandas <span class="im" style="color: #00769E;">as</span> pd</span>
-<span id="cb1-3"><span class="im" style="color: #00769E;">from</span> scipy <span class="im" style="color: #00769E;">import</span> stats</span>
-<span id="cb1-4"><span class="im" style="color: #00769E;">from</span> scipy.stats <span class="im" style="color: #00769E;">import</span> skewnorm</span>
-<span id="cb1-5"><span class="im" style="color: #00769E;">from</span> scipy.stats <span class="im" style="color: #00769E;">import</span> skew </span>
-<span id="cb1-6"><span class="im" style="color: #00769E;">import</span> math</span>
-<span id="cb1-7"><span class="im" style="color: #00769E;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;">as</span> plt</span>
-<span id="cb1-8"><span class="im" style="color: #00769E;">import</span> matplotlib.ticker <span class="im" style="color: #00769E;">as</span> ticker</span>
-<span id="cb1-9"><span class="im" style="color: #00769E;">import</span> seaborn <span class="im" style="color: #00769E;">as</span> sns</span>
-<span id="cb1-10"></span>
-<span id="cb1-11"><span class="co" style="color: #5E5E5E;"># Generate random data points from a skewed normal distribution</span></span>
-<span id="cb1-12">data_pos <span class="op" style="color: #5E5E5E;">=</span> np.<span class="bu" style="color: null;">round</span>(skewnorm.rvs(<span class="dv" style="color: #AD0000;">10</span>, size<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">10000</span>, loc<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>, random_state <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">101</span>), decimals <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">2</span>)</span>
-<span id="cb1-13"><span class="co" style="color: #5E5E5E;">#print('Skewness for the positively (right) skewed data before transformation : ', round(skew(data_pos), 2)) </span></span>
-<span id="cb1-14">data_neg <span class="op" style="color: #5E5E5E;">=</span> np.<span class="bu" style="color: null;">round</span>(skewnorm.rvs(<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">10</span>, size<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">10000</span>, loc<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">10</span>, random_state <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">101</span>), decimals <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">2</span>)</span>
-<span id="cb1-15"><span class="co" style="color: #5E5E5E;">#print('Skewness for the negatively (left) skewed data before transformation : ', round(skew(data_neg), 2)) </span></span>
-<span id="cb1-16"></span>
-<span id="cb1-17"><span class="co" style="color: #5E5E5E;"># Log transform the data</span></span>
-<span id="cb1-18">log_data_pos <span class="op" style="color: #5E5E5E;">=</span> np.log(data_pos)</span>
-<span id="cb1-19"><span class="co" style="color: #5E5E5E;">#print('Skewness for the positively skewed data after transformation : ', round(skew(log_data_pos), 2)) </span></span>
-<span id="cb1-20">log_data_neg <span class="op" style="color: #5E5E5E;">=</span> np.log(data_neg)</span>
-<span id="cb1-21"><span class="co" style="color: #5E5E5E;">#print('Skewness for the negatively skewed data after transformation : ', round(skew(log_data_neg), 2)) </span></span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">fig, axs <span class="op" style="color: #5E5E5E;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2</span>, sharey <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"all"</span>)</span>
-<span id="cb2-2">fig.set_size_inches(<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">4</span>)</span>
-<span id="cb2-3">sns.set_context(context <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"paper"</span>, font_scale <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.5</span>)</span>
-<span id="cb2-4">sns.set_palette(<span class="st" style="color: #20794D;">'Dark2'</span>)</span>
-<span id="cb2-5">h1 <span class="op" style="color: #5E5E5E;">=</span> sns.histplot(data_pos, bins <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span>, ax<span class="op" style="color: #5E5E5E;">=</span>axs[<span class="dv" style="color: #AD0000;">0</span>], kde <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">False</span>)</span>
-<span id="cb2-6">h1.set_title(<span class="st" style="color: #20794D;">"Non-Transformed Data"</span>)</span>
-<span id="cb2-7">h1.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
-<span id="cb2-8">h1.xaxis.set_major_locator(ticker.MultipleLocator(<span class="fl" style="color: #AD0000;">0.5</span>))</span>
-<span id="cb2-9">h1.set_ylabel(<span class="st" style="color: #20794D;">"Frequency"</span>)</span>
-<span id="cb2-10">h2 <span class="op" style="color: #5E5E5E;">=</span> sns.histplot(log_data_pos, bins <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span>, ax<span class="op" style="color: #5E5E5E;">=</span>axs[<span class="dv" style="color: #AD0000;">1</span>], kde <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">False</span>)</span>
-<span id="cb2-11">h2.set_title(<span class="st" style="color: #20794D;">"Log-Transformed Data"</span>)</span>
-<span id="cb2-12">h2.xaxis.set_major_locator(ticker.MultipleLocator(<span class="fl" style="color: #AD0000;">0.4</span>))</span>
-<span id="cb2-13">h2.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
-<span id="cb2-14">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-log-hist-pos" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/data-transformation/index_files/figure-html/fig-log-hist-pos-output-1.png" width="974" height="378" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Histogram of the positively skewed data and its log transformation. The skewness for the non-transformed data (left) is 0.9 and for the log-transformed data (right) is 0.2.</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">fig, axs <span class="op" style="color: #5E5E5E;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2</span>, sharey <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"all"</span>)</span>
-<span id="cb3-2">fig.set_size_inches(<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">4</span>)</span>
-<span id="cb3-3">sns.set_context(context <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"paper"</span>, font_scale <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.5</span>)</span>
-<span id="cb3-4">sns.set_palette(<span class="st" style="color: #20794D;">'Dark2'</span>)</span>
-<span id="cb3-5">h1 <span class="op" style="color: #5E5E5E;">=</span> sns.histplot(data_neg, bins <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span>, ax<span class="op" style="color: #5E5E5E;">=</span>axs[<span class="dv" style="color: #AD0000;">0</span>], kde <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">False</span>)</span>
-<span id="cb3-6">h1.set_title(<span class="st" style="color: #20794D;">"Non-Transformed Data"</span>)</span>
-<span id="cb3-7">h1.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
-<span id="cb3-8">h1.xaxis.set_major_locator(ticker.MultipleLocator(<span class="fl" style="color: #AD0000;">0.5</span>))</span>
-<span id="cb3-9">h1.set_ylabel(<span class="st" style="color: #20794D;">"Frequency"</span>)</span>
-<span id="cb3-10">h2 <span class="op" style="color: #5E5E5E;">=</span> sns.histplot(log_data_neg, bins <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span>, ax<span class="op" style="color: #5E5E5E;">=</span>axs[<span class="dv" style="color: #AD0000;">1</span>], kde <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">False</span>)</span>
-<span id="cb3-11">h2.set_title(<span class="st" style="color: #20794D;">"Log-Transformed Data"</span>)</span>
-<span id="cb3-12">h2.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
-<span id="cb3-13">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-log-hist-neg" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/data-transformation/index_files/figure-html/fig-log-hist-neg-output-1.png" width="991" height="388" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Histogram of the negatively skewed data and its log transformation. The skewness for the non-transformed data (left) is -0.9 and for the log-transformed data (right) is -1.2.</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;"># Square data.</span></span>
-<span id="cb4-2">pow_data_neg <span class="op" style="color: #5E5E5E;">=</span> np.power(data_neg, <span class="dv" style="color: #AD0000;">6</span>)</span>
-<span id="cb4-3"><span class="co" style="color: #5E5E5E;">#print('Skewness for the negatively skewed data after transformation : ', round(skew(pow_data_neg), 2)) </span></span>
-<span id="cb4-4">fig, axs <span class="op" style="color: #5E5E5E;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2</span>, sharey <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"all"</span>)</span>
-<span id="cb4-5">fig.set_size_inches(<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">4</span>)</span>
-<span id="cb4-6">sns.set_context(context <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"paper"</span>, font_scale <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.5</span>)</span>
-<span id="cb4-7">sns.set_palette(<span class="st" style="color: #20794D;">'Dark2'</span>)</span>
-<span id="cb4-8">h1 <span class="op" style="color: #5E5E5E;">=</span> sns.histplot(data_neg, bins <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span>, ax<span class="op" style="color: #5E5E5E;">=</span>axs[<span class="dv" style="color: #AD0000;">0</span>], kde <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">False</span>)</span>
-<span id="cb4-9">h1.set_title(<span class="st" style="color: #20794D;">"Non-Transformed Data"</span>)</span>
-<span id="cb4-10">h1.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
-<span id="cb4-11">h1.xaxis.set_major_locator(ticker.MultipleLocator(<span class="fl" style="color: #AD0000;">0.5</span>))</span>
-<span id="cb4-12">h1.set_ylabel(<span class="st" style="color: #20794D;">"Frequency"</span>)</span>
-<span id="cb4-13">h2 <span class="op" style="color: #5E5E5E;">=</span> sns.histplot(pow_data_neg, bins <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span>, ax<span class="op" style="color: #5E5E5E;">=</span>axs[<span class="dv" style="color: #AD0000;">1</span>], kde <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">False</span>)</span>
-<span id="cb4-14">h2.set_title(<span class="st" style="color: #20794D;">"Power-Transformed Data"</span>)</span>
-<span id="cb4-15">h2.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
-<span id="cb4-16">h2.xaxis.set_major_locator(ticker.MultipleLocator(<span class="dv" style="color: #AD0000;">400000</span>))</span>
-<span id="cb4-17">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-pow-hist-neg" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/data-transformation/index_files/figure-html/fig-pow-hist-neg-output-1.png" width="996" height="388" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3: Histogram of the negatively skewed data and its power transformation. Data is raised to the power ot 6. The skewness for the non-transformed data (left) is -0.9 and for the power-transformed data (right) is -0.3.</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<p><em>Note: Since the data used in these figures are sampled from a skewed normal distribution the skewness calculated here are below 2. For a non-normally distributed skewed data it would be higher than 2. Log transformation is often used to bring a non-normal distribution closer to a normal distribution.</em></p>
-<p>Log transformation can only be performed on positive values. Mathematics principles doesn’t allow log calculation on negative values. In case our input data contains negative values and a log like transformation is desired inverse hyperbolic sin (arcsinh) transformation method can be used.</p>
-</section>
-<section id="arcsinh-transformation" class="level2">
-<h2 class="anchored" data-anchor-id="arcsinh-transformation">Arcsinh Transformation</h2>
-<p><a href="http://people.math.sfu.ca/~cbm/aands/abramowitz_and_stegun.pdf">Inverse hyperbolic sin</a> transformation is a non-linear transformation that is often used in situations where a log transformations can’t be used; such as in the presence of negative values. <a href="https://support.cytobank.org/hc/en-us/articles/206148057-About-the-Arcsinh-transform">Flow and mass cytometry</a> are popular examples where arcsinh transformation is a almost always a method of choice. Reason being older flow cytometry machines produced positive values that were displayed on a log scale. However, newer machines can produce both negative and positive values that can’t be displayed on a log scale. Therefore, to keep the data resemble a log transformation arcsinh transformation is used.</p>
-<p>Arcsinh transformation can also be tweaked by using a cofactor to behave differently around zero. For both negative and positive values starting from zero to cofactor are presented in a linear fashion along the lines of raw data values and values beyond he cofactor are presented in a log like fashion. In flow and mass cytometry a cofactor of 150 and 5 are used respectively.</p>
-<p>For all real x: <img src="https://latex.codecogs.com/png.latex?arcsinh(x)%20=%20log(x%20+%20%5Csqrt%7Bx%5E2%20+%201%7D)"></p>
-<p>Let’s use similar positively skewed data as in the log transformation to visualize how an arcsinh transformation affects the shape of the distribution. The only change that I would want to do in this data set is to add few negative values. As I mentioned earlier that our mathematical laws doesn’t allow us to take log on negative numbers arcsinh transformation is capable of transforming small negative values closer to zero. Figures Figure&nbsp;4 and Figure&nbsp;5 show the histograms comparing the original and the arcsinh transformed data for positive and negatively skewed data respectively. From the figures it’s evident that unlike log, arcsinh transformation works on both positively and negatively skewed data equally well.</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;"># Generate random data points from a skewed normal distribution</span></span>
-<span id="cb5-2">data_pos <span class="op" style="color: #5E5E5E;">=</span> np.<span class="bu" style="color: null;">round</span>(skewnorm.rvs(<span class="dv" style="color: #AD0000;">10</span>, size<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">10000</span>, loc<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span>, random_state <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">101</span>), decimals <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">2</span>)</span>
-<span id="cb5-3"><span class="co" style="color: #5E5E5E;">#print('Skewness for the positively (right) skewed data before transformation : ', round(skew(data_pos), 2))</span></span>
-<span id="cb5-4">data_neg <span class="op" style="color: #5E5E5E;">=</span> np.<span class="bu" style="color: null;">round</span>(skewnorm.rvs(<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">10</span>, size<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">10000</span>, loc<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span>, random_state <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">101</span>), decimals <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">2</span>)</span>
-<span id="cb5-5"><span class="co" style="color: #5E5E5E;">#print('Skewness for the negatively (left) skewed data before transformation : ', round(skew(data_neg), 2)) </span></span>
-<span id="cb5-6"></span>
-<span id="cb5-7"><span class="co" style="color: #5E5E5E;"># Arcsinh transform the data</span></span>
-<span id="cb5-8">arcsinh_data_pos <span class="op" style="color: #5E5E5E;">=</span> np.arcsinh(data_pos)</span>
-<span id="cb5-9"><span class="co" style="color: #5E5E5E;">#print('Skewness for the positively skewed data after transformation : ', round(skew(arcsinh_data_pos), 2)) </span></span>
-<span id="cb5-10">arcsinh_data_neg <span class="op" style="color: #5E5E5E;">=</span> np.arcsinh(data_neg)</span>
-<span id="cb5-11"><span class="co" style="color: #5E5E5E;">#print('Skewness for the negatively skewed data after transformation : ', round(skew(arcsinh_data_neg), 2)) </span></span></code></pre></div>
-</div>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">fig, axs <span class="op" style="color: #5E5E5E;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2</span>, sharey <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"all"</span>)</span>
-<span id="cb6-2">fig.set_size_inches(<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">4</span>)</span>
-<span id="cb6-3">sns.set_context(context <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"paper"</span>, font_scale <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.5</span>)</span>
-<span id="cb6-4">sns.set_palette(<span class="st" style="color: #20794D;">'Dark2'</span>)</span>
-<span id="cb6-5">h1 <span class="op" style="color: #5E5E5E;">=</span> sns.histplot(data_pos, bins <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span>, ax<span class="op" style="color: #5E5E5E;">=</span>axs[<span class="dv" style="color: #AD0000;">0</span>], kde <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">False</span>)</span>
-<span id="cb6-6">h1.set_title(<span class="st" style="color: #20794D;">"Non-Transformed Data"</span>)</span>
-<span id="cb6-7">h1.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
-<span id="cb6-8">h1.xaxis.set_major_locator(ticker.MultipleLocator(<span class="fl" style="color: #AD0000;">0.5</span>))</span>
-<span id="cb6-9">h1.set_ylabel(<span class="st" style="color: #20794D;">"Frequency"</span>)</span>
-<span id="cb6-10">h2 <span class="op" style="color: #5E5E5E;">=</span> sns.histplot(arcsinh_data_pos, bins <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span>, ax<span class="op" style="color: #5E5E5E;">=</span>axs[<span class="dv" style="color: #AD0000;">1</span>], kde <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">False</span>)</span>
-<span id="cb6-11">h2.set_title(<span class="st" style="color: #20794D;">"Arcsinh-Transformed Data"</span>)</span>
-<span id="cb6-12">h2.xaxis.set_major_locator(ticker.MultipleLocator(<span class="fl" style="color: #AD0000;">0.4</span>))</span>
-<span id="cb6-13">h2.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
-<span id="cb6-14">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-arc-hist-pos" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/data-transformation/index_files/figure-html/fig-arc-hist-pos-output-1.png" width="991" height="388" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4: Histogram of the positively skewed data and its arcsinh transformation. The skewness for the non-transformed data (left) is 0.9 and for the arcsinh-transformed data (right) is 0.3.</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">fig, axs <span class="op" style="color: #5E5E5E;">=</span> plt.subplots(ncols<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2</span>, sharey <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"all"</span>)</span>
-<span id="cb7-2">fig.set_size_inches(<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">4</span>)</span>
-<span id="cb7-3">sns.set_context(context <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"paper"</span>, font_scale <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.5</span>)</span>
-<span id="cb7-4">sns.set_palette(<span class="st" style="color: #20794D;">'Dark2'</span>)</span>
-<span id="cb7-5">h1 <span class="op" style="color: #5E5E5E;">=</span> sns.histplot(data_neg, bins <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span>, ax<span class="op" style="color: #5E5E5E;">=</span>axs[<span class="dv" style="color: #AD0000;">0</span>], kde <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">False</span>)</span>
-<span id="cb7-6">h1.set_title(<span class="st" style="color: #20794D;">"Non-Transformed Data"</span>)</span>
-<span id="cb7-7">h1.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
-<span id="cb7-8">h1.xaxis.set_major_locator(ticker.MultipleLocator(<span class="fl" style="color: #AD0000;">0.5</span>))</span>
-<span id="cb7-9">h1.set_ylabel(<span class="st" style="color: #20794D;">"Frequency"</span>)</span>
-<span id="cb7-10">h2 <span class="op" style="color: #5E5E5E;">=</span> sns.histplot(arcsinh_data_neg, bins <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span>, ax<span class="op" style="color: #5E5E5E;">=</span>axs[<span class="dv" style="color: #AD0000;">1</span>], kde <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">False</span>)</span>
-<span id="cb7-11">h2.set_title(<span class="st" style="color: #20794D;">"Arcsinh-Transformed Data"</span>)</span>
-<span id="cb7-12">h2.set_xlabel(<span class="st" style="color: #20794D;">"Feature"</span>)</span>
-<span id="cb7-13">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-arc-hist-neg" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/data-transformation/index_files/figure-html/fig-arc-hist-neg-output-1.png" width="991" height="388" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5: Histogram of the negatively skewed data and its arcsinh transformation. The skewness for the non-transformed data (left) is -0.9 and for the arcsinh-transformed data (right) is -0.3.</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="feature-wise-data-scaling" class="level1">
-<h1>Feature Wise Data Scaling</h1>
-<p>Data scaling is a type of data transformation that usually doesn’t affect the distribution of the data but change the scale on which the numerical values are presented. For example, if a distribution is normally distributed then it will stay normally distributed after the transformation however, if the numbers range from say 10 to 100 they may be re-scaled from 0 to 1. The relative difference between the numbers will remain the same. Such type of transformation is useful when the features in the data set are measured on different scales. For example in a data set that records height, weight, and time taken to finish a 100 meter sprint for 20 high school boys height would probably range from 4 to 6 ft, weight from 40 to 80 kg and sprint time from 10 to 30 seconds. You can see although they are all positive real numbers but they have different units and also different scales on which they are measured. In this particular example none of the ranges even overlap. Such kind of data sometimes becomes very difficult for machine learning algorithms to work with in particular for gradient decent algorithms to converge in a reasonable number of iterations. Therefore, having all the features on the same scale becomes desirable if not essential.</p>
-<p>There are two common ways to get all the features to have the same scale: min-max scaling and standardization.</p>
-<section id="min-max-scaling" class="level2">
-<h2 class="anchored" data-anchor-id="min-max-scaling">Min-Max Scaling</h2>
-<p>In min-max scaling for a given feature, we subtract the minimum value from each value and divide the residual by the difference between the maximum and the minimum value. The resulting transformed data is scaled between 0 and 1.</p>
-<p><img src="https://latex.codecogs.com/png.latex?minmax(x)%20=%20x%20-%20min(x)%20/%20max(x)%20-%20min(x)"></p>
-<p>Min-max scaling can also be modified to scale the values to the desired range, for example, between -1 and 1.</p>
-<p><img src="https://latex.codecogs.com/png.latex?minmax(x)%20=%20((b%20-%20a)%20*%20(x%20-%20min(x))%20/%20max(x)%20-%20min(x))%20+%20%20a"></p>
-<p>Where <img src="https://latex.codecogs.com/png.latex?a"> and <img src="https://latex.codecogs.com/png.latex?b"> are the minimum and maximum range respectively.</p>
-<section id="applications" class="level3">
-<h3 class="anchored" data-anchor-id="applications">Application(s)</h3>
-<ul>
-<li>Neural networks</li>
-</ul>
-</section>
-</section>
-<section id="standardization" class="level2">
-<h2 class="anchored" data-anchor-id="standardization">Standardization</h2>
-<p>Standardization is also known as z-scaling, mean removal, or variance scaling. In standardization, the goal is to scale the data with a mean of zero and a standard deviation of one.</p>
-<p><img src="https://latex.codecogs.com/png.latex?z%20=%20(x%20-%20%5Cmu)/%5Csigma"></p>
-<p>Where <img src="https://latex.codecogs.com/png.latex?%5Cmu"> is the mean and <img src="https://latex.codecogs.com/png.latex?%5Csigma"> is the standard deviation of a given feature. Then, the distribution of the transformed data is called the z-distribution.</p>
-<section id="applications-1" class="level3">
-<h3 class="anchored" data-anchor-id="applications-1">Application(s)</h3>
-<ul>
-<li>Principal Component Analysis (PCA)</li>
-<li>In heatmaps to compare data among samples</li>
-</ul>
-</section>
-</section>
-</section>
-<section id="data-normalization" class="level1">
-<h1>Data Normalization</h1>
-<p>In data science, we casually use the term data normalization for any method that transforms the data across the samples or features so that the data’s elements (samples or features) are similar and comparable. For example, in the case of gene expression measurements for multiple samples, we want to detect actual biological differences between the samples than the technical variations caused by human errors in handling samples. Therefore, having normalized data ensures that the differentially expressed genes we detect are due to biological conditions and not technical noise.</p>
-<p>However, I like to consider normalization methods different from element-wise transformation or feature-wise scaling as changing the dataset requires re-normalization. As in the gene expression example, quantile normalization is frequently used and sensitive to changes in the samples and the features. Unlike element-wise transformation, where neither a sample nor a feature affects the transformation, or in feature-wise scaling, where dropping a feature would not affect the scaling of other features.</p>
-<p>Therefore, this section will look into methods that are unlike element-wise transformation or feature-wise scaling.</p>
-<section id="quantile-normalization" class="level2">
-<h2 class="anchored" data-anchor-id="quantile-normalization">Quantile Normalization</h2>
-<p><a href="https://en.wikipedia.org/wiki/Quantile_normalization">Quantile normalization</a> (QN) is a technique to make two distribution identical in statistical properties. QN involves first ranking the feature of each sample by magnitude, calculating the average value for genes occupying the same rank, and then substituting the values of all genes occupying that particular rank with this average value. The next step is to reorder the features of each sample in their original order.</p>
-
-
-<!-- -->
-
-</section>
-</section>
-
- ]]></description>
-  <category>Concepts</category>
-  <category>Data Transformation</category>
-  <guid>https://www.dataalltheway.com/posts/data-transformation/index.html</guid>
+  <guid>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</guid>
   <pubDate>Wed, 05 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 </channel>

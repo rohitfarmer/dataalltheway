@@ -1,5 +1,6 @@
 ---
-title: Classify the bitter or sweet taste of compounds
+title: "Classify the bitter or sweet taste of compounds"
+description: "A dataset for the classification of the bitter or sweet taste of compounds."
 author: "Rohit Farmer"
 date: "2022-10-15"
 categories: [Datasets, Kaggle, Classification]
