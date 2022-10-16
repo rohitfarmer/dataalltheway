@@ -1,7 +1,9 @@
 ---
 title: "How to download a shared file from Google Drive in R"
 description: "A tutorial on how to download a shared file with 'anyone with the link' access rights from Google Drive in R."
-author: "Rohit Farmer"
+author: 
+  - name: "Rohit Farmer"
+    orcid: "0000-0003-4197-3047"
 date: "2022-10-14"
 categories: [How To]
 format:

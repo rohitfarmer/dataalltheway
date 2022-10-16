@@ -1,7 +1,9 @@
 ---
 title: "How to use Neovim or VIM editor as an IDE for R"
 description: "A tutorial on how to use Neovim or VIM editor as an IDE for R."
-author: "Rohit Farmer"
+author: 
+  - name: "Rohit Farmer"
+    orcid: "0000-0003-4197-3047"
 date: "2022-10-15"
 categories: [How To, IDE, R]
 ---
