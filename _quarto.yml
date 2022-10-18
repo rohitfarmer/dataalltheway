@@ -15,7 +15,12 @@ website:
         href: https://twitter.com/rohitfarmer
       - icon: rss
         href: blog.xml
-  page-footer: "Made with ✌️❤️☕  \nCopyright CC BY-NC-SA 4.0"
+  page-footer: 
+    left: "<b>Copyright CC BY-NC-SA 4.0</b>"
+    right: '<a href="https://www.buymeacoffee.com/rohit.farmer" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 197px !important;" ></a>'
+    center: "<b>Made with ✌️❤️☕  </b>"
+    border: true
+    background: dark
   cookie-consent:
     type: implied 
     style: simple
@@ -30,7 +35,7 @@ website:
 format:
   html:
     theme: 
-      light: litera
+      light: flatly
       dark: darkly
     css: styles.css
 

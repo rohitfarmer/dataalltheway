@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rohit Farmer">
-<meta name="dcterms.date" content="2022-10-14">
-<meta name="description" content="A tutorial on how to download a shared file with ‘anyone with the link’ access rights from Google Drive in R.">
+<meta name="dcterms.date" content="2022-10-17">
+<meta name="description" content="A case for using Google Colab notebooks as an alternative to web servers for scientific software.">
 
-<title>Data All The Way - How to download a shared file from Google Drive in R</title>
+<title>Data All The Way - Using Google Colab as an alternative to web servers for scientific software</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,69 +23,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -155,23 +111,13 @@ cookieconsent.run({
 </script> 
   
 
-<script src="../../site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="../../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="../../site_libs/datatables-binding-0.25/datatables.js"></script>
-<script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="../../site_libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="../../site_libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="../../site_libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
-<link href="../../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="../../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Data All The Way - How to download a shared file from Google Drive in R">
-<meta property="og:description" content="A tutorial on how to download a shared file with 'anyone with the link' access rights from Google Drive in R.">
+<meta property="og:title" content="Data All The Way - Using Google Colab as an alternative to web servers for scientific software">
+<meta property="og:description" content="A case for using Google Colab notebooks as an alternative to web servers for scientific software.">
 <meta property="og:site-name" content="Data All The Way">
-<meta name="twitter:title" content="Data All The Way - How to download a shared file from Google Drive in R">
-<meta name="twitter:description" content="A tutorial on how to download a shared file with 'anyone with the link' access rights from Google Drive in R.">
+<meta name="twitter:title" content="Data All The Way - Using Google Colab as an alternative to web servers for scientific software">
+<meta name="twitter:description" content="A case for using Google Colab notebooks as an alternative to web servers for scientific software.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -224,32 +170,24 @@ cookieconsent.run({
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#step-1-copy-the-file-id-from-the-share-link." id="toc-step-1-copy-the-file-id-from-the-share-link." class="nav-link" data-scroll-target="#step-1-copy-the-file-id-from-the-share-link.">Step 1: Copy the file ID from the share link.</a></li>
-  <li><a href="#step-2-download-the-file-using-an-authenticated-connection." id="toc-step-2-download-the-file-using-an-authenticated-connection." class="nav-link" data-scroll-target="#step-2-download-the-file-using-an-authenticated-connection.">Step 2: Download the file using an authenticated connection.</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">How to download a shared file from Google Drive in R</h1>
+<h1 class="title">Using Google Colab as an alternative to web servers for scientific software</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">How To</div>
+    <div class="quarto-category">Google Colab</div>
+    <div class="quarto-category">Jupyter Notebooks</div>
+    <div class="quarto-category">Scientific Software</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    A tutorial on how to download a shared file with ‘anyone with the link’ access rights from Google Drive in R.
+    A case for using Google Colab notebooks as an alternative to web servers for scientific software.
   </div>
 </div>
 
@@ -266,7 +204,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 14, 2022</p>
+      <p class="date">October 17, 2022</p>
     </div>
   </div>
   
@@ -276,55 +214,57 @@ cookieconsent.run({
 
 </header>
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>To download a shared file with “anyone with the link” access rights from Google Drive in R, we can utilize the <code>googledrive</code> library from the <code>tidyverse</code> package. The method described here will utilize the file ID copied from the shared link. Typically <code>googledrive</code> package is used to work with a Google Drive of an authenticated user. However, since we are downloading a publicly shared file in this tutorial, we will work without user authentication. So, please follow the steps below.</p>
-<section id="step-1-copy-the-file-id-from-the-share-link." class="level2">
-<h2 class="anchored" data-anchor-id="step-1-copy-the-file-id-from-the-share-link.">Step 1: Copy the file ID from the share link.</h2>
-<p>Below is a share link from my Google Drive pointing to an R data frame.</p>
-<p><code>https://drive.google.com/file/d/1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4/view?usp=sharing</code></p>
-<p>This string <code>1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4</code> is the file ID that we will use to download.</p>
-</section>
-<section id="step-2-download-the-file-using-an-authenticated-connection." class="level2">
-<h2 class="anchored" data-anchor-id="step-2-download-the-file-using-an-authenticated-connection.">Step 2: Download the file using an authenticated connection.</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(googledrive)) <span class="fu">install.packages</span>(<span class="st">"googledrive"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googledrive)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_deauth</span>()</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_user</span>()</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>public_file <span class="ot">&lt;-</span>  <span class="fu">drive_get</span>(<span class="fu">as_id</span>(<span class="st">"1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4"</span>))</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">drive_download</span>(public_file, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I recently came across <a href="https://github.com/sokrypton/ColabFold">ColabFold</a> <span class="citation" data-cites="mirdita2022">(<a href="#ref-mirdita2022" role="doc-biblioref">Mirdita et al. 2022</a>)</span>, a slimmer and faster implementation of AlphaFold2 <span class="citation" data-cites="jumper2021">(<a href="#ref-jumper2021" role="doc-biblioref">Jumper et al. 2021</a>)</span> (the famous protein structure prediction software from <a href="https://www.deepmind.com/research/highlighted-research/alphafold">DeepMind</a> on Google Colab in the form of a Jupyter notebook, giving it an easy-to-use web server-like interface without maintaining the webserver itself by the authors.</p>
+<p>Google Colab is a free (option for pro subscription) Jupyter notebook environment for Python (R indirectly) provided by Google that runs on unoccupied Google servers. This free resource also includes access to <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit">GPU</a> and <a href="https://en.wikipedia.org/wiki/Tensor_Processing_Unit">TPU</a> making it attractive to various machine learning and data science tasks. For the most part, Google Colab is utilized in machine learning and data science education. However, following the example of ColabFold and my implementation of <a href="https://github.com/rohitfarmer/ColabHDStIM">ColabHDStIM</a>, I want to make a case that it can also be used for providing an easy-to-use interface or live demo for scientific software without maintaining the complex infrastructure of a web server.</p>
+<p>Coming from a bioinformatics/computational biology background, I know there is a craze for developing web servers worldwide. However, although many web servers are created yearly, many groups, especially in developing countries, lack the resources to build one. On the flip side, many of these initially well-funded web servers are either of low quality, are not kept updated, or go offline soon after the publication, thus squandering the resources <span class="citation" data-cites="veretnik2008 schultheiss2011 kern2020">(<a href="#ref-veretnik2008" role="doc-biblioref">Veretnik, Fink, and Bourne 2008</a>; <a href="#ref-schultheiss2011" role="doc-biblioref">Schultheiss et al. 2011</a>; <a href="#ref-kern2020" role="doc-biblioref">Kern, Fehlmann, and Keller 2020</a>)</span>. Therefore, there is a need for an alternative where scientists can distribute their software in an easy-to-use interface like interactive notebooks. Even if the notebook environments are limited in executing production-scale software, they can still be utilized to provide a live demo on a minimal dataset. In my opinion, it is better than the vignettes accompanying software.&nbsp;</p>
+<p>Below are some pros and cons of using Google Colab.</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Easy to implement</li>
+<li>Free hardware resources from Google, including GPU and TPU</li>
+<li>Option to buy more resources from Google as per need</li>
+<li>While hosted on Google’s server, the same notebook can be executed using a local runtime to take advantage of local hardware resources.</li>
+<li>Forkable and hackable if the original maintainer stops the development.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Free hardware resources can be limiting</li>
+<li>Uploading and downloading data to a Colab is slow and require a workaround</li>
+<li>All the instances are transient; therefore, on every restart, all the required software is re-installed, which takes time.</li>
+<li>Colab notebooks are meant to run interactively; therefore, maintaining a long background session is hard or impossible.</li>
+<li>Colab primarily supports Python and requires workarounds to support other languages.</li>
+</ul>
+
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-jumper2021" class="csl-entry" role="doc-biblioentry">
+Jumper, John, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov, Olaf Ronneberger, Kathryn Tunyasuvunakool, et al. 2021. <span>“Highly Accurate Protein Structure Prediction with AlphaFold.”</span> <em>Nature</em> 596 (7873): 583–89. <a href="https://doi.org/10.1038/s41586-021-03819-2">https://doi.org/10.1038/s41586-021-03819-2</a>.
 </div>
-<pre><code>File downloaded:
-• hdstim-example-data.rds &lt;id: 1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4&gt;
-Saved locally as:
-• hdstim-example-data.rds</code></pre>
-<p>The downloaded data frame.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(<span class="fu">head</span>(<span class="fu">readRDS</span>(<span class="st">"hdstim-example-data.rds"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-
-<div id="htmlwidget-74690091642b17fcb953" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-74690091642b17fcb953">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6"],[79,70,69,69,79,70],["CHI-011_1_2_A","CHI-011_1_1_A","CHI-011_3_10_A","CHI-011_3_10_A","CHI-011_4_12_A","CHI-011_2_6_A"],["CHI","CHI","CHI","CHI","CHI","CHI"],["CHI-011","CHI-011","CHI-011","CHI-011","CHI-011","CHI-011"],["A","A","A","A","A","A"],["CD11c CD14 CD38","CD11c CD14 CD38","CD11c CD14 CD38","CD11c CD14 CD38","CD11c CD14 CD38","CD11c CD14 CD38"],[3.11045985421461,3.756624119687,2.91172235059654,2.91947229958479,2.86243065529249,3.55471947848649],[2.60148450148647,1.96048766745817,1.31056430339826,1.37664270971998,1.73146179281805,2.64596916043389],[0.0511450206524779,0,0,0,0,0.934134878137762],[0.715850432612773,1.51468188723134,0,0,0.669274125232149,2.00748803888894],[1.60813176535096,0.891298069339495,0.663531561388978,0.613685355494012,2.00600285681816,1.08640795105961],[0,0,0,0.0400610034810615,0,0.144533362423892],[0,0,0,0,0,1.02057586670544],[0,0,0,0,0,0],[1.89939855959742,1.89740531143859,1.56083906701903,0,2.6283066495904,1.31582184236677],[0.253135536308388,1.18031265876627,1.14908639988457,0,0.60203455150163,1.31237331717289],[0.00369789949684945,1.42019379932966,0,0,0.292015878088941,0.747486538463715],[2.77331385345949,2.93516801403964,2.5077399892511,0,3.45956660590574,2.94476517349483],[0.818611130642736,0.288584492803405,0.41501690804668,0,0.397712653480103,0.717444487617541],[0.0708149411973731,0.559664627192441,0.711616749962613,1.66051446554381,2.30527976834,0.696557609808028],[0.0901644255041056,0.00285677018361897,0.511134647868454,0.0942685197420495,0.311234857890093,0],[1.72235731390904,2.03777931774125,1.2700510284353,0,1.65866992641687,2.49664130943363],[3.40026665462511,4.03268409388972,3.0127038002041,2.81608677589958,2.77497552695861,4.03455731237916],[3.60282931883905,3.72725122856332,3.23658833838627,1.92574695650221,3.37962998140363,3.41817022500882],[0,0,0.849363667161433,0,0,0.627406323811345],[2.47972008953098,3.05787535046539,1.32520533309986,1.3148934902373,1.46992626340919,2.11677383380288],[2.66213996356576,3.15170556980942,2.39801188953494,3.69386784866135,3.43625900221516,3.16288601115814],[0.0950055541308778,0,0,0,0.939884898249729,0],[2.31739627910986,0.988323168803844,1.73054962242106,2.50562978108194,0.494880999733125,0.756875322111951],[0.2970177575127,0.151289230433248,0.34647837052365,0,0,0],[0.193044912034295,1.14117991839873,0,0,0.0967478007059818,0.0639216025738452],[1.78627826892672,1.7993181167102,1.5975398105791,0.0230695735225738,0.443138595036129,1.42091355155696],[0.0423608708300761,0.0332365590723134,0,0,0,0.545795251581206],[2.76745995134643,3.87372990643494,1.91760799908439,0.511052067275238,3.3273032053323,4.55268565548227],[0,0,0,0.506312435220727,0,0.279160588121949],[0.328853956585871,0.269252468564148,0,0,0.605908439695913,0.286081128375009],[1659,1659,1659,1659,1659,1659]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>cluster_id<\/th>\n      <th>sample_id<\/th>\n      <th>condition<\/th>\n      <th>patient_id<\/th>\n      <th>stim_type<\/th>\n      <th>merging1<\/th>\n      <th>CD45<\/th>\n      <th>CD7<\/th>\n      <th>CD19<\/th>\n      <th>pPLCg2<\/th>\n      <th>CD4<\/th>\n      <th>IgD<\/th>\n      <th>CD20<\/th>\n      <th>CD25<\/th>\n      <th>pSTAT5<\/th>\n      <th>CD123<\/th>\n      <th>AKT<\/th>\n      <th>pSTAT1<\/th>\n      <th>CD27<\/th>\n      <th>pP38<\/th>\n      <th>CD24<\/th>\n      <th>pSTAT3<\/th>\n      <th>CD11c<\/th>\n      <th>CD14<\/th>\n      <th>CD56<\/th>\n      <th>IkBa<\/th>\n      <th>pCREB<\/th>\n      <th>CD16<\/th>\n      <th>CD38<\/th>\n      <th>CD8<\/th>\n      <th>CD45RA<\/th>\n      <th>CD3<\/th>\n      <th>pERK1_2<\/th>\n      <th>HLA_DR<\/th>\n      <th>pS6<\/th>\n      <th>CD127<\/th>\n      <th>ncount<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="ref-kern2020" class="csl-entry" role="doc-biblioentry">
+Kern, Fabian, Tobias Fehlmann, and Andreas Keller. 2020. <span>“On the Lifetime of Bioinformatics Web Services.”</span> <em>Nucleic Acids Research</em> 48 (22): 12523–33. <a href="https://doi.org/10.1093/nar/gkaa1125">https://doi.org/10.1093/nar/gkaa1125</a>.
 </div>
+<div id="ref-mirdita2022" class="csl-entry" role="doc-biblioentry">
+Mirdita, Milot, Konstantin Schütze, Yoshitaka Moriwaki, Lim Heo, Sergey Ovchinnikov, and Martin Steinegger. 2022. <span>“ColabFold: Making Protein Folding Accessible to All.”</span> <em>Nature Methods</em> 19 (6): 679–82. <a href="https://doi.org/10.1038/s41592-022-01488-1">https://doi.org/10.1038/s41592-022-01488-1</a>.
 </div>
-
-
-</section>
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
+<div id="ref-schultheiss2011" class="csl-entry" role="doc-biblioentry">
+Schultheiss, Sebastian J., Marc-Christian Münch, Gergana D. Andreeva, and Gunnar Rätsch. 2011. <span>“Persistence and Availability of Web Services in Computational Biology.”</span> Edited by Dongxiao Zhu. <em>PLoS ONE</em> 6 (9): e24914. <a href="https://doi.org/10.1371/journal.pone.0024914">https://doi.org/10.1371/journal.pone.0024914</a>.
+</div>
+<div id="ref-veretnik2008" class="csl-entry" role="doc-biblioentry">
+Veretnik, Stella, J. Lynn Fink, and Philip E. Bourne. 2008. <span>“Computational Biology Resources Lack Persistence and Usability.”</span> Edited by Barbara Bryant. <em>PLoS Computational Biology</em> 4 (7): e1000136. <a href="https://doi.org/10.1371/journal.pcbi.1000136">https://doi.org/10.1371/journal.pcbi.1000136</a>.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
   author = {Rohit Farmer},
-  title = {How to Download a Shared File from {Google} {Drive} in {R}},
-  date = {2022-10-14},
-  url = {https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r},
+  title = {Using {Google} {Colab} as an Alternative to Web Servers for
+    Scientific Software},
+  date = {2022-10-17},
+  url = {https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Rohit Farmer. 2022. <span>“How to Download a Shared File from Google
-Drive in R.”</span> October 14, 2022. <a href="https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r">https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r</a>.
+Rohit Farmer. 2022. <span>“Using Google Colab as an Alternative to Web
+Servers for Scientific Software.”</span> October 17, 2022. <a href="https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software">https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

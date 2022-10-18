@@ -1,0 +1,38 @@
+---
+title: "Using Google Colab as an alternative to web servers for scientific software"
+description: "A case for using Google Colab notebooks as an alternative to web servers for scientific software."
+author: 
+  - name: "Rohit Farmer"
+    orcid: "0000-0003-4197-3047"
+date: "2022-10-17"
+categories: [Google Colab, Jupyter Notebooks, Scientific Software]
+format:
+  html:
+    code-fold: false
+citation: true
+bibliography: "references.bib"
+---
+
+I recently came across [ColabFold](https://github.com/sokrypton/ColabFold) [@mirdita2022], a slimmer and faster implementation of AlphaFold2 [@jumper2021] (the famous protein structure prediction software from [DeepMind](https://www.deepmind.com/research/highlighted-research/alphafold) on Google Colab in the form of a Jupyter notebook, giving it an easy-to-use web server-like interface without maintaining the webserver itself by the authors.
+
+Google Colab is a free (option for pro subscription) Jupyter notebook environment for Python (R indirectly) provided by Google that runs on unoccupied Google servers. This free resource also includes access to [GPU](https://en.wikipedia.org/wiki/Graphics_processing_unit) and [TPU](https://en.wikipedia.org/wiki/Tensor_Processing_Unit) making it attractive to various machine learning and data science tasks. For the most part, Google Colab is utilized in machine learning and data science education. However, following the example of ColabFold and my implementation of [ColabHDStIM](https://github.com/rohitfarmer/ColabHDStIM), I want to make a case that it can also be used for providing an easy-to-use interface or live demo for scientific software without maintaining the complex infrastructure of a web server.
+
+Coming from a bioinformatics/computational biology background, I know there is a craze for developing web servers worldwide. However, although many web servers are created yearly, many groups, especially in developing countries, lack the resources to build one. On the flip side, many of these initially well-funded web servers are either of low quality, are not kept updated, or go offline soon after the publication, thus squandering the resources [@veretnik2008; @schultheiss2011; @kern2020]. Therefore, there is a need for an alternative where scientists can distribute their software in an easy-to-use interface like interactive notebooks. Even if the notebook environments are limited in executing production-scale software, they can still be utilized to provide a live demo on a minimal dataset. In my opinion, it is better than the vignettes accompanying software. 
+
+Below are some pros and cons of using Google Colab.
+
+**Pros:**
+
+-   Easy to implement
+-   Free hardware resources from Google, including GPU and TPU
+-   Option to buy more resources from Google as per need
+-   While hosted on Google's server, the same notebook can be executed using a local runtime to take advantage of local hardware resources.
+-   Forkable and hackable if the original maintainer stops the development.
+
+**Cons:**
+
+-   Free hardware resources can be limiting
+-   Uploading and downloading data to a Colab is slow and require a workaround
+-   All the instances are transient; therefore, on every restart, all the required software is re-installed, which takes time.
+-   Colab notebooks are meant to run interactively; therefore, maintaining a long background session is hard or impossible.
+-   Colab primarily supports Python and requires workarounds to support other languages.

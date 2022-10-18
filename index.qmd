@@ -13,7 +13,9 @@ Welcome to "data all the way," a tutorial website with concepts, methods, and ex
 ---
 listing:
   type: grid
+  sort: "date desc"
   contents:
+    - "posts/006*/*.qmd"
     - "posts/001-data-transformation/*.qmd"
     - "posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/*.qmd"
     - "posts/005-classify-the-bitter-or-sweet-taste-of-compounds/*.qmd"

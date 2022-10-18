@@ -16,7 +16,8 @@ categories: [How To, Etc]
 format:
   html:
     code-fold: false
-    code-tools: true
+citation: true
+bibliography: "../../data/references.bib"
 ---
 ```
 
@@ -26,3 +27,7 @@ In the posts folder, make a folder with the name that will go on the URL. The na
 
     00N-title-of-the-post
       index.qmd
+
+## Helpful websites
+
+-   [doi2bib](https://www.doi2bib.org/) - to convert a doi into BibTex.

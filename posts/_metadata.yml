@@ -13,4 +13,4 @@ toc-depth: 3
 format:
   html:
     code-fold: false
-    code-tools: true
+    code-tools: false

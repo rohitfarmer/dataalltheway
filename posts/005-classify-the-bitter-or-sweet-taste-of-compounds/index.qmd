@@ -6,6 +6,7 @@ author:
     orcid: "0000-0003-4197-3047"
 date: "2022-10-15"
 categories: [Datasets, Kaggle, Classification]
+citation: true
 ---
 
 *Originally posted on Kaggle at <https://www.kaggle.com/datasets/rohitfarmer/classify-the-bitter-or-sweet-taste-of-compounds>*

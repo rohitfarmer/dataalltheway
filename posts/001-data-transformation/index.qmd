@@ -10,6 +10,7 @@ format:
   html:
     code-fold: true
     code-tools: true
+citation: true
 ---
 
 # Introduction
@@ -66,6 +67,7 @@ log_data_pos = np.log(data_pos)
 log_data_neg = np.log(data_neg)
 #print('Skewness for the negatively skewed data after transformation : ', round(skew(log_data_neg), 2)) 
 ```
+
 ```{python}
 #| label: fig-log-hist-pos
 #| fig-cap: "Histogram of the positively skewed data and its log transformation. The skewness for the non-transformed data (left) is 0.9 and for the log-transformed data (right) is 0.2."
