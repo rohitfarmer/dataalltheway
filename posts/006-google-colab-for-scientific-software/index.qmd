@@ -13,7 +13,15 @@ citation: true
 bibliography: "references.bib"
 ---
 
-I recently came across [ColabFold](https://github.com/sokrypton/ColabFold) [@mirdita2022], a slimmer and faster implementation of AlphaFold2 [@jumper2021] (the famous protein structure prediction software from [DeepMind](https://www.deepmind.com/research/highlighted-research/alphafold) on Google Colab in the form of a Jupyter notebook, giving it an easy-to-use web server-like interface without maintaining the webserver itself by the authors.
+::: {.callout-note collapse="true"}
+## Updates
+
+2022-10-18 Typo correction and included a list of links to learn more about Google Colab.
+:::
+
+# Introduction
+
+I recently came across [ColabFold](https://github.com/sokrypton/ColabFold) [@mirdita2022], a slimmer and faster implementation of AlphaFold2 [@jumper2021] (the famous protein structure prediction software from [DeepMind](https://www.deepmind.com/research/highlighted-research/alphafold)) implemented on Google Colab in the form of a Jupyter notebook, giving it an easy-to-use web server-like interface. I found this idea intriguing as it removes the overhead of maintaining a webserver while providing a web-based graphical user interface.
 
 Google Colab is a free (option for pro subscription) Jupyter notebook environment for Python (R indirectly) provided by Google that runs on unoccupied Google servers. This free resource also includes access to [GPU](https://en.wikipedia.org/wiki/Graphics_processing_unit) and [TPU](https://en.wikipedia.org/wiki/Tensor_Processing_Unit) making it attractive to various machine learning and data science tasks. For the most part, Google Colab is utilized in machine learning and data science education. However, following the example of ColabFold and my implementation of [ColabHDStIM](https://github.com/rohitfarmer/ColabHDStIM), I want to make a case that it can also be used for providing an easy-to-use interface or live demo for scientific software without maintaining the complex infrastructure of a web server.
 
@@ -21,7 +29,7 @@ Coming from a bioinformatics/computational biology background, I know there is a
 
 Below are some pros and cons of using Google Colab.
 
-**Pros:**
+## Pros
 
 -   Easy to implement
 -   Free hardware resources from Google, including GPU and TPU
@@ -29,10 +37,16 @@ Below are some pros and cons of using Google Colab.
 -   While hosted on Google's server, the same notebook can be executed using a local runtime to take advantage of local hardware resources.
 -   Forkable and hackable if the original maintainer stops the development.
 
-**Cons:**
+## Cons
 
 -   Free hardware resources can be limiting
 -   Uploading and downloading data to a Colab is slow and require a workaround
 -   All the instances are transient; therefore, on every restart, all the required software is re-installed, which takes time.
 -   Colab notebooks are meant to run interactively; therefore, maintaining a long background session is hard or impossible.
 -   Colab primarily supports Python and requires workarounds to support other languages.
+
+# Learn more about Google Colab
+
+1.  [Google Colab frequently asked questions](https://research.google.com/colaboratory/faq.html)
+2.  [Welcome to Colab!](https://colab.research.google.com/)
+3.  [Practical introduction to Google Colab for data science (YouTube video)](https://www.youtube.com/watch?v=oCngVVBSsmA)

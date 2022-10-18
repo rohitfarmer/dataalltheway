@@ -170,7 +170,18 @@ cookieconsent.run({
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#pros" id="toc-pros" class="nav-link" data-scroll-target="#pros">Pros</a></li>
+  <li><a href="#cons" id="toc-cons" class="nav-link" data-scroll-target="#cons">Cons</a></li>
+  </ul></li>
+  <li><a href="#learn-more-about-google-colab" id="toc-learn-more-about-google-colab" class="nav-link" data-scroll-target="#learn-more-about-google-colab">Learn more about Google Colab</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -214,11 +225,30 @@ cookieconsent.run({
 
 </header>
 
-<p>I recently came across <a href="https://github.com/sokrypton/ColabFold">ColabFold</a> <span class="citation" data-cites="mirdita2022">(<a href="#ref-mirdita2022" role="doc-biblioref">Mirdita et al. 2022</a>)</span>, a slimmer and faster implementation of AlphaFold2 <span class="citation" data-cites="jumper2021">(<a href="#ref-jumper2021" role="doc-biblioref">Jumper et al. 2021</a>)</span> (the famous protein structure prediction software from <a href="https://www.deepmind.com/research/highlighted-research/alphafold">DeepMind</a> on Google Colab in the form of a Jupyter notebook, giving it an easy-to-use web server-like interface without maintaining the webserver itself by the authors.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Updates
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>2022-10-18 Typo correction and included a list of links to learn more about Google Colab.</p>
+</div>
+</div>
+</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>I recently came across <a href="https://github.com/sokrypton/ColabFold">ColabFold</a> <span class="citation" data-cites="mirdita2022">(<a href="#ref-mirdita2022" role="doc-biblioref">Mirdita et al. 2022</a>)</span>, a slimmer and faster implementation of AlphaFold2 <span class="citation" data-cites="jumper2021">(<a href="#ref-jumper2021" role="doc-biblioref">Jumper et al. 2021</a>)</span> (the famous protein structure prediction software from <a href="https://www.deepmind.com/research/highlighted-research/alphafold">DeepMind</a>) implemented on Google Colab in the form of a Jupyter notebook, giving it an easy-to-use web server-like interface. I found this idea intriguing as it removes the overhead of maintaining a webserver while providing a web-based graphical user interface.</p>
 <p>Google Colab is a free (option for pro subscription) Jupyter notebook environment for Python (R indirectly) provided by Google that runs on unoccupied Google servers. This free resource also includes access to <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit">GPU</a> and <a href="https://en.wikipedia.org/wiki/Tensor_Processing_Unit">TPU</a> making it attractive to various machine learning and data science tasks. For the most part, Google Colab is utilized in machine learning and data science education. However, following the example of ColabFold and my implementation of <a href="https://github.com/rohitfarmer/ColabHDStIM">ColabHDStIM</a>, I want to make a case that it can also be used for providing an easy-to-use interface or live demo for scientific software without maintaining the complex infrastructure of a web server.</p>
 <p>Coming from a bioinformatics/computational biology background, I know there is a craze for developing web servers worldwide. However, although many web servers are created yearly, many groups, especially in developing countries, lack the resources to build one. On the flip side, many of these initially well-funded web servers are either of low quality, are not kept updated, or go offline soon after the publication, thus squandering the resources <span class="citation" data-cites="veretnik2008 schultheiss2011 kern2020">(<a href="#ref-veretnik2008" role="doc-biblioref">Veretnik, Fink, and Bourne 2008</a>; <a href="#ref-schultheiss2011" role="doc-biblioref">Schultheiss et al. 2011</a>; <a href="#ref-kern2020" role="doc-biblioref">Kern, Fehlmann, and Keller 2020</a>)</span>. Therefore, there is a need for an alternative where scientists can distribute their software in an easy-to-use interface like interactive notebooks. Even if the notebook environments are limited in executing production-scale software, they can still be utilized to provide a live demo on a minimal dataset. In my opinion, it is better than the vignettes accompanying software.&nbsp;</p>
 <p>Below are some pros and cons of using Google Colab.</p>
-<p><strong>Pros:</strong></p>
+<section id="pros" class="level2">
+<h2 class="anchored" data-anchor-id="pros">Pros</h2>
 <ul>
 <li>Easy to implement</li>
 <li>Free hardware resources from Google, including GPU and TPU</li>
@@ -226,7 +256,9 @@ cookieconsent.run({
 <li>While hosted on Google’s server, the same notebook can be executed using a local runtime to take advantage of local hardware resources.</li>
 <li>Forkable and hackable if the original maintainer stops the development.</li>
 </ul>
-<p><strong>Cons:</strong></p>
+</section>
+<section id="cons" class="level2">
+<h2 class="anchored" data-anchor-id="cons">Cons</h2>
 <ul>
 <li>Free hardware resources can be limiting</li>
 <li>Uploading and downloading data to a Colab is slow and require a workaround</li>
@@ -234,9 +266,19 @@ cookieconsent.run({
 <li>Colab notebooks are meant to run interactively; therefore, maintaining a long background session is hard or impossible.</li>
 <li>Colab primarily supports Python and requires workarounds to support other languages.</li>
 </ul>
+</section>
+</section>
+<section id="learn-more-about-google-colab" class="level1">
+<h1>Learn more about Google Colab</h1>
+<ol type="1">
+<li><a href="https://research.google.com/colaboratory/faq.html">Google Colab frequently asked questions</a></li>
+<li><a href="https://colab.research.google.com/">Welcome to Colab!</a></li>
+<li><a href="https://www.youtube.com/watch?v=oCngVVBSsmA">Practical introduction to Google Colab for data science (YouTube video)</a></li>
+</ol>
 
 
 
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-jumper2021" class="csl-entry" role="doc-biblioentry">
@@ -521,7 +563,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-footer">
     <div class="nav-footer-left"><b>Copyright CC BY-NC-SA 4.0</b></div>   
       <div class="nav-footer-center"><b>Made with ✌️❤️☕ </b><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
-    <div class="nav-footer-right"><a href="https://www.buymeacoffee.com/rohit.farmer" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 197px !important;"></a></div>
+    <div class="nav-footer-right"><a href="https://www.buymeacoffee.com/rohit.farmer" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 197px !important;"></a></div>
   </div>
 </footer>
 
