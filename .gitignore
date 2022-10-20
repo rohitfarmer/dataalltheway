@@ -7,3 +7,4 @@
 /.quarto/
 data
 *.rds
+.DS_Store

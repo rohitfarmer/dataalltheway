@@ -12,7 +12,7 @@
 <generator>quarto-1.2.215</generator>
 <lastBuildDate>Mon, 17 Oct 2022 04:00:00 GMT</lastBuildDate>
 <item>
-  <title>Using Google Colab as an alternative to web servers for scientific software</title>
+  <title>A case for using Google Colab notebooks as an alternative to web servers for scientific software</title>
   <dc:creator>Rohit Farmer</dc:creator>
   <link>https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</link>
   <description><![CDATA[ 
@@ -31,18 +31,16 @@ Updates
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>2022-10-18 Typo correction and included a list of links to learn more about Google Colab.</p>
+<p>2022-10-18 Typo correction and included a list of links to learn more about Google Colab.<br>
+2022-10-20 The title and description changed. A PDF version of the article is uploaded to Zenodo at <a href="https://doi.org/10.5281/zenodo.7232109" class="uri">https://doi.org/10.5281/zenodo.7232109</a></p>
 </div>
 </div>
 </div>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
 <p>I recently came across <a href="https://github.com/sokrypton/ColabFold">ColabFold</a> <span class="citation" data-cites="mirdita2022">(Mirdita et al. 2022)</span>, a slimmer and faster implementation of AlphaFold2 <span class="citation" data-cites="jumper2021">(Jumper et al. 2021)</span> (the famous protein structure prediction software from <a href="https://www.deepmind.com/research/highlighted-research/alphafold">DeepMind</a>) implemented on Google Colab in the form of a Jupyter notebook, giving it an easy-to-use web server-like interface. I found this idea intriguing as it removes the overhead of maintaining a webserver while providing a web-based graphical user interface.</p>
-<p>Google Colab is a free (option for pro subscription) Jupyter notebook environment for Python (R indirectly) provided by Google that runs on unoccupied Google servers. This free resource also includes access to <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit">GPU</a> and <a href="https://en.wikipedia.org/wiki/Tensor_Processing_Unit">TPU</a> making it attractive to various machine learning and data science tasks. For the most part, Google Colab is utilized in machine learning and data science education. However, following the example of ColabFold and my implementation of <a href="https://github.com/rohitfarmer/ColabHDStIM">ColabHDStIM</a>, I want to make a case that it can also be used for providing an easy-to-use interface or live demo for scientific software without maintaining the complex infrastructure of a web server.</p>
+<p>Google Colab is a free (with options for pro subscriptions) Jupyter notebook environment for Python (R indirectly) provided by Google that runs on unoccupied Google servers. This free resource also includes access to <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit">GPU</a> and <a href="https://en.wikipedia.org/wiki/Tensor_Processing_Unit">TPU</a> making it attractive to various machine learning and data science tasks. For the most part, Google Colab is utilized in machine learning and data science education. However, following the example of ColabFold and my implementation of <a href="https://github.com/rohitfarmer/ColabHDStIM">ColabHDStIM</a>, I want to make a case that it can also be used for providing an easy-to-use interface or live demo for scientific software without maintaining the complex infrastructure of a web server.</p>
 <p>Coming from a bioinformatics/computational biology background, I know there is a craze for developing web servers worldwide. However, although many web servers are created yearly, many groups, especially in developing countries, lack the resources to build one. On the flip side, many of these initially well-funded web servers are either of low quality, are not kept updated, or go offline soon after the publication, thus squandering the resources <span class="citation" data-cites="veretnik2008 schultheiss2011 kern2020">(Veretnik, Fink, and Bourne 2008; Schultheiss et al. 2011; Kern, Fehlmann, and Keller 2020)</span>. Therefore, there is a need for an alternative where scientists can distribute their software in an easy-to-use interface like interactive notebooks. Even if the notebook environments are limited in executing production-scale software, they can still be utilized to provide a live demo on a minimal dataset. In my opinion, it is better than the vignettes accompanying software.&nbsp;</p>
 <p>Below are some pros and cons of using Google Colab.</p>
-<section id="pros" class="level2">
-<h2 class="anchored" data-anchor-id="pros">Pros</h2>
+<p><strong>Pros</strong></p>
 <ul>
 <li>Easy to implement</li>
 <li>Free hardware resources from Google, including GPU and TPU</li>
@@ -50,9 +48,7 @@ Updates
 <li>While hosted on Google’s server, the same notebook can be executed using a local runtime to take advantage of local hardware resources.</li>
 <li>Forkable and hackable if the original maintainer stops the development.</li>
 </ul>
-</section>
-<section id="cons" class="level2">
-<h2 class="anchored" data-anchor-id="cons">Cons</h2>
+<p><strong>Cons</strong></p>
 <ul>
 <li>Free hardware resources can be limiting</li>
 <li>Uploading and downloading data to a Colab is slow and require a workaround</li>
@@ -60,21 +56,14 @@ Updates
 <li>Colab notebooks are meant to run interactively; therefore, maintaining a long background session is hard or impossible.</li>
 <li>Colab primarily supports Python and requires workarounds to support other languages.</li>
 </ul>
-</section>
-</section>
-<section id="learn-more-about-google-colab" class="level1">
-<h1>Learn more about Google Colab</h1>
+<p><strong>Learn more about Google Colab</strong></p>
 <ol type="1">
 <li><a href="https://research.google.com/colaboratory/faq.html">Google Colab frequently asked questions</a></li>
 <li><a href="https://colab.research.google.com/">Welcome to Colab!</a></li>
 <li><a href="https://www.youtube.com/watch?v=oCngVVBSsmA">Practical introduction to Google Colab for data science (YouTube video)</a></li>
 </ol>
-
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<p><strong>References</strong></p>
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-jumper2021" class="csl-entry">
 Jumper, John, Richard Evans, Alexander Pritzel, Tim Green, Michael Figurnov, Olaf Ronneberger, Kathryn Tunyasuvunakool, et al. 2021. <span>“Highly Accurate Protein Structure Prediction with AlphaFold.”</span> <em>Nature</em> 596 (7873): 583–89. <a href="https://doi.org/10.1038/s41586-021-03819-2">https://doi.org/10.1038/s41586-021-03819-2</a>.
 </div>
@@ -90,17 +79,22 @@ Schultheiss, Sebastian J., Marc-Christian Münch, Gergana D. Andreeva, and Gunna
 <div id="ref-veretnik2008" class="csl-entry">
 Veretnik, Stella, J. Lynn Fink, and Philip E. Bourne. 2008. <span>“Computational Biology Resources Lack Persistence and Usability.”</span> Edited by Barbara Bryant. <em>PLoS Computational Biology</em> 4 (7): e1000136. <a href="https://doi.org/10.1371/journal.pcbi.1000136">https://doi.org/10.1371/journal.pcbi.1000136</a>.
 </div>
-</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
+</div>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
   author = {Rohit Farmer},
-  title = {Using {Google} {Colab} as an Alternative to Web Servers for
-    Scientific Software},
+  title = {A Case for Using {Google} {Colab} Notebooks as an Alternative
+    to Web Servers for Scientific Software},
   date = {2022-10-17},
   url = {https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
-Rohit Farmer. 2022. <span>“Using Google Colab as an Alternative to Web
-Servers for Scientific Software.”</span> October 17, 2022. <a href="https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software">https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software</a>.
+Rohit Farmer. 2022. <span>“A Case for Using Google Colab Notebooks as an
+Alternative to Web Servers for Scientific Software.”</span> October 17,
+2022. <a href="https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software">https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software</a>.
 </div></div></section></div> ]]></description>
   <category>Google Colab</category>
   <category>Jupyter Notebooks</category>
