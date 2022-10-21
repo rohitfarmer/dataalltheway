@@ -4,12 +4,19 @@ description: "Maintaining a web server is complex, expensive, and probably unnec
 author: 
   - name: "Rohit Farmer"
     orcid: "0000-0003-4197-3047"
+    email: "rohitfarmer@hotmail.com"
+    affiliations:
+      - name: "https://www.dataalltheway.com"
 date: "2022-10-17"
 categories: [Google Colab, Jupyter Notebooks, Scientific Software]
 format:
   html:
     code-fold: false
-citation: true
+citation: 
+  type: article-journal
+  container-title: "Zenodo"
+  doi: "https://doi.org/10.5281/zenodo.7232109"
+  url: "https://dataalltheway.com/posts/006-google-colab-for-scientific-software/"
 bibliography: "references.bib"
 google-scholar: true
 ---

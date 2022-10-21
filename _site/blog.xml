@@ -83,18 +83,20 @@ Veretnik, Stella, J. Lynn Fink, and Philip E. Bourne. 2008. <span>“Computation
 
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@article{farmer2022,
   author = {Rohit Farmer},
   title = {A Case for Using {Google} {Colab} Notebooks as an Alternative
     to Web Servers for Scientific Software},
+  journal = {Zenodo},
   date = {2022-10-17},
-  url = {https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software},
+  url = {https://dataalltheway.com/posts/006-google-colab-for-scientific-software/},
+  doi = {https://doi.org/10.5281/zenodo.7232109},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Rohit Farmer. 2022. <span>“A Case for Using Google Colab Notebooks as an
-Alternative to Web Servers for Scientific Software.”</span> October 17,
-2022. <a href="https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software">https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software</a>.
+Alternative to Web Servers for Scientific Software.”</span>
+<em>Zenodo</em>, October. https://doi.org/<a href="https://doi.org/10.5281/zenodo.7232109">https://doi.org/10.5281/zenodo.7232109</a>.
 </div></div></section></div> ]]></description>
   <category>Google Colab</category>
   <category>Jupyter Notebooks</category>
