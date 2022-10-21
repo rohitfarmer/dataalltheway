@@ -15,7 +15,7 @@ format:
 citation: 
   type: article-journal
   container-title: "Zenodo"
-  doi: "https://doi.org/10.5281/zenodo.7232109"
+  doi: "10.5281/zenodo.7232109"
   url: "https://dataalltheway.com/posts/006-google-colab-for-scientific-software/"
 bibliography: "references.bib"
 google-scholar: true

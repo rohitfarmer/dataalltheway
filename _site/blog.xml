@@ -90,13 +90,13 @@ Veretnik, Stella, J. Lynn Fink, and Philip E. Bourne. 2008. <span>“Computation
   journal = {Zenodo},
   date = {2022-10-17},
   url = {https://dataalltheway.com/posts/006-google-colab-for-scientific-software/},
-  doi = {https://doi.org/10.5281/zenodo.7232109},
+  doi = {10.5281/zenodo.7232109},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Rohit Farmer. 2022. <span>“A Case for Using Google Colab Notebooks as an
 Alternative to Web Servers for Scientific Software.”</span>
-<em>Zenodo</em>, October. https://doi.org/<a href="https://doi.org/10.5281/zenodo.7232109">https://doi.org/10.5281/zenodo.7232109</a>.
+<em>Zenodo</em>, October. <a href="https://doi.org/10.5281/zenodo.7232109">https://doi.org/10.5281/zenodo.7232109</a>.
 </div></div></section></div> ]]></description>
   <category>Google Colab</category>
   <category>Jupyter Notebooks</category>
