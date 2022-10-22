@@ -5,18 +5,16 @@ author:
   - name: "Rohit Farmer"
     orcid: "0000-0003-4197-3047"
     email: "rohitfarmer@hotmail.com"
-    affiliations:
-      - name: "https://www.dataalltheway.com"
 date: "2022-10-17"
 categories: [Google Colab, Jupyter Notebooks, Scientific Software]
 format:
   html:
     code-fold: false
 citation: 
-  type: article-journal
-  container-title: "Zenodo"
+  type: article
+  publisher: "Zenodo"
   doi: "10.5281/zenodo.7232109"
-  url: "https://dataalltheway.com/posts/006-google-colab-for-scientific-software/"
+  url: "https://doi.org/10.5281/zenodo.7232109"
 bibliography: "references.bib"
 google-scholar: true
 ---

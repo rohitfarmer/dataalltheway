@@ -11,13 +11,20 @@ description: "A tutorial on how to download a shared file with 'anyone with the 
 author: 
   - name: "Rohit Farmer"
     orcid: "0000-0003-4197-3047"
+    #affiliations:
+    #  - name: "https://www.dataalltheway.com"
 date: "2022-10-14"
 categories: [How To, Etc]
 format:
   html:
     code-fold: false
 citation: true
+  #type: article
+  #publisher: "Zenodo"
+  #doi: "10.5281/zenodo.7232109"
+  #url: "https://doi.org/10.5281/zenodo.7232109"
 bibliography: "../../data/references.bib"
+google-scholar: false
 ---
 ```
 
@@ -31,3 +38,4 @@ In the posts folder, make a folder with the name that will go on the URL. The na
 ## Helpful websites
 
 -   [doi2bib](https://www.doi2bib.org/) - to convert a doi into BibTex.
+-   Citation types - <https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types>

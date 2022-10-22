@@ -100,6 +100,16 @@ cookieconsent.run({
 <meta name="twitter:title" content="Data All The Way - Classify the bitter or sweet taste of compounds">
 <meta name="twitter:description" content="A dataset for the classification of the bitter or sweet taste of compounds.">
 <meta name="twitter:card" content="summary">
+<meta name="citation_title" content="Classify the bitter or sweet taste of compounds">
+<meta name="citation_author" content="Rohit Farmer">
+<meta name="citation_publication_date" content="2022-10-15">
+<meta name="citation_cover_date" content="2022-10-15">
+<meta name="citation_year" content="2022">
+<meta name="citation_online_date" content="2022-10-15">
+<meta name="citation_fulltext_html_url" content="https://www.kaggle.com/dsv/4234193">
+<meta name="citation_doi" content="10.34740/KAGGLE/DSV/4234193">
+<meta name="citation_language" content="en">
+<meta name="citation_publisher" content="Kaggle">
 </head>
 
 <body class="nav-fixed">
@@ -204,14 +214,26 @@ cookieconsent.run({
 
 </header>
 
-<p><em>Originally posted on Kaggle at <a href="https://www.kaggle.com/datasets/rohitfarmer/classify-the-bitter-or-sweet-taste-of-compounds" class="uri">https://www.kaggle.com/datasets/rohitfarmer/classify-the-bitter-or-sweet-taste-of-compounds</a></em></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Original Post
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This post is an identical copy of “About Dataset” at Kaggle: <a href="https://www.kaggle.com/dsv/4234193" class="uri">https://www.kaggle.com/dsv/4234193</a></p>
+</div>
+</div>
 <section id="context" class="level1">
 <h1>Context</h1>
 <p>Throughout human evolution, we have been drawn toward sweet-tasting foods and averted from bitter tastes - sweet is good or desirable, bitter is undesirable, ear wax or medicinal. Therefore, a better understanding of molecular features that determine the bitter-sweet taste of substances is crucial for identifying natural and synthetic compounds for various purposes.</p>
 </section>
 <section id="sources" class="level1">
 <h1>Sources</h1>
-<p>This dataset <a href="https://doi.org/10.34740/KAGGLE/DSV/4234193" class="uri">https://doi.org/10.34740/KAGGLE/DSV/4234193</a> is adapted from <a href="https://github.com/cosylabiiit/bittersweet" class="uri">https://github.com/cosylabiiit/bittersweet</a>, <a href="https://www.nature.com/articles/s41598-019-43664-y" class="uri">https://www.nature.com/articles/s41598-019-43664-y</a>. In chemoinformatics, molecules are often represented as compact <a href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> strings. In this dataset, SMILES structures, along with their names and targets (bitter, sweet, tasteless, and non-bitter), were obtained from the original study. Subsequently, SMILES were converted into canonical SMILES using RDKit, and the features (molecular descriptors, both 2D and 3D) were calculated using <a href="https://github.com/mordred-descriptor/mordred">Mordred</a>. Secondly, tasteless and non-bitter categories were merged into a single category of non-bitter-sweet. Finally, since many of the compounds were missing names, IUPAC names were fetched using <a href="https://pubchempy.readthedocs.io/en/latest/">PubChemPy</a> for all the compounds, and for still missing names, a generic compound + incrementor name was assigned.</p>
+<p><a href="https://www.kaggle.com/dsv/4234193">This dataset</a> is adapted from <a href="https://github.com/cosylabiiit/bittersweet" class="uri">https://github.com/cosylabiiit/bittersweet</a>, <a href="https://www.nature.com/articles/s41598-019-43664-y" class="uri">https://www.nature.com/articles/s41598-019-43664-y</a>. In chemoinformatics, molecules are often represented as compact <a href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> strings. In this dataset, SMILES structures, along with their names and targets (bitter, sweet, tasteless, and non-bitter), were obtained from the original study. Subsequently, SMILES were converted into canonical SMILES using RDKit, and the features (molecular descriptors, both 2D and 3D) were calculated using <a href="https://github.com/mordred-descriptor/mordred">Mordred</a>. Secondly, tasteless and non-bitter categories were merged into a single category of non-bitter-sweet. Finally, since many of the compounds were missing names, IUPAC names were fetched using <a href="https://pubchempy.readthedocs.io/en/latest/">PubChemPy</a> for all the compounds, and for still missing names, a generic compound + incrementor name was assigned.</p>
 </section>
 <section id="inspiration" class="level1">
 <h1>Inspiration</h1>
@@ -233,16 +255,18 @@ cookieconsent.run({
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@dataset{farmer2022,
   author = {Rohit Farmer},
+  publisher = {Kaggle},
   title = {Classify the Bitter or Sweet Taste of Compounds},
   date = {2022-10-15},
-  url = {https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds},
+  url = {https://www.kaggle.com/dsv/4234193},
+  doi = {10.34740/KAGGLE/DSV/4234193},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
 Rohit Farmer. 2022. <span>“Classify the Bitter or Sweet Taste of
-Compounds.”</span> October 15, 2022. <a href="https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds">https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds</a>.
+Compounds.”</span> Kaggle. <a href="https://doi.org/10.34740/KAGGLE/DSV/4234193">https://doi.org/10.34740/KAGGLE/DSV/4234193</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

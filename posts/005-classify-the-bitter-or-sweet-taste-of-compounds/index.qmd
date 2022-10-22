@@ -6,10 +6,19 @@ author:
     orcid: "0000-0003-4197-3047"
 date: "2022-10-15"
 categories: [Datasets, Kaggle, Classification]
-citation: true
+citation: 
+  type: dataset
+  publisher: "Kaggle"
+  doi: "10.34740/KAGGLE/DSV/4234193"
+  url: "https://www.kaggle.com/dsv/4234193"
+google-scholar: true
 ---
 
-*Originally posted on Kaggle at <https://www.kaggle.com/datasets/rohitfarmer/classify-the-bitter-or-sweet-taste-of-compounds>*
+::: callout-note
+## Original Post
+
+This post is an identical copy of "About Dataset" at Kaggle: <https://www.kaggle.com/dsv/4234193>
+:::
 
 # Context
 
@@ -17,7 +26,7 @@ Throughout human evolution, we have been drawn toward sweet-tasting foods and av
 
 # Sources
 
-This dataset <https://doi.org/10.34740/KAGGLE/DSV/4234193> is adapted from <https://github.com/cosylabiiit/bittersweet>, <https://www.nature.com/articles/s41598-019-43664-y>. In chemoinformatics, molecules are often represented as compact [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) strings. In this dataset, SMILES structures, along with their names and targets (bitter, sweet, tasteless, and non-bitter), were obtained from the original study. Subsequently, SMILES were converted into canonical SMILES using RDKit, and the features (molecular descriptors, both 2D and 3D) were calculated using [Mordred](https://github.com/mordred-descriptor/mordred). Secondly, tasteless and non-bitter categories were merged into a single category of non-bitter-sweet. Finally, since many of the compounds were missing names, IUPAC names were fetched using [PubChemPy](https://pubchempy.readthedocs.io/en/latest/) for all the compounds, and for still missing names, a generic compound + incrementor name was assigned.
+[This dataset](https://www.kaggle.com/dsv/4234193) is adapted from <https://github.com/cosylabiiit/bittersweet>, <https://www.nature.com/articles/s41598-019-43664-y>. In chemoinformatics, molecules are often represented as compact [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) strings. In this dataset, SMILES structures, along with their names and targets (bitter, sweet, tasteless, and non-bitter), were obtained from the original study. Subsequently, SMILES were converted into canonical SMILES using RDKit, and the features (molecular descriptors, both 2D and 3D) were calculated using [Mordred](https://github.com/mordred-descriptor/mordred). Secondly, tasteless and non-bitter categories were merged into a single category of non-bitter-sweet. Finally, since many of the compounds were missing names, IUPAC names were fetched using [PubChemPy](https://pubchempy.readthedocs.io/en/latest/) for all the compounds, and for still missing names, a generic compound + incrementor name was assigned.
 
 # Inspiration
 

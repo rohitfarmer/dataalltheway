@@ -8,7 +8,7 @@
 <title>Data All The Way</title>
 <link>https://www.dataalltheway.com/blog.html</link>
 <atom:link href="https://www.dataalltheway.com/blog.xml" rel="self" type="application/rss+xml"/>
-<description>A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics.</description>
+<description>Data All The Way: A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics.</description>
 <generator>quarto-1.2.215</generator>
 <lastBuildDate>Mon, 17 Oct 2022 04:00:00 GMT</lastBuildDate>
 <item>
@@ -83,20 +83,19 @@ Veretnik, Stella, J. Lynn Fink, and Philip E. Bourne. 2008. <span>“Computation
 
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@article{farmer2022,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@misc{farmer2022,
   author = {Rohit Farmer},
+  publisher = {Zenodo},
   title = {A Case for Using {Google} {Colab} Notebooks as an Alternative
     to Web Servers for Scientific Software},
-  journal = {Zenodo},
   date = {2022-10-17},
-  url = {https://dataalltheway.com/posts/006-google-colab-for-scientific-software/},
+  url = {https://doi.org/10.5281/zenodo.7232109},
   doi = {10.5281/zenodo.7232109},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Rohit Farmer. 2022. <span>“A Case for Using Google Colab Notebooks as an
-Alternative to Web Servers for Scientific Software.”</span>
-<em>Zenodo</em>, October. <a href="https://doi.org/10.5281/zenodo.7232109">https://doi.org/10.5281/zenodo.7232109</a>.
+Alternative to Web Servers for Scientific Software.”</span> Zenodo. <a href="https://doi.org/10.5281/zenodo.7232109">https://doi.org/10.5281/zenodo.7232109</a>.
 </div></div></section></div> ]]></description>
   <category>Google Colab</category>
   <category>Jupyter Notebooks</category>
@@ -112,14 +111,26 @@ Alternative to Web Servers for Scientific Software.”</span>
 
 
 
-<p><em>Originally posted on Kaggle at <a href="https://www.kaggle.com/datasets/rohitfarmer/classify-the-bitter-or-sweet-taste-of-compounds" class="uri">https://www.kaggle.com/datasets/rohitfarmer/classify-the-bitter-or-sweet-taste-of-compounds</a></em></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Original Post
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This post is an identical copy of “About Dataset” at Kaggle: <a href="https://www.kaggle.com/dsv/4234193" class="uri">https://www.kaggle.com/dsv/4234193</a></p>
+</div>
+</div>
 <section id="context" class="level1">
 <h1>Context</h1>
 <p>Throughout human evolution, we have been drawn toward sweet-tasting foods and averted from bitter tastes - sweet is good or desirable, bitter is undesirable, ear wax or medicinal. Therefore, a better understanding of molecular features that determine the bitter-sweet taste of substances is crucial for identifying natural and synthetic compounds for various purposes.</p>
 </section>
 <section id="sources" class="level1">
 <h1>Sources</h1>
-<p>This dataset <a href="https://doi.org/10.34740/KAGGLE/DSV/4234193" class="uri">https://doi.org/10.34740/KAGGLE/DSV/4234193</a> is adapted from <a href="https://github.com/cosylabiiit/bittersweet" class="uri">https://github.com/cosylabiiit/bittersweet</a>, <a href="https://www.nature.com/articles/s41598-019-43664-y" class="uri">https://www.nature.com/articles/s41598-019-43664-y</a>. In chemoinformatics, molecules are often represented as compact <a href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> strings. In this dataset, SMILES structures, along with their names and targets (bitter, sweet, tasteless, and non-bitter), were obtained from the original study. Subsequently, SMILES were converted into canonical SMILES using RDKit, and the features (molecular descriptors, both 2D and 3D) were calculated using <a href="https://github.com/mordred-descriptor/mordred">Mordred</a>. Secondly, tasteless and non-bitter categories were merged into a single category of non-bitter-sweet. Finally, since many of the compounds were missing names, IUPAC names were fetched using <a href="https://pubchempy.readthedocs.io/en/latest/">PubChemPy</a> for all the compounds, and for still missing names, a generic compound + incrementor name was assigned.</p>
+<p><a href="https://www.kaggle.com/dsv/4234193">This dataset</a> is adapted from <a href="https://github.com/cosylabiiit/bittersweet" class="uri">https://github.com/cosylabiiit/bittersweet</a>, <a href="https://www.nature.com/articles/s41598-019-43664-y" class="uri">https://www.nature.com/articles/s41598-019-43664-y</a>. In chemoinformatics, molecules are often represented as compact <a href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> strings. In this dataset, SMILES structures, along with their names and targets (bitter, sweet, tasteless, and non-bitter), were obtained from the original study. Subsequently, SMILES were converted into canonical SMILES using RDKit, and the features (molecular descriptors, both 2D and 3D) were calculated using <a href="https://github.com/mordred-descriptor/mordred">Mordred</a>. Secondly, tasteless and non-bitter categories were merged into a single category of non-bitter-sweet. Finally, since many of the compounds were missing names, IUPAC names were fetched using <a href="https://pubchempy.readthedocs.io/en/latest/">PubChemPy</a> for all the compounds, and for still missing names, a generic compound + incrementor name was assigned.</p>
 </section>
 <section id="inspiration" class="level1">
 <h1>Inspiration</h1>
@@ -141,16 +152,18 @@ Alternative to Web Servers for Scientific Software.”</span>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@dataset{farmer2022,
   author = {Rohit Farmer},
+  publisher = {Kaggle},
   title = {Classify the Bitter or Sweet Taste of Compounds},
   date = {2022-10-15},
-  url = {https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds},
+  url = {https://www.kaggle.com/dsv/4234193},
+  doi = {10.34740/KAGGLE/DSV/4234193},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Rohit Farmer. 2022. <span>“Classify the Bitter or Sweet Taste of
-Compounds.”</span> October 15, 2022. <a href="https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds">https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds</a>.
+Compounds.”</span> Kaggle. <a href="https://doi.org/10.34740/KAGGLE/DSV/4234193">https://doi.org/10.34740/KAGGLE/DSV/4234193</a>.
 </div></div></section></div> ]]></description>
   <category>Datasets</category>
   <category>Kaggle</category>
@@ -511,7 +524,7 @@ Drive in R.”</span> October 14, 2022. <a href="https://www.dataalltheway.com/p
 
 
 
-<p>Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments (worldwide) followed by <a href="https://twitter.com/headoffice" class="uri">https://twitter.com/headoffice</a>. It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877" class="uri">https://doi.org/10.34740/KAGGLE/DSV/4208877</a>for the community to use.</p>
+<p>Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments (worldwide) followed by <a href="https://twitter.com/headoffice" class="uri">https://twitter.com/headoffice</a>. It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877" class="uri">https://doi.org/10.34740/KAGGLE/DSV/4208877</a> for the community to use.</p>
 <p>The dataset contains an Excel workbook per year with data points on the rows and features on the columns. Features include the timestamp (UTC), language in which the tweet is written, user id, user name, tweet id, and tweet text. The first version includes the data from October 2018 until September 15, 2022. After that, future releases will be quarterly. It is a textual dataset and is primarily useful for analyses related to natural language processing.</p>
 <p>In the Kaggle submission, I have also included a notebook (<a href="https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing" class="uri">https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing</a>) with the Python code that collected the tweets and the additional code that I used to pre-process the data before submission. After releasing the first data set, I updated the code and moved the bot from Python to R using the <code>rtweet</code> library instead of <code>tweepy</code>. I found <code>rtweet</code> to perform better, especially in filtering out duplicated tweets.</p>
 <p>In the current setup (<a href="https://github.com/rohitfarmer/government-tweets" class="uri">https://github.com/rohitfarmer/government-tweets</a>) that is still running on my Raspberry Pi 3B+, the main bot script runs every fifteen minutes via <code>crontab</code> and fetches data that is more recent than the latest tweet collected in the previous run. The data is stored in an SQLite database which is backed up to MEGA cloud storage via Rclone once every midnight ET.</p>
@@ -519,16 +532,18 @@ Drive in R.”</span> October 14, 2022. <a href="https://www.dataalltheway.com/p
 
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@dataset{farmer2022,
   author = {Rohit Farmer},
+  publisher = {Kaggle},
   title = {Tweets from Heads of Governments and States},
   date = {2022-10-05},
-  url = {https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states},
+  url = {https://www.kaggle.com/dsv/4208877},
+  doi = {10.34740/KAGGLE/DSV/4208877},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Rohit Farmer. 2022. <span>“Tweets from Heads of Governments and
-States.”</span> October 5, 2022. <a href="https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states">https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states</a>.
+States.”</span> Kaggle. <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877">https://doi.org/10.34740/KAGGLE/DSV/4208877</a>.
 </div></div></section></div> ]]></description>
   <category>Datasets</category>
   <category>Kaggle</category>
