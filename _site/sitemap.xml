@@ -2,34 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</loc>
-    <lastmod>2022-10-22T20:33:19.644Z</lastmod>
+    <lastmod>2022-10-25T16:18:02.297Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/001-data-transformation/index.html</loc>
-    <lastmod>2022-10-22T20:33:23.198Z</lastmod>
+    <lastmod>2022-10-25T16:18:05.002Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/007-open-data-for-datascience/index.html</loc>
+    <lastmod>2022-10-25T16:18:06.599Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</loc>
-    <lastmod>2022-10-22T20:33:24.583Z</lastmod>
+    <lastmod>2022-10-25T16:18:07.866Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</loc>
-    <lastmod>2022-10-22T20:33:25.659Z</lastmod>
+    <lastmod>2022-10-25T16:18:08.979Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</loc>
-    <lastmod>2022-10-22T20:33:26.988Z</lastmod>
+    <lastmod>2022-10-25T16:18:10.228Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</loc>
-    <lastmod>2022-10-22T20:33:28.588Z</lastmod>
+    <lastmod>2022-10-25T16:18:11.470Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/index.html</loc>
-    <lastmod>2022-10-22T20:33:29.291Z</lastmod>
+    <lastmod>2022-10-25T16:18:12.027Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/blog.html</loc>
-    <lastmod>2022-10-22T20:33:30.048Z</lastmod>
+    <lastmod>2022-10-25T16:18:12.495Z</lastmod>
   </url>
 </urlset>

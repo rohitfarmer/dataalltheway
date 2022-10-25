@@ -1,0 +1,160 @@
+---
+title: "Sources of open data for statistics, data science, and machine learning"
+description: "Even though the default data included in R and other languages are carefully selected and valuable. They are old, limited in sample size, and may not be more than toy examples in the current context.."
+author: 
+  - name: "Rohit Farmer"
+    orcid: "0000-0003-4197-3047"
+date: "2022-10-25"
+categories: [How To, Open Data, Datasets, Statistics, Data Science, Machine Learning]
+format:
+  html:
+    code-fold: true
+    code-tools:
+      source: false
+      toggle: true
+citation: true
+google-scholar: false
+---
+
+::: {.callout-note collapce="true"}
+## Updates
+
+2022-10-25 Initial uncomplete post
+:::
+
+# Introduction
+
+R and Python, the two most popular data science and machine learning programming languages, come with a default data set for demonstration and educational purposes. Moreover, many popular data science libraries such as tidyverse, lme4, nlme, MASS, survival, Bioconductor, and sklearn, amongst others, also contain example datasets for unit testing and demonstration. However, even though the included data are carefully selected, most of them are old (from the 1970s and '80s) and hence limited in sample size (due to the limitation in the then available computing power) and may not be more than a toy example in the current context. Therefore, in a learning path after utilizing the default datasets for initial testing of a statistical function or a machine learning model, it's both desired and recommended to practice on a real-life dataset. Working on a real-life dataset that is apt in the current context of data science and computing resources would not only teach the desired statistical/machine learning technique but also expose the learner to challenges that are usually not associated with toy datasets---for example, class imbalance, missing values, wrongly labeled datatypes, statistical noise, etc.
+
+For a real-life dataset, I recommend using open data released by government agencies and other non-government organizations as part of their openness in operations. These datasets are not only of adequate size but also represent what is happening around us in a field of interest. Many countries around the world release data to inform citizens about their operations and fair practices. However, I do not think, other than the established data analytics-based companies and research groups, ordinary citizens ever look into such resources. I bet many would not even know that their government agencies are making ample amounts of data available for scrutiny. Therefore, in my opinion, budding data scientists should take it upon themselves to utilize these datasets in place of toy examples to not only justify the existence of such a resource but also, through analysis, gain first-hand insight and transfer it to their friends, family, and broader audience. Such a practice by amateur data scientists may have far-reaching implications than what I can convey here.
+
+In the sections below, for completeness, I will briefly discuss how to access default datasets available in R and then move on to other resources, including open government data mentioned earlier.
+
+```{r}
+#| code-fold: true
+
+suppressMessages(library(DT))
+suppressMessages(library(tidyverse))
+suppressMessages(library(kableExtra))
+```
+
+## Default datasets in R
+
+In R (v4.1.3), there are 104 datasets for various statistical and machine-learning tasks. The commands in the cell below list all the datasets available by default (@tbl-rdatasets) and across all the installed packages, respectively. [This article](http://www.sthda.com/english/wiki/r-built-in-data-sets) summarizes some of R's popular datasets, namely mtcars, iris, etc.
+
+``` r
+# Default datasets
+data()
+
+# Datasets across all the installed packages
+data(package = .packages(all.available = TRUE))
+```
+
+```{r}
+#| label: tbl-rdatasets
+#| tbl-cap: "Default datasets in R"
+
+dat <- data()
+dat <- as_tibble(dat$results) %>% dplyr::select(-LibPath) %>%
+  dplyr::filter(Package == "datasets")
+knitr::kable(dat) %>%
+    kable_styling(bootstrap_options = c("striped", "hover")) %>%
+    scroll_box(width = "100%", height = "300px")
+```
+
+# Open government data
+
+As I mentioned in the introduction, many governments worldwide release data for transparency and accountability; for example, <https://data.gov>, the US federal government's open data site. Data.gov also maintains a list of websites at <https://data.gov/open-gov/> pointing to data repositories related to US cities and counties, US states, and international countries and regions. The primary aim of these repositories is to publish information online as open data using standardized, machine-readable data formats with their metadata.
+
+Depending upon the type of data requested, most of the data can be downloaded in multiple machine-readable formats either via the export option on the website or programmatically through APIs (see section @sec-marylandapi). For example for tabular data popular formats include CSV, XML, RDF, JSON, and XML.
+
+Interactive and exportable tables below show the list of websites at <https://data.gov/open-gov/>.
+
+```{r}
+open_gov <- read.csv("https://data.gov/datagov/wordpress/2019/09/opendatasites91819.csv", header = FALSE)
+colnames(open_gov) <- c("Item", "Website", "Type")
+cat("Total number of entries: ", nrow(open_gov))
+```
+
+## US cities and counties
+
+```{R}
+city_county <- dplyr::filter(open_gov, Type == "US City or County")
+DT::datatable(city_county, options = list(pageLength = 5))
+```
+
+## US states
+
+```{R}
+us_state <- dplyr::filter(open_gov, Type %in% c("US State", "Other State Related"))
+DT::datatable(us_state, options = list(pageLength = 5))
+```
+
+## International countries and regions
+
+```{R}
+int_count <- dplyr::filter(open_gov, Type %in% c("International Country", "International Regional"))
+DT::datatable(int_count, options = list(pageLength = 5))
+```
+
+## An example of using Maryland state open data via an API {#sec-marylandapi}
+
+Since I live and work in Maryland, I want to see how wages in Maryland and its counties have changed over time. I also want to test if Montgomery county (where I live) has different wages compared to Frederick, Howard, and Prince George's counties which borders Montgomery on the north, east, and south sides. Therefore, in this example, I will fetch [Maryland Average Wage Per Job (Current Dollars): 2010-2020](https://opendata.maryland.gov/Demographic/Maryland-Average-Wage-Per-Job-Current-Dollars-2010/mk5a-nf44) data via API using [RSocrata library](https://cran.r-project.org/web/packages/RSocrata/index.html) in R and carry out some analysis.
+
+::: callout-note
+See <https://dev.socrata.com/> to learn more about how to work with open data APIs in various programming languages.
+:::
+
+In @tbl-maw, each row has an average wage for a year for Maryland, and each of its counties (columns) from 2010-2020 and @fig-mawplot shows the same data as a line graph depicting the change in wages (y-axis) over time (x-axis).
+
+@tbl-ttestmaw lists the results of an unpaired two-sample t-test between wages from Montgomery and Frederick, Howard, and Prince George's counties. As you can see from the t-test results, wages differ between Montgomery and Frederick, Howard, and Prince George's counties, with Montogomery county residents earning higher than all its three bordering counties.
+
+```{r}
+#| label: tbl-maw
+#| tbl-cap: "Maryland Average Wage Per Job (Current Dollars): 2010-2020"
+
+library(RSocrata)
+# Fetch the data using the API endpoint
+maw <- read.socrata("https://opendata.maryland.gov/resource/mk5a-nf44.json")
+knitr::kable(dplyr::select(maw, -date_created)) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+    scroll_box(width = "100%", height = "400px")
+```
+
+```{r}
+#| label: fig-mawplot
+#| fig-cap: "Maryland Average Wage Per Job (Current Dollars): 2010-2020"
+maw_gather <- maw %>% dplyr::select(-date_created) %>%
+  gather(key = "county", value = "wage", -year ) %>% as_tibble()
+ggplot(maw_gather, aes(x = year, y = as.numeric(wage), color = county)) +
+  geom_line(aes(group = county)) + 
+  labs(x = "Year", y = "Wage", color = "") +theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+```{R}
+#| label: tbl-ttestmaw
+#| tbl-cap: "T-test results between wages from Montgomery and Frederick, Howard, and Prince George's county"
+
+mft <- broom::tidy(t.test(as.numeric(maw$montgomery_county), 
+                   as.numeric(maw$frederick_county))) %>% 
+                   dplyr::mutate("test" = "Montgomery vs. Frederick")
+
+mht <- broom::tidy(t.test(as.numeric(maw$montgomery_county), 
+                   as.numeric(maw$howard_county))) %>% 
+                   dplyr::mutate("test" = "Montgomery vs. Howard")
+
+mpgt <- broom::tidy(t.test(as.numeric(maw$montgomery_county), 
+                    as.numeric(maw$prince_george_s_county))) %>% 
+                    dplyr::mutate("test" = "Montgomery vs. Prince George's")
+
+all_t <- dplyr::bind_rows(mft, mht, mpgt) %>%
+  dplyr::select(all_of(c("test", "estimate", "estimate1", 
+  "estimate2", "statistic", "p.value")))
+
+knitr::kable(all_t) %>%
+    kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+# Kaggle
+
+# Zenodo, Figshare, and Dryad

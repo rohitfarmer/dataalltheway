@@ -22,7 +22,7 @@ google-scholar: true
 ::: {.callout-note collapse="true"}
 ## Updates
 
-2022-10-18 Typo correction and included a list of links to learn more about Google Colab.  
+2022-10-18 Typo correction and included a list of links to learn more about Google Colab.\
 2022-10-20 The title and description changed. A PDF version of the article is uploaded to Zenodo at <https://doi.org/10.5281/zenodo.7232109>
 :::
 

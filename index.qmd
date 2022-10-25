@@ -15,6 +15,7 @@ listing:
   type: grid
   sort: "date desc"
   contents:
+    - "posts/007*/*.qmd"
     - "posts/006*/*.qmd"
     - "posts/001-data-transformation/*.qmd"
     - "posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/*.qmd"

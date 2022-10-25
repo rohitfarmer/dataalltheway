@@ -39,3 +39,13 @@ In the posts folder, make a folder with the name that will go on the URL. The na
 
 -   [doi2bib](https://www.doi2bib.org/) - to convert a doi into BibTex.
 -   Citation types - <https://docs.citationstyles.org/en/stable/specification.html#appendix-iii-types>
+
+## Frequently used elements
+
+### Callouts
+
+    ::: {.callout-note collapce="true"}
+    ### Updates
+
+    2022-10-25
+    :::

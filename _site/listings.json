@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/007-open-data-for-datascience/index.html",
       "/posts/006-google-colab-for-scientific-software/index.html",
       "/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html",
       "/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html",
@@ -12,6 +13,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/007-open-data-for-datascience/index.html",
       "/posts/006-google-colab-for-scientific-software/index.html",
       "/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html",
       "/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html",
