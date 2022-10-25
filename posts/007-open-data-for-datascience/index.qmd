@@ -19,7 +19,7 @@ google-scholar: false
 ::: {.callout-note collapce="true"}
 ## Updates
 
-2022-10-25 Initial uncomplete post
+2022-10-25 Initial uncomplete post and Kaggle notebook
 :::
 
 # Introduction
@@ -29,6 +29,10 @@ R and Python, the two most popular data science and machine learning programming
 For a real-life dataset, I recommend using open data released by government agencies and other non-government organizations as part of their openness in operations. These datasets are not only of adequate size but also represent what is happening around us in a field of interest. Many countries around the world release data to inform citizens about their operations and fair practices. However, I do not think, other than the established data analytics-based companies and research groups, ordinary citizens ever look into such resources. I bet many would not even know that their government agencies are making ample amounts of data available for scrutiny. Therefore, in my opinion, budding data scientists should take it upon themselves to utilize these datasets in place of toy examples to not only justify the existence of such a resource but also, through analysis, gain first-hand insight and transfer it to their friends, family, and broader audience. Such a practice by amateur data scientists may have far-reaching implications than what I can convey here.
 
 In the sections below, for completeness, I will briefly discuss how to access default datasets available in R and then move on to other resources, including open government data mentioned earlier.
+
+::: {.callout-tip}
+Please check out this notebook on Kaggle to work with the code presented in this post <https://www.kaggle.com/code/rohitfarmer/007-open-data-for-datascience>. Some of the code is changed slightly to match Kaggle's Jupyter environment.
+:::
 
 ```{r}
 #| code-fold: true

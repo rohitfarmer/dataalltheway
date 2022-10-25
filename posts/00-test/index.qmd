@@ -1,0 +1,29 @@
+---
+title: "Testing datatable"
+author: 
+  - name: "Rohit Farmer"
+    orcid: "0000-0003-4197-3047"
+date: "2022-10-25"
+format:
+  html:
+    code-fold: true
+    code-tools:
+      source: false
+      toggle: true
+draft: true
+---
+
+See @tbl-rdatasets
+
+
+```{r}
+#| label: tbl-rdatasets
+#| tbl-cap: "Default datasets in R"
+
+suppressMessages(library(DT))
+suppressMessages(library(tidyverse))
+dat <- data()
+dat <- as_tibble(dat$results) %>% dplyr::select(-LibPath) %>%
+  dplyr::filter(Package == "datasets")
+DT::datatable(dat)
+```
