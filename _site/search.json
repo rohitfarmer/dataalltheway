@@ -53,7 +53,7 @@
     "href": "posts/007-open-data-for-datascience/index.html",
     "title": "Sources of open data for statistics, data science, and machine learning",
     "section": "",
-    "text": "Updates\n\n\n\n2022-10-25 Initial uncomplete post and Kaggle notebook"
+    "text": "Updates\n\n\n\n\n\n2022-10-26 Added sections for Kaggle and other platforms\n2022-10-25 Initial uncomplete post and Kaggle notebook"
   },
   {
     "objectID": "posts/007-open-data-for-datascience/index.html#default-datasets-in-r",
@@ -166,6 +166,13 @@
     "title": "Data All The Way",
     "section": "Featured posts",
     "text": "Featured posts"
+  },
+  {
+    "objectID": "bookmarks.html",
+    "href": "bookmarks.html",
+    "title": "Bookmarks",
+    "section": "",
+    "text": "Statistics\n\nStatistical Inference in the 21st Century: A World Beyond p < 0.05\nBayesian and frequentist reasoning in plain English\n\n\n\nData processing\n\nNormalize data before or after split of training and testing data?"
   },
   {
     "objectID": "blog.html",

@@ -1,6 +1,6 @@
 ---
 title: "Sources of open data for statistics, data science, and machine learning"
-description: "Even though the default data included in R and other languages are carefully selected and valuable. They are old, limited in sample size, and may not be more than toy examples in the current context.."
+description: "Even though the default data included in R and other languages are carefully selected and valuable. They are old, limited in sample size, and may not be more than toy examples in the current context."
 author: 
   - name: "Rohit Farmer"
     orcid: "0000-0003-4197-3047"
@@ -14,11 +14,13 @@ format:
       toggle: true
 citation: true
 google-scholar: false
+bibliography: references.bib
 ---
 
-::: {.callout-note collapce="true"}
+::: {.callout-note collapse="true"}
 ## Updates
 
+2022-10-26 Added sections for Kaggle and other platforms\
 2022-10-25 Initial uncomplete post and Kaggle notebook
 :::
 
@@ -30,8 +32,8 @@ For a real-life dataset, I recommend using open data released by government agen
 
 In the sections below, for completeness, I will briefly discuss how to access default datasets available in R and then move on to other resources, including open government data mentioned earlier.
 
-::: {.callout-tip}
-Please check out this notebook on Kaggle to work with the code presented in this post <https://www.kaggle.com/code/rohitfarmer/007-open-data-for-datascience>. Some of the code is changed slightly to match Kaggle's Jupyter environment.
+::: callout-tip
+**Please check out this notebook on Kaggle to work with the code presented in this post <https://www.kaggle.com/code/rohitfarmer/007-open-data-for-datascience>. Some of the code is changed slightly to match Kaggle's notebook environment.**
 :::
 
 ```{r}
@@ -159,6 +161,39 @@ knitr::kable(all_t) %>%
     kable_styling(bootstrap_options = c("striped", "hover"))
 ```
 
-# Kaggle
+# Kaggle {#sec-kaggle}
 
-# Zenodo, Figshare, and Dryad
+[Kaggle](https://www.kaggle.com/) is a website that hosts data science and machine learning competitions. Users can compete to win prizes, and the site also has a [public dataset repository](https://www.kaggle.com/). In addition to hosting competitions and disseminating public datasets, Kaggle also hosts tutorials and Jupyter-like notebook environments for Python and R runtimes. Users can clone an existing notebook on Kaggle, create it from scratch or upload it from their local computer and provision free hardware resources, including GPUs, to execute their notebooks.
+
+While uploading public datasets, users can also generate a [DOI](https://en.wikipedia.org/wiki/Digital_object_identifier) for their dataset to give them a permanent identifier on the internet. For example, I am distributing "Classify the bitter or sweet taste of compounds" [@rohitfarmer2022a] and "Tweets from heads of governments and states" [@rohitfarmer2022] datasets on Kaggle for classification and natural language processing analysis, respectively.
+
+Datasets on Kaggle can be downloaded using a web browser or via its API, which also interacts with its competition environment. Users can find datasets for various statical and machine learning tasks available in various formats, including CSVs, MS Excel, images, SQLite databases, pandas pickle, etc.
+
+::: callout-note
+I am still determining if Kaggle datasets similar to the ones from Zenodo, Figshare, and Dryad (mentioned in the section @sec-zenodo) are used in research/scientific studies or only in testing and learning data science. If you know the answer, then please put it in the comments.
+:::
+
+# Zenodo, Figshare, and Dryad {#sec-zenodo}
+
+In contrast to Kaggle (mentioned in section @sec-kaggle) which is mainly a competition hosting and data science learning community [Zenodo](https://zenodo.org/), [Fighsare](https://figshare.com/), and [Dryad](https://datadryad.org/) are data hosting platforms primarily used by scientists and researchers to serve data, manuscripts, and articles. The data hosted on these three platforms usually do not qualify for a domain-specific data respository or too large to attach as supplementary material to an article. They also aim to serve as a long-term archiving solution; therefore, even if the data/manuscript is published elsewhere under the correct licensing term, it can be redistributed here.
+
+Zenodo is a digital repository that allows users to upload and share digital content such as datasets, software, and research papers. Zenodo is designed to preserve and provide long-term access to digital content. Zenodo is developed and operated by OpenAIRE, a European consortium that promotes open access to research. A unique feature of Zenodo is to archive releases from a GitHub repository and provide a DOI making it easier to cite a GitHub repository, for example, [@farmer2022]. Another excellent feature is the ability to create communities to organize data and manuscripts of a similar kind. Anyone can create a community, and the owner can accept or reject a request for an item to be indexed in their community, for example, <https://zenodo.org/communities/data-all-the-way/>.
+
+::: callout-tip
+Besides data and manuscripts, Zenodo can also be utilized to archive a blog post and generate a DOI, for example, [@farmer2022a].
+:::
+
+Like Zenodo, Figshare is a web-based platform for storing, sharing, and managing research data. Figshare also provides a unique identifier (DOI) for each data set, which can be used to cite the data set in publications. Data can be stored privately or publicly, and Figshare provides tools for managing data access and permissions. Data scientists and machine learning engineers often use Figshare to share data sets and models with collaborators or the public.
+
+Dryad is also a digital repository primarily used for scientific and medical data associated with a publication in a scholarly journal. Dryad makes data discoverable, usable, and citable by integrating it into the scholarly publication process.
+
+Zenodo, Figshare, and Dryad are available to anyone to upload data (download is always free and allowed); however, limitations may apply to the file size uploaded or the private vs. public data status. Additionally, many educational/research institutions may partner with one or all of these platforms, thus providing enhanced options.
+
+::: callout-tip
+**Unlike open government data sources that are primarily used to download data, Kaggle, Zenodo, Figshare, and Dryad can be used to find the suitable dataset for your analysis and share your curated dataset publicly in a permanent citable manner.**
+:::
+
+# References
+
+::: {#refs}
+:::

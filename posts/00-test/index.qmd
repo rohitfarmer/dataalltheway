@@ -15,7 +15,6 @@ draft: true
 
 See @tbl-rdatasets
 
-
 ```{r}
 #| label: tbl-rdatasets
 #| tbl-cap: "Default datasets in R"
@@ -26,4 +25,22 @@ dat <- data()
 dat <- as_tibble(dat$results) %>% dplyr::select(-LibPath) %>%
   dplyr::filter(Package == "datasets")
 DT::datatable(dat)
+```
+
+See @tbl-rdatasets1 and
+
+```{r}
+#| label: tbl-rdatasets1
+#| tbl-cap: "Default datasets in R"
+# library(DT, quietly = TRUE)
+DT::datatable(head(mtcars))
+```
+
+@tbl-rdatasets2
+
+```{r}
+#| label: tbl-rdatasets2
+#| tbl-cap: "Default datasets in R"
+# library(knitr, quietly = TRUE)
+knitr::kable(head(mtcars))
 ```

@@ -1,0 +1,16 @@
+---
+title: Bookmarks
+page-layout: full
+title-block-banner: false
+toc: true
+toc-depth: 3
+---
+
+# Statistics
+
+-   [Statistical Inference in the 21st Century: A World Beyond p \< 0.05](https://www.tandfonline.com/toc/utas20/73/sup1)
+-   [Bayesian and frequentist reasoning in plain English](https://stats.stackexchange.com/questions/22/bayesian-and-frequentist-reasoning-in-plain-english)
+
+# Data processing
+
+-   [Normalize data before or after split of training and testing data?](https://stackoverflow.com/questions/49444262/normalize-data-before-or-after-split-of-training-and-testing-data)
