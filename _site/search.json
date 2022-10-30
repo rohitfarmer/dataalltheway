@@ -158,7 +158,7 @@
     "href": "index.html",
     "title": "Data All The Way",
     "section": "",
-    "text": "Welcome to “data all the way,” a tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics. This website, for me, is an attempt to deepen my understanding of data science by teaching core concepts and practical code. I intend to write blog posts that are as complete and explanatory as possible. However, many posts could just be codes with a minimal description initially, eventually evolving into more comprehensive articles. Therefore, most of the posts here are in a state of continuous development. If you want to get involved and help improve an article, please leave a comment or open a pull request at https://github.com/rohitfarmer/dataalltheway. To learn more about my other projects and research, please visit https://www.rohitfarmer.com."
+    "text": "Welcome to Data All The Way, “yet another” tutorial website with concepts, methods, and example code on data science, statistics, and machine learning. All the posts with example code accompany a Kaggle or Google Colab notebook for a live demo. In addition, posts are citable, and some posts are hosted on Zenodo with a permanent DOI and indexed in Data All The Way community. If you want to become a contributing author, please write to rohitfarmer@hotmail.com. Comments and suggestions are always welcomed. To learn more about my other projects and research, please visit www.rohitfarmer.com.\n* I intend to write blog posts that are as complete and explanatory as possible. However, many posts could just be codes with a minimal description initially, eventually evolving into more complete articles. Therefore, most posts here are in a state of continuous development with a history of updates."
   },
   {
     "objectID": "index.html#featured-posts",
@@ -172,7 +172,7 @@
     "href": "bookmarks.html",
     "title": "Bookmarks",
     "section": "",
-    "text": "Statistics\n\nStatistical Inference in the 21st Century: A World Beyond p < 0.05\nBayesian and frequentist reasoning in plain English\n\n\n\nData processing\n\nNormalize data before or after split of training and testing data?"
+    "text": "Below are some of the articles, blog posts, and stack exchange threads that I have found helpful. Please comment if you know or found something interesting that I should list here.\n\nStatistics\n\nThe ASA Statement on p-Values: Context, Process, and Purpose\n\n\n\n\n\n\n\nExcerpt\n\n\n\n\n\nStatistical significance is not equivalent to scientific, human, or economic significance. Smaller p-values do not necessarily imply the presence of larger or more important effects, and larger p-values do not imply alack of importance or even lack of effect… No single index should substitute for scientific reasoning.\n\n\n\n\nStatistical Inference in the 21st Century: A World Beyond p < 0.05\nBayesian and frequentist reasoning in plain English\n\n\n\nData processing\n\nNormalize data before or after split of training and testing data?\n\n\n\nR\n\nTeaching R in a Kinder, Gentler, More Effective Manner: Teach Base-R, Not Just the Tidyverse Author: Prof. Norm Matloff, University of California, Davis\nR Workflow - An overview of R Workflow, which covers how to use R effectively all the way from importing data to analysis, and making use of Quarto for reproducible reporting."
   },
   {
     "objectID": "blog.html",

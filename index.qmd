@@ -4,9 +4,15 @@ title-block-banner: false
 comments: false
 ---
 
-Welcome to "data all the way," a tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics. This website, for me, is an attempt to deepen my understanding of data science by teaching core concepts and practical code. I intend to write blog posts that are as complete and explanatory as possible. However, many posts could just be codes with a minimal description initially, eventually evolving into more comprehensive articles. Therefore, most of the posts here are in a state of continuous development. If you want to get involved and help improve an article, please leave a comment or open a pull request at <https://github.com/rohitfarmer/dataalltheway>. To learn more about my other projects and research, please visit <https://www.rohitfarmer.com>.
+<p>
 
-<br />
+<a href="https://giphy.com/gifs/animation-ryan-seslow-3osxYc2axjCJNsCXyE"><img src="https://media.giphy.com/media/3osxYc2axjCJNsCXyE/giphy.gif" alt="GIF" align="right" width="260"/></a>
+
+Welcome to Data All The Way, *"yet another"* tutorial website with concepts, methods, and example code on data science, statistics, and machine learning. All the posts with example code accompany a Kaggle or Google Colab notebook for a live demo. In addition, posts are citable, and some posts are hosted on Zenodo with a permanent DOI and indexed in [Data All The Way community](https://zenodo.org/communities/data-all-the-way/). If you want to become a contributing author, please write to [rohitfarmer\@hotmail.com](mailto:rohitfarmer@hotmail.com). Comments and suggestions are always welcomed. To learn more about my other projects and research, please visit [www.rohitfarmer.com](www.rohitfarmer.com).
+
+\* *I intend to write blog posts that are as complete and explanatory as possible. However, many posts could just be codes with a minimal description initially, eventually evolving into more complete articles. Therefore, most posts here are in a state of continuous development with a history of updates.*
+
+</p>
 
 ## Featured posts
 
