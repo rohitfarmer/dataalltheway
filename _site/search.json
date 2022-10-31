@@ -154,6 +154,41 @@
     "text": "To download a shared file with “anyone with the link” access rights from Google Drive in R, we can utilize the googledrive library from the tidyverse package. The method described here will utilize the file ID copied from the shared link. Typically googledrive package is used to work with a Google Drive of an authenticated user. However, since we are downloading a publicly shared file in this tutorial, we will work without user authentication. So, please follow the steps below.\n\n\nBelow is a share link from my Google Drive pointing to an R data frame.\nhttps://drive.google.com/file/d/1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4/view?usp=sharing\nThis string 1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4 is the file ID that we will use to download.\n\n\n\n\nif(!require(googledrive)) install.packages(\"googledrive\")\nlibrary(googledrive)\n\ndrive_deauth()\ndrive_user()\npublic_file <-  drive_get(as_id(\"1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4\"))\ndrive_download(public_file, overwrite = TRUE)\n\nFile downloaded:\n• hdstim-example-data.rds <id: 1vj607etanUVYzVFj_HXkznHTd0Ltv_Y4>\nSaved locally as:\n• hdstim-example-data.rds\nThe downloaded data frame.\n\nlibrary(DT)\ndatatable(head(readRDS(\"hdstim-example-data.rds\")))"
   },
   {
+    "objectID": "support.html",
+    "href": "support.html",
+    "title": "Contact & Support",
+    "section": "",
+    "text": "The best way to contact me is by email at rohitfarmer@hotmail.com\nThis is a not-for-profit website without advertisements and a paywall, and I intend to support it fully in the foreseeable future. However, a little support does help to cover some overhead costs of the domain name, professional email address, books (online courses), paying for graphics, and of course, coffee (the fuel).\nBesides financial support, I appreciate your time and expertise in providing constructive criticism of the content on this website, suggesting corrections, contributing an article, or writing a comment for a post.\nTo support this website financially, please utilize one of the methods mentioned below."
+  },
+  {
+    "objectID": "support.html#donate-via-buymeacoffee.com",
+    "href": "support.html#donate-via-buymeacoffee.com",
+    "title": "Contact & Support",
+    "section": "Donate via BuyMeACoffee.com",
+    "text": "Donate via BuyMeACoffee.com"
+  },
+  {
+    "objectID": "support.html#donate-via-paypal",
+    "href": "support.html#donate-via-paypal",
+    "title": "Contact & Support",
+    "section": "Donate via PayPal",
+    "text": "Donate via PayPal"
+  },
+  {
+    "objectID": "support.html#buy-me-a-book-from-amazon",
+    "href": "support.html#buy-me-a-book-from-amazon",
+    "title": "Contact & Support",
+    "section": "Buy me a book from Amazon",
+    "text": "Buy me a book from Amazon\nAmazon wishlist"
+  },
+  {
+    "objectID": "support.html#donate-in-a-crypto-currency-of-your-choice",
+    "href": "support.html#donate-in-a-crypto-currency-of-your-choice",
+    "title": "Contact & Support",
+    "section": "Donate in a crypto currency of your choice",
+    "text": "Donate in a crypto currency of your choice\nIf you are also a Crypto enthusiast and prefer that over fiat, then please send an email and mention the currency of your choice, and I will reply you with my wallet address."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Data All The Way",

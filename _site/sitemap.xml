@@ -2,42 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</loc>
-    <lastmod>2022-10-30T23:11:18.846Z</lastmod>
+    <lastmod>2022-10-31T16:08:07.021Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/001-data-transformation/index.html</loc>
-    <lastmod>2022-10-30T23:11:21.630Z</lastmod>
+    <lastmod>2022-10-31T16:08:10.027Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/007-open-data-for-datascience/index.html</loc>
-    <lastmod>2022-10-30T23:11:23.314Z</lastmod>
+    <lastmod>2022-10-31T16:08:11.743Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</loc>
-    <lastmod>2022-10-30T23:11:25.509Z</lastmod>
+    <lastmod>2022-10-31T16:08:14.276Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</loc>
-    <lastmod>2022-10-30T23:11:26.500Z</lastmod>
+    <lastmod>2022-10-31T16:08:15.378Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</loc>
-    <lastmod>2022-10-30T23:11:27.715Z</lastmod>
+    <lastmod>2022-10-31T16:08:16.698Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</loc>
-    <lastmod>2022-10-30T23:11:28.936Z</lastmod>
+    <lastmod>2022-10-31T16:08:18.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/support.html</loc>
+    <lastmod>2022-10-31T16:08:18.421Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/index.html</loc>
-    <lastmod>2022-10-30T23:11:29.493Z</lastmod>
+    <lastmod>2022-10-31T16:08:19.071Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/bookmarks.html</loc>
-    <lastmod>2022-10-30T23:11:30.336Z</lastmod>
+    <lastmod>2022-10-31T16:08:19.898Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/blog.html</loc>
-    <lastmod>2022-10-30T23:11:30.782Z</lastmod>
+    <lastmod>2022-10-31T16:08:20.420Z</lastmod>
   </url>
 </urlset>

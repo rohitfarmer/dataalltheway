@@ -1,0 +1,39 @@
+---
+title: Contact & Support
+page-layout: full
+title-block-banner: false
+comments: false
+---
+
+> The best way to contact me is by email at [rohitfarmer\@hotmail.com](mailto:rohitfarmer@hotmail.com)
+
+This is a not-for-profit website without advertisements and a paywall, and I intend to support it fully in the foreseeable future. However, a little support does help to cover some overhead costs of the domain name, professional email address, books (online courses), paying for graphics, and of course, coffee (the fuel).
+
+Besides financial support, I appreciate your time and expertise in providing constructive criticism of the content on this website, suggesting corrections, contributing an article, or writing a comment for a post.
+
+To support this website financially, please utilize one of the methods mentioned below.
+
+## Donate via BuyMeACoffee.com
+
+```{=html}
+<a href="https://www.buymeacoffee.com/rohit.farmer"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a book&emoji=&slug=rohit.farmer&button_colour=40DCA5&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
+```
+## Donate via PayPal
+
+```{=html}
+<form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="business" value="FCUQ992R5UAFS" />
+<input type="hidden" name="no_recurring" value="0" />
+<input type="hidden" name="item_name" value="to support https://dataalltheway.com/" />
+<input type="hidden" name="currency_code" value="USD" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+</form>
+```
+## Buy me a book from Amazon
+
+[Amazon wishlist](https://www.amazon.com/hz/wishlist/ls/DQTHWR0FYX06?ref_=wl_share)
+
+## Donate in a crypto currency of your choice
+
+If you are also a Crypto enthusiast and prefer that over fiat, then please send an email and mention the currency of your choice, and I will reply you with my wallet address.
