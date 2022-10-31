@@ -10,7 +10,321 @@
 <atom:link href="https://www.dataalltheway.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Data All The Way: A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics.</description>
 <generator>quarto-1.2.215</generator>
-<lastBuildDate>Tue, 25 Oct 2022 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 31 Oct 2022 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>How to build a Singularity container for machine learning, data science, and chemistry</title>
+  <dc:creator>Rohit Farmer</dc:creator>
+  <link>https://www.dataalltheway.com/posts/008-build-a-singularity-container/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p><a href="https://apptainer.org/user-docs/3.8/">Singularity</a> is a free and open-source container platform for<a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization">operating-system-level virtualization</a>. It allows you to create and run containers that package up pieces of software in a way that is portable and reproducible. You can build a container using Singularity on your laptop (preferably Linux) and then run it on your local computer or a High-Performance Computer (HPC). A Singularity container is a single file that is easy to ship to an HPC or a friend.</p>
+<p>I heavily rely on Singularity for my work as I write arbitrary code that runs on an HPC. I often require a specific set of libraries, compilers, or other supporting software that are often hard to manage on an HPC. Also, from a reproducibility point of view, it’s easier to build a container with a fixed library and software version packaged in a single file than scattered in multiple modules on the HPC. And when the time comes for the publication, I can easily share the container on Zenodo, etc.</p>
+<p>The title of this post emphasizes data science, machine learning, and chemistry because all the software we will install is related to these disciplines. However, this procedure applies to building containers for any field of application.</p>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<ol type="1">
+<li>Build a Linux based Singularity container.
+<ul>
+<li>First build a writable sandbox with essential elements.</li>
+<li>Inspect the container.</li>
+<li>Install additional software.</li>
+<li>Convert the sandbox to a read-only SquashFS container image.</li>
+</ul></li>
+<li>Install software &amp; packages from multiple sources.
+<ul>
+<li>Using <code>apt-get</code> package management system.</li>
+<li>Compiling from source code.</li>
+<li>Using <code>Python pip</code>.</li>
+<li>Using <code>install.packages()</code> function in R.</li>
+</ul></li>
+<li>Software highlight.
+<ul>
+<li>Jupyter notebook.</li>
+<li>Tensorflow GPU version.</li>
+<li>OpenMPI.</li>
+<li>Popular datascience packages in Python and R.</li>
+<li>Chemistry/chemoinformatics software: RDkit, OpenBabel, Pybel, &amp; Mordred.</li>
+</ul></li>
+<li>Test the container.
+<ul>
+<li>Test the GPU version of Tensorflow.</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="core-container-build" class="level1">
+<h1>Core Container Build</h1>
+<p>First we will build a writable Singularity sandbox with the essential software, languages, and developmental libraries. To build a writable sandbox copy the recipe below to a <code>container.def</code> text file and then execute:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;">sudo</span> singularity build <span class="at" style="color: #657422;">--sandbox</span> container/ container.def</span></code></pre></div>
+<p><strong>Recipe/Definition File</strong></p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;">BootStrap:</span> docker</span>
+<span id="cb2-2"><span class="ex" style="color: null;">From:</span> ubuntu:bionic</span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="ex" style="color: null;">%labels</span></span>
+<span id="cb2-5">    <span class="ex" style="color: null;">APPLICATION_NAME</span> Data Science and Chemistry</span>
+<span id="cb2-6">    <span class="ex" style="color: null;">AUTHOR_NAME</span> Rohit Farmer</span>
+<span id="cb2-7">    <span class="ex" style="color: null;">AUTHOR_EMAIL</span> rohit.farmer@gmail.com</span>
+<span id="cb2-8">    <span class="ex" style="color: null;">YEAR</span> 2021</span>
+<span id="cb2-9"></span>
+<span id="cb2-10"><span class="ex" style="color: null;">%help</span></span>
+<span id="cb2-11">    <span class="ex" style="color: null;">Container</span> for data science and chemistry with packages from Python 3 <span class="kw" style="color: #003B4F;">&amp;</span> <span class="ex" style="color: null;">R</span> 3.6. </span>
+<span id="cb2-12">    <span class="ex" style="color: null;">It</span> also includes CUDA and MPI for Tensorflow GPU and parallel processing respectively. </span>
+<span id="cb2-13"></span>
+<span id="cb2-14"><span class="ex" style="color: null;">%environment</span></span>
+<span id="cb2-15">    <span class="co" style="color: #5E5E5E;"># Set system locale</span></span>
+<span id="cb2-16">    <span class="va" style="color: #111111;">PATH</span><span class="op" style="color: #5E5E5E;">=</span>/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin</span>
+<span id="cb2-17">    <span class="va" style="color: #111111;">RDBASE</span><span class="op" style="color: #5E5E5E;">=</span>/usr/local/share/rdkit</span>
+<span id="cb2-18">    <span class="va" style="color: #111111;">CUDA</span><span class="op" style="color: #5E5E5E;">=</span>/usr/local/cuda/lib64:/usr/local/cuda-10.1/lib64:/usr/local/cuda-10.2/lib64</span>
+<span id="cb2-19">    <span class="va" style="color: #111111;">LD_LIBRARY_PATH</span><span class="op" style="color: #5E5E5E;">=</span>/.singularity.d/libs:<span class="va" style="color: #111111;">$RDBASE</span>/lib:<span class="va" style="color: #111111;">$CUDA</span></span>
+<span id="cb2-20">    <span class="va" style="color: #111111;">PYTHONPATH</span><span class="op" style="color: #5E5E5E;">=</span>modules:<span class="va" style="color: #111111;">$RDBASE</span>:/usr/local/share/rdkit/rdkit:/usr/local/lib/python3.6/dist-packages/</span>
+<span id="cb2-21">    <span class="va" style="color: #111111;">LANG</span><span class="op" style="color: #5E5E5E;">=</span>C.UTF-8 <span class="va" style="color: #111111;">LC_ALL</span><span class="op" style="color: #5E5E5E;">=</span>C.UTF-8</span>
+<span id="cb2-22">    </span>
+<span id="cb2-23"><span class="ex" style="color: null;">%post</span></span>
+<span id="cb2-24">    <span class="co" style="color: #5E5E5E;"># Change to tmp directory to download temporary files.</span></span>
+<span id="cb2-25">    <span class="bu" style="color: null;">cd</span> /tmp</span>
+<span id="cb2-26"></span>
+<span id="cb2-27">    <span class="co" style="color: #5E5E5E;"># Install essential software, languages and libraries. </span></span>
+<span id="cb2-28">    <span class="ex" style="color: null;">apt-get</span> <span class="at" style="color: #657422;">-qq</span> <span class="at" style="color: #657422;">-y</span> update</span>
+<span id="cb2-29">    </span>
+<span id="cb2-30">    <span class="bu" style="color: null;">export</span> <span class="va" style="color: #111111;">DEBIAN_FRONTEND</span><span class="op" style="color: #5E5E5E;">=</span>noninteractive</span>
+<span id="cb2-31">    <span class="ex" style="color: null;">apt-get</span> <span class="at" style="color: #657422;">-qq</span> install <span class="at" style="color: #657422;">-y</span> <span class="at" style="color: #657422;">--no-install-recommends</span> tzdata apt-utils </span>
+<span id="cb2-32"></span>
+<span id="cb2-33">    <span class="fu" style="color: #4758AB;">ln</span> <span class="at" style="color: #657422;">-fs</span> /usr/share/zoneinfo/America/New_York /etc/localtime </span>
+<span id="cb2-34">    <span class="ex" style="color: null;">dpkg-reconfigure</span> <span class="at" style="color: #657422;">--frontend</span> noninteractive  tzdata</span>
+<span id="cb2-35">    </span>
+<span id="cb2-36">    <span class="ex" style="color: null;">apt-get</span> <span class="at" style="color: #657422;">-qq</span> <span class="at" style="color: #657422;">-y</span> update </span>
+<span id="cb2-37">    <span class="ex" style="color: null;">apt-get</span> <span class="at" style="color: #657422;">-qq</span> install <span class="at" style="color: #657422;">-y</span> <span class="at" style="color: #657422;">--no-install-recommends</span> <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-38">        autoconf <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-39">        automake <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-40">        build-essential <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-41">        bzip2 <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-42">        ca-certificates <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-43">        cmake <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-44">        gcc <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-45">        g++ <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-46">        gfortran <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-47">        git <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-48">        gnupg2 <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-49">        libtool <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-50">        libjpeg-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-51">        libpng-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-52">        libtiff-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-53">        libatlas-base-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-54">        libxml2-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-55">        zlib1g-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-56">        libcairo2-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-57">        libeigen3-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-58">        libcupti-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-59">        libpcre3-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-60">        libssl-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-61">        libcurl4-openssl-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-62">        libboost-all-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-63">        libboost-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-64">        libboost-system-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-65">        libboost-thread-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-66">        libboost-serialization-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-67">        libboost-regex-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-68">        libgtk2.0-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-69">        libreadline-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-70">        libbz2-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-71">        liblzma-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-72">        libpcre++-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-73">        libpango1.0-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-74">        libmariadb-client-lgpl-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-75">        libopenblas-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-76">        liblapack-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-77">        libxt-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-78">        neovim <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-79">        openjdk-8-jdk <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-80">        python <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-81">        python-pip <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-82">        python-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-83">        python3-dev <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-84">        python3-pip <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-85">        python3-wheel <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-86">        swig <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-87">        texlive <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-88">        texlive-fonts-extra <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-89">        texinfo <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-90">        vim <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-91">        wget <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-92">        xvfb <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-93">        xauth <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-94">        xfonts-base <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-95">        zip</span>
+<span id="cb2-96"></span>
+<span id="cb2-97">    <span class="bu" style="color: null;">export</span> <span class="va" style="color: #111111;">LANG</span><span class="op" style="color: #5E5E5E;">=</span>C.UTF-8 <span class="va" style="color: #111111;">LC_ALL</span><span class="op" style="color: #5E5E5E;">=</span>C.UTF-8</span>
+<span id="cb2-98"></span>
+<span id="cb2-99"><span class="co" style="color: #5E5E5E;"># Add NVIDIA package repositories.</span></span>
+<span id="cb2-100">    <span class="fu" style="color: #4758AB;">wget</span> https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb</span>
+<span id="cb2-101">    <span class="ex" style="color: null;">apt-key</span> adv <span class="at" style="color: #657422;">--fetch-keys</span> https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub</span>
+<span id="cb2-102">    <span class="ex" style="color: null;">dpkg</span> <span class="at" style="color: #657422;">-i</span> cuda-repo-ubuntu1804_10.1.243-1_amd64.deb</span>
+<span id="cb2-103">    <span class="ex" style="color: null;">apt-get</span> update</span>
+<span id="cb2-104">    <span class="fu" style="color: #4758AB;">wget</span> http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb</span>
+<span id="cb2-105">    <span class="ex" style="color: null;">apt-get</span> <span class="at" style="color: #657422;">-qq</span> install <span class="at" style="color: #657422;">-y</span> <span class="at" style="color: #657422;">--no-install-recommends</span> ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb</span>
+<span id="cb2-106">    <span class="ex" style="color: null;">apt-get</span> update</span>
+<span id="cb2-107"></span>
+<span id="cb2-108"><span class="co" style="color: #5E5E5E;"># Install NVIDIA driver (optional)</span></span>
+<span id="cb2-109">    <span class="co" style="color: #5E5E5E;"># apt-get install --no-install-recommends nvidia-driver-430</span></span>
+<span id="cb2-110"></span>
+<span id="cb2-111"><span class="co" style="color: #5E5E5E;"># Install development and runtime libraries.</span></span>
+<span id="cb2-112">    <span class="ex" style="color: null;">apt-get</span> install <span class="at" style="color: #657422;">-y</span> <span class="at" style="color: #657422;">--no-install-recommends</span> <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-113">        cuda-10-1 <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-114">        libcudnn7=7.6.4.38-1+cuda10.1  <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-115">        libcudnn7-dev=7.6.4.38-1+cuda10.1</span>
+<span id="cb2-116"></span>
+<span id="cb2-117"><span class="co" style="color: #5E5E5E;"># Install TensorRT. Requires that libcudnn7 is installed above.</span></span>
+<span id="cb2-118">    <span class="ex" style="color: null;">apt-get</span> install <span class="at" style="color: #657422;">-y</span> <span class="at" style="color: #657422;">--no-install-recommends</span> libnvinfer6=6.0.1-1+cuda10.1 <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-119">        libnvinfer-dev=6.0.1-1+cuda10.1 <span class="dt" style="color: #AD0000;">\</span></span>
+<span id="cb2-120">        libnvinfer-plugin6=6.0.1-1+cuda10.1</span>
+<span id="cb2-121"></span>
+<span id="cb2-122"><span class="co" style="color: #5E5E5E;"># Update python pip.</span></span>
+<span id="cb2-123">    <span class="ex" style="color: null;">python3</span> <span class="at" style="color: #657422;">-m</span> pip <span class="at" style="color: #657422;">--no-cache-dir</span> install <span class="at" style="color: #657422;">--upgrade</span> pip</span>
+<span id="cb2-124">    <span class="ex" style="color: null;">python3</span> <span class="at" style="color: #657422;">-m</span> pip <span class="at" style="color: #657422;">--no-cache-dir</span> install setuptools <span class="at" style="color: #657422;">--upgrade</span></span>
+<span id="cb2-125">    <span class="ex" style="color: null;">python</span> <span class="at" style="color: #657422;">-m</span> pip <span class="at" style="color: #657422;">--no-cache-dir</span> install setuptools <span class="at" style="color: #657422;">--upgrade</span></span>
+<span id="cb2-126"></span>
+<span id="cb2-127"><span class="co" style="color: #5E5E5E;"># Install R 3.6.</span></span>
+<span id="cb2-128">    <span class="bu" style="color: null;">echo</span> <span class="st" style="color: #20794D;">"deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/"</span> <span class="op" style="color: #5E5E5E;">&gt;&gt;</span> /etc/apt/sources.list</span>
+<span id="cb2-129">    <span class="ex" style="color: null;">apt-key</span> adv <span class="at" style="color: #657422;">--keyserver</span> keyserver.ubuntu.com <span class="at" style="color: #657422;">--recv-keys</span> E298A3A825C0D65DFD57CBB651716619E084DAB9</span>
+<span id="cb2-130">    <span class="ex" style="color: null;">apt-get</span> update</span>
+<span id="cb2-131">    <span class="ex" style="color: null;">apt-get</span> install <span class="at" style="color: #657422;">-y</span> <span class="at" style="color: #657422;">--no-install-recommends</span> r-base</span>
+<span id="cb2-132">    <span class="ex" style="color: null;">apt-get</span> install <span class="at" style="color: #657422;">-y</span> <span class="at" style="color: #657422;">--no-install-recommends</span> r-base-dev</span>
+<span id="cb2-133"></span>
+<span id="cb2-134"><span class="co" style="color: #5E5E5E;"># Install Jupyter notebook with Python and R support.</span></span>
+<span id="cb2-135">    <span class="ex" style="color: null;">python3</span> <span class="at" style="color: #657422;">-m</span> pip <span class="at" style="color: #657422;">--no-cache-dir</span> install jupyter</span>
+<span id="cb2-136">    <span class="ex" style="color: null;">R</span> <span class="at" style="color: #657422;">--quiet</span> <span class="at" style="color: #657422;">--slave</span> <span class="at" style="color: #657422;">-e</span> <span class="st" style="color: #20794D;">'install.packages(c("IRkernel"), repos="https://cloud.r-project.org/")'</span></span>
+<span id="cb2-137"></span>
+<span id="cb2-138"><span class="co" style="color: #5E5E5E;"># Install MPI (match the version with the cluster).</span></span>
+<span id="cb2-139">    <span class="fu" style="color: #4758AB;">mkdir</span> <span class="at" style="color: #657422;">-p</span> /tmp/mpi</span>
+<span id="cb2-140">    <span class="bu" style="color: null;">cd</span> /tmp/mpi</span>
+<span id="cb2-141">    <span class="fu" style="color: #4758AB;">wget</span> <span class="at" style="color: #657422;">-O</span> openmpi-2.1.0.tar.bz2 https://www.open-mpi.org/software/ompi/v2.1/downloads/openmpi-2.1.0.tar.bz2</span>
+<span id="cb2-142">    <span class="fu" style="color: #4758AB;">tar</span> <span class="at" style="color: #657422;">-xjf</span> openmpi-2.1.0.tar.bz2</span>
+<span id="cb2-143">    <span class="bu" style="color: null;">cd</span> openmpi-2.1.0</span>
+<span id="cb2-144">    <span class="ex" style="color: null;">./configure</span> <span class="at" style="color: #657422;">--prefix</span><span class="op" style="color: #5E5E5E;">=</span>/usr/local <span class="at" style="color: #657422;">--with-cuda</span></span>
+<span id="cb2-145">    <span class="fu" style="color: #4758AB;">make</span> <span class="at" style="color: #657422;">-j</span> <span class="va" style="color: #111111;">$(</span><span class="fu" style="color: #4758AB;">nproc</span><span class="va" style="color: #111111;">)</span></span>
+<span id="cb2-146">    <span class="fu" style="color: #4758AB;">make</span> install</span>
+<span id="cb2-147">    <span class="ex" style="color: null;">ldconfig</span></span>
+<span id="cb2-148"></span>
+<span id="cb2-149"><span class="co" style="color: #5E5E5E;"># Cleanup</span></span>
+<span id="cb2-150">    <span class="ex" style="color: null;">apt-get</span> <span class="at" style="color: #657422;">-qq</span> clean</span>
+<span id="cb2-151">    <span class="fu" style="color: #4758AB;">rm</span> <span class="at" style="color: #657422;">-rf</span> /var/lib/apt/lists/<span class="pp" style="color: #AD0000;">*</span></span>
+<span id="cb2-152">    <span class="fu" style="color: #4758AB;">rm</span> <span class="at" style="color: #657422;">-rf</span> /tmp/mpi</span></code></pre></div>
+<section id="inspect-container" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-container">Inspect Container</h2>
+<p>To get a list of the labels defined for the container <code>singularity inspect --labels container/</code></p>
+<p>To print the container’s help section <code>singularity inspect --helpfile container/</code></p>
+<p>To show container’s environment <code>singularity inspect --environment container/</code></p>
+<p>To retrieve the definition file used to build the container <code>singularity inspect --deffile container/</code></p>
+</section>
+<section id="install-data-science-and-chemistry-packages" class="level2">
+<h2 class="anchored" data-anchor-id="install-data-science-and-chemistry-packages">Install Data Science and Chemistry Packages</h2>
+<p>Once the core writable sandbox is built we will install the additional data science and chemistry packages.</p>
+<p>To do that execute:<br>
+<code>sudo singularity shell --writable container/</code></p>
+<p>Then execute the following lines in the shell environment.</p>
+<pre><code># Install Python packages.
+    python3 -m pip --no-cache-dir install numpy pandas h5py pyarrow sklearn statsmodels matplotlib seaborn plotly 
+
+# Install Tensorflow.
+    python3 -m pip --no-cache-dir install tensorflow==2.2.0 
+
+# Install R packages.
+    R --quiet --slave -e 'install.packages("tidyverse", version = "1.3.0", repos="https://cloud.r-project.org/")'
+    R --quiet --slave -e 'install.packages("tidymodels", version = "0.1.0", repos="https://cloud.r-project.org/")'
+    R --quiet --slave -e 'install.packages(c("lme4", "glmnet", "yaml", "jsonlite", "rlang"), repos="https://cloud.r-project.org/")'
+
+# Install RDKit
+    export RDBASE=/usr/local/share/rdkit
+    export LD_LIBRARY_PATH="$RDBASE/lib:$LD_LIBRARY_PATH"
+    export PYTHONPATH="$RDBASE:$PYTHONPATH"
+    mkdir -p /tmp/rdkit
+    cd /tmp/rdkit
+    wget https://github.com/rdkit/rdkit/archive/2020_03_3.tar.gz
+    tar zxf 2020_03_3.tar.gz
+    mv rdkit-2020_03_3 $RDBASE
+    mkdir $RDBASE/build
+    cd $RDBASE/build
+    cmake -DPYTHON_EXECUTABLE=/usr/bin/python3 ..
+    make -j $(nproc)
+    make install
+
+    ln -s /usr/local/share/rdkit/rdkit /usr/local/lib/python3.6/dist-packages/
+
+# Install OpenBabel.
+    apt-get -qq -y update
+    apt-get -qq install -y --no-install-recommends openbabel python-openbabel
+
+# Install Mordred Molecular Descriptor Calculator.
+    python3 -m pip --no-cache-dir install mordred
+
+# Cleanup
+    rm -rf /tmp/rdkit</code></pre>
+</section>
+<section id="convert-a-writable-sandbox-to-a-read-only-compressed-container" class="level2">
+<h2 class="anchored" data-anchor-id="convert-a-writable-sandbox-to-a-read-only-compressed-container">Convert a Writable Sandbox to a Read Only Compressed Container</h2>
+<p>Once you are satisfied that you have installed all the required packages you can convert the writable sandbox to a read only squashfs filesystem. Squashfs is a compressed read-only file system for Linux.</p>
+<p><code>sudo singularity build container.sif container/</code></p>
+</section>
+<section id="install-kernel-spces-for-jupyter-notebook-for-r" class="level2">
+<h2 class="anchored" data-anchor-id="install-kernel-spces-for-jupyter-notebook-for-r">Install Kernel Spces for Jupyter Notebook for R</h2>
+<p>Kernel specs are installed from outside the container in the host’s home environment.</p>
+<p><code>singularity exec container.sif R --quiet --slave -e 'IRkernel::installspec()'</code></p>
+<p>NOTE: You only have to do it once per host to install <code>kernelspec</code>.</p>
+</section>
+</section>
+<section id="test-scripts" class="level1">
+<h1>Test Script(s)</h1>
+<section id="tensorflow-gpu" class="level2">
+<h2 class="anchored" data-anchor-id="tensorflow-gpu">Tensorflow GPU</h2>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="im" style="color: #00769E;">import</span> tensorflow <span class="im" style="color: #00769E;">as</span> tf</span>
+<span id="cb4-2"></span>
+<span id="cb4-3">tf.debugging.set_log_device_placement(<span class="va" style="color: #111111;">True</span>)</span>
+<span id="cb4-4">gpus <span class="op" style="color: #5E5E5E;">=</span> tf.config.list_physical_devices(<span class="st" style="color: #20794D;">'GPU'</span>)</span>
+<span id="cb4-5"></span>
+<span id="cb4-6"><span class="cf" style="color: #003B4F;">if</span> gpus:</span>
+<span id="cb4-7">    <span class="cf" style="color: #003B4F;">with</span> tf.device(<span class="st" style="color: #20794D;">'/GPU:0'</span>):</span>
+<span id="cb4-8">        tf.random.set_seed(<span class="dv" style="color: #AD0000;">123</span>)</span>
+<span id="cb4-9">        a <span class="op" style="color: #5E5E5E;">=</span> tf.random.normal([<span class="dv" style="color: #AD0000;">10000</span>,<span class="dv" style="color: #AD0000;">20000</span>], <span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">1</span>, tf.float32, seed<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>)</span>
+<span id="cb4-10">        b <span class="op" style="color: #5E5E5E;">=</span> tf.random.normal([<span class="dv" style="color: #AD0000;">20000</span>,<span class="dv" style="color: #AD0000;">10000</span>], <span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">1</span>, tf.float32, seed<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>)</span>
+<span id="cb4-11">        c <span class="op" style="color: #5E5E5E;">=</span> tf.matmul(a, b)</span>
+<span id="cb4-12">        <span class="bu" style="color: null;">print</span>(c)</span>
+<span id="cb4-13"><span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb4-14">    <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"No GPUs found."</span>)</span>
+<span id="cb4-15"></span>
+<span id="cb4-16"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"Num GPUs:"</span>, <span class="bu" style="color: null;">len</span>(gpus))</span></code></pre></div>
+<p>To execute the script <code>singularity exec --nv container.sif python3 tf_gpu.py</code></p>
+<p>To monitor NVIDIA GPU usage <code>nvidia-smi</code></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
+  author = {Rohit Farmer},
+  title = {How to Build a {Singularity} Container for Machine Learning,
+    Data Science, and Chemistry},
+  date = {2022-10-31},
+  url = {https://www.dataalltheway.com/posts/008-build-a-singularity-container},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
+Rohit Farmer. 2022. <span>“How to Build a Singularity Container for
+Machine Learning, Data Science, and Chemistry.”</span> October 31, 2022.
+<a href="https://www.dataalltheway.com/posts/008-build-a-singularity-container">https://www.dataalltheway.com/posts/008-build-a-singularity-container</a>.
+</div></div></section></div> ]]></description>
+  <category>How To</category>
+  <category>Singularity</category>
+  <category>Container</category>
+  <category>Data Science</category>
+  <category>Machine Learning</category>
+  <category>Chemistry</category>
+  <guid>https://www.dataalltheway.com/posts/008-build-a-singularity-container/index.html</guid>
+  <pubDate>Mon, 31 Oct 2022 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Sources of open data for statistics, data science, and machine learning</title>
   <dc:creator>Rohit Farmer</dc:creator>

@@ -21,10 +21,10 @@ listing:
   type: grid
   sort: "date desc"
   contents:
+    - "posts/008*/*.qmd"
     - "posts/007*/*.qmd"
     - "posts/006*/*.qmd"
     - "posts/001-data-transformation/*.qmd"
     - "posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/*.qmd"
     - "posts/005-classify-the-bitter-or-sweet-taste-of-compounds/*.qmd"
-    - "posts/002-tweets-from-heads-of-governments-and-states/*.qmd"
 ---
