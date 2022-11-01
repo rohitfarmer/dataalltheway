@@ -12,9 +12,11 @@ website:
       - bookmarks.qmd
       - support.qmd
       - icon: github
-        href: https://github.com/rohitfarmer
+        href: https://github.com/rohitfarmer/dataalltheway
       - icon: twitter
         href: https://twitter.com/rohitfarmer
+      - icon: mastodon
+        href: 'https://fosstodon.org/@swatantra'
       - icon: rss
         href: blog.xml
   page-footer: 

@@ -5,7 +5,7 @@ title-block-banner: false
 comments: false
 ---
 
-> The best way to contact me is by email at [rohitfarmer\@hotmail.com](mailto:rohitfarmer@hotmail.com)
+> The best way to contact me is by email at **rohit \[dot\] farmer \[at\] dataalltheway \[dot\] com**
 
 This is a not-for-profit website without advertisements and a paywall, and I intend to support it fully in the foreseeable future. However, a little support does help to cover some overhead costs of the domain name, professional email address, books (online courses), paying for graphics, and of course, coffee (the fuel).
 
