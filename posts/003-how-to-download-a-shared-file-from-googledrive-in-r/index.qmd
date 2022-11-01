@@ -10,6 +10,7 @@ format:
   html:
     code-fold: false
 citation: true
+google-scholar: true
 ---
 
 # Introduction

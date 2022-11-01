@@ -7,6 +7,7 @@ author:
 date: "2022-10-15"
 categories: [How To, IDE, R]
 citation: true
+google-scholar: true
 ---
 
 {{< video https://www.youtube.com/embed/nm45WagtV3w >}}

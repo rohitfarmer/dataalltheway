@@ -18,13 +18,16 @@ categories: [How To, Etc]
 format:
   html:
     code-fold: false
+    code-tools:
+      source: false
+      toggle: false
 citation: true
   #type: article
   #publisher: "Zenodo"
   #doi: "10.5281/zenodo.7232109"
   #url: "https://doi.org/10.5281/zenodo.7232109"
-bibliography: "../../data/references.bib"
-google-scholar: false
+bibliography: "references.bib"
+google-scholar: true
 ---
 ```
 
@@ -44,7 +47,7 @@ In the posts folder, make a folder with the name that will go on the URL. The na
 
 ### Callouts
 
-    ::: {.callout-note collapce="true"}
+    ::: {.callout-note collapse="true"}
     ### Updates
 
     2022-10-25
