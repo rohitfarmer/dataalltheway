@@ -12,15 +12,21 @@ Below are some of the articles, blog posts, and stack exchange threads that I ha
 
 -   [The ASA Statement on *p*-Values: Context, Process, and Purpose](https://doi.org/10.1080/00031305.2016.1154108)
 
-
 ::: {.callout-note appearance="minimal" icon="false" collapse="true"}
 ## Excerpt
 
 *Statistical significance is not equivalent to scientific, human, or economic significance. Smaller p-values do not necessarily imply the presence of larger or more important effects, and larger p-values do not imply alack of importance or even lack of effect... No single index should substitute for scientific reasoning.*
 :::
 
-
 -   [Statistical Inference in the 21st Century: A World Beyond p \< 0.05](https://www.tandfonline.com/toc/utas20/73/sup1)
+
+::: {.callout-note appearance="minimal" icon="false" collapse="\"true"}
+## Don't Say "Statistically Significant"
+
+*The ASA Statement on P-Values and Statistical Significance stopped just short of recommending that declarations of "statistical significance" be abandoned. We take that step here. We conclude, based on our review of the articles in this special issue and the broader literature, that it is time to stop using the term "statistically significant" entirely. Nor should variants such as "significantly different," "p \< 0.05," and "nonsignificant" survive, whether expressed in words, by asterisks in a table, or in some other way.*
+
+*Regardless of whether it was ever useful, a declaration of "statistical significance" has today become meaningless. Made broadly known by Fisher's use of the phrase (1925), Edgeworth's (1885) original intention for statistical significance was simply as a tool to indicate when a result warrants further scrutiny. But that idea has been irretrievably lost. Statistical significance was never meant to imply scientific importance, and the confusion of the two was decried soon after its widespread use (Boring 1919). Yet a full century later the confusion persists.*
+:::
 
 -   [Bayesian and frequentist reasoning in plain English](https://stats.stackexchange.com/questions/22/bayesian-and-frequentist-reasoning-in-plain-english)
 
