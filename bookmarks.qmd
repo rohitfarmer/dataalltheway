@@ -8,12 +8,27 @@ toc-depth: 3
 
 Below are some of the articles, blog posts, and stack exchange threads that I have found helpful. Please comment if you know or found something interesting that I should list here.
 
+# Cheat sheets
+
+-   [Choosing the right estimator](https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html)
+-   [Machine learning cheat sheet](https://github.com/rohitfarmer/machine-learning-cheat-sheet/raw/master/machine-learning-cheat-sheet.pdf)
+-   [Machine learning glossary](https://ml-cheatsheet.readthedocs.io/en/latest/index.html)
+
+# Data processing
+
+-   [Normalize data before or after split of training and testing data?](https://stackoverflow.com/questions/49444262/normalize-data-before-or-after-split-of-training-and-testing-data)
+
+# R
+
+-   [Teaching R in a Kinder, Gentler, More Effective Manner: Teach Base-R, Not Just the Tidyverse Author: Prof. Norm Matloff, University of California, Davis](https://github.com/matloff/TidyverseSkeptic)
+-   [R Workflow](https://www.fharrell.com/post/rflow/) - An overview of R Workflow, which covers how to use R effectively all the way from importing data to analysis, and making use of `Quarto` for reproducible reporting.
+
 # Statistics
 
 -   [The ASA Statement on *p*-Values: Context, Process, and Purpose](https://doi.org/10.1080/00031305.2016.1154108)
 
 ::: {.callout-note appearance="minimal" icon="false" collapse="true"}
-## Excerpt
+## Statistical significance is not equivalent to scientific, human, or economic significance
 
 *Statistical significance is not equivalent to scientific, human, or economic significance. Smaller p-values do not necessarily imply the presence of larger or more important effects, and larger p-values do not imply alack of importance or even lack of effect... No single index should substitute for scientific reasoning.*
 :::
@@ -29,14 +44,4 @@ Below are some of the articles, blog posts, and stack exchange threads that I ha
 :::
 
 -   [Bayesian and frequentist reasoning in plain English](https://stats.stackexchange.com/questions/22/bayesian-and-frequentist-reasoning-in-plain-english)
-
-# Data processing
-
--   [Normalize data before or after split of training and testing data?](https://stackoverflow.com/questions/49444262/normalize-data-before-or-after-split-of-training-and-testing-data)
-
-# R
-
--   [Teaching R in a Kinder, Gentler, More Effective Manner: Teach Base-R, Not Just the Tidyverse Author: Prof. Norm Matloff, University of California, Davis](https://github.com/matloff/TidyverseSkeptic)
--   [R Workflow](https://www.fharrell.com/post/rflow/) - An overview of R Workflow, which covers how to use R effectively all the way from importing data to analysis, and making use of `Quarto` for reproducible reporting.
-
-\
+-   [Ultimate Guide to Statistics for Data Science](https://towardsdatascience.com/ultimate-guide-to-statistics-for-data-science-a3d8f1fd69a7)
