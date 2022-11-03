@@ -2,50 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</loc>
-    <lastmod>2022-11-03T13:25:24.766Z</lastmod>
+    <lastmod>2022-11-03T20:24:52.855Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/008-build-a-singularity-container/index.html</loc>
-    <lastmod>2022-11-03T13:25:26.070Z</lastmod>
+    <lastmod>2022-11-03T20:24:54.126Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/001-data-transformation/index.html</loc>
-    <lastmod>2022-11-03T13:25:28.646Z</lastmod>
+    <lastmod>2022-11-03T20:24:56.983Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/007-open-data-for-datascience/index.html</loc>
-    <lastmod>2022-11-03T13:25:30.518Z</lastmod>
+    <lastmod>2022-11-03T20:24:58.886Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</loc>
-    <lastmod>2022-11-03T13:25:32.760Z</lastmod>
+    <lastmod>2022-11-03T20:25:01.083Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</loc>
-    <lastmod>2022-11-03T13:25:33.830Z</lastmod>
+    <lastmod>2022-11-03T20:25:02.163Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</loc>
-    <lastmod>2022-11-03T13:25:35.031Z</lastmod>
+    <lastmod>2022-11-03T20:25:03.887Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/009-rules-for-naming-files/index.html</loc>
+    <lastmod>2022-11-03T20:25:05.083Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</loc>
-    <lastmod>2022-11-03T13:25:36.155Z</lastmod>
+    <lastmod>2022-11-03T20:25:06.352Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/index.html</loc>
-    <lastmod>2022-11-03T13:25:36.698Z</lastmod>
+    <lastmod>2022-11-03T20:25:07.005Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/bookmarks/index.html</loc>
-    <lastmod>2022-11-03T13:25:37.849Z</lastmod>
+    <lastmod>2022-11-03T20:25:07.881Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/support/index.html</loc>
-    <lastmod>2022-11-03T13:25:38.226Z</lastmod>
+    <lastmod>2022-11-03T20:25:08.249Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/blog.html</loc>
-    <lastmod>2022-11-03T13:25:38.670Z</lastmod>
+    <lastmod>2022-11-03T20:25:08.697Z</lastmod>
   </url>
 </urlset>
