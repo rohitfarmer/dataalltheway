@@ -5,7 +5,7 @@ website:
   favicon: favicon.ico
   title: "Data All The Way"
   site-url: https://www.dataalltheway.com
-  image: "logo-nogb.png"
+  image: "logo-nobg.png"
   description: "Data All The Way: A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics."
   navbar:
     right:

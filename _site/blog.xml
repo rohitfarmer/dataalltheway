@@ -10,9 +10,11 @@
 <atom:link href="https://www.dataalltheway.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Data All The Way: A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics.</description>
 <image>
-<url>https://www.dataalltheway.com/logo-nogb.png</url>
+<url>https://www.dataalltheway.com/logo-nobg.png</url>
 <title>Data All The Way</title>
 <link>https://www.dataalltheway.com/blog.html</link>
+<height>88</height>
+<width>144</width>
 </image>
 <generator>quarto-1.2.215</generator>
 <lastBuildDate>Thu, 03 Nov 2022 04:00:00 GMT</lastBuildDate>
