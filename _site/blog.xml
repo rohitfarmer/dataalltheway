@@ -46,6 +46,19 @@ Update history
 <h1>Introduction</h1>
 <p>This post aims to lay down some rules that help name files and folders that are cross-platform, meaning they are acceptable across Linux, MacOS, and MS Windows, the three major operating systems. I have compiled these rules following international standards and recommendations from the US National Archives. Some rules mentioned here are exceptions to OS compatibility and are mentioned here from a useability point of view.</p>
 <p>Having suitable files and folder naming can be helpful in data science, especially while working on the command line or programmatically querying large sets of files. For example, not having spaces in file names makes it easier to refer to them on the command line; having fixed delimiters in the file names can help iterate over files and fetch critical information programmatically.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These rules are equally applicable outside datascience settings - even for your documents, photos, videos, etc.</p>
+</div>
+</div>
 </section>
 <section id="rules" class="level1">
 <h1>Rules</h1>
@@ -56,7 +69,7 @@ Update history
 <li>Use YYYY-MM-DD format for dates.</li>
 <li>While using the date at the beginning of a file name, keep the rest of the file name the same as the one created on a previous date (if there is more than one file for the same purpose, but it is sectioned according to the date.)</li>
 <li>Use “.” only for file extensions.</li>
-<li>Use v1, v2, …, vn to denote file versions.</li>
+<li>Use v1, v2, …, vn to denote file versions. Ideally, one should use a version control system (VCS) such as Git.</li>
 <li>For a stack of fewer than 100 files, number them as 00, 01, 02, …, 0n for easier sorting. Accordingly, for a stack of fewer than 1000 files, number them as 000, 001, 002, …, 00n.</li>
 <li>File names should NOT contain punctuation, symbols, or special characters. ” / &nbsp;[ ] : ; | = _ , &lt; ? &gt; &amp; $ # ! ’ { } ( ).</li>
 </ol>

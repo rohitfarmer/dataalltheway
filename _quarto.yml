@@ -21,7 +21,7 @@ website:
       - icon: rss
         href: blog.xml
   page-footer: 
-    left: "<b>Copyright CC BY-NC-SA 4.0</b>"
+    left: "<b><a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Copyright CC BY-NC-SA 4.0</a></b>"
     right: '<a href = "support/"><b>Support Me</b></a>'
     center: "<b>Made with ✌️❤️☕  </b>"
     border: true
