@@ -9,26 +9,47 @@
 <link>https://www.dataalltheway.com/blog.html</link>
 <atom:link href="https://www.dataalltheway.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Data All The Way: A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics.</description>
+<image>
+<url>https://www.dataalltheway.com/logo-nogb.png</url>
+<title>Data All The Way</title>
+<link>https://www.dataalltheway.com/blog.html</link>
+</image>
 <generator>quarto-1.2.215</generator>
 <lastBuildDate>Thu, 03 Nov 2022 04:00:00 GMT</lastBuildDate>
 <item>
-  <title>Rules for naming files and folders that are cross platform</title>
+  <title>Rules for naming files and folders that are cross platform and helpful in datascience</title>
   <dc:creator>Rohit Farmer</dc:creator>
   <link>https://www.dataalltheway.com/posts/009-rules-for-naming-files/index.html</link>
   <description><![CDATA[ 
 
 
 
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Update history
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>2022-11-03 Corrections made as pointed by https://fosstodon.org/<span class="citation" data-cites="rudolf">@rudolf</span> read this thread https://fosstodon.org/<span class="citation" data-cites="swatantra/109281773145979327">@swatantra/109281773145979327</span></p>
+</div>
+</div>
+</div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>This post aims to lay down some rules that help name files and folders that are cross-platform, meaning they are acceptable across Linux, MacOS, and MS Windows, the three major operating systems. I have compiled these rules following international standards and recommendations from the US National Archives.</p>
+<p>This post aims to lay down some rules that help name files and folders that are cross-platform, meaning they are acceptable across Linux, MacOS, and MS Windows, the three major operating systems. I have compiled these rules following international standards and recommendations from the US National Archives. Some rules mentioned here are exceptions to OS compatibility and are mentioned here from a useability point of view.</p>
 <p>Having suitable files and folder naming can be helpful in data science, especially while working on the command line or programmatically querying large sets of files. For example, not having spaces in file names makes it easier to refer to them on the command line; having fixed delimiters in the file names can help iterate over files and fetch critical information programmatically.</p>
 </section>
 <section id="rules" class="level1">
 <h1>Rules</h1>
 <p>Use styles that are internationally recognized, easy to read by a human eye, and require fewer finger movements on the keyboard, for example, using lowercase letters that eliminate the shift key.</p>
 <ol type="1">
-<li>Use all lowercase letters.</li>
+<li>Use all lowercase letters (this doesn’t apply to OS compatibility).</li>
 <li>Use hyphens (not underscores) to separate words. Avoid using spaces as they are difficult to work with on the command line.</li>
 <li>Use YYYY-MM-DD format for dates.</li>
 <li>While using the date at the beginning of a file name, keep the rest of the file name the same as the one created on a previous date (if there is more than one file for the same purpose, but it is sectioned according to the date.)</li>
@@ -60,14 +81,15 @@
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
   author = {Rohit Farmer},
-  title = {Rules for Naming Files and Folders That Are Cross Platform},
+  title = {Rules for Naming Files and Folders That Are Cross Platform
+    and Helpful in Datascience},
   date = {2022-11-03},
   url = {https://www.dataalltheway.com/posts/009-rules-for-naming-files},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Rohit Farmer. 2022. <span>“Rules for Naming Files and Folders That Are
-Cross Platform.”</span> November 3, 2022. <a href="https://www.dataalltheway.com/posts/009-rules-for-naming-files">https://www.dataalltheway.com/posts/009-rules-for-naming-files</a>.
+Cross Platform and Helpful in Datascience.”</span> November 3, 2022. <a href="https://www.dataalltheway.com/posts/009-rules-for-naming-files">https://www.dataalltheway.com/posts/009-rules-for-naming-files</a>.
 </div></div></section></div> ]]></description>
   <category>How To</category>
   <category>Files and Folders</category>

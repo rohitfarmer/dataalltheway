@@ -1,6 +1,6 @@
 ---
-title: "Rules for naming files and folders that are cross platform"
-description: "Rules for naming files and folders that are cross platform."
+title: "Rules for naming files and folders that are cross platform and helpful in datascience"
+description: "Rules for naming files and folders that are cross platform and helpful in datascience."
 author: 
   - name: "Rohit Farmer"
     orcid: "0000-0003-4197-3047"
@@ -15,10 +15,15 @@ format:
 citation: true
 google-scholar: true
 ---
+::: {.callout-note collapse="true"}
+### Update history
 
+2022-11-03 Corrections made as pointed by https://fosstodon.org/@rudolf read this thread https://fosstodon.org/@swatantra/109281773145979327
+:::
+    
 # Introduction
 
-This post aims to lay down some rules that help name files and folders that are cross-platform, meaning they are acceptable across Linux, MacOS, and MS Windows, the three major operating systems. I have compiled these rules following international standards and recommendations from the US National Archives.
+This post aims to lay down some rules that help name files and folders that are cross-platform, meaning they are acceptable across Linux, MacOS, and MS Windows, the three major operating systems. I have compiled these rules following international standards and recommendations from the US National Archives. Some rules mentioned here are exceptions to OS compatibility and are mentioned here from a useability point of view.
 
 Having suitable files and folder naming can be helpful in data science, especially while working on the command line or programmatically querying large sets of files. For example, not having spaces in file names makes it easier to refer to them on the command line; having fixed delimiters in the file names can help iterate over files and fetch critical information programmatically.
 
@@ -26,7 +31,7 @@ Having suitable files and folder naming can be helpful in data science, especial
 
 Use styles that are internationally recognized, easy to read by a human eye, and require fewer finger movements on the keyboard, for example, using lowercase letters that eliminate the shift key.
 
-1.  Use all lowercase letters.
+1.  Use all lowercase letters (this doesn't apply to OS compatibility).
 2.  Use hyphens (not underscores) to separate words. Avoid using spaces as they are difficult to work with on the command line.
 3.  Use YYYY-MM-DD format for dates.
 4.  While using the date at the beginning of a file name, keep the rest of the file name the same as the one created on a previous date (if there is more than one file for the same purpose, but it is sectioned according to the date.)

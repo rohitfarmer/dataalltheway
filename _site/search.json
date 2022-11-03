@@ -191,14 +191,14 @@
   {
     "objectID": "posts/009-rules-for-naming-files/index.html",
     "href": "posts/009-rules-for-naming-files/index.html",
-    "title": "Rules for naming files and folders that are cross platform",
+    "title": "Rules for naming files and folders that are cross platform and helpful in datascience",
     "section": "",
-    "text": "This post aims to lay down some rules that help name files and folders that are cross-platform, meaning they are acceptable across Linux, MacOS, and MS Windows, the three major operating systems. I have compiled these rules following international standards and recommendations from the US National Archives.\nHaving suitable files and folder naming can be helpful in data science, especially while working on the command line or programmatically querying large sets of files. For example, not having spaces in file names makes it easier to refer to them on the command line; having fixed delimiters in the file names can help iterate over files and fetch critical information programmatically."
+    "text": "Update history\n\n\n\n\n\n2022-11-03 Corrections made as pointed by https://fosstodon.org/@rudolf read this thread https://fosstodon.org/@swatantra/109281773145979327"
   },
   {
     "objectID": "posts/009-rules-for-naming-files/index.html#some-examples",
     "href": "posts/009-rules-for-naming-files/index.html#some-examples",
-    "title": "Rules for naming files and folders that are cross platform",
+    "title": "Rules for naming files and folders that are cross platform and helpful in datascience",
     "section": "Some Examples",
     "text": "Some Examples\n2022-08-31-labnotebook-for-hdstim.docx\n\nfigure-01.png\nfigure-02.png\nfigure-03.png\n\n/path/to/folder/exploring-flow"
   },
@@ -270,6 +270,6 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nNov 3, 2022\n\n\nRules for naming files and folders that are cross platform\n\n\nRohit Farmer\n\n\n\n\nOct 31, 2022\n\n\nHow to build a Singularity container for machine learning, data science, and chemistry\n\n\nRohit Farmer\n\n\n\n\nOct 25, 2022\n\n\nSources of open data for statistics, data science, and machine learning\n\n\nRohit Farmer\n\n\n\n\nOct 17, 2022\n\n\nA case for using Google Colab notebooks as an alternative to web servers for scientific software\n\n\nRohit Farmer\n\n\n\n\nOct 15, 2022\n\n\nClassify the bitter or sweet taste of compounds\n\n\nRohit Farmer\n\n\n\n\nOct 15, 2022\n\n\nHow to use Neovim or VIM editor as an IDE for R\n\n\nRohit Farmer\n\n\n\n\nOct 14, 2022\n\n\nHow to download a shared file from Google Drive in R\n\n\nRohit Farmer\n\n\n\n\nOct 5, 2022\n\n\nTweets from heads of governments and states\n\n\nRohit Farmer\n\n\n\n\nOct 5, 2022\n\n\nData Transformation\n\n\nRohit Farmer\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nNov 3, 2022\n\n\nRules for naming files and folders that are cross platform and helpful in datascience\n\n\nRohit Farmer\n\n\n\n\nOct 31, 2022\n\n\nHow to build a Singularity container for machine learning, data science, and chemistry\n\n\nRohit Farmer\n\n\n\n\nOct 25, 2022\n\n\nSources of open data for statistics, data science, and machine learning\n\n\nRohit Farmer\n\n\n\n\nOct 17, 2022\n\n\nA case for using Google Colab notebooks as an alternative to web servers for scientific software\n\n\nRohit Farmer\n\n\n\n\nOct 15, 2022\n\n\nClassify the bitter or sweet taste of compounds\n\n\nRohit Farmer\n\n\n\n\nOct 15, 2022\n\n\nHow to use Neovim or VIM editor as an IDE for R\n\n\nRohit Farmer\n\n\n\n\nOct 14, 2022\n\n\nHow to download a shared file from Google Drive in R\n\n\nRohit Farmer\n\n\n\n\nOct 5, 2022\n\n\nTweets from heads of governments and states\n\n\nRohit Farmer\n\n\n\n\nOct 5, 2022\n\n\nData Transformation\n\n\nRohit Farmer\n\n\n\n\n\n\nNo matching items"
   }
 ]
