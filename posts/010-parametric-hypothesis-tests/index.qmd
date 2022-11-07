@@ -1,0 +1,189 @@
+---
+title: "Parametric hypothesis tests with examples in R and Python"
+description: "A tutorial on how to download a shared file with 'anyone with the link' access rights from Google Drive in R."
+author: 
+  - name: "Rohit Farmer"
+    orcid: "0000-0003-4197-3047"
+date: "2022-11-05"
+categories: [How To, Etc]
+format:
+  html:
+    code-fold: false
+    code-tools:
+      source: false
+      toggle: true
+citation: true
+#bibliography: "references.bib"
+google-scholar: true
+bibliography: references.bib
+draft: true
+---
+
+# Introduction
+
+A hypothesis test is a statistical test that is used to determine whether there is enough evidence to support a hypothesis for example there is a difference between average height of male and female. A parametric hypothesis test relies upon the assumption that the data you want to test is (or approximately is) [normally distributed](https://en.wikipedia.org/wiki/Normal_distribution) for example height is normally distributed in a population. Your data needs to be symmetrical, since normally distributed data is symmetrical. If your data does not have the appropriate properties then you use a non-parametric test.
+
+There are different types of parametric tests, but the most common one is the t-test. Below is the list of the four parametric hypothesis tests with we will explore here.
+
+-   Z-test (@sec-z-test)
+-   T-test
+-   F-test
+-   ANOVA
+
+::: callout-tip
+If you are primarily interested in code examples then please follow the navigation on the right, alternatively, you can test live code on Kaggle. See this for R code and this for Python.
+:::
+
+Besides deciding which hypothesis test to use to answer the question in hand we also need to decide a couple of other parameters for example whether the test would be one sample or two sample, paired or un-paired, and one or two tailed. Below are a brief description for each parameter.
+
+## Paired vs. unpaired tests
+
+Paired tests are used when you want to compare two related groups of data, ***such as before and after measurements***. Unpaired tests are used when you want to compare two unrelated groups of data, such as men and women.
+
+## One sample vs. two sample tests
+
+There are a few key differences between one sample and two sample hypothesis testing. Firstly, in one sample hypothesis testing, we are testing the mean of a single sample ***against a known population mean***. In contrast, two sample hypothesis testing involves ***comparing the means of two independent samples***. Secondly, one sample hypothesis testing only requires a single sample size, while two sample hypothesis testing requires two. Finally, one sample hypothesis testing is typically used when the population standard deviation is known, while two sample hypothesis testing is used when the population standard deviation is unknown.
+
+## One vs. two tailed tests
+
+In a hypothesis test, the null and alternate hypotheses are stated in terms of population parameters. These hypotheses are:
+
+-   Null hypothesis ($H_0$): The value of the population parameter is equal to the hypothesized value.
+-   Alternate hypothesis ($H_1$): The value of the population parameter is not equal to the hypothesized value.
+
+The hypothesis test is based on a sample from the population. This sample is used to test the hypotheses by deriving a test statistic. The value of the test statistic is compared to a critical value. The critical value depends on the alpha level, which is the likelihood of rejecting the null hypothesis when it is true.
+
+The direction of the test is determined by the null and alternate hypotheses. There are two types of hypothesis tests: ***one-tailed and two-tailed tests***.
+
+### One-tailed Test
+
+A one-tailed test is conducted when the null and alternate hypotheses are stated in terms of ***"greater than" or "less than".***
+
+For example, let's say that a company wants to test a new advertising campaign. The null hypothesis ($H_0$) is that the new campaign will have no effect on sales. The alternate hypothesis ($H_1$) is that the new campaign will increase sales.
+
+The null hypothesis is stated as:
+
+$H_0$ : The population mean is less than or equal to 10%.
+
+The alternate hypothesis is stated as:
+
+$H_1$ : The population mean is greater than 10%.
+
+The test is conducted by taking a sample of data and calculating the mean. The mean is compared to the critical value. ***If the mean is greater than the critical value, the null hypothesis is rejected.***
+
+### Two-tailed Test
+
+A two-tailed test is conducted when the null and alternate hypotheses are stated in terms of ***"not equal to".***
+
+Taking our advertising campaign example. The null hypothesis ($H_0$) is that the new campaign will have no effect on sales. The alternate hypothesis ($H_1$) is that the new campaign will increase or decrease sales.
+
+The null hypothesis is stated as:
+
+$H_0$ : The population mean is equal to 10%.
+
+The alternate hypothesis is stated as:
+
+$H_1$ : The population mean is not equal to 10%.
+
+The test is conducted by taking a sample of data and calculating the mean. The mean is compared to the critical value. ***If the mean is not equal to the critical value, the null hypothesis is rejected.***
+
+## The method
+
+No matter which hypothesis testing method is selected following are the steps that are executed:
+
+1.  Firstly, identify the null hypothesis $H_0:\mu = \mu_0$
+2.  Then identify the alternative hypothesis $H_1$ and decide if it is of the form $H_1 : \mu \neq \mu_0$ (a two tailed test) or if there is a specific direction for how the mean changes $H_1 : \mu > \mu_0$ or $H_1 : \mu < \mu_0$, (a one tailed test).
+3.  Next, calculate the test statistic. Compare the test statistic to the critical values and obtain a range for the p-value.
+4.  Form conclusions. If your test statistic is greater than the critical values in the table, it is significant. You can reject the null hypothesis at that level, otherwise you accept it.
+
+## Dataset
+
+For our example exercises we will use the dataset from Open Case Studies [***"exploring global patterns of obesity across rural and urban regions"***](https://www.opencasestudies.org/ocs-bp-rural-and-urban-obesity) . Body mass index ([BMI](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html)) is often used as a proxy for **adiposity** (the condition of having excess body fat) and is measured as an individual's weight in kilograms (kg) or pounds (lbs) divided by the individual's height in meters (m2m2) squared. Recently, an article published in *Nature* evaluated and compared the BMI of populations in rural and urban communities around the world [@risingr2019]. The article challenged the widely-held view that increased urbanization was one of the major reasons for increased global obesity rates. This view came about because many countries around the world have shown increased urbanization levels in parallel with increased obesity rates. In this article, however, the NCD-RisC argued that this might not be the case and that in fact for most regions around the world, BMI measurements are increasing in rural populations just as much, if not more so, than urban populations. Furthermore, this study suggested that obesity has particularly increased in female populations in rural regions:
+
+> "We noted a persistently higher rural BMI, especially for women."
+
+We will fetch the cleaned version of the data from the the [Open Case Studies GitHub repository](https://github.com//opencasestudies/ocs-bp-rural-and-urban-obesity) as data wrangling is out of the scope of this tutorial.
+
+```{r}
+suppressMessages(library(tidyverse))
+dat <- readr::read_csv("https://raw.githubusercontent.com/opencasestudies/ocs-bp-rural-and-urban-obesity/master/data/wrangled/BMI_long.csv", show_col_types = FALSE)
+```
+
+# Z-test {#sec-z-test}
+
+A z-test is used to compare two population means when the sample size is large and the population variance is known.
+
+These are some conditions for using this type of test:
+
+-   The data must be **normally distributed**.
+-   All data points must be **independent**.
+-   For each sample the **variances must be equal**.
+
+@eq-z-test shows the formula for a z-test.
+
+$$
+    z = \dfrac{\bar{x} - \mu_0}{\sqrt{\dfrac{\sigma^2}{n}}}
+$$ {#eq-z-test}
+
+Where $\bar{x}$ is the sample mean, $\mu_0$ is the population mean, $\sigma^2$ is the population variance, and ${n}$ is the number of samples.
+
+## Two sample unpaired z-test
+
+$$
+\begin{equation} z = \dfrac{\bar{x_1} - \bar{x_2}}{\sqrt{\dfrac{\sigma_1^2}{n_1} +\dfrac{\sigma_2^2}{n_2}}} \end{equation}
+$$ {#eq-z-test-un-paired}
+
+### Example code in R
+
+### Example code in Python
+
+## Two sample paired z-test
+
+$$
+\begin{equation} z= \dfrac{\bar{d}- D}{\sqrt{\dfrac{\sigma_d^2}{n}}} \end{equation}
+$$ {#eq-z-test-paired}
+
+### Example code in R
+
+### Example code in Python
+
+# T-test
+
+The t-test is used to determine whether two groups are significantly different from each other.
+
+The t-test can be used to compare means, or to compare proportions.
+
+The t-test can be used to compare two independent groups, or two dependent groups.
+
+The t-test is based on the t-statistic, which is calculated using the following formula:
+
+$$
+\begin{equation} t = \dfrac{\bar{x}-\mu}{\sqrt{\dfrac{s^2}{n}}} \end{equation}
+$$ {#eq-t-test}
+
+### Two sample unpaired t-test
+
+t = (x1 - x2) / (s1/sqrt(n1) + s2/sqrt(n2))
+
+$$
+\begin{equation} t = \dfrac{\bar{x_1} - \bar{x_2}}{\sqrt{s^2\bigg(\dfrac{1}{n_1} + \dfrac{1}{n_2}\bigg)}} \end{equation}
+$$
+
+where:
+
+x1 is the mean of the first group x2 is the mean of the second group s1 is the standard deviation of the first group s2 is the standard deviation of the second group n1 is the number of observations in the first group n2 is the number of observations in the second group
+
+The t-statistic is used to calculate the p-value, which is the probability that the difference between the two groups is due to chance.
+
+The t-test is usually used with a significance level of 0.05, which means that there is a 5% chance that the difference between the two groups is due to chance.
+
+### Two sample paired t-test
+
+$$
+\begin{equation} t = \dfrac{\bar{d}}{\sqrt{\dfrac{s^2}{n}}} \end{equation}
+$$ {#eq-t-test-paired}
+
+# References
+
+-   [Parametric Hypothesis Tests (Psychology)](https://www.ncl.ac.uk/webtemplate/ask-assets/external/maths-resources/psychology/parametric-hypothesis-tests.html#:~:text=A%20parametric%20test%20relies%20upon,use%20a%20non%2Dparametric%20test.)
+-   **Wright, Carrie and Meng, Qier and Jager, Leah and Taub, Margaret and Hicks, Stephanie. (2020). <https://github.com/opencasestudies/ocs-bp-rural-and-urban-obesity>. Exploring global patterns of obesity across rural and urban regions (Version v1.0.0).**

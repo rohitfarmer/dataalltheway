@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rohit Farmer">
-<meta name="dcterms.date" content="2022-11-03">
-<meta name="description" content="Rules for naming files and folders that are cross platform and helpful in datascience.">
+<meta name="dcterms.date" content="2022-11-05">
+<meta name="description" content="A tutorial on how to download a shared file with ‘anyone with the link’ access rights from Google Drive in R.">
 
-<title>Data All The Way - Rules for naming files and folders that are cross platform and helpful in datascience</title>
+<title>Data All The Way - Parametric hypothesis tests with examples in R and Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -155,22 +155,24 @@ cookieconsent.run({
 </script> 
   
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Data All The Way - Rules for naming files and folders that are cross platform and helpful in datascience">
-<meta property="og:description" content="Rules for naming files and folders that are cross platform and helpful in datascience.">
+<meta property="og:title" content="Data All The Way - Parametric hypothesis tests with examples in R and Python">
+<meta property="og:description" content="A tutorial on how to download a shared file with 'anyone with the link' access rights from Google Drive in R.">
 <meta property="og:site-name" content="Data All The Way">
-<meta name="twitter:title" content="Data All The Way - Rules for naming files and folders that are cross platform and helpful in datascience">
-<meta name="twitter:description" content="Rules for naming files and folders that are cross platform and helpful in datascience.">
+<meta name="twitter:title" content="Data All The Way - Parametric hypothesis tests with examples in R and Python">
+<meta name="twitter:description" content="A tutorial on how to download a shared file with 'anyone with the link' access rights from Google Drive in R.">
 <meta name="twitter:card" content="summary">
-<meta name="citation_title" content="Rules for naming files and folders that are cross platform and helpful in datascience">
+<meta name="citation_title" content="Parametric hypothesis tests with examples in R and Python">
 <meta name="citation_author" content="Rohit Farmer">
-<meta name="citation_publication_date" content="2022-11-03">
-<meta name="citation_cover_date" content="2022-11-03">
+<meta name="citation_publication_date" content="2022-11-05">
+<meta name="citation_cover_date" content="2022-11-05">
 <meta name="citation_year" content="2022">
-<meta name="citation_online_date" content="2022-11-03">
-<meta name="citation_fulltext_html_url" content="https://www.dataalltheway.com/posts/009-rules-for-naming-files">
+<meta name="citation_online_date" content="2022-11-05">
+<meta name="citation_fulltext_html_url" content="https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests">
 <meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=Rising rural body-mass index is the main driver of the global obesity epidemic in adults;,citation_publication_date=2019-05;,citation_cover_date=2019-05;,citation_year=2019;,citation_fulltext_html_url=http://dx.doi.org/10.1038/s41586-019-1171-x;,citation_issue=7755;,citation_doi=10.1038/s41586-019-1171-x;,citation_volume=569;,citation_language=en;,citation_journal_title=Nature;">
 </head>
 
 <body class="nav-fixed">
@@ -239,11 +241,19 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#rules" id="toc-rules" class="nav-link" data-scroll-target="#rules">Rules</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#some-examples" id="toc-some-examples" class="nav-link" data-scroll-target="#some-examples">Some Examples</a></li>
+  <li><a href="#paired-vs.-un-paired-tests" id="toc-paired-vs.-un-paired-tests" class="nav-link" data-scroll-target="#paired-vs.-un-paired-tests">Paired vs.&nbsp;un-paired tests</a></li>
+  <li><a href="#one-sample-vs.-two-sample-tests" id="toc-one-sample-vs.-two-sample-tests" class="nav-link" data-scroll-target="#one-sample-vs.-two-sample-tests">One sample vs.&nbsp;two sample tests</a></li>
+  <li><a href="#one-vs.-two-tailed-tests" id="toc-one-vs.-two-tailed-tests" class="nav-link" data-scroll-target="#one-vs.-two-tailed-tests">One vs.&nbsp;two tailed tests</a>
+  <ul class="collapse">
+  <li><a href="#one-tailed-test" id="toc-one-tailed-test" class="nav-link" data-scroll-target="#one-tailed-test">One-tailed Test</a></li>
+  <li><a href="#two-tailed-test" id="toc-two-tailed-test" class="nav-link" data-scroll-target="#two-tailed-test">Two-tailed Test</a></li>
   </ul></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
+  </ul></li>
+  <li><a href="#sec-z-test" id="toc-sec-z-test" class="nav-link" data-scroll-target="#sec-z-test">Z-test</a></li>
+  <li><a href="#t-test" id="toc-t-test" class="nav-link" data-scroll-target="#t-test">T-test</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -253,16 +263,16 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Rules for naming files and folders that are cross platform and helpful in datascience</h1>
+<h1 class="title">Parametric hypothesis tests with examples in R and Python</h1>
   <div class="quarto-categories">
     <div class="quarto-category">How To</div>
-    <div class="quarto-category">Files and Folders</div>
+    <div class="quarto-category">Etc</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Rules for naming files and folders that are cross platform and helpful in datascience.
+    A tutorial on how to download a shared file with ‘anyone with the link’ access rights from Google Drive in R.
   </div>
 </div>
 
@@ -279,7 +289,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 3, 2022</p>
+      <p class="date">November 5, 2022</p>
     </div>
   </div>
   
@@ -289,26 +299,16 @@ cookieconsent.run({
 
 </header>
 
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Update history
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>2022-11-03 Corrections made as pointed by https://fosstodon.org/<span class="citation" data-cites="rudolf">@rudolf</span> read this thread https://fosstodon.org/<span class="citation" data-cites="swatantra/109281773145979327">@swatantra/109281773145979327</span></p>
-</div>
-</div>
-</div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>This post aims to lay down some rules that help name files and folders that are cross-platform, meaning they are acceptable across Linux, MacOS, and MS Windows, the three major operating systems. I have compiled these rules following international standards and recommendations from the US National Archives. Some rules mentioned here are exceptions to OS compatibility and are mentioned here from a useability point of view.</p>
-<p>Having suitable files and folder naming can be helpful in data science, especially while working on the command line or programmatically querying large sets of files. For example, not having spaces in file names makes it easier to refer to them on the command line; having fixed delimiters in the file names can help iterate over files and fetch critical information programmatically.</p>
+<p>A hypothesis test is a statistical test that is used to determine whether there is enough evidence to support a hypothesis for example there is a difference between average height of male and female. A parametric hypothesis test relies upon the assumption that the data you want to test is (or approximately is) <a href="https://en.wikipedia.org/wiki/Normal_distribution">normally distributed</a> for example height is normally distributed in a population. Your data needs to be symmetrical, since normally distributed data is symmetrical. If your data does not have the appropriate properties then you use a non-parametric test.</p>
+<p>There are different types of parametric tests, but the most common one is the t-test. Below is the list of the four parametric hypothesis tests with we will explore here.</p>
+<ul>
+<li>Z-test (<a href="#sec-z-test">Section&nbsp;2</a>)</li>
+<li>T-test</li>
+<li>F-test</li>
+<li>ANOVA</li>
+</ul>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -319,39 +319,98 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>These rules are equally applicable outside datascience settings - even for your documents, photos, videos, etc.</p>
+<p>If you are primarily interested in code examples then please follow the navigation on the right, alternatively, you can test live code on Kaggle. See this for R code and this for Python.</p>
 </div>
+</div>
+<p>Besides deciding which hypothesis test to use to answer the question in hand we also need to decide a couple of other parameters for example whether the test would be one sample or two sample, paired or un-paired, and one or two tailed. Below are a brief description for each parameter.</p>
+<section id="paired-vs.-un-paired-tests" class="level2">
+<h2 class="anchored" data-anchor-id="paired-vs.-un-paired-tests">Paired vs.&nbsp;un-paired tests</h2>
+<p>Paired tests are used when you want to compare two related groups of data, <strong><em>such as before and after measurements</em></strong>. Unpaired tests are used when you want to compare two unrelated groups of data, such as men and women.</p>
+</section>
+<section id="one-sample-vs.-two-sample-tests" class="level2">
+<h2 class="anchored" data-anchor-id="one-sample-vs.-two-sample-tests">One sample vs.&nbsp;two sample tests</h2>
+<p>There are a few key differences between one sample and two sample hypothesis testing. Firstly, in one sample hypothesis testing, we are testing the mean of a single sample <strong><em>against a known population mean</em></strong>. In contrast, two sample hypothesis testing involves <strong><em>comparing the means of two independent samples</em></strong>. Secondly, one sample hypothesis testing only requires a single sample size, while two sample hypothesis testing requires two. Finally, one sample hypothesis testing is typically used when the population standard deviation is known, while two sample hypothesis testing is used when the population standard deviation is unknown.</p>
+</section>
+<section id="one-vs.-two-tailed-tests" class="level2">
+<h2 class="anchored" data-anchor-id="one-vs.-two-tailed-tests">One vs.&nbsp;two tailed tests</h2>
+<p>In a hypothesis test, the null and alternate hypotheses are stated in terms of population parameters. These hypotheses are:</p>
+<ul>
+<li>Null hypothesis (<span class="math inline">\(H_0\)</span>): The value of the population parameter is equal to the hypothesized value.</li>
+<li>Alternate hypothesis (<span class="math inline">\(H_1\)</span>): The value of the population parameter is not equal to the hypothesized value.</li>
+</ul>
+<p>The hypothesis test is based on a sample from the population. This sample is used to test the hypotheses by deriving a test statistic. The value of the test statistic is compared to a critical value. The critical value depends on the alpha level, which is the likelihood of rejecting the null hypothesis when it is true.</p>
+<p>The direction of the test is determined by the null and alternate hypotheses. There are two types of hypothesis tests: <strong><em>one-tailed and two-tailed tests</em></strong>.</p>
+<section id="one-tailed-test" class="level3">
+<h3 class="anchored" data-anchor-id="one-tailed-test">One-tailed Test</h3>
+<p>A one-tailed test is conducted when the null and alternate hypotheses are stated in terms of <strong><em>“greater than” or “less than”.</em></strong></p>
+<p>For example, let’s say that a company wants to test a new advertising campaign. The null hypothesis (<span class="math inline">\(H_0\)</span>) is that the new campaign will have no effect on sales. The alternate hypothesis (<span class="math inline">\(H_1\)</span>) is that the new campaign will increase sales.</p>
+<p>The null hypothesis is stated as:</p>
+<p><span class="math inline">\(H_0\)</span> : The population mean is less than or equal to 10%.</p>
+<p>The alternate hypothesis is stated as:</p>
+<p><span class="math inline">\(H_1\)</span> : The population mean is greater than 10%.</p>
+<p>The test is conducted by taking a sample of data and calculating the mean. The mean is compared to the critical value. <strong><em>If the mean is greater than the critical value, the null hypothesis is rejected.</em></strong></p>
+</section>
+<section id="two-tailed-test" class="level3">
+<h3 class="anchored" data-anchor-id="two-tailed-test">Two-tailed Test</h3>
+<p>A two-tailed test is conducted when the null and alternate hypotheses are stated in terms of <strong><em>“not equal to”.</em></strong></p>
+<p>Taking our advertising campaign example. The null hypothesis (<span class="math inline">\(H_0\)</span>) is that the new campaign will have no effect on sales. The alternate hypothesis (<span class="math inline">\(H_1\)</span>) is that the new campaign will increase or decrease sales.</p>
+<p>The null hypothesis is stated as:</p>
+<p><span class="math inline">\(H_0\)</span> : The population mean is equal to 10%.</p>
+<p>The alternate hypothesis is stated as:</p>
+<p><span class="math inline">\(H_1\)</span> : The population mean is not equal to 10%.</p>
+<p>The test is conducted by taking a sample of data and calculating the mean. The mean is compared to the critical value. <strong><em>If the mean is not equal to the critical value, the null hypothesis is rejected.</em></strong></p>
+</section>
+</section>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>For our example exercises we will use the</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>hsb2 <span class="ot">&lt;-</span> <span class="fu">within</span>(<span class="fu">read.csv</span>(<span class="st">"https://stats.idre.ucla.edu/stat/data/hsb2.csv"</span>), {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    race <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(race)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    schtyp <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(schtyp)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    prog <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(prog)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="rules" class="level1">
-<h1>Rules</h1>
-<p>Use styles that are internationally recognized, easy to read by a human eye, and require fewer finger movements on the keyboard, for example, using lowercase letters that eliminate the shift key.</p>
+</section>
+<section id="sec-z-test" class="level1">
+<h1>Z-test</h1>
+<p>A z-test is used to compare two population means when the sample size is large and the population variance is known.</p>
+<p>These are some conditions for using this type of test:</p>
+<ul>
+<li>The data must be <strong>normally distributed</strong>.</li>
+<li>All data points must be <strong>independent</strong>.</li>
+<li>For each sample the <strong>variances must be equal</strong>.</li>
+</ul>
+<p><a href="#eq-z-test">Equation&nbsp;1</a> shows the formula for a z-test.</p>
+<p><span id="eq-z-test"><span class="math display">\[
+    z = \dfrac{\bar{x} - \mu_0}{\sqrt{\dfrac{\sigma^2}{n}}}
+\tag{1}\]</span></span></p>
+<p>Where <span class="math inline">\(\bar{x}\)</span> is the sample mean, <span class="math inline">\(\mu_0\)</span> is the population mean, <span class="math inline">\(\sigma^2\)</span> is the population variance, and <span class="math inline">\({n}\)</span> is the number of samples.</p>
+<p>The Method:</p>
 <ol type="1">
-<li>Use all lowercase letters (this doesn’t apply to OS compatibility).</li>
-<li>Use hyphens (not underscores) to separate words. Avoid using spaces as they are difficult to work with on the command line.</li>
-<li>Use YYYY-MM-DD format for dates.</li>
-<li>While using the date at the beginning of a file name, keep the rest of the file name the same as the one created on a previous date (if there is more than one file for the same purpose, but it is sectioned according to the date.)</li>
-<li>Use “.” only for file extensions.</li>
-<li>Use v1, v2, …, vn to denote file versions. Ideally, one should use a version control system (VCS) such as Git.</li>
-<li>For a stack of fewer than 100 files, number them as 00, 01, 02, …, 0n for easier sorting. Accordingly, for a stack of fewer than 1000 files, number them as 000, 001, 002, …, 00n.</li>
-<li>File names should NOT contain punctuation, symbols, or special characters. ” / &nbsp;[ ] : ; | = _ , &lt; ? &gt; &amp; $ # ! ’ { } ( ).</li>
+<li>Firstly, identify the null hypothesis <span class="math inline">\(H_0:\mu = \mu_0\)</span></li>
+<li>Then identify the alternative hypothesis <span class="math inline">\(H_1\)</span> and decide if it is of the form <span class="math inline">\(H_1 : \mu \neq \mu_0\)</span> (a two tailed test) or if there is a specific direction for how the mean changes <span class="math inline">\(H_1 : \mu &gt; \mu_0\)</span> or <span class="math inline">\(H_1 : \mu &lt; \mu_0\)</span>, (a one tailed test).</li>
+<li>Next, calculate the test statistic, using the formula above in the red box.Compare the test statistic to the critical values and obtain a range for the p value.</li>
+<li>Form conclusions. If your z-statistic is greater than the critical values in the table, it is significant. You can reject the null hypothesis at that level, otherwise you accept it.</li>
 </ol>
-<section id="some-examples" class="level2">
-<h2 class="anchored" data-anchor-id="some-examples">Some Examples</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">2022-08-31-labnotebook-for-hdstim.docx</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">figure-01.png</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">figure-02.png</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">figure-03.png</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">/path/to/folder/exploring-flow</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="t-test" class="level1">
+<h1>T-test</h1>
+<p>The t-test is used to determine whether two groups are significantly different from each other.</p>
+<p>The t-test can be used to compare means, or to compare proportions.</p>
+<p>The t-test can be used to compare two independent groups, or two dependent groups.</p>
+<p>The t-test is based on the t-statistic, which is calculated using the following formula:</p>
+<p>t = (x1 - x2) / (s1/sqrt(n1) + s2/sqrt(n2))</p>
+<p>where:</p>
+<p>x1 is the mean of the first group x2 is the mean of the second group s1 is the standard deviation of the first group s2 is the standard deviation of the second group n1 is the number of observations in the first group n2 is the number of observations in the second group</p>
+<p>The t-statistic is used to calculate the p-value, which is the probability that the difference between the two groups is due to chance.</p>
+<p>The t-test is usually used with a significance level of 0.05, which means that there is a 5% chance that the difference between the two groups is due to chance.</p>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
 <ul>
-<li><a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601 Date and Time Format</a></li>
-<li><a href="https://records-express.blogs.archives.gov/2017/08/22/best-practices-for-file-naming/">Best Practices for File Naming, US National Archives, August 22, 2017</a></li>
+<li><a href="https://www.ncl.ac.uk/webtemplate/ask-assets/external/maths-resources/psychology/parametric-hypothesis-tests.html#:~:text=A%20parametric%20test%20relies%20upon,use%20a%20non%2Dparametric%20test.">Parametric Hypothesis Tests (Psychology)</a></li>
 </ul>
 
 
@@ -359,15 +418,15 @@ Tip
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
   author = {Rohit Farmer},
-  title = {Rules for Naming Files and Folders That Are Cross Platform
-    and Helpful in Datascience},
-  date = {2022-11-03},
-  url = {https://www.dataalltheway.com/posts/009-rules-for-naming-files},
+  title = {Parametric Hypothesis Tests with Examples in {R} and
+    {Python}},
+  date = {2022-11-05},
+  url = {https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Rohit Farmer. 2022. <span>“Rules for Naming Files and Folders That Are
-Cross Platform and Helpful in Datascience.”</span> November 3, 2022. <a href="https://www.dataalltheway.com/posts/009-rules-for-naming-files">https://www.dataalltheway.com/posts/009-rules-for-naming-files</a>.
+Rohit Farmer. 2022. <span>“Parametric Hypothesis Tests with Examples in
+R and Python.”</span> November 5, 2022. <a href="https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests">https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

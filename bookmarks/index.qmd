@@ -21,6 +21,7 @@ Below are some of the articles, blog posts, and stack exchange threads that I ha
 
 # R
 
+-   [Advanced R by Hadley Wickham](http://adv-r.had.co.nz/)
 -   [Teaching R in a Kinder, Gentler, More Effective Manner: Teach Base-R, Not Just the Tidyverse Author: Prof. Norm Matloff, University of California, Davis](https://github.com/matloff/TidyverseSkeptic)
 -   [R Workflow](https://www.fharrell.com/post/rflow/) - An overview of R Workflow, which covers how to use R effectively all the way from importing data to analysis, and making use of `Quarto` for reproducible reporting.
 

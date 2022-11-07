@@ -228,7 +228,7 @@ To do that execute:\
 `sudo singularity shell --writable container/`
 
 Then execute the following lines in the shell environment.
-
+```bash
     # Install Python packages.
         python3 -m pip --no-cache-dir install numpy pandas h5py pyarrow sklearn statsmodels matplotlib seaborn plotly 
 
@@ -266,6 +266,7 @@ Then execute the following lines in the shell environment.
 
     # Cleanup
         rm -rf /tmp/rdkit
+```
 
 ## Convert a Writable Sandbox to a Read Only Compressed Container
 

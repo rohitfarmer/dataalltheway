@@ -11,7 +11,7 @@ website:
     right:
       - blog.qmd
       - bookmarks/index.qmd
-      - support/index.qmd
+      - contact/index.qmd
       - icon: github
         href: https://github.com/rohitfarmer/dataalltheway
       - icon: twitter
@@ -22,7 +22,7 @@ website:
         href: blog.xml
   page-footer: 
     left: "<b><a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Copyright CC BY-NC-SA 4.0</a></b>"
-    right: '<a href = "support/"><b>Support Me</b></a>'
+    right: '<a href = "contact/"><b>Contact</b></a>'
     center: "<b>Made with ✌️❤️☕  </b>"
     border: true
     background: dark

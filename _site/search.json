@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "contact/index.html",
+    "href": "contact/index.html",
+    "title": "Contact",
+    "section": "",
+    "text": "The best way to contact me is by email at rohit [dot] farmer [at] dataalltheway [dot] com.\nYou can also leave a comment at the bottom of this page and I will respond as soon as possible.\nI am also active on Mastodon and Twitter and would be happy to chat there.\n\n\n\n\n\n\nNote\n\n\n\nThis is a not-for-profit website without advertisements and a paywall, and I intend to support it fully in the foreseeable future. Therefore, I am not looking for any affiliate marketing or paid promotions. However, I appreciate your time and expertise in providing constructive criticism of the content on this website, suggesting corrections, contributing an article, or writing a comment on a post."
+  },
+  {
     "objectID": "posts/002-tweets-from-heads-of-governments-and-states/index.html",
     "href": "posts/002-tweets-from-heads-of-governments-and-states/index.html",
     "title": "Tweets from heads of governments and states",
@@ -25,7 +32,7 @@
     "href": "posts/008-build-a-singularity-container/index.html#install-data-science-and-chemistry-packages",
     "title": "How to build a Singularity container for machine learning, data science, and chemistry",
     "section": "Install Data Science and Chemistry Packages",
-    "text": "Install Data Science and Chemistry Packages\nOnce the core writable sandbox is built we will install the additional data science and chemistry packages.\nTo do that execute:\nsudo singularity shell --writable container/\nThen execute the following lines in the shell environment.\n# Install Python packages.\n    python3 -m pip --no-cache-dir install numpy pandas h5py pyarrow sklearn statsmodels matplotlib seaborn plotly \n\n# Install Tensorflow.\n    python3 -m pip --no-cache-dir install tensorflow==2.2.0 \n\n# Install R packages.\n    R --quiet --slave -e 'install.packages(\"tidyverse\", version = \"1.3.0\", repos=\"https://cloud.r-project.org/\")'\n    R --quiet --slave -e 'install.packages(\"tidymodels\", version = \"0.1.0\", repos=\"https://cloud.r-project.org/\")'\n    R --quiet --slave -e 'install.packages(c(\"lme4\", \"glmnet\", \"yaml\", \"jsonlite\", \"rlang\"), repos=\"https://cloud.r-project.org/\")'\n\n# Install RDKit\n    export RDBASE=/usr/local/share/rdkit\n    export LD_LIBRARY_PATH=\"$RDBASE/lib:$LD_LIBRARY_PATH\"\n    export PYTHONPATH=\"$RDBASE:$PYTHONPATH\"\n    mkdir -p /tmp/rdkit\n    cd /tmp/rdkit\n    wget https://github.com/rdkit/rdkit/archive/2020_03_3.tar.gz\n    tar zxf 2020_03_3.tar.gz\n    mv rdkit-2020_03_3 $RDBASE\n    mkdir $RDBASE/build\n    cd $RDBASE/build\n    cmake -DPYTHON_EXECUTABLE=/usr/bin/python3 ..\n    make -j $(nproc)\n    make install\n\n    ln -s /usr/local/share/rdkit/rdkit /usr/local/lib/python3.6/dist-packages/\n\n# Install OpenBabel.\n    apt-get -qq -y update\n    apt-get -qq install -y --no-install-recommends openbabel python-openbabel\n\n# Install Mordred Molecular Descriptor Calculator.\n    python3 -m pip --no-cache-dir install mordred\n\n# Cleanup\n    rm -rf /tmp/rdkit"
+    "text": "Install Data Science and Chemistry Packages\nOnce the core writable sandbox is built we will install the additional data science and chemistry packages.\nTo do that execute:\nsudo singularity shell --writable container/\nThen execute the following lines in the shell environment.\n    # Install Python packages.\n        python3 -m pip --no-cache-dir install numpy pandas h5py pyarrow sklearn statsmodels matplotlib seaborn plotly \n\n    # Install Tensorflow.\n        python3 -m pip --no-cache-dir install tensorflow==2.2.0 \n\n    # Install R packages.\n        R --quiet --slave -e 'install.packages(\"tidyverse\", version = \"1.3.0\", repos=\"https://cloud.r-project.org/\")'\n        R --quiet --slave -e 'install.packages(\"tidymodels\", version = \"0.1.0\", repos=\"https://cloud.r-project.org/\")'\n        R --quiet --slave -e 'install.packages(c(\"lme4\", \"glmnet\", \"yaml\", \"jsonlite\", \"rlang\"), repos=\"https://cloud.r-project.org/\")'\n\n    # Install RDKit\n        export RDBASE=/usr/local/share/rdkit\n        export LD_LIBRARY_PATH=\"$RDBASE/lib:$LD_LIBRARY_PATH\"\n        export PYTHONPATH=\"$RDBASE:$PYTHONPATH\"\n        mkdir -p /tmp/rdkit\n        cd /tmp/rdkit\n        wget https://github.com/rdkit/rdkit/archive/2020_03_3.tar.gz\n        tar zxf 2020_03_3.tar.gz\n        mv rdkit-2020_03_3 $RDBASE\n        mkdir $RDBASE/build\n        cd $RDBASE/build\n        cmake -DPYTHON_EXECUTABLE=/usr/bin/python3 ..\n        make -j $(nproc)\n        make install\n\n        ln -s /usr/local/share/rdkit/rdkit /usr/local/lib/python3.6/dist-packages/\n\n    # Install OpenBabel.\n        apt-get -qq -y update\n        apt-get -qq install -y --no-install-recommends openbabel python-openbabel\n\n    # Install Mordred Molecular Descriptor Calculator.\n        python3 -m pip --no-cache-dir install mordred\n\n    # Cleanup\n        rm -rf /tmp/rdkit"
   },
   {
     "objectID": "posts/008-build-a-singularity-container/index.html#convert-a-writable-sandbox-to-a-read-only-compressed-container",
@@ -228,42 +235,7 @@
     "href": "bookmarks/index.html",
     "title": "Bookmarks",
     "section": "",
-    "text": "Below are some of the articles, blog posts, and stack exchange threads that I have found helpful. Please comment if you know or found something interesting that I should list here.\n\nCheat sheets\n\nChoosing the right estimator\nMachine learning cheat sheet\nMachine learning glossary\nThe neural network zoo\n\n\n\nData processing\n\nNormalize data before or after split of training and testing data?\n\n\n\nR\n\nTeaching R in a Kinder, Gentler, More Effective Manner: Teach Base-R, Not Just the Tidyverse Author: Prof. Norm Matloff, University of California, Davis\nR Workflow - An overview of R Workflow, which covers how to use R effectively all the way from importing data to analysis, and making use of Quarto for reproducible reporting.\n\n\n\nStatistics\n\nThe ASA Statement on p-Values: Context, Process, and Purpose\n\n\n\n\n\n\n\nStatistical significance is not equivalent to scientific, human, or economic significance\n\n\n\n\n\nStatistical significance is not equivalent to scientific, human, or economic significance. Smaller p-values do not necessarily imply the presence of larger or more important effects, and larger p-values do not imply alack of importance or even lack of effect… No single index should substitute for scientific reasoning.\n\n\n\n\nStatistical Inference in the 21st Century: A World Beyond p < 0.05\n\n\n\n\n\n\n\nDon’t Say “Statistically Significant”\n\n\n\n\n\nThe ASA Statement on P-Values and Statistical Significance stopped just short of recommending that declarations of “statistical significance” be abandoned. We take that step here. We conclude, based on our review of the articles in this special issue and the broader literature, that it is time to stop using the term “statistically significant” entirely. Nor should variants such as “significantly different,” “p < 0.05,” and “nonsignificant” survive, whether expressed in words, by asterisks in a table, or in some other way.\nRegardless of whether it was ever useful, a declaration of “statistical significance” has today become meaningless. Made broadly known by Fisher’s use of the phrase (1925), Edgeworth’s (1885) original intention for statistical significance was simply as a tool to indicate when a result warrants further scrutiny. But that idea has been irretrievably lost. Statistical significance was never meant to imply scientific importance, and the confusion of the two was decried soon after its widespread use (Boring 1919). Yet a full century later the confusion persists.\n\n\n\n\nBayesian and frequentist reasoning in plain English\nUltimate Guide to Statistics for Data Science"
-  },
-  {
-    "objectID": "support/index.html",
-    "href": "support/index.html",
-    "title": "Contact & Support",
-    "section": "",
-    "text": "The best way to contact me is by email at rohit [dot] farmer [at] dataalltheway [dot] com\nThis is a not-for-profit website without advertisements and a paywall, and I intend to support it fully in the foreseeable future. However, a little support does help to cover some overhead costs of the domain name, professional email address, books (online courses), paying for graphics, and of course, coffee (the fuel).\nBesides financial support, I appreciate your time and expertise in providing constructive criticism of the content on this website, suggesting corrections, contributing an article, or writing a comment for a post.\nTo support this website financially, please utilize one of the methods mentioned below."
-  },
-  {
-    "objectID": "support/index.html#donate-via-buymeacoffee.com",
-    "href": "support/index.html#donate-via-buymeacoffee.com",
-    "title": "Contact & Support",
-    "section": "Donate via BuyMeACoffee.com",
-    "text": "Donate via BuyMeACoffee.com"
-  },
-  {
-    "objectID": "support/index.html#donate-via-paypal",
-    "href": "support/index.html#donate-via-paypal",
-    "title": "Contact & Support",
-    "section": "Donate via PayPal",
-    "text": "Donate via PayPal"
-  },
-  {
-    "objectID": "support/index.html#buy-me-a-book-from-amazon",
-    "href": "support/index.html#buy-me-a-book-from-amazon",
-    "title": "Contact & Support",
-    "section": "Buy me a book from Amazon",
-    "text": "Buy me a book from Amazon\nAmazon wishlist"
-  },
-  {
-    "objectID": "support/index.html#donate-in-a-crypto-currency-of-your-choice",
-    "href": "support/index.html#donate-in-a-crypto-currency-of-your-choice",
-    "title": "Contact & Support",
-    "section": "Donate in a crypto currency of your choice",
-    "text": "Donate in a crypto currency of your choice\nIf you are also a Crypto enthusiast and prefer that over fiat, then please send an email and mention the currency of your choice, and I will reply you with my wallet address."
+    "text": "Below are some of the articles, blog posts, and stack exchange threads that I have found helpful. Please comment if you know or found something interesting that I should list here.\n\nCheat sheets\n\nChoosing the right estimator\nMachine learning cheat sheet\nMachine learning glossary\nThe neural network zoo\n\n\n\nData processing\n\nNormalize data before or after split of training and testing data?\n\n\n\nR\n\nAdvanced R by Hadley Wickham\nTeaching R in a Kinder, Gentler, More Effective Manner: Teach Base-R, Not Just the Tidyverse Author: Prof. Norm Matloff, University of California, Davis\nR Workflow - An overview of R Workflow, which covers how to use R effectively all the way from importing data to analysis, and making use of Quarto for reproducible reporting.\n\n\n\nStatistics\n\nThe ASA Statement on p-Values: Context, Process, and Purpose\n\n\n\n\n\n\n\nStatistical significance is not equivalent to scientific, human, or economic significance\n\n\n\n\n\nStatistical significance is not equivalent to scientific, human, or economic significance. Smaller p-values do not necessarily imply the presence of larger or more important effects, and larger p-values do not imply alack of importance or even lack of effect… No single index should substitute for scientific reasoning.\n\n\n\n\nStatistical Inference in the 21st Century: A World Beyond p < 0.05\n\n\n\n\n\n\n\nDon’t Say “Statistically Significant”\n\n\n\n\n\nThe ASA Statement on P-Values and Statistical Significance stopped just short of recommending that declarations of “statistical significance” be abandoned. We take that step here. We conclude, based on our review of the articles in this special issue and the broader literature, that it is time to stop using the term “statistically significant” entirely. Nor should variants such as “significantly different,” “p < 0.05,” and “nonsignificant” survive, whether expressed in words, by asterisks in a table, or in some other way.\nRegardless of whether it was ever useful, a declaration of “statistical significance” has today become meaningless. Made broadly known by Fisher’s use of the phrase (1925), Edgeworth’s (1885) original intention for statistical significance was simply as a tool to indicate when a result warrants further scrutiny. But that idea has been irretrievably lost. Statistical significance was never meant to imply scientific importance, and the confusion of the two was decried soon after its widespread use (Boring 1919). Yet a full century later the confusion persists.\n\n\n\n\nBayesian and frequentist reasoning in plain English\nUltimate Guide to Statistics for Data Science"
   },
   {
     "objectID": "blog.html",
