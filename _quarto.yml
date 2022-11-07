@@ -21,8 +21,8 @@ website:
       - icon: rss
         href: blog.xml
   page-footer: 
-    left: "<b><a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>Copyright CC BY-NC-SA 4.0</a></b>"
-    right: '<a href = "contact/"><b>Contact</b></a>'
+    left: "<b><a href = 'https://creativecommons.org/licenses/by-nc-sa/4.0/'>Copyright CC BY-NC-SA 4.0</a></b>"
+    right: '<a href = "https://dataalltheway.com/contact/"><b>Contact</b></a>'
     center: "<b>Made with ✌️❤️☕  </b>"
     border: true
     background: dark
