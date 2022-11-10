@@ -34,7 +34,7 @@ There are different parametric tests, but the most common is the t-test. Below i
 -   F-test
 
 ::: callout-tip
-If you are primarily interested in code examples, please follow the navigation on the right; alternatively, you can test live code on Kaggle.
+If you are primarily interested in code examples, please follow the navigation on the right; alternatively, you can test live code on [Kaggle](https://www.kaggle.com/rohitfarmer/010-parametric-hypothesis-tests-r).
 :::
 
 Besides deciding which hypothesis test to use to answer the question at hand, we also need to decide a couple of other parameters, for example, whether the test would be one sample or two samples, paired or un-paired, and one or two-tailed. Below is a brief description of each parameter.
