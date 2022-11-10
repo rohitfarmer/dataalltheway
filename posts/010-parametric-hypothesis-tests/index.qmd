@@ -1,6 +1,6 @@
 ---
 title: "Parametric hypothesis tests with examples in R and Python"
-description: "A tutorial on how to download a shared file with 'anyone with the link' access rights from Google Drive in R."
+description: "A tutorial on parametric hypothesis tests with examples in R and Python."
 author: 
   - name: "Rohit Farmer"
     orcid: "0000-0003-4197-3047"

@@ -8,7 +8,7 @@ The best way to contact me is by email at **rohit \[dot\] farmer \[at\] dataallt
 
 You can also leave a comment at the bottom of this page and I will respond as soon as possible.
 
-I am also active on [Mastodon](http://fosstodon.org/@swatantra) and [Twitter](https://twitter.com/rohitfarmer) and would be happy to chat there.
+I am also active on <a rel="me" href="https://fosstodon.org/@swatantra">Mastodon</a> and [Twitter](https://twitter.com/rohitfarmer) and would be happy to chat there.
 
 ::: callout-note
 This is a not-for-profit website without advertisements and a paywall, and I intend to support it fully in the foreseeable future. Therefore, I am not looking for any affiliate marketing or paid promotions. However, I appreciate your time and expertise in providing constructive criticism of the content on this website, suggesting corrections, contributing an article, or writing a comment on a post.
