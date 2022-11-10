@@ -13,6 +13,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/010-parametric-hypothesis-tests-r/index.html",
       "/posts/009-rules-for-naming-files/index.html",
       "/posts/008-build-a-singularity-container/index.html",
       "/posts/007-open-data-for-datascience/index.html",

@@ -2,54 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.dataalltheway.com/contact/index.html</loc>
-    <lastmod>2022-11-10T14:48:19.996Z</lastmod>
+    <lastmod>2022-11-10T20:05:27.249Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r/index.html</loc>
+    <lastmod>2022-11-10T20:05:29.256Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</loc>
-    <lastmod>2022-11-10T14:48:22.859Z</lastmod>
+    <lastmod>2022-11-10T20:05:30.512Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/008-build-a-singularity-container/index.html</loc>
-    <lastmod>2022-11-10T14:48:24.051Z</lastmod>
+    <lastmod>2022-11-10T20:05:31.976Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/001-data-transformation/index.html</loc>
-    <lastmod>2022-11-10T14:48:27.229Z</lastmod>
+    <lastmod>2022-11-10T20:05:34.901Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/007-open-data-for-datascience/index.html</loc>
-    <lastmod>2022-11-10T14:48:29.263Z</lastmod>
+    <lastmod>2022-11-10T20:05:36.780Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</loc>
-    <lastmod>2022-11-10T14:48:31.398Z</lastmod>
+    <lastmod>2022-11-10T20:05:39.128Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</loc>
-    <lastmod>2022-11-10T14:48:32.451Z</lastmod>
+    <lastmod>2022-11-10T20:05:40.280Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</loc>
-    <lastmod>2022-11-10T14:48:33.879Z</lastmod>
+    <lastmod>2022-11-10T20:05:41.761Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/009-rules-for-naming-files/index.html</loc>
-    <lastmod>2022-11-10T14:48:35.008Z</lastmod>
+    <lastmod>2022-11-10T20:05:42.939Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</loc>
-    <lastmod>2022-11-10T14:48:36.314Z</lastmod>
+    <lastmod>2022-11-10T20:05:44.261Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/index.html</loc>
-    <lastmod>2022-11-10T14:48:36.940Z</lastmod>
+    <lastmod>2022-11-10T20:05:44.883Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/bookmarks/index.html</loc>
-    <lastmod>2022-11-10T14:48:37.818Z</lastmod>
+    <lastmod>2022-11-10T20:05:45.771Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/blog.html</loc>
-    <lastmod>2022-11-10T14:48:38.401Z</lastmod>
+    <lastmod>2022-11-10T20:05:46.343Z</lastmod>
   </url>
 </urlset>
