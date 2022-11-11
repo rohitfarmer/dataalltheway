@@ -37,7 +37,7 @@ Below are some of the articles, blog posts, and stack exchange threads that I ha
 
 -   [Statistical Inference in the 21st Century: A World Beyond p \< 0.05](https://www.tandfonline.com/toc/utas20/73/sup1)
 
-::: {.callout-note appearance="minimal" icon="false" collapse="\"true"}
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
 ## Don't Say "Statistically Significant"
 
 *The ASA Statement on P-Values and Statistical Significance stopped just short of recommending that declarations of "statistical significance" be abandoned. We take that step here. We conclude, based on our review of the articles in this special issue and the broader literature, that it is time to stop using the term "statistically significant" entirely. Nor should variants such as "significantly different," "p \< 0.05," and "nonsignificant" survive, whether expressed in words, by asterisks in a table, or in some other way.*
@@ -46,11 +46,8 @@ Below are some of the articles, blog posts, and stack exchange threads that I ha
 :::
 
 -   [Bayesian and frequentist reasoning in plain English](https://stats.stackexchange.com/questions/22/bayesian-and-frequentist-reasoning-in-plain-english)
-
 -   [Ultimate Guide to Statistics for Data Science](https://towardsdatascience.com/ultimate-guide-to-statistics-for-data-science-a3d8f1fd69a7)
-
 -   **Book:** [Improving Your Statistical Inferences](https://lakens.github.io/statistical_inferences/index.html)
-
 -   **Book/course:** [Online Statistics Education: An Interactive Multimedia Course of Study](https://onlinestatbook.com/2/index.html)
-
-    \
+-   **Book:** [Bayesian Data Analysis Third edition](https://stat.columbia.edu/~gelman/book/) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin.
+-   **Book:** [Regression and Other Stories](https://avehtari.github.io/ROS-Examples/) by Andrew Gelman, Jennifer Hill, Aki Vehtari

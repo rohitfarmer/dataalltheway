@@ -20,6 +20,7 @@ bibliography: references.bib
 ::: {.callout-note collapse="true"}
 ### Update history
 
+2022-11-11 Added example code for one-tailed t-test; mentioned Welch's t-test in a note callout.\
 2022-11-10 First draft with live code on Kaggle.
 :::
 
@@ -47,7 +48,11 @@ Paired tests are used to compare two related data groups, ***such as before and 
 
 There are key differences between one-sample and two-sample hypothesis testing. Firstly, in one sample hypothesis testing, we are testing the mean of a single sample ***against a known population mean***. In contrast, two-sample hypothesis testing involves ***comparing the means of two independent samples***. Secondly, one-sample hypothesis testing only requires a single sample size, while two-sample hypothesis testing requires two. Finally, one-sample hypothesis testing is typically used when the population standard deviation is known, while two-sample hypothesis testing is used when the population standard deviation is unknown.
 
-## One vs. two tailed tests
+## One vs. two-tailed tests
+
+::: callout-note
+All the example codes in this tutorial are for two-tailed tests except one in the T-test @sec-t-test.
+:::
 
 In a hypothesis test, the null and alternate hypotheses are stated in terms of population parameters. These hypotheses are:
 
@@ -245,7 +250,7 @@ $$ {#eq-pooled-sd}
 
 Where $\bar x_1$ and $\bar x_2$ are the means from the two samples, likewise $n_1$ and $n_2$ are the sample sizes and $s_1^2$ and $s_2^2$ are the sample variances. This test statistic you will compare to *t*-tables on $(n1+n2−2)$ degrees of freedom.
 
-### Example code in R
+### Example code for a two-tailed test in R
 
 ```{r}
 # Fetch the BMI data for women from rural and urban areas in the year 1985
@@ -261,8 +266,24 @@ x2 <- dplyr::filter(dat, Sex == "Women", Region == "Urban", Year == 1985) %>%
 We use the `var.equal = TRUE` option here to use the pooled standard deviation $s$ @eq-pooled-sd.
 
 ::: callout-note
-For the pooled variance *t*-test to be appropriate you rely on the assumption that the two samples come from the same population and have equal variance.
+For the pooled variance t-test to be appropriate you rely on the assumption that the two samples come from the same population and have equal variance. However, a modification of the t-test known as Welch's test is said to correct for this problem by estimating the variances, and adjusting the degrees of freedom to use in the test. This correction is performed by default, but can be shut off by using the `var.equal=TRUE` argument as used in the example above.
 :::
+
+```{r}
+# Fetch t-test result metrics and present them in a tidy table
+broom::tidy(t_res) %>%
+  kbl() %>%
+  kable_paper("hover", full_width = F)
+```
+
+### Example code for a one-tailed test in R
+
+Here we will test if women in rural areas had a higher BMI than those in urban areas in 1985.
+
+```{r}
+# Perform a one-tailed two sample (unpaired) t-test between x1 and x2
+(t_res <- t.test(x1, x2, var.equal = TRUE, alternative = "greater"))
+```
 
 ```{r}
 # Fetch t-test result metrics and present them in a tidy table
