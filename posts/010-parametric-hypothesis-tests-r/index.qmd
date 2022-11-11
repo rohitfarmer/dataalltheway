@@ -20,7 +20,7 @@ bibliography: references.bib
 ::: {.callout-note collapse="true"}
 ### Update history
 
-2022-11-10 First unfinished draft.
+2022-11-10 First draft with live code on Kaggle.
 :::
 
 # Introduction
@@ -31,10 +31,10 @@ There are different parametric tests, but the most common is the t-test. Below i
 
 -   Z-test (@sec-z-test)
 -   T-test (@sec-t-test)
--   F-test
+-   F-test (@sec-f-test)
 
 ::: callout-tip
-If you are primarily interested in code examples, please follow the navigation on the right; alternatively, you can test live code on [Kaggle](https://www.kaggle.com/rohitfarmer/010-parametric-hypothesis-tests-r).
+**If you are primarily interested in code examples, please follow the navigation on the right; alternatively, you can test live code on [Kaggle](https://www.kaggle.com/rohitfarmer/010-parametric-hypothesis-tests-r).**
 :::
 
 Besides deciding which hypothesis test to use to answer the question at hand, we also need to decide a couple of other parameters, for example, whether the test would be one sample or two samples, paired or un-paired, and one or two-tailed. Below is a brief description of each parameter.
@@ -231,7 +231,7 @@ broom::tidy(t_res) %>%
   kable_paper("hover", full_width = F)
 ```
 
-### Two sample unpaired (independent) t-test
+## Two sample unpaired (independent) t-test
 
 $$
 \begin{equation} t = \dfrac{\bar{x_1} - \bar{x_2}}{\sqrt{s^2\bigg(\dfrac{1}{n_1} + \dfrac{1}{n_2}\bigg)}} \end{equation}
@@ -271,7 +271,7 @@ broom::tidy(t_res) %>%
   kable_paper("hover", full_width = F)
 ```
 
-### Two sample paired (dependent) t-test
+## Two sample paired (dependent) t-test
 
 $$
 \begin{equation} t = \dfrac{\bar{d}}{\sqrt{\dfrac{s^2}{n}}} \end{equation}
@@ -289,6 +289,35 @@ Where $\bar d$ is the mean of the differences between the samples. You will comp
 ```{r}
 # Fetch t-test result metrics and present them in a tidy table
 broom::tidy(t_res) %>%
+  kbl() %>%
+  kable_paper("hover", full_width = F)
+```
+
+# F-test {#sec-f-test}
+
+Conventionally in a hypothesis test the sample means are compared. However, it is possible to have two identical means for two different samples/groups, meanwhile their variances could differ drastically. The statistical test to use to compare variance is called the $F$-ratio test (or the variance ratio test) and compares two variances in order to test whether they come from the same populations.
+
+Comparing two variances is useful in several cases, including:
+
+-   When you want to perform a two samples t-test to check the equality of the variances of the two samples
+
+-   When you want to compare the variability of a new measurement method to an old one. Does the new method reduce the variability of the measure?
+
+$$
+F = \frac{S_A^2}{S_B^2}
+$$ {#eq-f-test}
+
+Where $S^2_A$ and $S^2_B$ are the two variances to compare. There is a table of the $F$-distribution. Similarly to the $t$ and Normal distributions, it is organised according to the degrees of freedom of the two variance estimates. The degrees of freedom are $n_A−1$ (for the numerator) and $n_B−1$ (for the denominator).
+
+## Example code in R
+
+```{r}
+(f_res <- var.test(x1, x2))
+```
+
+```{r}
+# Fetch f-test result metrics and present them in a tidy table
+broom::tidy(f_res) %>%
   kbl() %>%
   kable_paper("hover", full_width = F)
 ```
