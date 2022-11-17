@@ -1,0 +1,179 @@
+---
+title: "Parametric hypothesis tests with examples in Julia"
+description: "A tutorial on parametric hypothesis tests with examples in Julia."
+author: 
+    - name: "Dhruva Sambrani"
+      orcid: "0000-0001-6254-4757"
+date: "2022-11-17"
+categories: [How To, Parametric Tests, T-test, Z-test, F-test, Julia]
+format:
+  html:
+    code-fold: false
+    code-tools:
+      source: false
+      toggle: true
+citation: true
+google-scholar: true
+jupyter: julia-1.8
+---
+
+::: {.callout-note collapse="true"}
+### Update history
+
+2022-11-17 First draft
+:::
+
+# Introduction
+
+This article is an extension of [Rohit Farmer. 2022. "Parametric Hypothesis Tests with Examples in R." November 10, 2022](https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r). Please check out the parent article for the theoretical background.
+
+-   Z-test (@sec-z-test)
+-   T-test (@sec-t-test)
+-   F-test (@sec-f-test)
+
+## Import packages
+
+```{julia}
+import Pkg
+Pkg.activate(".")
+using CSV
+using DataFrames
+using Statistics
+using HypothesisTests
+```
+
+# Getting the data
+
+Some cleaning is necessary since the data is not of the correct types.
+
+```{julia}
+begin
+	data = CSV.read(download("https://raw.githubusercontent.com/opencasestudies/ocs-bp-rural-and-urban-obesity/master/data/wrangled/BMI_long.csv"), DataFrame) # download and load
+	allowmissing!(data, :BMI) # Allow BMI col to have missing values
+	replace!(data.BMI, "NA" => missing) # Convert "NA" to missing
+	data[!, :BMI] .= passmissing(parse).(Float64, (data[!, :BMI])) # Typecast into Float64?
+end;
+```
+
+```{julia}
+first(data, 20)
+```
+
+# Z-test {#sec-z-test}
+
+## Two sample unpaired z-test
+
+```{julia}
+uneqvarztest = let
+	# Fetch a random sample of BMI data for women in the year 1985 and 2017
+	x1 = filter([:Sex, :Year] => (s, y) -> s=="Women" && y==1985 , data) |>
+		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	x2 = filter([:Sex, :Year] => (s, y) -> s=="Women" && y==2017 , data) |>
+		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	UnequalVarianceZTest(x1, x2)
+end
+```
+
+## Two sample paired z-test
+
+```{julia}
+eqvarztest = let
+	# Fetch a random sample of BMI data for women in the year 1985 and 2017
+	x1 = filter([:Sex, :Year] => (s, y) -> s=="Women" && y==1985 , data) |>
+		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	x2 = filter([:Sex, :Year] => (s, y) -> s=="Women" && y==2017 , data) |>
+		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	EqualVarianceZTest(x1, x2)
+end
+```
+
+# T-test {#sec-t-test}
+
+## One sample t-test
+
+```{julia}
+onesamplettest = let 
+	x1 = filter(
+		[:Sex, :Region, :Year] => 
+			(s, r, y) -> s=="Men" && r=="Rural" && y == 2017,
+		data
+	) |>
+	x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	OneSampleTTest(x1, 24.5)
+end
+```
+
+## Two sample unpaired (independent) t-test
+
+```{julia}
+unpairedtwosamplettest = let 
+    x1 = filter([:Sex, :Region, :Year] => 
+            (s, r, y) -> s=="Women" && r=="Rural" && y == 1985,
+        data) |>
+        x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+    x2 = filter([:Sex, :Region, :Year] => 
+            (s, r, y) -> s=="Women" && r=="Urban" && y == 1985,
+        data) |>
+        x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+    x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+    UnequalVarianceTTest(x1, x2)
+end
+```
+
+::: callout-warning
+## Welch's Test
+
+This test uses the Welch correction, and there is no way to turn it off in `HypothesisTests.jl`.
+:::
+
+### Only considering right tailed (one-tailed)
+
+```{julia}
+unpairedtwosamplettest = let 
+	x1 = filter([:Sex, :Region, :Year] => 
+			(s, r, y) -> s=="Women" && r=="Rural" && y == 1985,
+		data) |>
+		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	x2 = filter([:Sex, :Region, :Year] => 
+			(s, r, y) -> s=="Women" && r=="Urban" && y == 1985,
+		data) |>
+		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	UnequalVarianceTTest(x1, x2)
+end
+pvalue(unpairedtwosamplettest, tail=:right)
+```
+
+## Two sample paired (dependent) t-test
+
+```{julia}
+pairedtwosamplettest = let 
+	x1 = filter([:Sex, :Region, :Year] => 
+			(s, r, y) -> s=="Women" && r=="Rural" && y == 1985,
+		data) |>
+		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	x2 = filter([:Sex, :Region, :Year] => 
+			(s, r, y) -> s=="Women" && r=="Urban" && y == 1985,
+		data) |>
+		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	EqualVarianceTTest(x1, x2)
+end
+```
+
+# F-test {#sec-f-test}
+
+```{julia}
+Ftest = let 
+	x1 = filter([:Sex, :Region, :Year] => 
+			(s, r, y) -> s=="Women" && r=="Rural" && y == 1985,
+		data) |>
+		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	x2 = filter([:Sex, :Region, :Year] => 
+			(s, r, y) -> s=="Women" && r=="Urban" && y == 1985,
+		data) |>
+		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
+	VarianceFTest(x1, x2)
+end
+```

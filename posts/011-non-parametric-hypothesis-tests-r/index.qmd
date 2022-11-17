@@ -1,0 +1,160 @@
+---
+title: "Non-parametric hypothesis tests with examples in R"
+description: "A tutorial on non-parametric hypothesis tests with examples in R."
+author: 
+  - name: "Rohit Farmer"
+    orcid: "0000-0003-4197-3047"
+date: "2022-11-15"
+categories: [How To, Non-parametric Tests, Wilcoxon Test, Mann Whitney U Test]
+format:
+  html:
+    code-fold: false
+    code-tools:
+      source: false
+      toggle: true
+citation: true
+google-scholar: true
+bibliography: references.bib
+draft: true
+---
+
+::: {.callout-note collapse="true"}
+### Update history
+
+2022-11-15 First draft with live code on Kaggle.
+:::
+
+# Introduction
+
+A hypothesis test is a statistical test used to determine whether there is enough evidence to support a hypothesis. For example, there is a difference between the average height of males and females. Non-parametric hypothesis tests are tests that do not rely on the assumptions of normality or equal variance. They are traditional alternatives to parametric tests because they make few or no assumptions about the distribution of the data or population. Many non-parametric tests are based on ranks given to the original numerical scores/data. Usually non-parametric tests are regarded as relatively easy to perform but some problems can occur. It can be cumbersome to carry out such tests when working with large amounts of data. In many field of study such as psychology, the data have quite restricted ranges of scores, which can result in the same value appearing several times in a set of data. Tests based on rank can become more complicated with increased tied scores. Though, non-parametric tests have fewer assumptions they are not as powerful as parametric tests.
+
+The different types of non-parametric hypothesis tests are:
+
+-   the Wilcoxon rank-sum (Mann-Whitney U test) (@sec-mann-u-test),
+-   the Wilcoxon signed-rank test (@sec-signed-rank-test), and
+-   the Kruskal-Wallis test.
+
+## Dataset
+
+For our example exercises we will work with "Global CO~2~ emissions from cement production" dataset [@andrew2022]. I have subsetted the data to include rows from the year 1928 onward and dropped any column that either had all NAs or zeros. Table below shows all the data that we will use in this tutorial.
+
+@fig-co2-emission shows per country yearly (x-axis) emissions logged to base 10 (y-axis). The log is taken visualization purposes only all the statistical calculations will be done on the original values.
+
+::: callout-note
+The emissions from use of fossil fuels in cement production are not included in this dataset since they are usually included elsewhere in global datasets of fossil CO~2~ emissions. The process emissions in this dataset, which result from the decomposition of carbonates in the production of cement clinker, amounted to \~1.7 Gt CO~2~ in 2021, while emissions from combustion of fossil fuels to produce the heat required amounted to an additional \~1.0 Gt CO~2~ in 2021.
+:::
+
+```{r}
+suppressMessages(library(DT))
+suppressMessages(library(tidyverse))
+suppressMessages(library(kableExtra))
+```
+
+```{r}
+dat <- readr::read_csv("https://zenodo.org/record/7081360/files/1.%20Cement_emissions_data.csv", show_col_types = FALSE)
+dat <- dat %>% dplyr::filter(Year >= 1928) %>%
+  select_if(function(x) all(!is.na(x))) %>%
+  select_if(function(x) all(!x == 0))
+DT::datatable(dat)
+```
+
+```{r}
+#| label: fig-co2-emission
+#| fig-cap: "Global CO~2~ emissions from cement production"
+dat_gather <- dat %>% gather(key = "Country", value = "Emission", -Year)
+ggplot(dat_gather, aes(x = Year, y = as.numeric(log10(Emission)), color = Country)) +
+  geom_line(aes(group = Country)) + 
+  labs(x = "Year", y = "log10(Emission)", color = "") +theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+```
+
+# Wilcoxon rank-sum (Mann-Whitney U test) {#sec-mann-u-test}
+
+The Wilcoxon rank-sum or Mann-Whitney U test is perhaps the most common non-parametric test for unrelated samples of scores. You would use it when the two groups are independent of each other, for example in our dataset testing differences in CO~2~ emissions between two different countries (e.g. USA vs. Canada). It can be used even when the two groups are of different sizes.
+
+## The Method
+
+-   Similar to any hypothesis testing first, we state our null and alternative hypotheses.
+-   Next, we rank all of the values (from both groups) from the smallest to largest. Equal values are allocated the average of the ranks they would have if there was tiny differences between them.
+-   Next we sum the ranks for each group. You call the sum of the ranks for the larger group $R_1$ and for the smaller sized group, $R_2$. If both groups are equally sized then we can label them whichever way round we like.
+-   We then input $R_1$ and $R_2$ and also $N_1$ and $N_2$, the respective sizes of each group, into the @eq-u-test.
+
+$$
+\begin{equation} U = (N_1 \times N_2) + \dfrac{N_1 \times (N_1+1)}{2} - R_1 \end{equation}
+$$ {#eq-u-test}
+
+-   Then we compare the value of $U$ to significance tables. You find the intersection of the column with the value of $N_1$ and the row with the value of $N_2$. In this intersection there will be two ranges of values of $U$ which are significant at the $5%$ level. If our value is within one of these ranges, then we have a significant result and we reject the null hypothesis. If our value is not in the range then it is not significant and then the independent variable is unrelated to the dependent variable, we accept the $H_0$.
+-   As a check, we also need to examine the means of the two groups, to see which has the higher scores on the dependent variable.
+
+## Example code for a two-tailed test in R
+
+In this example we will do a two-tailed test to measure if there is a difference in emission between the USA and Canada. Our null hypothesis $H_0$ is that there is no difference.
+
+```{r}
+(w_res <- wilcox.test(dat$USA, dat$Canada, conf.int = TRUE))
+```
+
+```{r}
+#| label: tbl-u-test-two-sided
+#| tbl-cap: "Two-tailed Wilcoxon rank sum test between Co~2~ emissions from the USA and Canada"
+
+broom::tidy(w_res) %>%
+  kbl() %>%
+  kable_paper("hover", full_width = F)
+```
+
+## Example code for a one-tailed test in R
+
+In this example we will do a one-tailed test to measure if emissions from the USA is greater than Canada. Our null hypothesis $H_0$ is that the emissions from the USA is not greater than Canada.
+
+```{r}
+(w_res <- wilcox.test(dat$USA, dat$Canada, conf.int = TRUE, alternative = "greater"))
+```
+
+```{r}
+#| label: tbl-u-test-one-sided
+#| tbl-cap: "One-tailed Wilcoxon rank sum test between Co~2~ emissions from the USA and Canada"
+
+broom::tidy(w_res) %>%
+  kbl() %>%
+  kable_paper("hover", full_width = F)
+```
+
+# The Wilcoxon signed-rank test {#sec-signed-rank-test}
+
+The Wilcoxon signed ranks test also known as the Wilcoxon matched pairs test, is similar to the sign test. The only alteration is that we rank the differences ignoring their signs (but we do keep a note of them). As the name implies, we use the Wilcoxon matched pairs test on related data, so each sample or group will be equal in size.
+
+## The Method
+
+-   Calculate the difference values between your two samples of data. We then remove difference values of zero.
+-   Rank them. If values are tied then you use the same method as in the Mann-Whitney tests. You assign the difference scores the average rank if it was possible to separate the tied difference scores.
+-   The ranks of the differences can now have the sign of the difference reattached.
+-   The sum of the positive ranks are calculated.
+-   The sum of the negative ranks are calculated.
+-   You then choose the smaller sum of ranks and we call this our $T$ value, which we compare with significance tables. You choose the row which has the number of pairs of values in your sample.
+-   Report your findings and make your conclusion.
+
+## Example code for a paired two-tailed test in R
+
+Since this a paired test we will test if there is difference in emission between two time periods say 2000 and 2020 across all the countries in our dataset. Our null hypothesis $H_0$ is that there is not difference.
+
+```{r}
+dat_m <- dat %>% dplyr::select(-Year) %>% as.matrix()
+rownames(dat_m) <- dat$Year
+dat_t <- t(dat_m)
+x <- as.numeric(dat_t[,"2000"])
+y <- as.numeric(dat_t[,"2020"])
+
+(w_res <- wilcox.test(x, y, conf.int = TRUE, paired = TRUE))
+
+```
+
+```{r}
+#| label: tbl-signed-two-sided
+#| tbl-cap: "Two-tailed Wilcoxon signed rank test between Co~2~ emissions from 2000 and 2020"
+
+broom::tidy(w_res) %>%
+  kbl() %>%
+  kable_paper("hover", full_width = F)
+```

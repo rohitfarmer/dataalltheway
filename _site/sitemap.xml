@@ -2,58 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.dataalltheway.com/contact/index.html</loc>
-    <lastmod>2022-11-11T20:27:16.741Z</lastmod>
+    <lastmod>2022-11-17T23:57:23.581Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r/index.html</loc>
-    <lastmod>2022-11-11T20:27:18.671Z</lastmod>
+    <lastmod>2022-11-17T23:57:25.427Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</loc>
-    <lastmod>2022-11-11T20:27:19.660Z</lastmod>
+    <lastmod>2022-11-17T23:57:26.416Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/008-build-a-singularity-container/index.html</loc>
-    <lastmod>2022-11-11T20:27:20.842Z</lastmod>
+    <lastmod>2022-11-17T23:57:27.490Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia/index.html</loc>
+    <lastmod>2022-11-17T23:57:29.732Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/001-data-transformation/index.html</loc>
-    <lastmod>2022-11-11T20:27:23.892Z</lastmod>
+    <lastmod>2022-11-17T23:57:33.495Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/007-open-data-for-datascience/index.html</loc>
-    <lastmod>2022-11-11T20:27:26.440Z</lastmod>
+    <lastmod>2022-11-17T23:57:35.416Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</loc>
-    <lastmod>2022-11-11T20:27:28.659Z</lastmod>
+    <lastmod>2022-11-17T23:57:37.610Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</loc>
-    <lastmod>2022-11-11T20:27:29.676Z</lastmod>
+    <lastmod>2022-11-17T23:57:38.637Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</loc>
-    <lastmod>2022-11-11T20:27:30.986Z</lastmod>
+    <lastmod>2022-11-17T23:57:39.904Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/009-rules-for-naming-files/index.html</loc>
-    <lastmod>2022-11-11T20:27:32.092Z</lastmod>
+    <lastmod>2022-11-17T23:57:41.069Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</loc>
-    <lastmod>2022-11-11T20:27:33.376Z</lastmod>
+    <lastmod>2022-11-17T23:57:42.344Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/index.html</loc>
-    <lastmod>2022-11-11T20:27:34.029Z</lastmod>
+    <lastmod>2022-11-17T23:57:43.021Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/bookmarks/index.html</loc>
-    <lastmod>2022-11-11T20:27:34.977Z</lastmod>
+    <lastmod>2022-11-17T23:57:43.972Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/blog.html</loc>
-    <lastmod>2022-11-11T20:27:35.674Z</lastmod>
+    <lastmod>2022-11-17T23:57:44.548Z</lastmod>
   </url>
 </urlset>

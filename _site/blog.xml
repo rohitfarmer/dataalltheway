@@ -17,7 +17,337 @@
 <width>144</width>
 </image>
 <generator>quarto-1.2.215</generator>
-<lastBuildDate>Thu, 10 Nov 2022 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 17 Nov 2022 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Parametric hypothesis tests with examples in Julia</title>
+  <dc:creator>Dhruva Sambrani</dc:creator>
+  <link>https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Update history
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>2022-11-17 First draft</p>
+</div>
+</div>
+</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This article is an extension of <a href="https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r">Rohit Farmer. 2022. “Parametric Hypothesis Tests with Examples in R.” November 10, 2022</a>. Please check out the parent article for the theoretical background.</p>
+<ul>
+<li>Z-test (Section&nbsp;3)</li>
+<li>T-test (Section&nbsp;4)</li>
+<li>F-test (Section&nbsp;5)</li>
+</ul>
+<section id="import-packages" class="level2">
+<h2 class="anchored" data-anchor-id="import-packages">Import packages</h2>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><span class="im" style="color: #00769E;">import</span> <span class="bu" style="color: null;">Pkg</span></span>
+<span id="cb1-2"><span class="bu" style="color: null;">Pkg</span>.<span class="fu" style="color: #4758AB;">activate</span>(<span class="st" style="color: #20794D;">"."</span>)</span>
+<span id="cb1-3"><span class="im" style="color: #00769E;">using</span> <span class="bu" style="color: null;">CSV</span></span>
+<span id="cb1-4"><span class="im" style="color: #00769E;">using</span> <span class="bu" style="color: null;">DataFrames</span></span>
+<span id="cb1-5"><span class="im" style="color: #00769E;">using</span> <span class="bu" style="color: null;">Statistics</span></span>
+<span id="cb1-6"><span class="im" style="color: #00769E;">using</span> <span class="bu" style="color: null;">HypothesisTests</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  Activating project at `~/sandbox/dataalltheway/posts/010-01-parametric-hypothesis-tests-julia`</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="getting-the-data" class="level1">
+<h1>Getting the data</h1>
+<p>Some cleaning is necessary since the data is not of the correct types.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><span class="cf" style="color: #003B4F;">begin</span></span>
+<span id="cb3-2">    data <span class="op" style="color: #5E5E5E;">=</span> CSV.<span class="fu" style="color: #4758AB;">read</span>(<span class="fu" style="color: #4758AB;">download</span>(<span class="st" style="color: #20794D;">"https://raw.githubusercontent.com/opencasestudies/ocs-bp-rural-and-urban-obesity/master/data/wrangled/BMI_long.csv"</span>), DataFrame) <span class="co" style="color: #5E5E5E;"># download and load</span></span>
+<span id="cb3-3">    <span class="fu" style="color: #4758AB;">allowmissing!</span>(data, <span class="op" style="color: #5E5E5E;">:</span>BMI) <span class="co" style="color: #5E5E5E;"># Allow BMI col to have missing values</span></span>
+<span id="cb3-4">    <span class="fu" style="color: #4758AB;">replace!</span>(data.BMI, <span class="st" style="color: #20794D;">"NA"</span> <span class="op" style="color: #5E5E5E;">=&gt;</span> <span class="cn" style="color: #8f5902;">missing</span>) <span class="co" style="color: #5E5E5E;"># Convert "NA" to missing</span></span>
+<span id="cb3-5">    data[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">.=</span> <span class="fu" style="color: #4758AB;">passmissing</span>(parse).(<span class="dt" style="color: #AD0000;">Float64</span>, (data[!, <span class="op" style="color: #5E5E5E;">:</span>BMI])) <span class="co" style="color: #5E5E5E;"># Typecast into Float64?</span></span>
+<span id="cb3-6"><span class="cf" style="color: #003B4F;">end</span>;</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><span class="fu" style="color: #4758AB;">first</span>(data, <span class="fl" style="color: #AD0000;">20</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+<div><div style="float: left;"><span>20×5 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;"><table class="data-frame table table-sm table-striped" style="margin-bottom: 6px;"><thead><tr class="header"><th class="rowNumber" style="font-weight: bold; text-align: right;">Row</th><th style="text-align: left;">Country</th><th style="text-align: left;">Sex</th><th style="text-align: left;">Region</th><th style="text-align: left;">Year</th><th style="text-align: left;">BMI</th></tr><tr class="subheader headerLastRow"><th class="rowNumber" style="font-weight: bold; text-align: right;"></th><th title="String" style="text-align: left;">String</th><th title="String7" style="text-align: left;">String7</th><th title="String15" style="text-align: left;">String15</th><th title="Int64" style="text-align: left;">Int64</th><th title="Union{Missing, Float64}" style="text-align: left;">Float64?</th></tr></thead><tbody><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">1</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Men</td><td style="text-align: left;">National</td><td style="text-align: right;">1985</td><td style="text-align: right;">20.2</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">2</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Men</td><td style="text-align: left;">Rural</td><td style="text-align: right;">1985</td><td style="text-align: right;">19.7</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">3</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Men</td><td style="text-align: left;">Urban</td><td style="text-align: right;">1985</td><td style="text-align: right;">22.4</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">4</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Men</td><td style="text-align: left;">National</td><td style="text-align: right;">2017</td><td style="text-align: right;">22.8</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">5</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Men</td><td style="text-align: left;">Rural</td><td style="text-align: right;">2017</td><td style="text-align: right;">22.5</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">6</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Men</td><td style="text-align: left;">Urban</td><td style="text-align: right;">2017</td><td style="text-align: right;">23.6</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">7</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Women</td><td style="text-align: left;">National</td><td style="text-align: right;">1985</td><td style="text-align: right;">20.6</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">8</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Women</td><td style="text-align: left;">Rural</td><td style="text-align: right;">1985</td><td style="text-align: right;">20.1</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">9</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Women</td><td style="text-align: left;">Urban</td><td style="text-align: right;">1985</td><td style="text-align: right;">23.2</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">10</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Women</td><td style="text-align: left;">National</td><td style="text-align: right;">2017</td><td style="text-align: right;">24.4</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">11</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Women</td><td style="text-align: left;">Rural</td><td style="text-align: right;">2017</td><td style="text-align: right;">23.6</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">12</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Women</td><td style="text-align: left;">Urban</td><td style="text-align: right;">2017</td><td style="text-align: right;">26.3</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">13</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Men</td><td style="text-align: left;">National</td><td style="text-align: right;">1985</td><td style="text-align: right;">25.2</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">14</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Men</td><td style="text-align: left;">Rural</td><td style="text-align: right;">1985</td><td style="text-align: right;">25.0</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">15</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Men</td><td style="text-align: left;">Urban</td><td style="text-align: right;">1985</td><td style="text-align: right;">25.4</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">16</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Men</td><td style="text-align: left;">National</td><td style="text-align: right;">2017</td><td style="text-align: right;">27.0</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">17</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Men</td><td style="text-align: left;">Rural</td><td style="text-align: right;">2017</td><td style="text-align: right;">26.9</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">18</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Men</td><td style="text-align: left;">Urban</td><td style="text-align: right;">2017</td><td style="text-align: right;">27.0</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">19</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Women</td><td style="text-align: left;">National</td><td style="text-align: right;">1985</td><td style="text-align: right;">26.0</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">20</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Women</td><td style="text-align: left;">Rural</td><td style="text-align: right;">1985</td><td style="text-align: right;">26.1</td></tr></tbody></table></div>
+</div>
+</div>
+</section>
+<section id="sec-z-test" class="level1">
+<h1>Z-test</h1>
+<section id="two-sample-unpaired-z-test" class="level2">
+<h2 class="anchored" data-anchor-id="two-sample-unpaired-z-test">Two sample unpaired z-test</h2>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1">uneqvarztest <span class="op" style="color: #5E5E5E;">=</span> <span class="kw" style="color: #003B4F;">let</span></span>
+<span id="cb5-2">    <span class="co" style="color: #5E5E5E;"># Fetch a random sample of BMI data for women in the year 1985 and 2017</span></span>
+<span id="cb5-3">    x1 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> (s, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Women"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y<span class="op" style="color: #5E5E5E;">==</span><span class="fl" style="color: #AD0000;">1985</span> , data) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb5-4">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb5-5">    x2 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> (s, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Women"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y<span class="op" style="color: #5E5E5E;">==</span><span class="fl" style="color: #AD0000;">2017</span> , data) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb5-6">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb5-7">    <span class="fu" style="color: #4758AB;">UnequalVarianceZTest</span>(x1, x2)</span>
+<span id="cb5-8"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>Two sample z-test (unequal variance)
+------------------------------------
+Population details:
+    parameter of interest:   Mean difference
+    value under h_0:         0
+    point estimate:          -2.38367
+    95% confidence interval: (-2.827, -1.94)
+
+Test summary:
+    outcome with 95% confidence: reject h_0
+    two-sided p-value:           &lt;1e-25
+
+Details:
+    number of observations:   [300,300]
+    z-statistic:              -10.528264586426888
+    population standard error: 0.2264064174203698</code></pre>
+</div>
+</div>
+</section>
+<section id="two-sample-paired-z-test" class="level2">
+<h2 class="anchored" data-anchor-id="two-sample-paired-z-test">Two sample paired z-test</h2>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1">eqvarztest <span class="op" style="color: #5E5E5E;">=</span> <span class="kw" style="color: #003B4F;">let</span></span>
+<span id="cb7-2">    <span class="co" style="color: #5E5E5E;"># Fetch a random sample of BMI data for women in the year 1985 and 2017</span></span>
+<span id="cb7-3">    x1 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> (s, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Women"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y<span class="op" style="color: #5E5E5E;">==</span><span class="fl" style="color: #AD0000;">1985</span> , data) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb7-4">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb7-5">    x2 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> (s, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Women"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y<span class="op" style="color: #5E5E5E;">==</span><span class="fl" style="color: #AD0000;">2017</span> , data) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb7-6">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb7-7">    <span class="fu" style="color: #4758AB;">EqualVarianceZTest</span>(x1, x2)</span>
+<span id="cb7-8"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>Two sample z-test (equal variance)
+----------------------------------
+Population details:
+    parameter of interest:   Mean difference
+    value under h_0:         0
+    point estimate:          -2.58
+    95% confidence interval: (-3.019, -2.141)
+
+Test summary:
+    outcome with 95% confidence: reject h_0
+    two-sided p-value:           &lt;1e-29
+
+Details:
+    number of observations:   [300,300]
+    z-statistic:              -11.517668117086219
+    population standard error: 0.22400367624524847</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-t-test" class="level1">
+<h1>T-test</h1>
+<section id="one-sample-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="one-sample-t-test">One sample t-test</h2>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1">onesamplettest <span class="op" style="color: #5E5E5E;">=</span> <span class="kw" style="color: #003B4F;">let</span> </span>
+<span id="cb9-2">    x1 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>(</span>
+<span id="cb9-3">        [<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Region, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> </span>
+<span id="cb9-4">            (s, r, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Men"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> r<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Rural"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y <span class="op" style="color: #5E5E5E;">==</span> <span class="fl" style="color: #AD0000;">2017</span>,</span>
+<span id="cb9-5">        data</span>
+<span id="cb9-6">    ) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb9-7">    x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb9-8">    <span class="fu" style="color: #4758AB;">OneSampleTTest</span>(x1, <span class="fl" style="color: #AD0000;">24.5</span>)</span>
+<span id="cb9-9"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>One sample t-test
+-----------------
+Population details:
+    parameter of interest:   Mean
+    value under h_0:         24.5
+    point estimate:          25.2643
+    95% confidence interval: (24.98, 25.55)
+
+Test summary:
+    outcome with 95% confidence: reject h_0
+    two-sided p-value:           &lt;1e-06
+
+Details:
+    number of observations:   300
+    t-statistic:              5.207880773866485
+    degrees of freedom:       299
+    empirical standard error: 0.14676475259741198</code></pre>
+</div>
+</div>
+</section>
+<section id="two-sample-unpaired-independent-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="two-sample-unpaired-independent-t-test">Two sample unpaired (independent) t-test</h2>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1">unpairedtwosamplettest <span class="op" style="color: #5E5E5E;">=</span> <span class="kw" style="color: #003B4F;">let</span> </span>
+<span id="cb11-2">    x1 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Region, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> </span>
+<span id="cb11-3">            (s, r, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Women"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> r<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Rural"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y <span class="op" style="color: #5E5E5E;">==</span> <span class="fl" style="color: #AD0000;">1985</span>,</span>
+<span id="cb11-4">        data) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb11-5">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb11-6">    x2 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Region, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> </span>
+<span id="cb11-7">            (s, r, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Women"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> r<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Urban"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y <span class="op" style="color: #5E5E5E;">==</span> <span class="fl" style="color: #AD0000;">1985</span>,</span>
+<span id="cb11-8">        data) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb11-9">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb11-10">    x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb11-11">    <span class="fu" style="color: #4758AB;">UnequalVarianceTTest</span>(x1, x2)</span>
+<span id="cb11-12"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>Two sample t-test (unequal variance)
+------------------------------------
+Population details:
+    parameter of interest:   Mean difference
+    value under h_0:         0
+    point estimate:          -1.01
+    95% confidence interval: (-1.425, -0.5954)
+
+Test summary:
+    outcome with 95% confidence: reject h_0
+    two-sided p-value:           &lt;1e-05
+
+Details:
+    number of observations:   [300,300]
+    t-statistic:              -4.785046904266988
+    degrees of freedom:       575.3572920894766
+    empirical standard error: 0.2110742110175243</code></pre>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Welch’s Test
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This test uses the Welch correction, and there is no way to turn it off in <code>HypothesisTests.jl</code>.</p>
+</div>
+</div>
+<section id="only-considering-right-tailed-one-tailed" class="level3">
+<h3 class="anchored" data-anchor-id="only-considering-right-tailed-one-tailed">Only considering right tailed (one-tailed)</h3>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1">unpairedtwosamplettest <span class="op" style="color: #5E5E5E;">=</span> <span class="kw" style="color: #003B4F;">let</span> </span>
+<span id="cb13-2">    x1 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Region, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> </span>
+<span id="cb13-3">            (s, r, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Women"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> r<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Rural"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y <span class="op" style="color: #5E5E5E;">==</span> <span class="fl" style="color: #AD0000;">1985</span>,</span>
+<span id="cb13-4">        data) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb13-5">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb13-6">    x2 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Region, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> </span>
+<span id="cb13-7">            (s, r, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Women"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> r<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Urban"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y <span class="op" style="color: #5E5E5E;">==</span> <span class="fl" style="color: #AD0000;">1985</span>,</span>
+<span id="cb13-8">        data) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb13-9">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb13-10">    x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb13-11">    <span class="fu" style="color: #4758AB;">UnequalVarianceTTest</span>(x1, x2)</span>
+<span id="cb13-12"><span class="kw" style="color: #003B4F;">end</span></span>
+<span id="cb13-13"><span class="fu" style="color: #4758AB;">pvalue</span>(unpairedtwosamplettest, tail<span class="op" style="color: #5E5E5E;">=:</span>right)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>0.9999999999833393</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="two-sample-paired-dependent-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="two-sample-paired-dependent-t-test">Two sample paired (dependent) t-test</h2>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1">pairedtwosamplettest <span class="op" style="color: #5E5E5E;">=</span> <span class="kw" style="color: #003B4F;">let</span> </span>
+<span id="cb15-2">    x1 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Region, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> </span>
+<span id="cb15-3">            (s, r, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Women"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> r<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Rural"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y <span class="op" style="color: #5E5E5E;">==</span> <span class="fl" style="color: #AD0000;">1985</span>,</span>
+<span id="cb15-4">        data) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb15-5">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb15-6">    x2 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Region, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> </span>
+<span id="cb15-7">            (s, r, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Women"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> r<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Urban"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y <span class="op" style="color: #5E5E5E;">==</span> <span class="fl" style="color: #AD0000;">1985</span>,</span>
+<span id="cb15-8">        data) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb15-9">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb15-10">    x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb15-11">    <span class="fu" style="color: #4758AB;">EqualVarianceTTest</span>(x1, x2)</span>
+<span id="cb15-12"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>Two sample t-test (equal variance)
+----------------------------------
+Population details:
+    parameter of interest:   Mean difference
+    value under h_0:         0
+    point estimate:          -1.16233
+    95% confidence interval: (-1.599, -0.726)
+
+Test summary:
+    outcome with 95% confidence: reject h_0
+    two-sided p-value:           &lt;1e-06
+
+Details:
+    number of observations:   [300,300]
+    t-statistic:              -5.231462889930723
+    degrees of freedom:       598
+    empirical standard error: 0.22218132055768464</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-f-test" class="level1">
+<h1>F-test</h1>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1">Ftest <span class="op" style="color: #5E5E5E;">=</span> <span class="kw" style="color: #003B4F;">let</span> </span>
+<span id="cb17-2">    x1 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Region, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> </span>
+<span id="cb17-3">            (s, r, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Women"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> r<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Rural"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y <span class="op" style="color: #5E5E5E;">==</span> <span class="fl" style="color: #AD0000;">1985</span>,</span>
+<span id="cb17-4">        data) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb17-5">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb17-6">    x2 <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Region, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> </span>
+<span id="cb17-7">            (s, r, y) <span class="op" style="color: #5E5E5E;">-&gt;</span> s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Women"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> r<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Urban"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y <span class="op" style="color: #5E5E5E;">==</span> <span class="fl" style="color: #AD0000;">1985</span>,</span>
+<span id="cb17-8">        data) <span class="op" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb17-9">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb17-10">    x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
+<span id="cb17-11">    <span class="fu" style="color: #4758AB;">VarianceFTest</span>(x1, x2)</span>
+<span id="cb17-12"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>Variance F-test
+---------------
+Population details:
+    parameter of interest:   variance ratio
+    value under h_0:         1.0
+    point estimate:          1.27001
+
+Test summary:
+    outcome with 95% confidence: reject h_0
+    two-sided p-value:           0.0392
+
+Details:
+    number of observations: [300, 300]
+    F statistic:            1.2700129709253052
+    degrees of freedom:     [299, 299]</code></pre>
+</div>
+</div>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambrani2022,
+  author = {Dhruva Sambrani},
+  title = {Parametric Hypothesis Tests with Examples in {Julia}},
+  date = {2022-11-17},
+  url = {https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambrani2022" class="csl-entry quarto-appendix-citeas">
+Dhruva Sambrani. 2022. <span>“Parametric Hypothesis Tests with Examples
+in Julia.”</span> November 17, 2022. <a href="https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia">https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia</a>.
+</div></div></section></div> ]]></description>
+  <category>How To</category>
+  <category>Parametric Tests</category>
+  <category>T-test</category>
+  <category>Z-test</category>
+  <category>F-test</category>
+  <category>Julia</category>
+  <guid>https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia/index.html</guid>
+  <pubDate>Thu, 17 Nov 2022 05:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Parametric hypothesis tests with examples in R</title>
   <dc:creator>Rohit Farmer</dc:creator>
