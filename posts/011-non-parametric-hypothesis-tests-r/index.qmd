@@ -20,7 +20,8 @@ bibliography: references.bib
 ::: {.callout-note collapse="true"}
 ### Update history
 
-2022-11-18 First draft.
+2022-11-21 Code on Kaggle\
+2022-11-18 First draft
 :::
 
 # Introduction
@@ -34,7 +35,7 @@ The different types of non-parametric hypothesis tests are:
 -   the Kruskal-Wallis test (@sec-kruskal-wallis-test).
 
 ::: callout-note
-**If you are primarily interested in code examples, please follow the navigation on the right.**
+**If you are primarily interested in code examples, please follow the navigation on the right; alternatively, you can test live code on [Kaggle](https://www.kaggle.com/rohitfarmer/non-parametric-hypothesis-tests-with-examples-in-r).**
 :::
 
 Besides deciding which hypothesis test to use to answer the question at hand, we also need to decide a couple of other parameters, for example, whether the test would be one sample or two samples, paired or un-paired, and one or two-tailed. I have discussed those parameters in detail [here](https://dataalltheway.com/posts/010-parametric-hypothesis-tests-r/).
@@ -161,7 +162,7 @@ y <- as.numeric(dat_t[,"2020"])
 
 ```
 
-As we can see in the @tbl-signed-two-sided, the p.value is 0.5, which is above our alpha level of 0.05; therefore, we can accept our null hypothesis that there is indeed no significant difference in CO~2~ emissions between 2000 and 2020. 
+As we can see in the @tbl-signed-two-sided, the p.value is 0.5, which is above our alpha level of 0.05; therefore, we can accept our null hypothesis that there is indeed no significant difference in CO~2~ emissions between 2000 and 2020.
 
 ```{r}
 #| label: tbl-signed-two-sided
