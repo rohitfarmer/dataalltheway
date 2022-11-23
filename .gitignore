@@ -8,3 +8,4 @@
 data
 *.rds
 .DS_Store
+*.csv
