@@ -2,70 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.dataalltheway.com/contact/index.html</loc>
-    <lastmod>2022-11-23T17:16:51.507Z</lastmod>
+    <lastmod>2022-11-30T19:04:45.711Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r/index.html</loc>
-    <lastmod>2022-11-23T17:16:53.853Z</lastmod>
+    <lastmod>2022-11-30T19:04:47.909Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</loc>
-    <lastmod>2022-11-23T17:16:55.244Z</lastmod>
+    <lastmod>2022-11-30T19:04:49.000Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/008-build-a-singularity-container/index.html</loc>
-    <lastmod>2022-11-23T17:16:56.503Z</lastmod>
+    <lastmod>2022-11-30T19:04:50.199Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia/index.html</loc>
+    <lastmod>2022-11-30T19:04:52.453Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia/index.html</loc>
-    <lastmod>2022-11-23T17:16:58.765Z</lastmod>
+    <lastmod>2022-11-30T19:04:54.347Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/012-type-inference-in-readr-and-arrow/index.html</loc>
-    <lastmod>2022-11-23T17:17:00.243Z</lastmod>
+    <lastmod>2022-11-30T19:04:55.975Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r/index.html</loc>
-    <lastmod>2022-11-23T17:17:02.330Z</lastmod>
+    <lastmod>2022-11-30T19:04:57.605Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/001-data-transformation/index.html</loc>
-    <lastmod>2022-11-23T17:17:04.969Z</lastmod>
+    <lastmod>2022-11-30T19:05:00.248Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/007-open-data-for-datascience/index.html</loc>
-    <lastmod>2022-11-23T17:17:06.849Z</lastmod>
+    <lastmod>2022-11-30T19:05:02.352Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</loc>
-    <lastmod>2022-11-23T17:17:09.591Z</lastmod>
+    <lastmod>2022-11-30T19:05:04.708Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</loc>
-    <lastmod>2022-11-23T17:17:10.685Z</lastmod>
+    <lastmod>2022-11-30T19:05:05.790Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</loc>
-    <lastmod>2022-11-23T17:17:11.957Z</lastmod>
+    <lastmod>2022-11-30T19:05:07.221Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/009-rules-for-naming-files/index.html</loc>
-    <lastmod>2022-11-23T17:17:13.076Z</lastmod>
+    <lastmod>2022-11-30T19:05:08.463Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</loc>
-    <lastmod>2022-11-23T17:17:14.393Z</lastmod>
+    <lastmod>2022-11-30T19:05:09.867Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/index.html</loc>
-    <lastmod>2022-11-23T17:17:15.022Z</lastmod>
+    <lastmod>2022-11-30T19:05:10.606Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/bookmarks/index.html</loc>
-    <lastmod>2022-11-23T17:17:15.922Z</lastmod>
+    <lastmod>2022-11-30T19:05:11.523Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/blog.html</loc>
-    <lastmod>2022-11-23T17:17:16.525Z</lastmod>
+    <lastmod>2022-11-30T19:05:12.184Z</lastmod>
   </url>
 </urlset>

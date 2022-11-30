@@ -1,0 +1,94 @@
+---
+title: "Non-parametric hypothesis tests with examples in Julia"
+description: "A tutorial on non-parametric hypothesis tests with examples in Julia."
+author: 
+    - name: "Dhruva Sambrani"
+      orcid: "0000-0001-6254-4757"
+date: "2022-11-30"
+categories: [How To, Non-parametric Tests, Wilcoxon Test, Mann Whitney U Test, Kruskal-Wallis Test]
+format:
+  html:
+    code-fold: false
+    code-tools:
+      source: false
+      toggle: true
+citation: true
+google-scholar: true
+jupyter: julia-1.8
+---
+
+::: {.callout-note collapse="true"}
+### Update history
+
+2022-11-30 First draft
+:::
+
+# Introduction
+
+This article is an extension of [Farmer. 2022. “Non-Parametric Hypothesis Tests with Examples in R.” November 18, 2022](https://www.dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r). Please check out the parent article for the theoretical background.
+
+-   Wilcoxon rank-sum (Mann-Whitney U test) (@sec-u-test)
+-   Wilcoxon signed-rank test (@sec-wilcox-test)
+-   Kruskal-Wallis test (@sec-kruskal-test)
+
+## Import packages
+
+```{julia}
+import Pkg
+Pkg.activate(".")
+using CSV
+using Plots
+using HypothesisTests
+using DataFrames
+```
+
+# Data import and cleanup
+
+I have subsetted the data from 1928 onward and dropped any columns with all NAs or zeros. To do so for `eachcol` of `data` we first calculate whether `all` the elements are `!ismissing` `&&` `!=0` (`!` = `not`). Then pick all rows for those columns, while `disallowmissing` data.
+
+```{julia}
+temp_file = download("https://zenodo.org/record/7081360/files/1.%20Cement_emissions_data.csv")
+data = CSV.read(temp_file, DataFrame)
+dropmissing!(data, :Year)
+filter!(:Year => >=(1928), data)
+picked_cols_mask = eachcol(data) .|> 
+    col -> all(x->(!ismissing(x) && x!=0), col)
+data = disallowmissing(data[!, picked_cols_mask])
+```
+
+```{julia}
+plot(
+	data[!, :Year], 
+	Array(log.(data[!, Not(:Year)])), 
+	label=reshape(string.(propertynames(data)[2:end]), 1, :),
+	legend= :outerright,
+	size=(900, 400)
+)
+```
+
+# Wilcoxon rank-sum (Mann-Whitney U test){#sec-u-test}
+
+```{julia}
+mwut_results = MannWhitneyUTest(data[!, :USA], data[!, :Canada], )
+```
+
+## Right tailed test
+
+```{julia}
+pvalue(mwut_results, tail=:right)
+```
+
+# Wilcoxon signed-rank test {#sec-wilcox-test}
+
+```{julia}
+dt = select(filter(:Year=> y-> y==2000 || y==2020, data), Not(:Year))
+x = collect(dt[1, :])
+y = collect(dt[2, :])
+SignedRankTest(x, y)
+```
+
+# Kruskal-Wallis test {#sec-kruskal-test}
+
+```{julia}
+KruskalWallisTest(collect(eachcol(data[:, Not(:Year)]))...)
+```

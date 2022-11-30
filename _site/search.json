@@ -140,6 +140,27 @@
     "text": "Tensorflow GPU\nimport tensorflow as tf\n\ntf.debugging.set_log_device_placement(True)\ngpus = tf.config.list_physical_devices('GPU')\n\nif gpus:\n    with tf.device('/GPU:0'):\n        tf.random.set_seed(123)\n        a = tf.random.normal([10000,20000], 0, 1, tf.float32, seed=1)\n        b = tf.random.normal([20000,10000], 0, 1, tf.float32, seed=1)\n        c = tf.matmul(a, b)\n        print(c)\nelse:\n    print(\"No GPUs found.\")\n\nprint(\"Num GPUs:\", len(gpus))\nTo execute the script singularity exec --nv container.sif python3 tf_gpu.py\nTo monitor NVIDIA GPU usage nvidia-smi"
   },
   {
+    "objectID": "posts/011-01-non-parametric-hypothesis-tests-julia/index.html",
+    "href": "posts/011-01-non-parametric-hypothesis-tests-julia/index.html",
+    "title": "Non-parametric hypothesis tests with examples in Julia",
+    "section": "",
+    "text": "Update history\n\n\n\n\n\n2022-11-30 First draft"
+  },
+  {
+    "objectID": "posts/011-01-non-parametric-hypothesis-tests-julia/index.html#import-packages",
+    "href": "posts/011-01-non-parametric-hypothesis-tests-julia/index.html#import-packages",
+    "title": "Non-parametric hypothesis tests with examples in Julia",
+    "section": "Import packages",
+    "text": "Import packages\n\nimport Pkg\nPkg.activate(\".\")\nusing CSV\nusing Plots\nusing HypothesisTests\nusing DataFrames\n\n  Activating project at `~/sandbox/dataalltheway/posts/011-01-non-parametric-hypothesis-tests-julia`"
+  },
+  {
+    "objectID": "posts/011-01-non-parametric-hypothesis-tests-julia/index.html#right-tailed-test",
+    "href": "posts/011-01-non-parametric-hypothesis-tests-julia/index.html#right-tailed-test",
+    "title": "Non-parametric hypothesis tests with examples in Julia",
+    "section": "Right tailed test",
+    "text": "Right tailed test\n\npvalue(mwut_results, tail=:right)\n\n1.2040605143479147e-31"
+  },
+  {
     "objectID": "posts/010-01-parametric-hypothesis-tests-julia/index.html",
     "href": "posts/010-01-parametric-hypothesis-tests-julia/index.html",
     "title": "Parametric hypothesis tests with examples in Julia",
@@ -494,6 +515,6 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nNov 21, 2022\n\n\nType inference in readr and arrow\n\n\nNic Crane\n\n\n\n\nNov 18, 2022\n\n\nNon-parametric hypothesis tests with examples in R\n\n\nRohit Farmer\n\n\n\n\nNov 17, 2022\n\n\nParametric hypothesis tests with examples in Julia\n\n\nDhruva Sambrani\n\n\n\n\nNov 10, 2022\n\n\nParametric hypothesis tests with examples in R\n\n\nRohit Farmer\n\n\n\n\nNov 3, 2022\n\n\nRules for naming files and folders that are cross platform and helpful in datascience\n\n\nRohit Farmer\n\n\n\n\nOct 31, 2022\n\n\nHow to build a Singularity container for machine learning, data science, and chemistry\n\n\nRohit Farmer\n\n\n\n\nOct 25, 2022\n\n\nSources of open data for statistics, data science, and machine learning\n\n\nRohit Farmer\n\n\n\n\nOct 17, 2022\n\n\nA case for using Google Colab notebooks as an alternative to web servers for scientific software\n\n\nRohit Farmer\n\n\n\n\nOct 15, 2022\n\n\nClassify the bitter or sweet taste of compounds\n\n\nRohit Farmer\n\n\n\n\nOct 15, 2022\n\n\nHow to use Neovim or VIM editor as an IDE for R\n\n\nRohit Farmer\n\n\n\n\nOct 14, 2022\n\n\nHow to download a shared file from Google Drive in R\n\n\nRohit Farmer\n\n\n\n\nOct 5, 2022\n\n\nTweets from heads of governments and states\n\n\nRohit Farmer\n\n\n\n\nOct 5, 2022\n\n\nData Transformation\n\n\nRohit Farmer\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nNov 30, 2022\n\n\nNon-parametric hypothesis tests with examples in Julia\n\n\nDhruva Sambrani\n\n\n\n\nNov 21, 2022\n\n\nType inference in readr and arrow\n\n\nNic Crane\n\n\n\n\nNov 18, 2022\n\n\nNon-parametric hypothesis tests with examples in R\n\n\nRohit Farmer\n\n\n\n\nNov 17, 2022\n\n\nParametric hypothesis tests with examples in Julia\n\n\nDhruva Sambrani\n\n\n\n\nNov 10, 2022\n\n\nParametric hypothesis tests with examples in R\n\n\nRohit Farmer\n\n\n\n\nNov 3, 2022\n\n\nRules for naming files and folders that are cross platform and helpful in datascience\n\n\nRohit Farmer\n\n\n\n\nOct 31, 2022\n\n\nHow to build a Singularity container for machine learning, data science, and chemistry\n\n\nRohit Farmer\n\n\n\n\nOct 25, 2022\n\n\nSources of open data for statistics, data science, and machine learning\n\n\nRohit Farmer\n\n\n\n\nOct 17, 2022\n\n\nA case for using Google Colab notebooks as an alternative to web servers for scientific software\n\n\nRohit Farmer\n\n\n\n\nOct 15, 2022\n\n\nClassify the bitter or sweet taste of compounds\n\n\nRohit Farmer\n\n\n\n\nOct 15, 2022\n\n\nHow to use Neovim or VIM editor as an IDE for R\n\n\nRohit Farmer\n\n\n\n\nOct 14, 2022\n\n\nHow to download a shared file from Google Drive in R\n\n\nRohit Farmer\n\n\n\n\nOct 5, 2022\n\n\nTweets from heads of governments and states\n\n\nRohit Farmer\n\n\n\n\nOct 5, 2022\n\n\nData Transformation\n\n\nRohit Farmer\n\n\n\n\n\n\nNo matching items"
   }
 ]
