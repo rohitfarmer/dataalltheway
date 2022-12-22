@@ -5,7 +5,7 @@ author:
   - name: "Rohit Farmer"
     orcid: "0000-0003-4197-3047"
 date: "2022-11-10"
-categories: [How To, Parametric Tests, T-test, Z-test, F-test]
+categories: [How To, Parametric Tests, T-test, Z-test, F-test, ANOVA]
 format:
   html:
     code-fold: false
@@ -20,6 +20,7 @@ bibliography: references.bib
 ::: {.callout-note collapse="true"}
 ### Update history
 
+2022-12-22 Section for ANOVA.\
 2022-11-11 Added example code for one-tailed t-test; mentioned Welch's t-test in a note callout.\
 2022-11-10 First draft with live code on Kaggle.
 :::
@@ -28,11 +29,12 @@ bibliography: references.bib
 
 A hypothesis test is a statistical test used to determine whether there is enough evidence to support a hypothesis. For example, there is a difference between the average height of males and females. A parametric hypothesis test assumes that the data you want to test is (or approximately is) [normally distributed](https://en.wikipedia.org/wiki/Normal_distribution). For example, height is normally distributed in a population. In addition, your data needs to be symmetrical since normally distributed data is symmetrical. If your data does not have the appropriate properties, then you use a non-parametric test.
 
-There are different parametric tests, but the most common is the t-test. Below is the list of the four parametric hypothesis tests we will explore here.
+There are different parametric tests, but the most common is the t-test. Below is the list of the five parametric hypothesis tests we will explore here.
 
 -   Z-test (@sec-z-test)
 -   T-test (@sec-t-test)
 -   F-test (@sec-f-test)
+-   ANOVA (@sec-anova-test)
 
 ::: callout-tip
 **If you are primarily interested in code examples, please follow the navigation on the right; alternatively, you can test live code on [Kaggle](https://www.kaggle.com/rohitfarmer/010-parametric-hypothesis-tests-r).**
@@ -341,6 +343,35 @@ Where $S^2_A$ and $S^2_B$ are the two variances to compare. There is a table of 
 broom::tidy(f_res) %>%
   kbl() %>%
   kable_paper("hover", full_width = F)
+```
+
+# ANOVA {#sec-anova-test}
+
+ANOVA (Analysis of Variance) is a parametric statistical method used to compare the means of two or more groups. Often used to determine if the differences between the means of several groups are statistically significant and therefore generalizes the t-test beyond two means.
+
+At its core, ANOVA is a hypothesis testing procedure that uses an F-test @sec-f-test to compare the means of two or more groups. In R, ANOVA can be performed using the aov() function. This function requires a formula, data, and an optional subset argument. The formula should include the response variable and the explanatory variable. The data argument should be a data frame containing the variables specified in the formula. Finally, the subset argument is optional and can specify a subset of cases to include in the analysis.
+
+In the example below, we test the difference in the average BMI for men in the year 2017 among national, rural, and urban regions.
+
+```{r}
+# Filter the data for men and the year 2017.
+a_dat <- dat %>% dplyr::filter(Sex == "Men" & Year == 2017)
+DT::datatable(a_dat)
+```
+
+```{r}
+# Carry out ANOVA to measure differences in the BMI across the three regions.
+a_res <- aov(BMI ~ Region, data = a_dat)
+summary(a_res)
+```
+
+The output of the `summary()` function will display the F-statistic and the corresponding p-value. If the p-value is less than the significance level, then we can conclude that there is a statistically significant difference between the means of the three groups.
+
+Finally, we can use the `TukeyHSD()` function to perform a [Tukey's Honest Significant Difference](https://en.wikipedia.org/wiki/Tukey's_range_test) test, which compares the means of all pairs of groups and tells us which groups are significantly different from each other.
+
+```{r}
+tshd_res <- TukeyHSD(a_res)
+(tshd_res)
 ```
 
 # References

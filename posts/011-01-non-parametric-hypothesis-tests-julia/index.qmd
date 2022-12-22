@@ -5,7 +5,7 @@ author:
     - name: "Dhruva Sambrani"
       orcid: "0000-0001-6254-4757"
 date: "2022-11-30"
-categories: [How To, Non-parametric Tests, Wilcoxon Test, Mann Whitney U Test, Kruskal-Wallis Test]
+categories: [How To, Non-parametric Tests, Wilcoxon Test, Mann Whitney U Test, Kruskal-Wallis Test, Julia]
 format:
   html:
     code-fold: false
