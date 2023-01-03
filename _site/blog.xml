@@ -1114,6 +1114,7 @@ Update history
 <li>Z-test (Section&nbsp;3)</li>
 <li>T-test (Section&nbsp;4)</li>
 <li>F-test (Section&nbsp;5)</li>
+<li>ANOVA (Section&nbsp;6)</li>
 </ul>
 <section id="import-packages" class="level2">
 <h2 class="anchored" data-anchor-id="import-packages">Import packages</h2>
@@ -1143,7 +1144,7 @@ Update history
 </div>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><span class="fu" style="color: #4758AB;">first</span>(data, <span class="fl" style="color: #AD0000;">20</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="21">
 
 <div><div style="float: left;"><span>20×5 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;"><table class="data-frame table table-sm table-striped" style="margin-bottom: 6px;"><thead><tr class="header"><th class="rowNumber" style="font-weight: bold; text-align: right;">Row</th><th style="text-align: left;">Country</th><th style="text-align: left;">Sex</th><th style="text-align: left;">Region</th><th style="text-align: left;">Year</th><th style="text-align: left;">BMI</th></tr><tr class="subheader headerLastRow"><th class="rowNumber" style="font-weight: bold; text-align: right;"></th><th title="String" style="text-align: left;">String</th><th title="String7" style="text-align: left;">String7</th><th title="String15" style="text-align: left;">String15</th><th title="Int64" style="text-align: left;">Int64</th><th title="Union{Missing, Float64}" style="text-align: left;">Float64?</th></tr></thead><tbody><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">1</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Men</td><td style="text-align: left;">National</td><td style="text-align: right;">1985</td><td style="text-align: right;">20.2</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">2</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Men</td><td style="text-align: left;">Rural</td><td style="text-align: right;">1985</td><td style="text-align: right;">19.7</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">3</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Men</td><td style="text-align: left;">Urban</td><td style="text-align: right;">1985</td><td style="text-align: right;">22.4</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">4</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Men</td><td style="text-align: left;">National</td><td style="text-align: right;">2017</td><td style="text-align: right;">22.8</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">5</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Men</td><td style="text-align: left;">Rural</td><td style="text-align: right;">2017</td><td style="text-align: right;">22.5</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">6</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Men</td><td style="text-align: left;">Urban</td><td style="text-align: right;">2017</td><td style="text-align: right;">23.6</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">7</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Women</td><td style="text-align: left;">National</td><td style="text-align: right;">1985</td><td style="text-align: right;">20.6</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">8</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Women</td><td style="text-align: left;">Rural</td><td style="text-align: right;">1985</td><td style="text-align: right;">20.1</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">9</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Women</td><td style="text-align: left;">Urban</td><td style="text-align: right;">1985</td><td style="text-align: right;">23.2</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">10</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Women</td><td style="text-align: left;">National</td><td style="text-align: right;">2017</td><td style="text-align: right;">24.4</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">11</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Women</td><td style="text-align: left;">Rural</td><td style="text-align: right;">2017</td><td style="text-align: right;">23.6</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">12</td><td style="text-align: left;">Afghanistan</td><td style="text-align: left;">Women</td><td style="text-align: left;">Urban</td><td style="text-align: right;">2017</td><td style="text-align: right;">26.3</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">13</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Men</td><td style="text-align: left;">National</td><td style="text-align: right;">1985</td><td style="text-align: right;">25.2</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">14</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Men</td><td style="text-align: left;">Rural</td><td style="text-align: right;">1985</td><td style="text-align: right;">25.0</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">15</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Men</td><td style="text-align: left;">Urban</td><td style="text-align: right;">1985</td><td style="text-align: right;">25.4</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">16</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Men</td><td style="text-align: left;">National</td><td style="text-align: right;">2017</td><td style="text-align: right;">27.0</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">17</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Men</td><td style="text-align: left;">Rural</td><td style="text-align: right;">2017</td><td style="text-align: right;">26.9</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">18</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Men</td><td style="text-align: left;">Urban</td><td style="text-align: right;">2017</td><td style="text-align: right;">27.0</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">19</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Women</td><td style="text-align: left;">National</td><td style="text-align: right;">1985</td><td style="text-align: right;">26.0</td></tr><tr><td class="rowNumber" style="font-weight: bold; text-align: right;">20</td><td style="text-align: left;">Albania</td><td style="text-align: left;">Women</td><td style="text-align: left;">Rural</td><td style="text-align: right;">1985</td><td style="text-align: right;">26.1</td></tr></tbody></table></div>
 </div>
@@ -1162,14 +1163,14 @@ Update history
 <span id="cb5-6">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
 <span id="cb5-7">    <span class="fu" style="color: #4758AB;">UnequalVarianceZTest</span>(x1, x2)</span>
 <span id="cb5-8"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>Two sample z-test (unequal variance)
 ------------------------------------
 Population details:
     parameter of interest:   Mean difference
     value under h_0:         0
-    point estimate:          -2.38367
-    95% confidence interval: (-2.827, -1.94)
+    point estimate:          -2.26
+    95% confidence interval: (-2.679, -1.841)
 
 Test summary:
     outcome with 95% confidence: reject h_0
@@ -1177,8 +1178,8 @@ Test summary:
 
 Details:
     number of observations:   [300,300]
-    z-statistic:              -10.528264586426888
-    population standard error: 0.2264064174203698</code></pre>
+    z-statistic:              -10.560590588866509
+    population standard error: 0.21400318296427412</code></pre>
 </div>
 </div>
 </section>
@@ -1193,23 +1194,23 @@ Details:
 <span id="cb7-6">        x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
 <span id="cb7-7">    <span class="fu" style="color: #4758AB;">EqualVarianceZTest</span>(x1, x2)</span>
 <span id="cb7-8"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>Two sample z-test (equal variance)
 ----------------------------------
 Population details:
     parameter of interest:   Mean difference
     value under h_0:         0
-    point estimate:          -2.58
-    95% confidence interval: (-3.019, -2.141)
+    point estimate:          -2.173
+    95% confidence interval: (-2.611, -1.735)
 
 Test summary:
     outcome with 95% confidence: reject h_0
-    two-sided p-value:           &lt;1e-29
+    two-sided p-value:           &lt;1e-21
 
 Details:
     number of observations:   [300,300]
-    z-statistic:              -11.517668117086219
-    population standard error: 0.22400367624524847</code></pre>
+    z-statistic:              -9.724414586039652
+    population standard error: 0.22345818154642977</code></pre>
 </div>
 </div>
 </section>
@@ -1228,24 +1229,24 @@ Details:
 <span id="cb9-7">    x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
 <span id="cb9-8">    <span class="fu" style="color: #4758AB;">OneSampleTTest</span>(x1, <span class="fl" style="color: #AD0000;">24.5</span>)</span>
 <span id="cb9-9"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>One sample t-test
 -----------------
 Population details:
     parameter of interest:   Mean
     value under h_0:         24.5
-    point estimate:          25.2643
-    95% confidence interval: (24.98, 25.55)
+    point estimate:          25.466
+    95% confidence interval: (25.16, 25.77)
 
 Test summary:
     outcome with 95% confidence: reject h_0
-    two-sided p-value:           &lt;1e-06
+    two-sided p-value:           &lt;1e-08
 
 Details:
     number of observations:   300
-    t-statistic:              5.207880773866485
+    t-statistic:              6.280721563263261
     degrees of freedom:       299
-    empirical standard error: 0.14676475259741198</code></pre>
+    empirical standard error: 0.15380398418714467</code></pre>
 </div>
 </div>
 </section>
@@ -1264,14 +1265,14 @@ Details:
 <span id="cb11-10">    x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
 <span id="cb11-11">    <span class="fu" style="color: #4758AB;">UnequalVarianceTTest</span>(x1, x2)</span>
 <span id="cb11-12"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>Two sample t-test (unequal variance)
 ------------------------------------
 Population details:
     parameter of interest:   Mean difference
     value under h_0:         0
-    point estimate:          -1.01
-    95% confidence interval: (-1.425, -0.5954)
+    point estimate:          -1.05867
+    95% confidence interval: (-1.512, -0.6054)
 
 Test summary:
     outcome with 95% confidence: reject h_0
@@ -1279,9 +1280,9 @@ Test summary:
 
 Details:
     number of observations:   [300,300]
-    t-statistic:              -4.785046904266988
-    degrees of freedom:       575.3572920894766
-    empirical standard error: 0.2110742110175243</code></pre>
+    t-statistic:              -4.587387795167387
+    degrees of freedom:       575.968012373301
+    empirical standard error: 0.2307776699807073</code></pre>
 </div>
 </div>
 <div class="callout-warning callout callout-style-default callout-captioned">
@@ -1313,8 +1314,8 @@ Welch’s Test
 <span id="cb13-11">    <span class="fu" style="color: #4758AB;">UnequalVarianceTTest</span>(x1, x2)</span>
 <span id="cb13-12"><span class="kw" style="color: #003B4F;">end</span></span>
 <span id="cb13-13"><span class="fu" style="color: #4758AB;">pvalue</span>(unpairedtwosamplettest, tail<span class="op" style="color: #5E5E5E;">=:</span>right)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>0.9999999999833393</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>0.9999999445762</code></pre>
 </div>
 </div>
 </section>
@@ -1334,24 +1335,24 @@ Welch’s Test
 <span id="cb15-10">    x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
 <span id="cb15-11">    <span class="fu" style="color: #4758AB;">EqualVarianceTTest</span>(x1, x2)</span>
 <span id="cb15-12"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>Two sample t-test (equal variance)
 ----------------------------------
 Population details:
     parameter of interest:   Mean difference
     value under h_0:         0
-    point estimate:          -1.16233
-    95% confidence interval: (-1.599, -0.726)
+    point estimate:          -1.01167
+    95% confidence interval: (-1.44, -0.5838)
 
 Test summary:
     outcome with 95% confidence: reject h_0
-    two-sided p-value:           &lt;1e-06
+    two-sided p-value:           &lt;1e-05
 
 Details:
     number of observations:   [300,300]
-    t-statistic:              -5.231462889930723
+    t-statistic:              -4.64337449574737
     degrees of freedom:       598
-    empirical standard error: 0.22218132055768464</code></pre>
+    empirical standard error: 0.2178731583233696</code></pre>
 </div>
 </div>
 </section>
@@ -1371,22 +1372,65 @@ Details:
 <span id="cb17-10">    x <span class="op" style="color: #5E5E5E;">-&gt;</span> x[!, <span class="op" style="color: #5E5E5E;">:</span>BMI] <span class="op" style="color: #5E5E5E;">|&gt;</span> skipmissing <span class="op" style="color: #5E5E5E;">|&gt;</span> collect <span class="op" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">x-&gt;rand</span>(x, <span class="fl" style="color: #AD0000;">300</span>)</span>
 <span id="cb17-11">    <span class="fu" style="color: #4758AB;">VarianceFTest</span>(x1, x2)</span>
 <span id="cb17-12"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>Variance F-test
 ---------------
 Population details:
     parameter of interest:   variance ratio
     value under h_0:         1.0
-    point estimate:          1.27001
+    point estimate:          1.32245
 
 Test summary:
     outcome with 95% confidence: reject h_0
-    two-sided p-value:           0.0392
+    two-sided p-value:           0.0159
 
 Details:
     number of observations: [300, 300]
-    F statistic:            1.2700129709253052
+    F statistic:            1.322447205183649
     degrees of freedom:     [299, 299]</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-anova" class="level1">
+<h1>ANOVA</h1>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1">Atest <span class="op" style="color: #5E5E5E;">=</span> <span class="kw" style="color: #003B4F;">let</span></span>
+<span id="cb19-2">    x <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">filter</span>([<span class="op" style="color: #5E5E5E;">:</span>Sex, <span class="op" style="color: #5E5E5E;">:</span>Year] <span class="op" style="color: #5E5E5E;">=&gt;</span> (s,y) <span class="op" style="color: #5E5E5E;">-&gt;</span> (s<span class="op" style="color: #5E5E5E;">==</span><span class="st" style="color: #20794D;">"Men"</span> <span class="op" style="color: #5E5E5E;">&amp;&amp;</span> y<span class="op" style="color: #5E5E5E;">==</span><span class="fl" style="color: #AD0000;">2017</span>), data)</span>
+<span id="cb19-3">    groups <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">groupby</span>(x, <span class="op" style="color: #5E5E5E;">:</span>Region)</span>
+<span id="cb19-4">    bmis <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">map</span>(<span class="fu" style="color: #4758AB;">keys</span>(groups)) <span class="cf" style="color: #003B4F;">do</span> key <span class="co" style="color: #5E5E5E;"># for each group, </span></span>
+<span id="cb19-5">        <span class="fu" style="color: #4758AB;">collect</span>(<span class="fu" style="color: #4758AB;">skipmissing</span>(groups[key][!, <span class="op" style="color: #5E5E5E;">:</span>BMI])) <span class="co" style="color: #5E5E5E;"># collect BMI, skipping missing values</span></span>
+<span id="cb19-6">    <span class="cf" style="color: #003B4F;">end</span></span>
+<span id="cb19-7">    res <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">OneWayANOVATest</span>(bmis<span class="op" style="color: #5E5E5E;">...</span>)</span>
+<span id="cb19-8"><span class="kw" style="color: #003B4F;">end</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>One-way analysis of variance (ANOVA) test
+-----------------------------------------
+Population details:
+    parameter of interest:   Means
+    value under h_0:         "all equal"
+    point estimate:          NaN
+
+Test summary:
+    outcome with 95% confidence: reject h_0
+    p-value:                     0.0333
+
+Details:
+    number of observations: [200, 196, 199]
+    F statistic:            3.42167
+    degrees of freedom:     (2, 592)</code></pre>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tukey’s HSD Test
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Currently, there is no implementation of this test in <code>HypothesisTests.jl</code></p>
 </div>
 </div>
 

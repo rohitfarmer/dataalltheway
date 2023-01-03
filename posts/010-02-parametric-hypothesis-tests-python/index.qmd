@@ -1,11 +1,11 @@
 ---
-title: "Parametric hypothesis tests with examples in Julia"
-description: "A tutorial on parametric hypothesis tests with examples in Julia."
+title: "Parametric hypothesis tests with examples in Python"
+description: "A tutorial on parametric hypothesis tests with examples in Python."
 author: 
-    - name: "Dhruva Sambrani"
-      orcid: "0000-0001-6254-4757"
-date: "2022-11-17"
-categories: [How To, Parametric Tests, T-test, Z-test, F-test, Julia]
+    - name: "Rohit Farmer"
+      orcid: ""
+date: "2022-12-22"
+categories: [How To, Parametric Tests, T-test, Z-test, F-test, ANOVA, Python]
 format:
   html:
     code-fold: false
@@ -14,7 +14,7 @@ format:
       toggle: true
 citation: true
 google-scholar: true
-jupyter: julia-1.8
+draft: true
 ---
 
 ::: {.callout-note collapse="true"}
@@ -30,17 +30,36 @@ This article is an extension of [Rohit Farmer. 2022. "Parametric Hypothesis Test
 -   Z-test (@sec-z-test)
 -   T-test (@sec-t-test)
 -   F-test (@sec-f-test)
--   ANOVA (@sec-anova)
 
 ## Import packages
 
-```{julia}
-import Pkg
-Pkg.activate(".")
-using CSV
-using DataFrames
-using Statistics
-using HypothesisTests
+```{python}
+import numpy as np
+from scipy import stats
+import pandas as pd
+
+dat = pd.read_csv("https://raw.githubusercontent.com/opencasestudies/ocs-bp-rural-and-urban-obesity/master/data/wrangled/BMI_long.csv")
+
+```
+```{python}
+# Sample data
+sample_1 = [1, 2, 3, 4, 5]
+sample_2 = [2, 3, 4, 5, 6]
+
+# Perform t-test
+t_statistic, p_value = stats.ttest_ind(sample_1, sample_2)
+
+# Print results
+print("t-statistic:", t_statistic)
+print("p-value:", p_value)
+
+# Interpret results
+if p_value < 0.05:
+    print("The difference between the samples is significant (p < 0.05).")
+else:
+    print("The difference between the samples is not significant (p >= 0.05).")
+
+
 ```
 
 # Getting the data
@@ -178,22 +197,3 @@ Ftest = let
 	VarianceFTest(x1, x2)
 end
 ```
-
-# ANOVA {#sec-anova}
-
-```{julia}
-Atest = let
-	x = filter([:Sex, :Year] => (s,y) -> (s=="Men" && y==2017), data)
-	groups = groupby(x, :Region)
-	bmis = map(keys(groups)) do key # for each group, 
-		collect(skipmissing(groups[key][!, :BMI])) # collect BMI, skipping missing values
-	end
-	res = OneWayANOVATest(bmis...)
-end
-```
-
-::: callout-warning
-## Tukey's HSD Test
-
-Currently, there is no implementation of this test in `HypothesisTests.jl`
-:::
