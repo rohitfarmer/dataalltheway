@@ -242,23 +242,10 @@ cookieconsent.run({
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
   <li><a href="#import-packages" id="toc-import-packages" class="nav-link" data-scroll-target="#import-packages">Import packages</a></li>
-  </ul></li>
-  <li><a href="#getting-the-data" id="toc-getting-the-data" class="nav-link" data-scroll-target="#getting-the-data">Getting the data</a></li>
-  <li><a href="#sec-z-test" id="toc-sec-z-test" class="nav-link" data-scroll-target="#sec-z-test">Z-test</a>
-  <ul class="collapse">
-  <li><a href="#two-sample-unpaired-z-test" id="toc-two-sample-unpaired-z-test" class="nav-link" data-scroll-target="#two-sample-unpaired-z-test">Two sample unpaired z-test</a></li>
-  <li><a href="#two-sample-paired-z-test" id="toc-two-sample-paired-z-test" class="nav-link" data-scroll-target="#two-sample-paired-z-test">Two sample paired z-test</a></li>
-  </ul></li>
-  <li><a href="#sec-t-test" id="toc-sec-t-test" class="nav-link" data-scroll-target="#sec-t-test">T-test</a>
-  <ul class="collapse">
-  <li><a href="#one-sample-t-test" id="toc-one-sample-t-test" class="nav-link" data-scroll-target="#one-sample-t-test">One sample t-test</a></li>
-  <li><a href="#two-sample-unpaired-independent-t-test" id="toc-two-sample-unpaired-independent-t-test" class="nav-link" data-scroll-target="#two-sample-unpaired-independent-t-test">Two sample unpaired (independent) t-test</a>
-  <ul class="collapse">
-  <li><a href="#only-considering-right-tailed-one-tailed" id="toc-only-considering-right-tailed-one-tailed" class="nav-link" data-scroll-target="#only-considering-right-tailed-one-tailed">Only considering right tailed (one-tailed)</a></li>
-  </ul></li>
+  <li><a href="#example-code-for-a-two-tailed-test" id="toc-example-code-for-a-two-tailed-test" class="nav-link" data-scroll-target="#example-code-for-a-two-tailed-test">Example code for a two-tailed test</a></li>
+  <li><a href="#example-code-for-a-one-tailed-test" id="toc-example-code-for-a-one-tailed-test" class="nav-link" data-scroll-target="#example-code-for-a-one-tailed-test">Example code for a one-tailed test</a></li>
   <li><a href="#two-sample-paired-dependent-t-test" id="toc-two-sample-paired-dependent-t-test" class="nav-link" data-scroll-target="#two-sample-paired-dependent-t-test">Two sample paired (dependent) t-test</a></li>
   </ul></li>
-  <li><a href="#sec-f-test" id="toc-sec-f-test" class="nav-link" data-scroll-target="#sec-f-test">F-test</a></li>
   </ul>
 </nav>
     </div>
@@ -328,9 +315,9 @@ Update history
 <h1>Introduction</h1>
 <p>This article is an extension of <a href="https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r">Rohit Farmer. 2022. “Parametric Hypothesis Tests with Examples in R.” November 10, 2022</a>. Please check out the parent article for the theoretical background.</p>
 <ul>
-<li>Z-test (<a href="#sec-z-test">Section&nbsp;3</a>)</li>
-<li>T-test (<a href="#sec-t-test">Section&nbsp;4</a>)</li>
-<li>F-test (<a href="#sec-f-test">Section&nbsp;5</a>)</li>
+<li>Z-test (<strong>?@sec-z-test</strong>)</li>
+<li>T-test (<strong>?@sec-t-test</strong>)</li>
+<li>F-test (<strong>?@sec-f-test</strong>)</li>
 </ul>
 <section id="import-packages" class="level2">
 <h2 class="anchored" data-anchor-id="import-packages">Import packages</h2>
@@ -341,157 +328,54 @@ Update history
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dat <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/opencasestudies/ocs-bp-rural-and-urban-obesity/master/data/wrangled/BMI_long.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="example-code-for-a-two-tailed-test" class="level2">
+<h2 class="anchored" data-anchor-id="example-code-for-a-two-tailed-test">Example code for a two-tailed test</h2>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sample_1 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sample_2 <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform t-test</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>t_statistic, p_value <span class="op">=</span> stats.ttest_ind(sample_1, sample_2)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mask1 <span class="op">=</span> (dat[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">"Women"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Region'</span>] <span class="op">==</span> <span class="st">"Rural"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Year'</span>] <span class="op">==</span> <span class="dv">1985</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> dat[mask1][<span class="st">'BMI'</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mask2 <span class="op">=</span> (dat[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">"Women"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Region'</span>] <span class="op">==</span> <span class="st">"Urban"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Year'</span>] <span class="op">==</span> <span class="dv">1985</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> dat[mask2][<span class="st">'BMI'</span>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>t_statistic, p_value <span class="op">=</span> stats.ttest_ind(x1, x2, equal_var <span class="op">=</span> <span class="va">True</span>, nan_policy <span class="op">=</span> <span class="st">"omit"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"t-statistic:"</span>, t_statistic)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Interpret results</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"The difference between the samples is significant (p &lt; 0.05)."</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"The difference between the samples is not significant (p &gt;= 0.05)."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>t-statistic: -1.0
-p-value: 0.34659350708733416
-The difference between the samples is not significant (p &gt;= 0.05).</code></pre>
+<pre><code>t-statistic: -3.8952336023562912
+p-value: 0.00011523146459551333</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="getting-the-data" class="level1">
-<h1>Getting the data</h1>
-<p>Some cleaning is necessary since the data is not of the correct types.</p>
-<pre class="{julia}"><code>begin
-    data = CSV.read(download("https://raw.githubusercontent.com/opencasestudies/ocs-bp-rural-and-urban-obesity/master/data/wrangled/BMI_long.csv"), DataFrame) # download and load
-    allowmissing!(data, :BMI) # Allow BMI col to have missing values
-    replace!(data.BMI, "NA" =&gt; missing) # Convert "NA" to missing
-    data[!, :BMI] .= passmissing(parse).(Float64, (data[!, :BMI])) # Typecast into Float64?
-end;</code></pre>
-<pre class="{julia}"><code>first(data, 20)</code></pre>
-</section>
-<section id="sec-z-test" class="level1">
-<h1>Z-test</h1>
-<section id="two-sample-unpaired-z-test" class="level2">
-<h2 class="anchored" data-anchor-id="two-sample-unpaired-z-test">Two sample unpaired z-test</h2>
-<pre class="{julia}"><code>uneqvarztest = let
-    # Fetch a random sample of BMI data for women in the year 1985 and 2017
-    x1 = filter([:Sex, :Year] =&gt; (s, y) -&gt; s=="Women" &amp;&amp; y==1985 , data) |&gt;
-        x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    x2 = filter([:Sex, :Year] =&gt; (s, y) -&gt; s=="Women" &amp;&amp; y==2017 , data) |&gt;
-        x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    UnequalVarianceZTest(x1, x2)
-end</code></pre>
-</section>
-<section id="two-sample-paired-z-test" class="level2">
-<h2 class="anchored" data-anchor-id="two-sample-paired-z-test">Two sample paired z-test</h2>
-<pre class="{julia}"><code>eqvarztest = let
-    # Fetch a random sample of BMI data for women in the year 1985 and 2017
-    x1 = filter([:Sex, :Year] =&gt; (s, y) -&gt; s=="Women" &amp;&amp; y==1985 , data) |&gt;
-        x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    x2 = filter([:Sex, :Year] =&gt; (s, y) -&gt; s=="Women" &amp;&amp; y==2017 , data) |&gt;
-        x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    EqualVarianceZTest(x1, x2)
-end</code></pre>
-</section>
-</section>
-<section id="sec-t-test" class="level1">
-<h1>T-test</h1>
-<section id="one-sample-t-test" class="level2">
-<h2 class="anchored" data-anchor-id="one-sample-t-test">One sample t-test</h2>
-<pre class="{julia}"><code>onesamplettest = let 
-    x1 = filter(
-        [:Sex, :Region, :Year] =&gt; 
-            (s, r, y) -&gt; s=="Men" &amp;&amp; r=="Rural" &amp;&amp; y == 2017,
-        data
-    ) |&gt;
-    x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    OneSampleTTest(x1, 24.5)
-end</code></pre>
-</section>
-<section id="two-sample-unpaired-independent-t-test" class="level2">
-<h2 class="anchored" data-anchor-id="two-sample-unpaired-independent-t-test">Two sample unpaired (independent) t-test</h2>
-<pre class="{julia}"><code>unpairedtwosamplettest = let 
-    x1 = filter([:Sex, :Region, :Year] =&gt; 
-            (s, r, y) -&gt; s=="Women" &amp;&amp; r=="Rural" &amp;&amp; y == 1985,
-        data) |&gt;
-        x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    x2 = filter([:Sex, :Region, :Year] =&gt; 
-            (s, r, y) -&gt; s=="Women" &amp;&amp; r=="Urban" &amp;&amp; y == 1985,
-        data) |&gt;
-        x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    UnequalVarianceTTest(x1, x2)
-end</code></pre>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Welch’s Test
+<section id="example-code-for-a-one-tailed-test" class="level2">
+<h2 class="anchored" data-anchor-id="example-code-for-a-one-tailed-test">Example code for a one-tailed test</h2>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>t_statistic, p_value <span class="op">=</span> stats.ttest_ind(x1, x2, equal_var <span class="op">=</span> <span class="va">True</span>, nan_policy <span class="op">=</span> <span class="st">"omit"</span>, alternative <span class="op">=</span> <span class="st">"greater"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"t-statistic:"</span>, t_statistic)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>t-statistic: -3.8952336023562912
+p-value: 0.9999423842677022</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>This test uses the Welch correction, and there is no way to turn it off in <code>HypothesisTests.jl</code>.</p>
-</div>
-</div>
-<section id="only-considering-right-tailed-one-tailed" class="level3">
-<h3 class="anchored" data-anchor-id="only-considering-right-tailed-one-tailed">Only considering right tailed (one-tailed)</h3>
-<pre class="{julia}"><code>unpairedtwosamplettest = let 
-    x1 = filter([:Sex, :Region, :Year] =&gt; 
-            (s, r, y) -&gt; s=="Women" &amp;&amp; r=="Rural" &amp;&amp; y == 1985,
-        data) |&gt;
-        x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    x2 = filter([:Sex, :Region, :Year] =&gt; 
-            (s, r, y) -&gt; s=="Women" &amp;&amp; r=="Urban" &amp;&amp; y == 1985,
-        data) |&gt;
-        x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    UnequalVarianceTTest(x1, x2)
-end
-pvalue(unpairedtwosamplettest, tail=:right)</code></pre>
-</section>
 </section>
 <section id="two-sample-paired-dependent-t-test" class="level2">
 <h2 class="anchored" data-anchor-id="two-sample-paired-dependent-t-test">Two sample paired (dependent) t-test</h2>
-<pre class="{julia}"><code>pairedtwosamplettest = let 
-    x1 = filter([:Sex, :Region, :Year] =&gt; 
-            (s, r, y) -&gt; s=="Women" &amp;&amp; r=="Rural" &amp;&amp; y == 1985,
-        data) |&gt;
-        x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    x2 = filter([:Sex, :Region, :Year] =&gt; 
-            (s, r, y) -&gt; s=="Women" &amp;&amp; r=="Urban" &amp;&amp; y == 1985,
-        data) |&gt;
-        x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    EqualVarianceTTest(x1, x2)
-end</code></pre>
-</section>
-</section>
-<section id="sec-f-test" class="level1">
-<h1>F-test</h1>
-<pre class="{julia}"><code>Ftest = let 
-    x1 = filter([:Sex, :Region, :Year] =&gt; 
-            (s, r, y) -&gt; s=="Women" &amp;&amp; r=="Rural" &amp;&amp; y == 1985,
-        data) |&gt;
-        x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    x2 = filter([:Sex, :Region, :Year] =&gt; 
-            (s, r, y) -&gt; s=="Women" &amp;&amp; r=="Urban" &amp;&amp; y == 1985,
-        data) |&gt;
-        x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    x -&gt; x[!, :BMI] |&gt; skipmissing |&gt; collect |&gt; x-&gt;rand(x, 300)
-    VarianceFTest(x1, x2)
-end</code></pre>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>t_statistic, p_value <span class="op">=</span> stats.ttest_rel(x1, x2, nan_policy <span class="op">=</span> <span class="st">"omit"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"t-statistic:"</span>, t_statistic)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>t-statistic: -14.095486243034765
+p-value: 1.4266758468658937e-31</code></pre>
+</div>
+</div>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,

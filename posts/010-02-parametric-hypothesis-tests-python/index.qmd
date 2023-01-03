@@ -41,159 +41,32 @@ import pandas as pd
 dat = pd.read_csv("https://raw.githubusercontent.com/opencasestudies/ocs-bp-rural-and-urban-obesity/master/data/wrangled/BMI_long.csv")
 
 ```
+
+## Example code for a two-tailed test
 ```{python}
-# Sample data
-sample_1 = [1, 2, 3, 4, 5]
-sample_2 = [2, 3, 4, 5, 6]
+mask1 = (dat['Sex'] == "Women") & (dat['Region'] == "Rural") & (dat['Year'] == 1985)
+x1 = dat[mask1]['BMI']
 
-# Perform t-test
-t_statistic, p_value = stats.ttest_ind(sample_1, sample_2)
+mask2 = (dat['Sex'] == "Women") & (dat['Region'] == "Urban") & (dat['Year'] == 1985)
+x2 = dat[mask2]['BMI']
 
-# Print results
+t_statistic, p_value = stats.ttest_ind(x1, x2, equal_var = True, nan_policy = "omit")
+
 print("t-statistic:", t_statistic)
 print("p-value:", p_value)
-
-# Interpret results
-if p_value < 0.05:
-    print("The difference between the samples is significant (p < 0.05).")
-else:
-    print("The difference between the samples is not significant (p >= 0.05).")
-
-
 ```
+## Example code for a one-tailed test
+```{python}
+t_statistic, p_value = stats.ttest_ind(x1, x2, equal_var = True, nan_policy = "omit", alternative = "greater")
 
-# Getting the data
-
-Some cleaning is necessary since the data is not of the correct types.
-
-```{julia}
-begin
-	data = CSV.read(download("https://raw.githubusercontent.com/opencasestudies/ocs-bp-rural-and-urban-obesity/master/data/wrangled/BMI_long.csv"), DataFrame) # download and load
-	allowmissing!(data, :BMI) # Allow BMI col to have missing values
-	replace!(data.BMI, "NA" => missing) # Convert "NA" to missing
-	data[!, :BMI] .= passmissing(parse).(Float64, (data[!, :BMI])) # Typecast into Float64?
-end;
-```
-
-```{julia}
-first(data, 20)
-```
-
-# Z-test {#sec-z-test}
-
-## Two sample unpaired z-test
-
-```{julia}
-uneqvarztest = let
-	# Fetch a random sample of BMI data for women in the year 1985 and 2017
-	x1 = filter([:Sex, :Year] => (s, y) -> s=="Women" && y==1985 , data) |>
-		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	x2 = filter([:Sex, :Year] => (s, y) -> s=="Women" && y==2017 , data) |>
-		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	UnequalVarianceZTest(x1, x2)
-end
-```
-
-## Two sample paired z-test
-
-```{julia}
-eqvarztest = let
-	# Fetch a random sample of BMI data for women in the year 1985 and 2017
-	x1 = filter([:Sex, :Year] => (s, y) -> s=="Women" && y==1985 , data) |>
-		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	x2 = filter([:Sex, :Year] => (s, y) -> s=="Women" && y==2017 , data) |>
-		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	EqualVarianceZTest(x1, x2)
-end
-```
-
-# T-test {#sec-t-test}
-
-## One sample t-test
-
-```{julia}
-onesamplettest = let 
-	x1 = filter(
-		[:Sex, :Region, :Year] => 
-			(s, r, y) -> s=="Men" && r=="Rural" && y == 2017,
-		data
-	) |>
-	x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	OneSampleTTest(x1, 24.5)
-end
-```
-
-## Two sample unpaired (independent) t-test
-
-```{julia}
-unpairedtwosamplettest = let 
-    x1 = filter([:Sex, :Region, :Year] => 
-            (s, r, y) -> s=="Women" && r=="Rural" && y == 1985,
-        data) |>
-        x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-    x2 = filter([:Sex, :Region, :Year] => 
-            (s, r, y) -> s=="Women" && r=="Urban" && y == 1985,
-        data) |>
-        x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-    x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-    UnequalVarianceTTest(x1, x2)
-end
-```
-
-::: callout-warning
-## Welch's Test
-
-This test uses the Welch correction, and there is no way to turn it off in `HypothesisTests.jl`.
-:::
-
-### Only considering right tailed (one-tailed)
-
-```{julia}
-unpairedtwosamplettest = let 
-	x1 = filter([:Sex, :Region, :Year] => 
-			(s, r, y) -> s=="Women" && r=="Rural" && y == 1985,
-		data) |>
-		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	x2 = filter([:Sex, :Region, :Year] => 
-			(s, r, y) -> s=="Women" && r=="Urban" && y == 1985,
-		data) |>
-		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	UnequalVarianceTTest(x1, x2)
-end
-pvalue(unpairedtwosamplettest, tail=:right)
+print("t-statistic:", t_statistic)
+print("p-value:", p_value)
 ```
 
 ## Two sample paired (dependent) t-test
+```{python}
+t_statistic, p_value = stats.ttest_rel(x1, x2, nan_policy = "omit")
 
-```{julia}
-pairedtwosamplettest = let 
-	x1 = filter([:Sex, :Region, :Year] => 
-			(s, r, y) -> s=="Women" && r=="Rural" && y == 1985,
-		data) |>
-		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	x2 = filter([:Sex, :Region, :Year] => 
-			(s, r, y) -> s=="Women" && r=="Urban" && y == 1985,
-		data) |>
-		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	EqualVarianceTTest(x1, x2)
-end
-```
-
-# F-test {#sec-f-test}
-
-```{julia}
-Ftest = let 
-	x1 = filter([:Sex, :Region, :Year] => 
-			(s, r, y) -> s=="Women" && r=="Rural" && y == 1985,
-		data) |>
-		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	x2 = filter([:Sex, :Region, :Year] => 
-			(s, r, y) -> s=="Women" && r=="Urban" && y == 1985,
-		data) |>
-		x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	x -> x[!, :BMI] |> skipmissing |> collect |> x->rand(x, 300)
-	VarianceFTest(x1, x2)
-end
+print("t-statistic:", t_statistic)
+print("p-value:", p_value)
 ```
