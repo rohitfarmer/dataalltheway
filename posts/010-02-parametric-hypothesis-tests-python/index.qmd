@@ -4,7 +4,7 @@ description: "A tutorial on parametric hypothesis tests with examples in Python.
 author: 
     - name: "Rohit Farmer"
       orcid: ""
-date: "2022-12-22"
+date: "2023-01-09"
 categories: [How To, Parametric Tests, T-test, Z-test, F-test, ANOVA, Python]
 format:
   html:
@@ -14,13 +14,12 @@ format:
       toggle: true
 citation: true
 google-scholar: true
-draft: true
 ---
 
 ::: {.callout-note collapse="true"}
 ### Update history
 
-2022-11-17 First draft
+2023-01-09 First draft
 :::
 
 # Introduction
@@ -29,7 +28,7 @@ This article is an extension of [Rohit Farmer. 2022. "Parametric Hypothesis Test
 
 -   Z-test (@sec-z-test)
 -   T-test (@sec-t-test)
--   F-test (@sec-f-test)
+-   ANOVA (@sec-anova)
 
 ## Import packages
 
@@ -42,7 +41,34 @@ dat = pd.read_csv("https://raw.githubusercontent.com/opencasestudies/ocs-bp-rura
 
 ```
 
-## Example code for a two-tailed test
+# Z-test {#sec-z-test}
+
+## Example code for a two sample unpaired z-test
+
+```{python}
+from statsmodels.stats.weightstats import ztest as ztest
+import random
+
+mask1 = (dat['Sex'] == "Women") & (dat['Year'] == 1985)
+x1 = dat[mask1]['BMI']
+x1 = x1.array.dropna()
+x1 = random.sample(x1.tolist(), k = 300)
+
+mask2 = (dat['Sex'] == "Women") & (dat['Year'] == 2017)
+x2 = dat[mask2]['BMI']
+x2 = x2.array.dropna()
+x2 = random.sample(x2.tolist(), k = 300)
+
+z_statistics, p_value = ztest(x1, x2, value=0) 
+
+print("z-statistic:", z_statistics)
+print("p-value:", p_value)
+```
+
+# T-test {#sec-t-test}
+
+## Example code for a two-tailed t-test
+
 ```{python}
 mask1 = (dat['Sex'] == "Women") & (dat['Region'] == "Rural") & (dat['Year'] == 1985)
 x1 = dat[mask1]['BMI']
@@ -55,7 +81,9 @@ t_statistic, p_value = stats.ttest_ind(x1, x2, equal_var = True, nan_policy = "o
 print("t-statistic:", t_statistic)
 print("p-value:", p_value)
 ```
-## Example code for a one-tailed test
+
+## Example code for a one-tailed t-test
+
 ```{python}
 t_statistic, p_value = stats.ttest_ind(x1, x2, equal_var = True, nan_policy = "omit", alternative = "greater")
 
@@ -64,9 +92,31 @@ print("p-value:", p_value)
 ```
 
 ## Two sample paired (dependent) t-test
+
 ```{python}
 t_statistic, p_value = stats.ttest_rel(x1, x2, nan_policy = "omit")
 
 print("t-statistic:", t_statistic)
 print("p-value:", p_value)
+```
+
+# ANOVA {#sec-anova}
+
+## Example code for a oneway ANOVA
+
+```{python}
+
+mask1 = (dat['Sex'] == "Men") & (dat['Region'] == "Rural") & (dat['Year'] == 2017)
+x1 = dat[mask1]['BMI']
+
+mask2 = (dat['Sex'] == "Men") & (dat['Region'] == "Urban") & (dat['Year'] == 2017)
+x2 = dat[mask2]['BMI']
+
+mask3 = (dat['Sex'] == "Men") & (dat['Region'] == "National") & (dat['Year'] == 2017)
+x3 = dat[mask3]['BMI']
+
+f_value, p_value = stats.f_oneway(x1.array.dropna(), x2.array.dropna(), x3.array.dropna())
+
+print("f-value statistic: ",f_value)
+print("p-value: ", p_value)
 ```

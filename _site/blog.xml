@@ -16,8 +16,177 @@
 <height>88</height>
 <width>144</width>
 </image>
-<generator>quarto-1.2.215</generator>
-<lastBuildDate>Wed, 30 Nov 2022 05:00:00 GMT</lastBuildDate>
+<generator>quarto-1.2.280</generator>
+<lastBuildDate>Mon, 09 Jan 2023 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Parametric hypothesis tests with examples in Python</title>
+  <dc:creator>Rohit Farmer</dc:creator>
+  <link>https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Update history
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>2023-01-09 First draft</p>
+</div>
+</div>
+</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This article is an extension of <a href="https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r">Rohit Farmer. 2022. “Parametric Hypothesis Tests with Examples in R.” November 10, 2022</a>. Please check out the parent article for the theoretical background.</p>
+<ul>
+<li>Z-test (Section&nbsp;2)</li>
+<li>T-test (Section&nbsp;3)</li>
+<li>ANOVA (Section&nbsp;4)</li>
+</ul>
+<section id="import-packages" class="level2">
+<h2 class="anchored" data-anchor-id="import-packages">Import packages</h2>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;">from</span> scipy <span class="im" style="color: #00769E;">import</span> stats</span>
+<span id="cb1-3"><span class="im" style="color: #00769E;">import</span> pandas <span class="im" style="color: #00769E;">as</span> pd</span>
+<span id="cb1-4"></span>
+<span id="cb1-5">dat <span class="op" style="color: #5E5E5E;">=</span> pd.read_csv(<span class="st" style="color: #20794D;">"https://raw.githubusercontent.com/opencasestudies/ocs-bp-rural-and-urban-obesity/master/data/wrangled/BMI_long.csv"</span>)</span></code></pre></div>
+</div>
+</section>
+</section>
+<section id="sec-z-test" class="level1">
+<h1>Z-test</h1>
+<section id="example-code-for-a-two-sample-unpaired-z-test" class="level2">
+<h2 class="anchored" data-anchor-id="example-code-for-a-two-sample-unpaired-z-test">Example code for a two sample unpaired z-test</h2>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;">from</span> statsmodels.stats.weightstats <span class="im" style="color: #00769E;">import</span> ztest <span class="im" style="color: #00769E;">as</span> ztest</span>
+<span id="cb2-2"><span class="im" style="color: #00769E;">import</span> random</span>
+<span id="cb2-3"></span>
+<span id="cb2-4">mask1 <span class="op" style="color: #5E5E5E;">=</span> (dat[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"Women"</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (dat[<span class="st" style="color: #20794D;">'Year'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">1985</span>)</span>
+<span id="cb2-5">x1 <span class="op" style="color: #5E5E5E;">=</span> dat[mask1][<span class="st" style="color: #20794D;">'BMI'</span>]</span>
+<span id="cb2-6">x1 <span class="op" style="color: #5E5E5E;">=</span> x1.array.dropna()</span>
+<span id="cb2-7">x1 <span class="op" style="color: #5E5E5E;">=</span> random.sample(x1.tolist(), k <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">300</span>)</span>
+<span id="cb2-8"></span>
+<span id="cb2-9">mask2 <span class="op" style="color: #5E5E5E;">=</span> (dat[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"Women"</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (dat[<span class="st" style="color: #20794D;">'Year'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">2017</span>)</span>
+<span id="cb2-10">x2 <span class="op" style="color: #5E5E5E;">=</span> dat[mask2][<span class="st" style="color: #20794D;">'BMI'</span>]</span>
+<span id="cb2-11">x2 <span class="op" style="color: #5E5E5E;">=</span> x2.array.dropna()</span>
+<span id="cb2-12">x2 <span class="op" style="color: #5E5E5E;">=</span> random.sample(x2.tolist(), k <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">300</span>)</span>
+<span id="cb2-13"></span>
+<span id="cb2-14">z_statistics, p_value <span class="op" style="color: #5E5E5E;">=</span> ztest(x1, x2, value<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">0</span>) </span>
+<span id="cb2-15"></span>
+<span id="cb2-16"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"z-statistic:"</span>, z_statistics)</span>
+<span id="cb2-17"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"p-value:"</span>, p_value)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>z-statistic: -9.201889936608346
+p-value: 3.517084717411295e-20</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-t-test" class="level1">
+<h1>T-test</h1>
+<section id="example-code-for-a-two-tailed-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="example-code-for-a-two-tailed-t-test">Example code for a two-tailed t-test</h2>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">mask1 <span class="op" style="color: #5E5E5E;">=</span> (dat[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"Women"</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (dat[<span class="st" style="color: #20794D;">'Region'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"Rural"</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (dat[<span class="st" style="color: #20794D;">'Year'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">1985</span>)</span>
+<span id="cb4-2">x1 <span class="op" style="color: #5E5E5E;">=</span> dat[mask1][<span class="st" style="color: #20794D;">'BMI'</span>]</span>
+<span id="cb4-3"></span>
+<span id="cb4-4">mask2 <span class="op" style="color: #5E5E5E;">=</span> (dat[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"Women"</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (dat[<span class="st" style="color: #20794D;">'Region'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"Urban"</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (dat[<span class="st" style="color: #20794D;">'Year'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">1985</span>)</span>
+<span id="cb4-5">x2 <span class="op" style="color: #5E5E5E;">=</span> dat[mask2][<span class="st" style="color: #20794D;">'BMI'</span>]</span>
+<span id="cb4-6"></span>
+<span id="cb4-7">t_statistic, p_value <span class="op" style="color: #5E5E5E;">=</span> stats.ttest_ind(x1, x2, equal_var <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">True</span>, nan_policy <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"omit"</span>)</span>
+<span id="cb4-8"></span>
+<span id="cb4-9"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"t-statistic:"</span>, t_statistic)</span>
+<span id="cb4-10"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"p-value:"</span>, p_value)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>t-statistic: -3.8952336023562912
+p-value: 0.00011523146459551333</code></pre>
+</div>
+</div>
+</section>
+<section id="example-code-for-a-one-tailed-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="example-code-for-a-one-tailed-t-test">Example code for a one-tailed t-test</h2>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">t_statistic, p_value <span class="op" style="color: #5E5E5E;">=</span> stats.ttest_ind(x1, x2, equal_var <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">True</span>, nan_policy <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"omit"</span>, alternative <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"greater"</span>)</span>
+<span id="cb6-2"></span>
+<span id="cb6-3"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"t-statistic:"</span>, t_statistic)</span>
+<span id="cb6-4"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"p-value:"</span>, p_value)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>t-statistic: -3.8952336023562912
+p-value: 0.9999423842677022</code></pre>
+</div>
+</div>
+</section>
+<section id="two-sample-paired-dependent-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="two-sample-paired-dependent-t-test">Two sample paired (dependent) t-test</h2>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">t_statistic, p_value <span class="op" style="color: #5E5E5E;">=</span> stats.ttest_rel(x1, x2, nan_policy <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"omit"</span>)</span>
+<span id="cb8-2"></span>
+<span id="cb8-3"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"t-statistic:"</span>, t_statistic)</span>
+<span id="cb8-4"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"p-value:"</span>, p_value)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>t-statistic: -14.095486243034763
+p-value: 1.426675846865914e-31</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-anova" class="level1">
+<h1>ANOVA</h1>
+<section id="example-code-for-a-oneway-anova" class="level2">
+<h2 class="anchored" data-anchor-id="example-code-for-a-oneway-anova">Example code for a oneway ANOVA</h2>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">mask1 <span class="op" style="color: #5E5E5E;">=</span> (dat[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"Men"</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (dat[<span class="st" style="color: #20794D;">'Region'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"Rural"</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (dat[<span class="st" style="color: #20794D;">'Year'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">2017</span>)</span>
+<span id="cb10-2">x1 <span class="op" style="color: #5E5E5E;">=</span> dat[mask1][<span class="st" style="color: #20794D;">'BMI'</span>]</span>
+<span id="cb10-3"></span>
+<span id="cb10-4">mask2 <span class="op" style="color: #5E5E5E;">=</span> (dat[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"Men"</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (dat[<span class="st" style="color: #20794D;">'Region'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"Urban"</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (dat[<span class="st" style="color: #20794D;">'Year'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">2017</span>)</span>
+<span id="cb10-5">x2 <span class="op" style="color: #5E5E5E;">=</span> dat[mask2][<span class="st" style="color: #20794D;">'BMI'</span>]</span>
+<span id="cb10-6"></span>
+<span id="cb10-7">mask3 <span class="op" style="color: #5E5E5E;">=</span> (dat[<span class="st" style="color: #20794D;">'Sex'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"Men"</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (dat[<span class="st" style="color: #20794D;">'Region'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"National"</span>) <span class="op" style="color: #5E5E5E;">&amp;</span> (dat[<span class="st" style="color: #20794D;">'Year'</span>] <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">2017</span>)</span>
+<span id="cb10-8">x3 <span class="op" style="color: #5E5E5E;">=</span> dat[mask3][<span class="st" style="color: #20794D;">'BMI'</span>]</span>
+<span id="cb10-9"></span>
+<span id="cb10-10">f_value, p_value <span class="op" style="color: #5E5E5E;">=</span> stats.f_oneway(x1.array.dropna(), x2.array.dropna(), x3.array.dropna())</span>
+<span id="cb10-11"></span>
+<span id="cb10-12"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"f-value statistic: "</span>,f_value)</span>
+<span id="cb10-13"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"p-value: "</span>, p_value)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>f-value statistic:  3.4215235158825905
+p-value:  0.033309935710150805</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2023,
+  author = {Rohit Farmer},
+  title = {Parametric Hypothesis Tests with Examples in {Python}},
+  date = {2023-01-09},
+  url = {https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2023" class="csl-entry quarto-appendix-citeas">
+Rohit Farmer. 2023. <span>“Parametric Hypothesis Tests with Examples in
+Python.”</span> January 9, 2023. <a href="https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python">https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python</a>.
+</div></div></section></div> ]]></description>
+  <category>How To</category>
+  <category>Parametric Tests</category>
+  <category>T-test</category>
+  <category>Z-test</category>
+  <category>F-test</category>
+  <category>ANOVA</category>
+  <category>Python</category>
+  <guid>https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python/index.html</guid>
+  <pubDate>Mon, 09 Jan 2023 05:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Non-parametric hypothesis tests with examples in Julia</title>
   <dc:creator>Dhruva Sambrani</dc:creator>

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.215">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rohit Farmer">
-<meta name="dcterms.date" content="2022-12-22">
+<meta name="dcterms.date" content="2023-01-09">
 <meta name="description" content="A tutorial on parametric hypothesis tests with examples in Python.">
 
 <title>Data All The Way - Parametric hypothesis tests with examples in Python</title>
@@ -165,10 +165,10 @@ cookieconsent.run({
 <meta name="twitter:card" content="summary">
 <meta name="citation_title" content="Parametric hypothesis tests with examples in Python">
 <meta name="citation_author" content="Rohit Farmer">
-<meta name="citation_publication_date" content="2022-12-22">
-<meta name="citation_cover_date" content="2022-12-22">
-<meta name="citation_year" content="2022">
-<meta name="citation_online_date" content="2022-12-22">
+<meta name="citation_publication_date" content="2023-01-09">
+<meta name="citation_cover_date" content="2023-01-09">
+<meta name="citation_year" content="2023">
+<meta name="citation_online_date" content="2023-01-09">
 <meta name="citation_fulltext_html_url" content="https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python">
 <meta name="citation_language" content="en">
 </head>
@@ -242,9 +242,20 @@ cookieconsent.run({
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
   <li><a href="#import-packages" id="toc-import-packages" class="nav-link" data-scroll-target="#import-packages">Import packages</a></li>
-  <li><a href="#example-code-for-a-two-tailed-test" id="toc-example-code-for-a-two-tailed-test" class="nav-link" data-scroll-target="#example-code-for-a-two-tailed-test">Example code for a two-tailed test</a></li>
-  <li><a href="#example-code-for-a-one-tailed-test" id="toc-example-code-for-a-one-tailed-test" class="nav-link" data-scroll-target="#example-code-for-a-one-tailed-test">Example code for a one-tailed test</a></li>
+  </ul></li>
+  <li><a href="#sec-z-test" id="toc-sec-z-test" class="nav-link" data-scroll-target="#sec-z-test">Z-test</a>
+  <ul class="collapse">
+  <li><a href="#example-code-for-a-two-sample-unpaired-z-test" id="toc-example-code-for-a-two-sample-unpaired-z-test" class="nav-link" data-scroll-target="#example-code-for-a-two-sample-unpaired-z-test">Example code for a two sample unpaired z-test</a></li>
+  </ul></li>
+  <li><a href="#sec-t-test" id="toc-sec-t-test" class="nav-link" data-scroll-target="#sec-t-test">T-test</a>
+  <ul class="collapse">
+  <li><a href="#example-code-for-a-two-tailed-t-test" id="toc-example-code-for-a-two-tailed-t-test" class="nav-link" data-scroll-target="#example-code-for-a-two-tailed-t-test">Example code for a two-tailed t-test</a></li>
+  <li><a href="#example-code-for-a-one-tailed-t-test" id="toc-example-code-for-a-one-tailed-t-test" class="nav-link" data-scroll-target="#example-code-for-a-one-tailed-t-test">Example code for a one-tailed t-test</a></li>
   <li><a href="#two-sample-paired-dependent-t-test" id="toc-two-sample-paired-dependent-t-test" class="nav-link" data-scroll-target="#two-sample-paired-dependent-t-test">Two sample paired (dependent) t-test</a></li>
+  </ul></li>
+  <li><a href="#sec-anova" id="toc-sec-anova" class="nav-link" data-scroll-target="#sec-anova">ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#example-code-for-a-oneway-anova" id="toc-example-code-for-a-oneway-anova" class="nav-link" data-scroll-target="#example-code-for-a-oneway-anova">Example code for a oneway ANOVA</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -285,7 +296,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 22, 2022</p>
+      <p class="date">January 9, 2023</p>
     </div>
   </div>
   
@@ -307,7 +318,7 @@ Update history
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>2022-11-17 First draft</p>
+<p>2023-01-09 First draft</p>
 </div>
 </div>
 </div>
@@ -315,9 +326,9 @@ Update history
 <h1>Introduction</h1>
 <p>This article is an extension of <a href="https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r">Rohit Farmer. 2022. “Parametric Hypothesis Tests with Examples in R.” November 10, 2022</a>. Please check out the parent article for the theoretical background.</p>
 <ul>
-<li>Z-test (<strong>?@sec-z-test</strong>)</li>
-<li>T-test (<strong>?@sec-t-test</strong>)</li>
-<li>F-test (<strong>?@sec-f-test</strong>)</li>
+<li>Z-test (<a href="#sec-z-test">Section&nbsp;2</a>)</li>
+<li>T-test (<a href="#sec-t-test">Section&nbsp;3</a>)</li>
+<li>ANOVA (<a href="#sec-anova">Section&nbsp;4</a>)</li>
 </ul>
 <section id="import-packages" class="level2">
 <h2 class="anchored" data-anchor-id="import-packages">Import packages</h2>
@@ -329,32 +340,64 @@ Update history
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dat <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/opencasestudies/ocs-bp-rural-and-urban-obesity/master/data/wrangled/BMI_long.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="example-code-for-a-two-tailed-test" class="level2">
-<h2 class="anchored" data-anchor-id="example-code-for-a-two-tailed-test">Example code for a two-tailed test</h2>
+</section>
+<section id="sec-z-test" class="level1">
+<h1>Z-test</h1>
+<section id="example-code-for-a-two-sample-unpaired-z-test" class="level2">
+<h2 class="anchored" data-anchor-id="example-code-for-a-two-sample-unpaired-z-test">Example code for a two sample unpaired z-test</h2>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mask1 <span class="op">=</span> (dat[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">"Women"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Region'</span>] <span class="op">==</span> <span class="st">"Rural"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Year'</span>] <span class="op">==</span> <span class="dv">1985</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> dat[mask1][<span class="st">'BMI'</span>]</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.weightstats <span class="im">import</span> ztest <span class="im">as</span> ztest</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mask2 <span class="op">=</span> (dat[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">"Women"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Region'</span>] <span class="op">==</span> <span class="st">"Urban"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Year'</span>] <span class="op">==</span> <span class="dv">1985</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> dat[mask2][<span class="st">'BMI'</span>]</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>t_statistic, p_value <span class="op">=</span> stats.ttest_ind(x1, x2, equal_var <span class="op">=</span> <span class="va">True</span>, nan_policy <span class="op">=</span> <span class="st">"omit"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mask1 <span class="op">=</span> (dat[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">"Women"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Year'</span>] <span class="op">==</span> <span class="dv">1985</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> dat[mask1][<span class="st">'BMI'</span>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> x1.array.dropna()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> random.sample(x1.tolist(), k <span class="op">=</span> <span class="dv">300</span>)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"t-statistic:"</span>, t_statistic)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>mask2 <span class="op">=</span> (dat[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">"Women"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Year'</span>] <span class="op">==</span> <span class="dv">2017</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> dat[mask2][<span class="st">'BMI'</span>]</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> x2.array.dropna()</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> random.sample(x2.tolist(), k <span class="op">=</span> <span class="dv">300</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>z_statistics, p_value <span class="op">=</span> ztest(x1, x2, value<span class="op">=</span><span class="dv">0</span>) </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"z-statistic:"</span>, z_statistics)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>z-statistic: -9.201889936608346
+p-value: 3.517084717411295e-20</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-t-test" class="level1">
+<h1>T-test</h1>
+<section id="example-code-for-a-two-tailed-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="example-code-for-a-two-tailed-t-test">Example code for a two-tailed t-test</h2>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mask1 <span class="op">=</span> (dat[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">"Women"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Region'</span>] <span class="op">==</span> <span class="st">"Rural"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Year'</span>] <span class="op">==</span> <span class="dv">1985</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> dat[mask1][<span class="st">'BMI'</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>mask2 <span class="op">=</span> (dat[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">"Women"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Region'</span>] <span class="op">==</span> <span class="st">"Urban"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Year'</span>] <span class="op">==</span> <span class="dv">1985</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> dat[mask2][<span class="st">'BMI'</span>]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>t_statistic, p_value <span class="op">=</span> stats.ttest_ind(x1, x2, equal_var <span class="op">=</span> <span class="va">True</span>, nan_policy <span class="op">=</span> <span class="st">"omit"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"t-statistic:"</span>, t_statistic)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t-statistic: -3.8952336023562912
 p-value: 0.00011523146459551333</code></pre>
 </div>
 </div>
 </section>
-<section id="example-code-for-a-one-tailed-test" class="level2">
-<h2 class="anchored" data-anchor-id="example-code-for-a-one-tailed-test">Example code for a one-tailed test</h2>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>t_statistic, p_value <span class="op">=</span> stats.ttest_ind(x1, x2, equal_var <span class="op">=</span> <span class="va">True</span>, nan_policy <span class="op">=</span> <span class="st">"omit"</span>, alternative <span class="op">=</span> <span class="st">"greater"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"t-statistic:"</span>, t_statistic)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="example-code-for-a-one-tailed-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="example-code-for-a-one-tailed-t-test">Example code for a one-tailed t-test</h2>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>t_statistic, p_value <span class="op">=</span> stats.ttest_ind(x1, x2, equal_var <span class="op">=</span> <span class="va">True</span>, nan_policy <span class="op">=</span> <span class="st">"omit"</span>, alternative <span class="op">=</span> <span class="st">"greater"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"t-statistic:"</span>, t_statistic)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>t-statistic: -3.8952336023562912
 p-value: 0.9999423842677022</code></pre>
@@ -363,14 +406,39 @@ p-value: 0.9999423842677022</code></pre>
 </section>
 <section id="two-sample-paired-dependent-t-test" class="level2">
 <h2 class="anchored" data-anchor-id="two-sample-paired-dependent-t-test">Two sample paired (dependent) t-test</h2>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>t_statistic, p_value <span class="op">=</span> stats.ttest_rel(x1, x2, nan_policy <span class="op">=</span> <span class="st">"omit"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"t-statistic:"</span>, t_statistic)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>t_statistic, p_value <span class="op">=</span> stats.ttest_rel(x1, x2, nan_policy <span class="op">=</span> <span class="st">"omit"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"t-statistic:"</span>, t_statistic)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value:"</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>t-statistic: -14.095486243034765
-p-value: 1.4266758468658937e-31</code></pre>
+<pre><code>t-statistic: -14.095486243034763
+p-value: 1.426675846865914e-31</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-anova" class="level1">
+<h1>ANOVA</h1>
+<section id="example-code-for-a-oneway-anova" class="level2">
+<h2 class="anchored" data-anchor-id="example-code-for-a-oneway-anova">Example code for a oneway ANOVA</h2>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mask1 <span class="op">=</span> (dat[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">"Men"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Region'</span>] <span class="op">==</span> <span class="st">"Rural"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Year'</span>] <span class="op">==</span> <span class="dv">2017</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> dat[mask1][<span class="st">'BMI'</span>]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>mask2 <span class="op">=</span> (dat[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">"Men"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Region'</span>] <span class="op">==</span> <span class="st">"Urban"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Year'</span>] <span class="op">==</span> <span class="dv">2017</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> dat[mask2][<span class="st">'BMI'</span>]</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>mask3 <span class="op">=</span> (dat[<span class="st">'Sex'</span>] <span class="op">==</span> <span class="st">"Men"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Region'</span>] <span class="op">==</span> <span class="st">"National"</span>) <span class="op">&amp;</span> (dat[<span class="st">'Year'</span>] <span class="op">==</span> <span class="dv">2017</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>x3 <span class="op">=</span> dat[mask3][<span class="st">'BMI'</span>]</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>f_value, p_value <span class="op">=</span> stats.f_oneway(x1.array.dropna(), x2.array.dropna(), x3.array.dropna())</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"f-value statistic: "</span>,f_value)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-value: "</span>, p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>f-value statistic:  3.4215235158825905
+p-value:  0.033309935710150805</code></pre>
 </div>
 </div>
 
@@ -378,16 +446,16 @@ p-value: 1.4266758468658937e-31</code></pre>
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2023,
   author = {Rohit Farmer},
   title = {Parametric Hypothesis Tests with Examples in {Python}},
-  date = {2022-12-22},
+  date = {2023-01-09},
   url = {https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Rohit Farmer. 2022. <span>“Parametric Hypothesis Tests with Examples in
-Python.”</span> December 22, 2022. <a href="https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python">https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2023" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Rohit Farmer. 2023. <span>“Parametric Hypothesis Tests with Examples in
+Python.”</span> January 9, 2023. <a href="https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python">https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
