@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,9 +20,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -49,48 +50,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -104,8 +76,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -145,7 +116,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-N6RK0VE0J6"></script>
@@ -190,10 +162,12 @@ cookieconsent.run({
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Data All The Way - Sources of open data for statistics, data science, and machine learning">
 <meta property="og:description" content="Even though the default data included in R and other languages are carefully selected and valuable. They are old, limited in sample size, and may not be more than toy examples in the current context.">
+<meta property="og:image" content="https://www.dataalltheway.com/posts/007-open-data-for-datascience/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta property="og:site-name" content="Data All The Way">
 <meta name="twitter:title" content="Data All The Way - Sources of open data for statistics, data science, and machine learning">
 <meta name="twitter:description" content="Even though the default data included in R and other languages are carefully selected and valuable. They are old, limited in sample size, and may not be more than toy examples in the current context.">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.dataalltheway.com/posts/007-open-data-for-datascience/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="citation_title" content="Sources of open data for statistics, data science, and machine learning">
 <meta name="citation_author" content="Rohit Farmer">
 <meta name="citation_publication_date" content="2022-10-25">
@@ -219,48 +193,48 @@ cookieconsent.run({
     <span class="navbar-title">Data All The Way</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../bookmarks/index.html">
+    <a class="nav-link" href="../../bookmarks/index.html" rel="" target="">
  <span class="menu-text">Bookmarks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../contact/index.html">
+    <a class="nav-link" href="../../contact/index.html" rel="" target="">
  <span class="menu-text">Contact</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/rohitfarmer/dataalltheway"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/rohitfarmer/dataalltheway" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/rohitfarmer"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/rohitfarmer" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://fosstodon.org\@swatantra"><i class="bi bi-mastodon" role="img">
+    <a class="nav-link" href="https://fosstodon.org\@swatantra" rel="" target=""><i class="bi bi-mastodon" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../blog.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../blog.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -336,12 +310,12 @@ cookieconsent.run({
 
 </header>
 
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Updates
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -358,12 +332,12 @@ Updates
 <p>R and Python, the two most popular data science and machine learning programming languages, come with a default data set for demonstration and educational purposes. Moreover, many popular data science libraries such as tidyverse, lme4, nlme, MASS, survival, Bioconductor, and sklearn, amongst others, also contain example datasets for unit testing and demonstration. However, even though the included data are carefully selected, most of them are old (from the 1970s and ’80s) and hence limited in sample size (due to the limitation in the then available computing power) and may not be more than a toy example in the current context. Therefore, in a learning path after utilizing the default datasets for initial testing of a statistical function or a machine learning model, it’s both desired and recommended to practice on a real-life dataset. Working on a real-life dataset that is apt in the current context of data science and computing resources would not only teach the desired statistical/machine learning technique but also expose the learner to challenges that are usually not associated with toy datasets—for example, class imbalance, missing values, wrongly labeled datatypes, statistical noise, etc.</p>
 <p>For a real-life dataset, I recommend using open data released by government agencies and other non-government organizations as part of their openness in operations. These datasets are not only of adequate size but also represent what is happening around us in a field of interest. Many countries around the world release data to inform citizens about their operations and fair practices. However, I do not think, other than the established data analytics-based companies and research groups, ordinary citizens ever look into such resources. I bet many would not even know that their government agencies are making ample amounts of data available for scrutiny. Therefore, in my opinion, budding data scientists should take it upon themselves to utilize these datasets in place of toy examples to not only justify the existence of such a resource but also, through analysis, gain first-hand insight and transfer it to their friends, family, and broader audience. Such a practice by amateur data scientists may have far-reaching implications than what I can convey here.</p>
 <p>In the sections below, for completeness, I will briefly discuss how to access default datasets available in R and then move on to other resources, including open government data mentioned earlier.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -398,541 +372,543 @@ Tip
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"100%"</span>, <span class="at">height =</span> <span class="st">"300px"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
 <div id="tbl-rdatasets" class="anchored">
-
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; "><table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;"><caption>Table&nbsp;1:  Default datasets in R </caption>
- <thead>
-  <tr>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Package </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Item </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Title </th>
-  </tr>
- </thead>
+<table class="table table-striped table-hover table-sm small" data-quarto-postprocess="true">
+<caption>Table&nbsp;1: Default datasets in R</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Package</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Item</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Title</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> AirPassengers </td>
-   <td style="text-align:left;"> Monthly Airline Passenger Numbers 1949-1960 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> BJsales </td>
-   <td style="text-align:left;"> Sales Data with Leading Indicator </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> BJsales.lead (BJsales) </td>
-   <td style="text-align:left;"> Sales Data with Leading Indicator </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> BOD </td>
-   <td style="text-align:left;"> Biochemical Oxygen Demand </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> CO2 </td>
-   <td style="text-align:left;"> Carbon Dioxide Uptake in Grass Plants </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> ChickWeight </td>
-   <td style="text-align:left;"> Weight versus age of chicks on different diets </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> DNase </td>
-   <td style="text-align:left;"> Elisa assay of DNase </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> EuStockMarkets </td>
-   <td style="text-align:left;"> Daily Closing Prices of Major European Stock Indices, 1991-1998 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> Formaldehyde </td>
-   <td style="text-align:left;"> Determination of Formaldehyde </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> HairEyeColor </td>
-   <td style="text-align:left;"> Hair and Eye Color of Statistics Students </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> Harman23.cor </td>
-   <td style="text-align:left;"> Harman Example 2.3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> Harman74.cor </td>
-   <td style="text-align:left;"> Harman Example 7.4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> Indometh </td>
-   <td style="text-align:left;"> Pharmacokinetics of Indomethacin </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> InsectSprays </td>
-   <td style="text-align:left;"> Effectiveness of Insect Sprays </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> JohnsonJohnson </td>
-   <td style="text-align:left;"> Quarterly Earnings per Johnson &amp; Johnson Share </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> LakeHuron </td>
-   <td style="text-align:left;"> Level of Lake Huron 1875-1972 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> LifeCycleSavings </td>
-   <td style="text-align:left;"> Intercountry Life-Cycle Savings Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> Loblolly </td>
-   <td style="text-align:left;"> Growth of Loblolly pine trees </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> Nile </td>
-   <td style="text-align:left;"> Flow of the River Nile </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> Orange </td>
-   <td style="text-align:left;"> Growth of Orange Trees </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> OrchardSprays </td>
-   <td style="text-align:left;"> Potency of Orchard Sprays </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> PlantGrowth </td>
-   <td style="text-align:left;"> Results from an Experiment on Plant Growth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> Puromycin </td>
-   <td style="text-align:left;"> Reaction Velocity of an Enzymatic Reaction </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> Seatbelts </td>
-   <td style="text-align:left;"> Road Casualties in Great Britain 1969-84 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> Theoph </td>
-   <td style="text-align:left;"> Pharmacokinetics of Theophylline </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> Titanic </td>
-   <td style="text-align:left;"> Survival of passengers on the Titanic </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> ToothGrowth </td>
-   <td style="text-align:left;"> The Effect of Vitamin C on Tooth Growth in Guinea Pigs </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> UCBAdmissions </td>
-   <td style="text-align:left;"> Student Admissions at UC Berkeley </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> UKDriverDeaths </td>
-   <td style="text-align:left;"> Road Casualties in Great Britain 1969-84 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> UKgas </td>
-   <td style="text-align:left;"> UK Quarterly Gas Consumption </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> USAccDeaths </td>
-   <td style="text-align:left;"> Accidental Deaths in the US 1973-1978 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> USArrests </td>
-   <td style="text-align:left;"> Violent Crime Rates by US State </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> USJudgeRatings </td>
-   <td style="text-align:left;"> Lawyers' Ratings of State Judges in the US Superior Court </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> USPersonalExpenditure </td>
-   <td style="text-align:left;"> Personal Expenditure Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> UScitiesD </td>
-   <td style="text-align:left;"> Distances Between European Cities and Between US Cities </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> VADeaths </td>
-   <td style="text-align:left;"> Death Rates in Virginia (1940) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> WWWusage </td>
-   <td style="text-align:left;"> Internet Usage per Minute </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> WorldPhones </td>
-   <td style="text-align:left;"> The World's Telephones </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> ability.cov </td>
-   <td style="text-align:left;"> Ability and Intelligence Tests </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> airmiles </td>
-   <td style="text-align:left;"> Passenger Miles on Commercial US Airlines, 1937-1960 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> airquality </td>
-   <td style="text-align:left;"> New York Air Quality Measurements </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> anscombe </td>
-   <td style="text-align:left;"> Anscombe's Quartet of 'Identical' Simple Linear Regressions </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> attenu </td>
-   <td style="text-align:left;"> The Joyner-Boore Attenuation Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> attitude </td>
-   <td style="text-align:left;"> The Chatterjee-Price Attitude Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> austres </td>
-   <td style="text-align:left;"> Quarterly Time Series of the Number of Australian Residents </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> beaver1 (beavers) </td>
-   <td style="text-align:left;"> Body Temperature Series of Two Beavers </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> beaver2 (beavers) </td>
-   <td style="text-align:left;"> Body Temperature Series of Two Beavers </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> cars </td>
-   <td style="text-align:left;"> Speed and Stopping Distances of Cars </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> chickwts </td>
-   <td style="text-align:left;"> Chicken Weights by Feed Type </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> co2 </td>
-   <td style="text-align:left;"> Mauna Loa Atmospheric CO2 Concentration </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> crimtab </td>
-   <td style="text-align:left;"> Student's 3000 Criminals Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> discoveries </td>
-   <td style="text-align:left;"> Yearly Numbers of Important Discoveries </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> esoph </td>
-   <td style="text-align:left;"> Smoking, Alcohol and (O)esophageal Cancer </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> euro </td>
-   <td style="text-align:left;"> Conversion Rates of Euro Currencies </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> euro.cross (euro) </td>
-   <td style="text-align:left;"> Conversion Rates of Euro Currencies </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> eurodist </td>
-   <td style="text-align:left;"> Distances Between European Cities and Between US Cities </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> faithful </td>
-   <td style="text-align:left;"> Old Faithful Geyser Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> fdeaths (UKLungDeaths) </td>
-   <td style="text-align:left;"> Monthly Deaths from Lung Diseases in the UK </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> freeny </td>
-   <td style="text-align:left;"> Freeny's Revenue Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> freeny.x (freeny) </td>
-   <td style="text-align:left;"> Freeny's Revenue Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> freeny.y (freeny) </td>
-   <td style="text-align:left;"> Freeny's Revenue Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> infert </td>
-   <td style="text-align:left;"> Infertility after Spontaneous and Induced Abortion </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> iris </td>
-   <td style="text-align:left;"> Edgar Anderson's Iris Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> iris3 </td>
-   <td style="text-align:left;"> Edgar Anderson's Iris Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> islands </td>
-   <td style="text-align:left;"> Areas of the World's Major Landmasses </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> ldeaths (UKLungDeaths) </td>
-   <td style="text-align:left;"> Monthly Deaths from Lung Diseases in the UK </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> lh </td>
-   <td style="text-align:left;"> Luteinizing Hormone in Blood Samples </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> longley </td>
-   <td style="text-align:left;"> Longley's Economic Regression Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> lynx </td>
-   <td style="text-align:left;"> Annual Canadian Lynx trappings 1821-1934 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> mdeaths (UKLungDeaths) </td>
-   <td style="text-align:left;"> Monthly Deaths from Lung Diseases in the UK </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> morley </td>
-   <td style="text-align:left;"> Michelson Speed of Light Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> mtcars </td>
-   <td style="text-align:left;"> Motor Trend Car Road Tests </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> nhtemp </td>
-   <td style="text-align:left;"> Average Yearly Temperatures in New Haven </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> nottem </td>
-   <td style="text-align:left;"> Average Monthly Temperatures at Nottingham, 1920-1939 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> npk </td>
-   <td style="text-align:left;"> Classical N, P, K Factorial Experiment </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> occupationalStatus </td>
-   <td style="text-align:left;"> Occupational Status of Fathers and their Sons </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> precip </td>
-   <td style="text-align:left;"> Annual Precipitation in US Cities </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> presidents </td>
-   <td style="text-align:left;"> Quarterly Approval Ratings of US Presidents </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> pressure </td>
-   <td style="text-align:left;"> Vapor Pressure of Mercury as a Function of Temperature </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> quakes </td>
-   <td style="text-align:left;"> Locations of Earthquakes off Fiji </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> randu </td>
-   <td style="text-align:left;"> Random Numbers from Congruential Generator RANDU </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> rivers </td>
-   <td style="text-align:left;"> Lengths of Major North American Rivers </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> rock </td>
-   <td style="text-align:left;"> Measurements on Petroleum Rock Samples </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> sleep </td>
-   <td style="text-align:left;"> Student's Sleep Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> stack.loss (stackloss) </td>
-   <td style="text-align:left;"> Brownlee's Stack Loss Plant Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> stack.x (stackloss) </td>
-   <td style="text-align:left;"> Brownlee's Stack Loss Plant Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> stackloss </td>
-   <td style="text-align:left;"> Brownlee's Stack Loss Plant Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> state.abb (state) </td>
-   <td style="text-align:left;"> US State Facts and Figures </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> state.area (state) </td>
-   <td style="text-align:left;"> US State Facts and Figures </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> state.center (state) </td>
-   <td style="text-align:left;"> US State Facts and Figures </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> state.division (state) </td>
-   <td style="text-align:left;"> US State Facts and Figures </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> state.name (state) </td>
-   <td style="text-align:left;"> US State Facts and Figures </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> state.region (state) </td>
-   <td style="text-align:left;"> US State Facts and Figures </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> state.x77 (state) </td>
-   <td style="text-align:left;"> US State Facts and Figures </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> sunspot.month </td>
-   <td style="text-align:left;"> Monthly Sunspot Data, from 1749 to "Present" </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> sunspot.year </td>
-   <td style="text-align:left;"> Yearly Sunspot Data, 1700-1988 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> sunspots </td>
-   <td style="text-align:left;"> Monthly Sunspot Numbers, 1749-1983 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> swiss </td>
-   <td style="text-align:left;"> Swiss Fertility and Socioeconomic Indicators (1888) Data </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> treering </td>
-   <td style="text-align:left;"> Yearly Treering Data, -6000-1979 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> trees </td>
-   <td style="text-align:left;"> Diameter, Height and Volume for Black Cherry Trees </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> uspop </td>
-   <td style="text-align:left;"> Populations Recorded by the US Census </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> volcano </td>
-   <td style="text-align:left;"> Topographic Information on Auckland's Maunga Whau Volcano </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> warpbreaks </td>
-   <td style="text-align:left;"> The Number of Breaks in Yarn during Weaving </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> datasets </td>
-   <td style="text-align:left;"> women </td>
-   <td style="text-align:left;"> Average Heights and Weights for American Women </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">AirPassengers</td>
+<td style="text-align: left;">Monthly Airline Passenger Numbers 1949-1960</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">BJsales</td>
+<td style="text-align: left;">Sales Data with Leading Indicator</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">BJsales.lead (BJsales)</td>
+<td style="text-align: left;">Sales Data with Leading Indicator</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">BOD</td>
+<td style="text-align: left;">Biochemical Oxygen Demand</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">CO2</td>
+<td style="text-align: left;">Carbon Dioxide Uptake in Grass Plants</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">ChickWeight</td>
+<td style="text-align: left;">Weight versus age of chicks on different diets</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">DNase</td>
+<td style="text-align: left;">Elisa assay of DNase</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">EuStockMarkets</td>
+<td style="text-align: left;">Daily Closing Prices of Major European Stock Indices, 1991-1998</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">Formaldehyde</td>
+<td style="text-align: left;">Determination of Formaldehyde</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">HairEyeColor</td>
+<td style="text-align: left;">Hair and Eye Color of Statistics Students</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">Harman23.cor</td>
+<td style="text-align: left;">Harman Example 2.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">Harman74.cor</td>
+<td style="text-align: left;">Harman Example 7.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">Indometh</td>
+<td style="text-align: left;">Pharmacokinetics of Indomethacin</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">InsectSprays</td>
+<td style="text-align: left;">Effectiveness of Insect Sprays</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">JohnsonJohnson</td>
+<td style="text-align: left;">Quarterly Earnings per Johnson &amp; Johnson Share</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">LakeHuron</td>
+<td style="text-align: left;">Level of Lake Huron 1875-1972</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">LifeCycleSavings</td>
+<td style="text-align: left;">Intercountry Life-Cycle Savings Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">Loblolly</td>
+<td style="text-align: left;">Growth of Loblolly pine trees</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">Nile</td>
+<td style="text-align: left;">Flow of the River Nile</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">Orange</td>
+<td style="text-align: left;">Growth of Orange Trees</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">OrchardSprays</td>
+<td style="text-align: left;">Potency of Orchard Sprays</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">PlantGrowth</td>
+<td style="text-align: left;">Results from an Experiment on Plant Growth</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">Puromycin</td>
+<td style="text-align: left;">Reaction Velocity of an Enzymatic Reaction</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">Seatbelts</td>
+<td style="text-align: left;">Road Casualties in Great Britain 1969-84</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">Theoph</td>
+<td style="text-align: left;">Pharmacokinetics of Theophylline</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">Titanic</td>
+<td style="text-align: left;">Survival of passengers on the Titanic</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">ToothGrowth</td>
+<td style="text-align: left;">The Effect of Vitamin C on Tooth Growth in Guinea Pigs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">UCBAdmissions</td>
+<td style="text-align: left;">Student Admissions at UC Berkeley</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">UKDriverDeaths</td>
+<td style="text-align: left;">Road Casualties in Great Britain 1969-84</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">UKgas</td>
+<td style="text-align: left;">UK Quarterly Gas Consumption</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">USAccDeaths</td>
+<td style="text-align: left;">Accidental Deaths in the US 1973-1978</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">USArrests</td>
+<td style="text-align: left;">Violent Crime Rates by US State</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">USJudgeRatings</td>
+<td style="text-align: left;">Lawyers' Ratings of State Judges in the US Superior Court</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">USPersonalExpenditure</td>
+<td style="text-align: left;">Personal Expenditure Data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">UScitiesD</td>
+<td style="text-align: left;">Distances Between European Cities and Between US Cities</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">VADeaths</td>
+<td style="text-align: left;">Death Rates in Virginia (1940)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">WWWusage</td>
+<td style="text-align: left;">Internet Usage per Minute</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">WorldPhones</td>
+<td style="text-align: left;">The World's Telephones</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">ability.cov</td>
+<td style="text-align: left;">Ability and Intelligence Tests</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">airmiles</td>
+<td style="text-align: left;">Passenger Miles on Commercial US Airlines, 1937-1960</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">airquality</td>
+<td style="text-align: left;">New York Air Quality Measurements</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">anscombe</td>
+<td style="text-align: left;">Anscombe's Quartet of 'Identical' Simple Linear Regressions</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">attenu</td>
+<td style="text-align: left;">The Joyner-Boore Attenuation Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">attitude</td>
+<td style="text-align: left;">The Chatterjee-Price Attitude Data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">austres</td>
+<td style="text-align: left;">Quarterly Time Series of the Number of Australian Residents</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">beaver1 (beavers)</td>
+<td style="text-align: left;">Body Temperature Series of Two Beavers</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">beaver2 (beavers)</td>
+<td style="text-align: left;">Body Temperature Series of Two Beavers</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">cars</td>
+<td style="text-align: left;">Speed and Stopping Distances of Cars</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">chickwts</td>
+<td style="text-align: left;">Chicken Weights by Feed Type</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">co2</td>
+<td style="text-align: left;">Mauna Loa Atmospheric CO2 Concentration</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">crimtab</td>
+<td style="text-align: left;">Student's 3000 Criminals Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">discoveries</td>
+<td style="text-align: left;">Yearly Numbers of Important Discoveries</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">esoph</td>
+<td style="text-align: left;">Smoking, Alcohol and (O)esophageal Cancer</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">euro</td>
+<td style="text-align: left;">Conversion Rates of Euro Currencies</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">euro.cross (euro)</td>
+<td style="text-align: left;">Conversion Rates of Euro Currencies</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">eurodist</td>
+<td style="text-align: left;">Distances Between European Cities and Between US Cities</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">faithful</td>
+<td style="text-align: left;">Old Faithful Geyser Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">fdeaths (UKLungDeaths)</td>
+<td style="text-align: left;">Monthly Deaths from Lung Diseases in the UK</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">freeny</td>
+<td style="text-align: left;">Freeny's Revenue Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">freeny.x (freeny)</td>
+<td style="text-align: left;">Freeny's Revenue Data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">freeny.y (freeny)</td>
+<td style="text-align: left;">Freeny's Revenue Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">infert</td>
+<td style="text-align: left;">Infertility after Spontaneous and Induced Abortion</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">iris</td>
+<td style="text-align: left;">Edgar Anderson's Iris Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">iris3</td>
+<td style="text-align: left;">Edgar Anderson's Iris Data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">islands</td>
+<td style="text-align: left;">Areas of the World's Major Landmasses</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">ldeaths (UKLungDeaths)</td>
+<td style="text-align: left;">Monthly Deaths from Lung Diseases in the UK</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">lh</td>
+<td style="text-align: left;">Luteinizing Hormone in Blood Samples</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">longley</td>
+<td style="text-align: left;">Longley's Economic Regression Data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">lynx</td>
+<td style="text-align: left;">Annual Canadian Lynx trappings 1821-1934</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">mdeaths (UKLungDeaths)</td>
+<td style="text-align: left;">Monthly Deaths from Lung Diseases in the UK</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">morley</td>
+<td style="text-align: left;">Michelson Speed of Light Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">mtcars</td>
+<td style="text-align: left;">Motor Trend Car Road Tests</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">nhtemp</td>
+<td style="text-align: left;">Average Yearly Temperatures in New Haven</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">nottem</td>
+<td style="text-align: left;">Average Monthly Temperatures at Nottingham, 1920-1939</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">npk</td>
+<td style="text-align: left;">Classical N, P, K Factorial Experiment</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">occupationalStatus</td>
+<td style="text-align: left;">Occupational Status of Fathers and their Sons</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">precip</td>
+<td style="text-align: left;">Annual Precipitation in US Cities</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">presidents</td>
+<td style="text-align: left;">Quarterly Approval Ratings of US Presidents</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">pressure</td>
+<td style="text-align: left;">Vapor Pressure of Mercury as a Function of Temperature</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">quakes</td>
+<td style="text-align: left;">Locations of Earthquakes off Fiji</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">randu</td>
+<td style="text-align: left;">Random Numbers from Congruential Generator RANDU</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">rivers</td>
+<td style="text-align: left;">Lengths of Major North American Rivers</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">rock</td>
+<td style="text-align: left;">Measurements on Petroleum Rock Samples</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">sleep</td>
+<td style="text-align: left;">Student's Sleep Data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">stack.loss (stackloss)</td>
+<td style="text-align: left;">Brownlee's Stack Loss Plant Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">stack.x (stackloss)</td>
+<td style="text-align: left;">Brownlee's Stack Loss Plant Data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">stackloss</td>
+<td style="text-align: left;">Brownlee's Stack Loss Plant Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">state.abb (state)</td>
+<td style="text-align: left;">US State Facts and Figures</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">state.area (state)</td>
+<td style="text-align: left;">US State Facts and Figures</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">state.center (state)</td>
+<td style="text-align: left;">US State Facts and Figures</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">state.division (state)</td>
+<td style="text-align: left;">US State Facts and Figures</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">state.name (state)</td>
+<td style="text-align: left;">US State Facts and Figures</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">state.region (state)</td>
+<td style="text-align: left;">US State Facts and Figures</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">state.x77 (state)</td>
+<td style="text-align: left;">US State Facts and Figures</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">sunspot.month</td>
+<td style="text-align: left;">Monthly Sunspot Data, from 1749 to "Present"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">sunspot.year</td>
+<td style="text-align: left;">Yearly Sunspot Data, 1700-1988</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">sunspots</td>
+<td style="text-align: left;">Monthly Sunspot Numbers, 1749-1983</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">swiss</td>
+<td style="text-align: left;">Swiss Fertility and Socioeconomic Indicators (1888) Data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">treering</td>
+<td style="text-align: left;">Yearly Treering Data, -6000-1979</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">trees</td>
+<td style="text-align: left;">Diameter, Height and Volume for Black Cherry Trees</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">uspop</td>
+<td style="text-align: left;">Populations Recorded by the US Census</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">volcano</td>
+<td style="text-align: left;">Topographic Information on Auckland's Maunga Whau Volcano</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">warpbreaks</td>
+<td style="text-align: left;">The Number of Breaks in Yarn during Weaving</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasets</td>
+<td style="text-align: left;">women</td>
+<td style="text-align: left;">Average Heights and Weights for American Women</td>
+</tr>
 </tbody>
-</table></div>
-
+</table>
 </div>
+</div>
+
 </div>
 </div>
 </section>
@@ -1001,12 +977,12 @@ Tip
 <section id="sec-marylandapi" class="level2">
 <h2 class="anchored" data-anchor-id="sec-marylandapi">An example of using Maryland state open data via an API</h2>
 <p>Since I live and work in Maryland, I want to see how wages in Maryland and its counties have changed over time. I also want to test if Montgomery county (where I live) has different wages compared to Frederick, Howard, and Prince George’s counties which borders Montgomery on the north, east, and south sides. Therefore, in this example, I will fetch <a href="https://opendata.maryland.gov/Demographic/Maryland-Average-Wage-Per-Job-Current-Dollars-2010/mk5a-nf44">Maryland Average Wage Per Job (Current Dollars): 2010-2020</a> data via API using <a href="https://cran.r-project.org/web/packages/RSocrata/index.html">RSocrata library</a> in R and carry out some analysis.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -1027,352 +1003,356 @@ Note
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">"100%"</span>, <span class="at">height =</span> <span class="st">"400px"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <div id="tbl-maw" class="anchored">
-
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; "><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;"><caption>Table&nbsp;2:  Maryland Average Wage Per Job (Current Dollars): 2010-2020 </caption>
- <thead>
-  <tr>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> year </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> maryland </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> allegany_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> anne_arundel_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> baltimore_city </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> baltimore_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> calvert_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> caroline_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> carroll_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> cecil_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> charles_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> dorchester_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> frederick_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> garrett_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> harford_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> howard_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> kent_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> montgomery_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> prince_george_s_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> queen_anne_s_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> somerset_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> st_mary_s_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> talbot_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> washington_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> wicomico_county </th>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> worcester_county </th>
-  </tr>
- </thead>
+<div class="table-responsive">
+<table class="table table-striped table-hover table-condensed table-sm small" data-quarto-postprocess="true">
+<caption>Table&nbsp;2: Maryland Average Wage Per Job (Current Dollars): 2010-2020</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">year</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">maryland</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">allegany_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">anne_arundel_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">baltimore_city</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">baltimore_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">calvert_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">caroline_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">carroll_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">cecil_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">charles_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">dorchester_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">frederick_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">garrett_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">harford_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">howard_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">kent_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">montgomery_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">prince_george_s_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">queen_anne_s_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">somerset_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">st_mary_s_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">talbot_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">washington_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">wicomico_county</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">worcester_county</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 2010 </td>
-   <td style="text-align:left;"> 53096 </td>
-   <td style="text-align:left;"> 35771 </td>
-   <td style="text-align:left;"> 56745 </td>
-   <td style="text-align:left;"> 55640 </td>
-   <td style="text-align:left;"> 49986 </td>
-   <td style="text-align:left;"> 42726 </td>
-   <td style="text-align:left;"> 34616 </td>
-   <td style="text-align:left;"> 38027 </td>
-   <td style="text-align:left;"> 42027 </td>
-   <td style="text-align:left;"> 41290 </td>
-   <td style="text-align:left;"> 35489 </td>
-   <td style="text-align:left;"> 48018 </td>
-   <td style="text-align:left;"> 31591 </td>
-   <td style="text-align:left;"> 46741 </td>
-   <td style="text-align:left;"> 58130 </td>
-   <td style="text-align:left;"> 36334 </td>
-   <td style="text-align:left;"> 65178 </td>
-   <td style="text-align:left;"> 51808 </td>
-   <td style="text-align:left;"> 36018 </td>
-   <td style="text-align:left;"> 38228 </td>
-   <td style="text-align:left;"> 60032 </td>
-   <td style="text-align:left;"> 37845 </td>
-   <td style="text-align:left;"> 38228 </td>
-   <td style="text-align:left;"> 38472 </td>
-   <td style="text-align:left;"> 30799 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2011 </td>
-   <td style="text-align:left;"> 54517 </td>
-   <td style="text-align:left;"> 36677 </td>
-   <td style="text-align:left;"> 58011 </td>
-   <td style="text-align:left;"> 57027 </td>
-   <td style="text-align:left;"> 50914 </td>
-   <td style="text-align:left;"> 43431 </td>
-   <td style="text-align:left;"> 35981 </td>
-   <td style="text-align:left;"> 39039 </td>
-   <td style="text-align:left;"> 42465 </td>
-   <td style="text-align:left;"> 42200 </td>
-   <td style="text-align:left;"> 35718 </td>
-   <td style="text-align:left;"> 48794 </td>
-   <td style="text-align:left;"> 32484 </td>
-   <td style="text-align:left;"> 48558 </td>
-   <td style="text-align:left;"> 60448 </td>
-   <td style="text-align:left;"> 36815 </td>
-   <td style="text-align:left;"> 67247 </td>
-   <td style="text-align:left;"> 52844 </td>
-   <td style="text-align:left;"> 36437 </td>
-   <td style="text-align:left;"> 39652 </td>
-   <td style="text-align:left;"> 63057 </td>
-   <td style="text-align:left;"> 38462 </td>
-   <td style="text-align:left;"> 39420 </td>
-   <td style="text-align:left;"> 38915 </td>
-   <td style="text-align:left;"> 31438 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2012 </td>
-   <td style="text-align:left;"> 55466 </td>
-   <td style="text-align:left;"> 36983 </td>
-   <td style="text-align:left;"> 58706 </td>
-   <td style="text-align:left;"> 58876 </td>
-   <td style="text-align:left;"> 51722 </td>
-   <td style="text-align:left;"> 44239 </td>
-   <td style="text-align:left;"> 37506 </td>
-   <td style="text-align:left;"> 39919 </td>
-   <td style="text-align:left;"> 43260 </td>
-   <td style="text-align:left;"> 42888 </td>
-   <td style="text-align:left;"> 37172 </td>
-   <td style="text-align:left;"> 49972 </td>
-   <td style="text-align:left;"> 32506 </td>
-   <td style="text-align:left;"> 49772 </td>
-   <td style="text-align:left;"> 62371 </td>
-   <td style="text-align:left;"> 36622 </td>
-   <td style="text-align:left;"> 68159 </td>
-   <td style="text-align:left;"> 53292 </td>
-   <td style="text-align:left;"> 37258 </td>
-   <td style="text-align:left;"> 39853 </td>
-   <td style="text-align:left;"> 63698 </td>
-   <td style="text-align:left;"> 39807 </td>
-   <td style="text-align:left;"> 39564 </td>
-   <td style="text-align:left;"> 39066 </td>
-   <td style="text-align:left;"> 31641 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2013 </td>
-   <td style="text-align:left;"> 55555 </td>
-   <td style="text-align:left;"> 37827 </td>
-   <td style="text-align:left;"> 59384 </td>
-   <td style="text-align:left;"> 59318 </td>
-   <td style="text-align:left;"> 51778 </td>
-   <td style="text-align:left;"> 44126 </td>
-   <td style="text-align:left;"> 38404 </td>
-   <td style="text-align:left;"> 40736 </td>
-   <td style="text-align:left;"> 44214 </td>
-   <td style="text-align:left;"> 42909 </td>
-   <td style="text-align:left;"> 37773 </td>
-   <td style="text-align:left;"> 49570 </td>
-   <td style="text-align:left;"> 33477 </td>
-   <td style="text-align:left;"> 49624 </td>
-   <td style="text-align:left;"> 62271 </td>
-   <td style="text-align:left;"> 37572 </td>
-   <td style="text-align:left;"> 67437 </td>
-   <td style="text-align:left;"> 53441 </td>
-   <td style="text-align:left;"> 36848 </td>
-   <td style="text-align:left;"> 40744 </td>
-   <td style="text-align:left;"> 63501 </td>
-   <td style="text-align:left;"> 39901 </td>
-   <td style="text-align:left;"> 40032 </td>
-   <td style="text-align:left;"> 39714 </td>
-   <td style="text-align:left;"> 32384 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2014 </td>
-   <td style="text-align:left;"> 56924 </td>
-   <td style="text-align:left;"> 38449 </td>
-   <td style="text-align:left;"> 60551 </td>
-   <td style="text-align:left;"> 61112 </td>
-   <td style="text-align:left;"> 52961 </td>
-   <td style="text-align:left;"> 45162 </td>
-   <td style="text-align:left;"> 39383 </td>
-   <td style="text-align:left;"> 41607 </td>
-   <td style="text-align:left;"> 45051 </td>
-   <td style="text-align:left;"> 44260 </td>
-   <td style="text-align:left;"> 39094 </td>
-   <td style="text-align:left;"> 50747 </td>
-   <td style="text-align:left;"> 34195 </td>
-   <td style="text-align:left;"> 50205 </td>
-   <td style="text-align:left;"> 64784 </td>
-   <td style="text-align:left;"> 38411 </td>
-   <td style="text-align:left;"> 68731 </td>
-   <td style="text-align:left;"> 54985 </td>
-   <td style="text-align:left;"> 37932 </td>
-   <td style="text-align:left;"> 41802 </td>
-   <td style="text-align:left;"> 64691 </td>
-   <td style="text-align:left;"> 40118 </td>
-   <td style="text-align:left;"> 41018 </td>
-   <td style="text-align:left;"> 40863 </td>
-   <td style="text-align:left;"> 33635 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2015 </td>
-   <td style="text-align:left;"> 58729 </td>
-   <td style="text-align:left;"> 39888 </td>
-   <td style="text-align:left;"> 62195 </td>
-   <td style="text-align:left;"> 63389 </td>
-   <td style="text-align:left;"> 54248 </td>
-   <td style="text-align:left;"> 48825 </td>
-   <td style="text-align:left;"> 41043 </td>
-   <td style="text-align:left;"> 43325 </td>
-   <td style="text-align:left;"> 46776 </td>
-   <td style="text-align:left;"> 44919 </td>
-   <td style="text-align:left;"> 40022 </td>
-   <td style="text-align:left;"> 51510 </td>
-   <td style="text-align:left;"> 35067 </td>
-   <td style="text-align:left;"> 52418 </td>
-   <td style="text-align:left;"> 66677 </td>
-   <td style="text-align:left;"> 38741 </td>
-   <td style="text-align:left;"> 71480 </td>
-   <td style="text-align:left;"> 56456 </td>
-   <td style="text-align:left;"> 38970 </td>
-   <td style="text-align:left;"> 43397 </td>
-   <td style="text-align:left;"> 65497 </td>
-   <td style="text-align:left;"> 41313 </td>
-   <td style="text-align:left;"> 42270 </td>
-   <td style="text-align:left;"> 42599 </td>
-   <td style="text-align:left;"> 34524 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2016 </td>
-   <td style="text-align:left;"> 59710 </td>
-   <td style="text-align:left;"> 40708 </td>
-   <td style="text-align:left;"> 63147 </td>
-   <td style="text-align:left;"> 64481 </td>
-   <td style="text-align:left;"> 55159 </td>
-   <td style="text-align:left;"> 53657 </td>
-   <td style="text-align:left;"> 40832 </td>
-   <td style="text-align:left;"> 43815 </td>
-   <td style="text-align:left;"> 47300 </td>
-   <td style="text-align:left;"> 46958 </td>
-   <td style="text-align:left;"> 40431 </td>
-   <td style="text-align:left;"> 51630 </td>
-   <td style="text-align:left;"> 34925 </td>
-   <td style="text-align:left;"> 52862 </td>
-   <td style="text-align:left;"> 67621 </td>
-   <td style="text-align:left;"> 39504 </td>
-   <td style="text-align:left;"> 72904 </td>
-   <td style="text-align:left;"> 57251 </td>
-   <td style="text-align:left;"> 39941 </td>
-   <td style="text-align:left;"> 43575 </td>
-   <td style="text-align:left;"> 65937 </td>
-   <td style="text-align:left;"> 41740 </td>
-   <td style="text-align:left;"> 42725 </td>
-   <td style="text-align:left;"> 43875 </td>
-   <td style="text-align:left;"> 35260 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2017 </td>
-   <td style="text-align:left;"> 61298 </td>
-   <td style="text-align:left;"> 42143 </td>
-   <td style="text-align:left;"> 64629 </td>
-   <td style="text-align:left;"> 66365 </td>
-   <td style="text-align:left;"> 56887 </td>
-   <td style="text-align:left;"> 55922 </td>
-   <td style="text-align:left;"> 42034 </td>
-   <td style="text-align:left;"> 45576 </td>
-   <td style="text-align:left;"> 48662 </td>
-   <td style="text-align:left;"> 47673 </td>
-   <td style="text-align:left;"> 41711 </td>
-   <td style="text-align:left;"> 52270 </td>
-   <td style="text-align:left;"> 35971 </td>
-   <td style="text-align:left;"> 53775 </td>
-   <td style="text-align:left;"> 68958 </td>
-   <td style="text-align:left;"> 40446 </td>
-   <td style="text-align:left;"> 74709 </td>
-   <td style="text-align:left;"> 58829 </td>
-   <td style="text-align:left;"> 42099 </td>
-   <td style="text-align:left;"> 45988 </td>
-   <td style="text-align:left;"> 67622 </td>
-   <td style="text-align:left;"> 43105 </td>
-   <td style="text-align:left;"> 44039 </td>
-   <td style="text-align:left;"> 45491 </td>
-   <td style="text-align:left;"> 35802 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2018 </td>
-   <td style="text-align:left;"> 62836 </td>
-   <td style="text-align:left;"> 43197 </td>
-   <td style="text-align:left;"> 66458 </td>
-   <td style="text-align:left;"> 67005 </td>
-   <td style="text-align:left;"> 58793 </td>
-   <td style="text-align:left;"> 53557 </td>
-   <td style="text-align:left;"> 43190 </td>
-   <td style="text-align:left;"> 45690 </td>
-   <td style="text-align:left;"> 49981 </td>
-   <td style="text-align:left;"> 48225 </td>
-   <td style="text-align:left;"> 41987 </td>
-   <td style="text-align:left;"> 53624 </td>
-   <td style="text-align:left;"> 37575 </td>
-   <td style="text-align:left;"> 54921 </td>
-   <td style="text-align:left;"> 71300 </td>
-   <td style="text-align:left;"> 42422 </td>
-   <td style="text-align:left;"> 76867 </td>
-   <td style="text-align:left;"> 60383 </td>
-   <td style="text-align:left;"> 43582 </td>
-   <td style="text-align:left;"> 45381 </td>
-   <td style="text-align:left;"> 68887 </td>
-   <td style="text-align:left;"> 44670 </td>
-   <td style="text-align:left;"> 45846 </td>
-   <td style="text-align:left;"> 45567 </td>
-   <td style="text-align:left;"> 37231 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2019 </td>
-   <td style="text-align:left;"> 64690 </td>
-   <td style="text-align:left;"> 44692 </td>
-   <td style="text-align:left;"> 68586 </td>
-   <td style="text-align:left;"> 69930 </td>
-   <td style="text-align:left;"> 60116 </td>
-   <td style="text-align:left;"> 51598 </td>
-   <td style="text-align:left;"> 45190 </td>
-   <td style="text-align:left;"> 47189 </td>
-   <td style="text-align:left;"> 52177 </td>
-   <td style="text-align:left;"> 49193 </td>
-   <td style="text-align:left;"> 43271 </td>
-   <td style="text-align:left;"> 55621 </td>
-   <td style="text-align:left;"> 38290 </td>
-   <td style="text-align:left;"> 57349 </td>
-   <td style="text-align:left;"> 74136 </td>
-   <td style="text-align:left;"> 42575 </td>
-   <td style="text-align:left;"> 78386 </td>
-   <td style="text-align:left;"> 62096 </td>
-   <td style="text-align:left;"> 44011 </td>
-   <td style="text-align:left;"> 49234 </td>
-   <td style="text-align:left;"> 70807 </td>
-   <td style="text-align:left;"> 45115 </td>
-   <td style="text-align:left;"> 46965 </td>
-   <td style="text-align:left;"> 46620 </td>
-   <td style="text-align:left;"> 38234 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2020 </td>
-   <td style="text-align:left;"> 70446 </td>
-   <td style="text-align:left;"> 48294 </td>
-   <td style="text-align:left;"> 74533 </td>
-   <td style="text-align:left;"> 74483 </td>
-   <td style="text-align:left;"> 65743 </td>
-   <td style="text-align:left;"> 55903 </td>
-   <td style="text-align:left;"> 49336 </td>
-   <td style="text-align:left;"> 51470 </td>
-   <td style="text-align:left;"> 55854 </td>
-   <td style="text-align:left;"> 53404 </td>
-   <td style="text-align:left;"> 47182 </td>
-   <td style="text-align:left;"> 60646 </td>
-   <td style="text-align:left;"> 40690 </td>
-   <td style="text-align:left;"> 62395 </td>
-   <td style="text-align:left;"> 82780 </td>
-   <td style="text-align:left;"> 45891 </td>
-   <td style="text-align:left;"> 86138 </td>
-   <td style="text-align:left;"> 66777 </td>
-   <td style="text-align:left;"> 48385 </td>
-   <td style="text-align:left;"> 53880 </td>
-   <td style="text-align:left;"> 77490 </td>
-   <td style="text-align:left;"> 48338 </td>
-   <td style="text-align:left;"> 50743 </td>
-   <td style="text-align:left;"> 50556 </td>
-   <td style="text-align:left;"> 41605 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">2010</td>
+<td style="text-align: left;">53096</td>
+<td style="text-align: left;">35771</td>
+<td style="text-align: left;">56745</td>
+<td style="text-align: left;">55640</td>
+<td style="text-align: left;">49986</td>
+<td style="text-align: left;">42726</td>
+<td style="text-align: left;">34616</td>
+<td style="text-align: left;">38027</td>
+<td style="text-align: left;">42027</td>
+<td style="text-align: left;">41290</td>
+<td style="text-align: left;">35489</td>
+<td style="text-align: left;">48018</td>
+<td style="text-align: left;">31591</td>
+<td style="text-align: left;">46741</td>
+<td style="text-align: left;">58130</td>
+<td style="text-align: left;">36334</td>
+<td style="text-align: left;">65178</td>
+<td style="text-align: left;">51808</td>
+<td style="text-align: left;">36018</td>
+<td style="text-align: left;">38228</td>
+<td style="text-align: left;">60032</td>
+<td style="text-align: left;">37845</td>
+<td style="text-align: left;">38228</td>
+<td style="text-align: left;">38472</td>
+<td style="text-align: left;">30799</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2011</td>
+<td style="text-align: left;">54517</td>
+<td style="text-align: left;">36677</td>
+<td style="text-align: left;">58011</td>
+<td style="text-align: left;">57027</td>
+<td style="text-align: left;">50914</td>
+<td style="text-align: left;">43431</td>
+<td style="text-align: left;">35981</td>
+<td style="text-align: left;">39039</td>
+<td style="text-align: left;">42465</td>
+<td style="text-align: left;">42200</td>
+<td style="text-align: left;">35718</td>
+<td style="text-align: left;">48794</td>
+<td style="text-align: left;">32484</td>
+<td style="text-align: left;">48558</td>
+<td style="text-align: left;">60448</td>
+<td style="text-align: left;">36815</td>
+<td style="text-align: left;">67247</td>
+<td style="text-align: left;">52844</td>
+<td style="text-align: left;">36437</td>
+<td style="text-align: left;">39652</td>
+<td style="text-align: left;">63057</td>
+<td style="text-align: left;">38462</td>
+<td style="text-align: left;">39420</td>
+<td style="text-align: left;">38915</td>
+<td style="text-align: left;">31438</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2012</td>
+<td style="text-align: left;">55466</td>
+<td style="text-align: left;">36983</td>
+<td style="text-align: left;">58706</td>
+<td style="text-align: left;">58876</td>
+<td style="text-align: left;">51722</td>
+<td style="text-align: left;">44239</td>
+<td style="text-align: left;">37506</td>
+<td style="text-align: left;">39919</td>
+<td style="text-align: left;">43260</td>
+<td style="text-align: left;">42888</td>
+<td style="text-align: left;">37172</td>
+<td style="text-align: left;">49972</td>
+<td style="text-align: left;">32506</td>
+<td style="text-align: left;">49772</td>
+<td style="text-align: left;">62371</td>
+<td style="text-align: left;">36622</td>
+<td style="text-align: left;">68159</td>
+<td style="text-align: left;">53292</td>
+<td style="text-align: left;">37258</td>
+<td style="text-align: left;">39853</td>
+<td style="text-align: left;">63698</td>
+<td style="text-align: left;">39807</td>
+<td style="text-align: left;">39564</td>
+<td style="text-align: left;">39066</td>
+<td style="text-align: left;">31641</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2013</td>
+<td style="text-align: left;">55555</td>
+<td style="text-align: left;">37827</td>
+<td style="text-align: left;">59384</td>
+<td style="text-align: left;">59318</td>
+<td style="text-align: left;">51778</td>
+<td style="text-align: left;">44126</td>
+<td style="text-align: left;">38404</td>
+<td style="text-align: left;">40736</td>
+<td style="text-align: left;">44214</td>
+<td style="text-align: left;">42909</td>
+<td style="text-align: left;">37773</td>
+<td style="text-align: left;">49570</td>
+<td style="text-align: left;">33477</td>
+<td style="text-align: left;">49624</td>
+<td style="text-align: left;">62271</td>
+<td style="text-align: left;">37572</td>
+<td style="text-align: left;">67437</td>
+<td style="text-align: left;">53441</td>
+<td style="text-align: left;">36848</td>
+<td style="text-align: left;">40744</td>
+<td style="text-align: left;">63501</td>
+<td style="text-align: left;">39901</td>
+<td style="text-align: left;">40032</td>
+<td style="text-align: left;">39714</td>
+<td style="text-align: left;">32384</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2014</td>
+<td style="text-align: left;">56924</td>
+<td style="text-align: left;">38449</td>
+<td style="text-align: left;">60551</td>
+<td style="text-align: left;">61112</td>
+<td style="text-align: left;">52961</td>
+<td style="text-align: left;">45162</td>
+<td style="text-align: left;">39383</td>
+<td style="text-align: left;">41607</td>
+<td style="text-align: left;">45051</td>
+<td style="text-align: left;">44260</td>
+<td style="text-align: left;">39094</td>
+<td style="text-align: left;">50747</td>
+<td style="text-align: left;">34195</td>
+<td style="text-align: left;">50205</td>
+<td style="text-align: left;">64784</td>
+<td style="text-align: left;">38411</td>
+<td style="text-align: left;">68731</td>
+<td style="text-align: left;">54985</td>
+<td style="text-align: left;">37932</td>
+<td style="text-align: left;">41802</td>
+<td style="text-align: left;">64691</td>
+<td style="text-align: left;">40118</td>
+<td style="text-align: left;">41018</td>
+<td style="text-align: left;">40863</td>
+<td style="text-align: left;">33635</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2015</td>
+<td style="text-align: left;">58729</td>
+<td style="text-align: left;">39888</td>
+<td style="text-align: left;">62195</td>
+<td style="text-align: left;">63389</td>
+<td style="text-align: left;">54248</td>
+<td style="text-align: left;">48825</td>
+<td style="text-align: left;">41043</td>
+<td style="text-align: left;">43325</td>
+<td style="text-align: left;">46776</td>
+<td style="text-align: left;">44919</td>
+<td style="text-align: left;">40022</td>
+<td style="text-align: left;">51510</td>
+<td style="text-align: left;">35067</td>
+<td style="text-align: left;">52418</td>
+<td style="text-align: left;">66677</td>
+<td style="text-align: left;">38741</td>
+<td style="text-align: left;">71480</td>
+<td style="text-align: left;">56456</td>
+<td style="text-align: left;">38970</td>
+<td style="text-align: left;">43397</td>
+<td style="text-align: left;">65497</td>
+<td style="text-align: left;">41313</td>
+<td style="text-align: left;">42270</td>
+<td style="text-align: left;">42599</td>
+<td style="text-align: left;">34524</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2016</td>
+<td style="text-align: left;">59710</td>
+<td style="text-align: left;">40708</td>
+<td style="text-align: left;">63147</td>
+<td style="text-align: left;">64481</td>
+<td style="text-align: left;">55159</td>
+<td style="text-align: left;">53657</td>
+<td style="text-align: left;">40832</td>
+<td style="text-align: left;">43815</td>
+<td style="text-align: left;">47300</td>
+<td style="text-align: left;">46958</td>
+<td style="text-align: left;">40431</td>
+<td style="text-align: left;">51630</td>
+<td style="text-align: left;">34925</td>
+<td style="text-align: left;">52862</td>
+<td style="text-align: left;">67621</td>
+<td style="text-align: left;">39504</td>
+<td style="text-align: left;">72904</td>
+<td style="text-align: left;">57251</td>
+<td style="text-align: left;">39941</td>
+<td style="text-align: left;">43575</td>
+<td style="text-align: left;">65937</td>
+<td style="text-align: left;">41740</td>
+<td style="text-align: left;">42725</td>
+<td style="text-align: left;">43875</td>
+<td style="text-align: left;">35260</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2017</td>
+<td style="text-align: left;">61298</td>
+<td style="text-align: left;">42143</td>
+<td style="text-align: left;">64629</td>
+<td style="text-align: left;">66365</td>
+<td style="text-align: left;">56887</td>
+<td style="text-align: left;">55922</td>
+<td style="text-align: left;">42034</td>
+<td style="text-align: left;">45576</td>
+<td style="text-align: left;">48662</td>
+<td style="text-align: left;">47673</td>
+<td style="text-align: left;">41711</td>
+<td style="text-align: left;">52270</td>
+<td style="text-align: left;">35971</td>
+<td style="text-align: left;">53775</td>
+<td style="text-align: left;">68958</td>
+<td style="text-align: left;">40446</td>
+<td style="text-align: left;">74709</td>
+<td style="text-align: left;">58829</td>
+<td style="text-align: left;">42099</td>
+<td style="text-align: left;">45988</td>
+<td style="text-align: left;">67622</td>
+<td style="text-align: left;">43105</td>
+<td style="text-align: left;">44039</td>
+<td style="text-align: left;">45491</td>
+<td style="text-align: left;">35802</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2018</td>
+<td style="text-align: left;">62836</td>
+<td style="text-align: left;">43197</td>
+<td style="text-align: left;">66458</td>
+<td style="text-align: left;">67005</td>
+<td style="text-align: left;">58793</td>
+<td style="text-align: left;">53557</td>
+<td style="text-align: left;">43190</td>
+<td style="text-align: left;">45690</td>
+<td style="text-align: left;">49981</td>
+<td style="text-align: left;">48225</td>
+<td style="text-align: left;">41987</td>
+<td style="text-align: left;">53624</td>
+<td style="text-align: left;">37575</td>
+<td style="text-align: left;">54921</td>
+<td style="text-align: left;">71300</td>
+<td style="text-align: left;">42422</td>
+<td style="text-align: left;">76867</td>
+<td style="text-align: left;">60383</td>
+<td style="text-align: left;">43582</td>
+<td style="text-align: left;">45381</td>
+<td style="text-align: left;">68887</td>
+<td style="text-align: left;">44670</td>
+<td style="text-align: left;">45846</td>
+<td style="text-align: left;">45567</td>
+<td style="text-align: left;">37231</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2019</td>
+<td style="text-align: left;">64690</td>
+<td style="text-align: left;">44692</td>
+<td style="text-align: left;">68586</td>
+<td style="text-align: left;">69930</td>
+<td style="text-align: left;">60116</td>
+<td style="text-align: left;">51598</td>
+<td style="text-align: left;">45190</td>
+<td style="text-align: left;">47189</td>
+<td style="text-align: left;">52177</td>
+<td style="text-align: left;">49193</td>
+<td style="text-align: left;">43271</td>
+<td style="text-align: left;">55621</td>
+<td style="text-align: left;">38290</td>
+<td style="text-align: left;">57349</td>
+<td style="text-align: left;">74136</td>
+<td style="text-align: left;">42575</td>
+<td style="text-align: left;">78386</td>
+<td style="text-align: left;">62096</td>
+<td style="text-align: left;">44011</td>
+<td style="text-align: left;">49234</td>
+<td style="text-align: left;">70807</td>
+<td style="text-align: left;">45115</td>
+<td style="text-align: left;">46965</td>
+<td style="text-align: left;">46620</td>
+<td style="text-align: left;">38234</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2020</td>
+<td style="text-align: left;">70446</td>
+<td style="text-align: left;">48294</td>
+<td style="text-align: left;">74533</td>
+<td style="text-align: left;">74483</td>
+<td style="text-align: left;">65743</td>
+<td style="text-align: left;">55903</td>
+<td style="text-align: left;">49336</td>
+<td style="text-align: left;">51470</td>
+<td style="text-align: left;">55854</td>
+<td style="text-align: left;">53404</td>
+<td style="text-align: left;">47182</td>
+<td style="text-align: left;">60646</td>
+<td style="text-align: left;">40690</td>
+<td style="text-align: left;">62395</td>
+<td style="text-align: left;">82780</td>
+<td style="text-align: left;">45891</td>
+<td style="text-align: left;">86138</td>
+<td style="text-align: left;">66777</td>
+<td style="text-align: left;">48385</td>
+<td style="text-align: left;">53880</td>
+<td style="text-align: left;">77490</td>
+<td style="text-align: left;">48338</td>
+<td style="text-align: left;">50743</td>
+<td style="text-align: left;">50556</td>
+<td style="text-align: left;">41605</td>
+</tr>
 </tbody>
-</table></div>
-
+</table>
 </div>
+</div>
+</div>
+
 </div>
 </div>
 <div class="cell">
@@ -1388,7 +1368,7 @@ Note
 <div id="fig-mawplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="index_files/figure-html/fig-mawplot-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Maryland Average Wage Per Job (Current Dollars): 2010-2020</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Maryland Average Wage Per Job (Current Dollars): 2010-2020</figcaption>
 </figure>
 </div>
 </div>
@@ -1417,47 +1397,48 @@ Note
 </details>
 <div class="cell-output-display">
 <div id="tbl-ttestmaw" class="anchored">
-
-<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;"><caption>Table&nbsp;3:  T-test results between wages from Montgomery and Frederick, Howard, and Prince George’s county </caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> test </th>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> estimate1 </th>
-   <th style="text-align:right;"> estimate2 </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-  </tr>
- </thead>
+<table class="table table-striped table-hover table-sm small" data-quarto-postprocess="true">
+<caption>Table&nbsp;3: T-test results between wages from Montgomery and Frederick, Howard, and Prince George’s county</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">test</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">statistic</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p.value</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> Montgomery vs. Frederick </td>
-   <td style="text-align:right;"> 20439.455 </td>
-   <td style="text-align:right;"> 72476 </td>
-   <td style="text-align:right;"> 52036.55 </td>
-   <td style="text-align:right;"> 9.452393 </td>
-   <td style="text-align:right;"> 0.0000001 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Montgomery vs. Howard </td>
-   <td style="text-align:right;"> 5250.909 </td>
-   <td style="text-align:right;"> 72476 </td>
-   <td style="text-align:right;"> 67225.09 </td>
-   <td style="text-align:right;"> 1.858408 </td>
-   <td style="text-align:right;"> 0.0781124 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Montgomery vs. Prince George's </td>
-   <td style="text-align:right;"> 15370.364 </td>
-   <td style="text-align:right;"> 72476 </td>
-   <td style="text-align:right;"> 57105.64 </td>
-   <td style="text-align:right;"> 6.597893 </td>
-   <td style="text-align:right;"> 0.0000030 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">Montgomery vs. Frederick</td>
+<td style="text-align: right;">20439.455</td>
+<td style="text-align: right;">72476</td>
+<td style="text-align: right;">52036.55</td>
+<td style="text-align: right;">9.452393</td>
+<td style="text-align: right;">0.0000001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Montgomery vs. Howard</td>
+<td style="text-align: right;">5250.909</td>
+<td style="text-align: right;">72476</td>
+<td style="text-align: right;">67225.09</td>
+<td style="text-align: right;">1.858408</td>
+<td style="text-align: right;">0.0781124</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Montgomery vs. Prince George's</td>
+<td style="text-align: right;">15370.364</td>
+<td style="text-align: right;">72476</td>
+<td style="text-align: right;">57105.64</td>
+<td style="text-align: right;">6.597893</td>
+<td style="text-align: right;">0.0000030</td>
+</tr>
 </tbody>
 </table>
-
 </div>
+
+
 </div>
 </div>
 </section>
@@ -1467,12 +1448,12 @@ Note
 <p><a href="https://www.kaggle.com/">Kaggle</a> is a website that hosts data science and machine learning competitions. Users can compete to win prizes, and the site also has a <a href="https://www.kaggle.com/">public dataset repository</a>. In addition to hosting competitions and disseminating public datasets, Kaggle also hosts tutorials and Jupyter-like notebook environments for Python and R runtimes. Users can clone an existing notebook on Kaggle, create it from scratch or upload it from their local computer and provision free hardware resources, including GPUs, to execute their notebooks.</p>
 <p>While uploading public datasets, users can also generate a <a href="https://en.wikipedia.org/wiki/Digital_object_identifier">DOI</a> for their dataset to give them a permanent identifier on the internet. For example, I am distributing “Classify the bitter or sweet taste of compounds” <span class="citation" data-cites="rohitfarmer2022a">(<a href="#ref-rohitfarmer2022a" role="doc-biblioref">Rohit Farmer 2022a</a>)</span> and “Tweets from heads of governments and states” <span class="citation" data-cites="rohitfarmer2022">(<a href="#ref-rohitfarmer2022" role="doc-biblioref">Rohit Farmer 2022b</a>)</span> datasets on Kaggle for classification and natural language processing analysis, respectively.</p>
 <p>Datasets on Kaggle can be downloaded using a web browser or via its API, which also interacts with its competition environment. Users can find datasets for various statical and machine learning tasks available in various formats, including CSVs, MS Excel, images, SQLite databases, pandas pickle, etc.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -1485,12 +1466,12 @@ Note
 <h1>Zenodo, Figshare, and Dryad</h1>
 <p>In contrast to Kaggle (mentioned in section <a href="#sec-kaggle">Section&nbsp;3</a>) which is mainly a competition hosting and data science learning community <a href="https://zenodo.org/">Zenodo</a>, <a href="https://figshare.com/">Fighsare</a>, and <a href="https://datadryad.org/">Dryad</a> are data hosting platforms primarily used by scientists and researchers to serve data, manuscripts, and articles. The data hosted on these three platforms usually do not qualify for a domain-specific data respository or too large to attach as supplementary material to an article. They also aim to serve as a long-term archiving solution; therefore, even if the data/manuscript is published elsewhere under the correct licensing term, it can be redistributed here.</p>
 <p>Zenodo is a digital repository that allows users to upload and share digital content such as datasets, software, and research papers. Zenodo is designed to preserve and provide long-term access to digital content. Zenodo is developed and operated by OpenAIRE, a European consortium that promotes open access to research. A unique feature of Zenodo is to archive releases from a GitHub repository and provide a DOI making it easier to cite a GitHub repository, for example, <span class="citation" data-cites="farmer2022">(<a href="#ref-farmer2022" role="doc-biblioref">Farmer 2022b</a>)</span>. Another excellent feature is the ability to create communities to organize data and manuscripts of a similar kind. Anyone can create a community, and the owner can accept or reject a request for an item to be indexed in their community, for example, <a href="https://zenodo.org/communities/data-all-the-way/" class="uri">https://zenodo.org/communities/data-all-the-way/</a>.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -1501,12 +1482,12 @@ Tip
 <p>Like Zenodo, Figshare is a web-based platform for storing, sharing, and managing research data. Figshare also provides a unique identifier (DOI) for each data set, which can be used to cite the data set in publications. Data can be stored privately or publicly, and Figshare provides tools for managing data access and permissions. Data scientists and machine learning engineers often use Figshare to share data sets and models with collaborators or the public.</p>
 <p>Dryad is also a digital repository primarily used for scientific and medical data associated with a publication in a scholarly journal. Dryad makes data discoverable, usable, and citable by integrating it into the scholarly publication process.</p>
 <p>Zenodo, Figshare, and Dryad are available to anyone to upload data (download is always free and allowed); however, limitations may apply to the file size uploaded or the private vs.&nbsp;public data status. Additionally, many educational/research institutions may partner with one or all of these platforms, thus providing enhanced options.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -1517,17 +1498,17 @@ Tip
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-farmer2022a" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-farmer2022a" class="csl-entry" role="listitem">
 Farmer, Rohit. 2022a. <span>“A Case for Using Google Colab Notebooks as an Alternative to Web Servers for Scientific Software,”</span> October. <a href="https://doi.org/10.5281/ZENODO.7232108">https://doi.org/10.5281/ZENODO.7232108</a>.
 </div>
-<div id="ref-farmer2022" class="csl-entry" role="doc-biblioentry">
+<div id="ref-farmer2022" class="csl-entry" role="listitem">
 ———. 2022b. <em>ColabHDStIM: A Google Colab Interface to HDStIM (High Dimensional Stimulation Immune Mapping)</em>. Zenodo. <a href="https://doi.org/10.5281/ZENODO.7231731">https://doi.org/10.5281/ZENODO.7231731</a>.
 </div>
-<div id="ref-rohitfarmer2022a" class="csl-entry" role="doc-biblioentry">
+<div id="ref-rohitfarmer2022a" class="csl-entry" role="listitem">
 Rohit Farmer. 2022a. <span>“Classify the Bitter or Sweet Taste of Compounds.”</span> Kaggle. <a href="https://doi.org/10.34740/KAGGLE/DSV/4234193">https://doi.org/10.34740/KAGGLE/DSV/4234193</a>.
 </div>
-<div id="ref-rohitfarmer2022" class="csl-entry" role="doc-biblioentry">
+<div id="ref-rohitfarmer2022" class="csl-entry" role="listitem">
 ———. 2022b. <span>“Tweets from Heads of Governments and States.”</span> Kaggle. <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877">https://doi.org/10.34740/KAGGLE/DSV/4208877</a>.
 </div>
 </div>
@@ -1536,15 +1517,15 @@ Rohit Farmer. 2022a. <span>“Classify the Bitter or Sweet Taste of Compounds.�
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2022,
-  author = {Rohit Farmer},
+  author = {Farmer, Rohit},
   title = {Sources of Open Data for Statistics, Data Science, and
     Machine Learning},
   date = {2022-10-25},
   url = {https://www.dataalltheway.com/posts/007-open-data-for-datascience},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Rohit Farmer. 2022. <span>“Sources of Open Data for Statistics, Data
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas" role="listitem">
+Farmer, Rohit. 2022. <span>“Sources of Open Data for Statistics, Data
 Science, and Machine Learning.”</span> October 25, 2022. <a href="https://www.dataalltheway.com/posts/007-open-data-for-datascience">https://www.dataalltheway.com/posts/007-open-data-for-datascience</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1689,9 +1670,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1807,6 +1802,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1846,13 +1927,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://giscus.app/client.js" data-repo="rohitfarmer/dataalltheway" data-repo-id="R_kgDOIIcYEA" data-category="General" data-category-id="DIC_kwDOIIcYEM4CR0PA" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left"><b><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Copyright CC BY-NC-SA 4.0</a></b></div>   
-      <div class="nav-footer-center"><b>Made with ✌️❤️☕ </b><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center"><b>Made with ✌️❤️☕ </b><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right"><a href="https://dataalltheway.com/contact/"><b>Contact</b></a></div>
   </div>
 </footer>

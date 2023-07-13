@@ -7,5 +7,5 @@
 /.quarto/
 data
 *.rds
-.DS_Store
+*.DS_Store
 *.csv

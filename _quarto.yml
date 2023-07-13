@@ -35,7 +35,9 @@ website:
     anonymize-ip: true
   twitter-card: true
   open-graph: true
-
+  #comments:
+    #giscus: 
+      #repo: rohitfarmer/dataalltheway
 
 format:
   html:
@@ -46,7 +48,5 @@ format:
 
 editor: visual
 
-comments:
-  giscus: 
-    repo: rohitfarmer/dataalltheway
+
 

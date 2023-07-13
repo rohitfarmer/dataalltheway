@@ -1,0 +1,426 @@
+---
+title: "Linear regression for inferential and predictive modeling"
+description: "A tutorial on building and interpreting linear regression models for inferential and predictive modeling with examples in R."
+author: 
+    - name: "Rohit Farmer"
+      orcid: "0000-0003-4197-3047"
+date: "2023-07-13"
+categories: [Linear Regression, Inferential Modeling, Predictive Modeling, R]
+format:
+  html:
+    code-fold: false
+    code-tools:
+      source: false
+      toggle: true
+execute: 
+  eval: true
+citation: true
+google-scholar: true
+draft: false
+bibliography: references.bib
+---
+
+::: {.callout-note collapse="true"}
+### Update history
+
+2023-07-13 First draft
+:::
+
+# Introduction
+
+Linear regression is a statistical method used to model the linear relationship between a dependent variable (target) and one or more independent variables (predictors/features). It is one of the most widely used techniques in predictive modeling and is often used to understand the underlying relationship between different variables and to make predictions based on this relationship.
+
+In linear regression, the goal is to find the **line of best fit** that minimizes the distance between the data points and the line. The line is represented by the equation $$Y = mX + b$$ {#eq-ymxc} $Y$ is the dependent variable, $X$ is the independent variable, $m$ is the slope of the line, and $b$ is the intercept. The slope represents the change in $Y$ for a given change in $X$, and the intercept is the point at which the line crosses the $Y-axis$.
+
+To understand the mathematical reasoning behind linear regression, consider the simple example:
+
+Suppose we have a dataset containing the weight and heights of a group of individuals. We can plot the data on a scatter plot and observe the relationship between weight and height (@fig-lineof-best-fit). If there is a linear relationship between the two variables, we can use linear regression to model this relationship. However, for the practical explanation in this tutorial we will use a more interesting and research based dataset than this simple example of linear relationship between age and height.
+
+```{r}
+#| echo: false
+#| label: fig-lineof-best-fit
+#| fig-cap: "The line (red) of best fit between weight and height. The blue dots are the data points and the green lines shows the distance between the data points and the line."
+
+# Load required packages
+library(ggplot2)
+
+# Generate dummy data
+set.seed(123)
+weight <- rnorm(10, 70, 5)
+height <- weight * 0.5 + rnorm(10, 0, 2)
+
+# Convert height from inches to centimeters
+height_cm <- height * 2.54
+
+# Convert weight from pounds to kilograms
+weight_kg <- weight * 0.4535924
+
+# Create data frame
+data <- data.frame(weight = weight_kg, height = height_cm)
+
+# Fit linear regression model
+model <- lm(height ~ weight, data = data)
+
+# Generate predicted values
+predicted <- predict(model)
+
+# Calculate residuals
+residuals <- predicted - data$height
+
+# Create a data frame for plotting
+plot_data <- data.frame(weight = data$weight, height = data$height, predicted = predicted, residuals = residuals)
+
+# Plot data points, line of best fit, and residuals using ggplot
+ggplot(plot_data, aes(x = weight, y = height)) +
+  geom_point(color = "blue") +
+  geom_abline(intercept = coef(model)[1], slope = coef(model)[2], color = "red", linewidth = 1) +
+  geom_segment(aes(x = weight, y = height, xend = weight, yend = predicted), color = "green", linewidth = 0.8) +
+  labs(x = "Weight (kg)", y = "Height (cm)") 
+
+```
+
+# Dataset {#dataset}
+
+In this tutorial we will use ["palmerpenguins: Palmer Archipelago (Antarctica) Penguin Data"](%22https://cran.r-project.org/web/packages/palmerpenguins/index.html%22) by [Allison Horst](https://github.com/allisonhorst/palmerpenguins). The simplified version of Palmerpenguins dataset contains size measurements for 344 adult foraging Adélie, Chinstrap, and Gentoo penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica. The original data were collected and made available by Dr. Kristen Gorman and the Palmer Station Long Term Ecological Research (LTER) Program.
+
+[![Meet the Palmer penguins. Artwork by \@allison_horst.](images/penguins.png){fig-align="center" width="531"}](https://allisonhorst.github.io/palmerpenguins/articles/art.html)
+
+## Culmen measurements
+
+What are culmen length & depth? The culmen is "the upper ridge of a bird's beak" (definition from Oxford Languages). In the simplified `penguins` subset, culmen length and depth have been updated to variables named `bill_length_mm` and `bill_depth_mm`.
+
+For this penguin data, the bill/culmen length and depth are measured as shown below.
+
+[![Culmen measurements. Artwork by \@allison_horst.](images/culmen_depth.png){fig-align="center" width="548"}](https://allisonhorst.github.io/palmerpenguins/articles/art.html)
+
+## Data filtering and transformation
+
+Before we can build our model(s) let's filter the data for non useful features or missing values. The unfiltered dataset contains 344 rows and 7 columns. We will first drop `year` column and then remove any row with no value for any features. Below is the code to load the dataset and filter.
+
+```{r message=FALSE}
+library(tidyverse)
+
+library(palmerpenguins)
+df_penguins <- penguins %>% dplyr::select(-c(year)) %>% na.omit()
+
+DT::datatable(df_penguins, options = list(pageLength = 5))
+```
+
+After dropping the year column and filtering for the missing values (NAs), we are left with 333 rows and 7 columns 6 with features and 1 with the target.
+
+***Note: In machine learning, especially while using multiple predictors/features, it's advised to transform all the numeric data so the values are on the same scale. However, since the three numeric features are on the same scale (i.e., mili meters) in this data set, it is not required.***
+
+# Building the linear regression model for inferential modeling
+
+Utilizing the dataset prepared above, we will first build two models with slightly different feature sets for inferential modeling, i.e., to understand how the features influence the model prediction and what features are more informative than the others.
+
+## First model
+
+**In the first model**, we will regress body mass in grams, i.e., the body_mass_g column in the table below on three numeric features `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and one categorical feature `sex` (female and male).
+
+We will use the `lm` function from the base R to fit the linear regression model and the `summary()` function to summarize the output of the model fitting. The summary provides several useful statistics that can be used to interpret the model.
+
+To execute the `lm()` function in R, we must provide a formula describing the model to fit and the input data. The formula for our model can be written as
+
+$$body\_mass\_g \sim bill\_length\_mm + bill\_depth\_mm + flipper\_length\_mm + sex$$ {#eq-model-formula}
+
+The variable on the right side of the tilde symbol is the target, and the variables on the left, separated by plus signs, are the features.
+
+```{r}
+# Fit the linear model
+fit1 <- lm(body_mass_g ~ bill_length_mm + bill_depth_mm + flipper_length_mm + sex, data = df_penguins)
+
+# Get the summary of the model
+summary(fit1)
+```
+
+Let's go through the summary of our fitted linear regression model which typically includes the following statistics (from top to bottom):
+
+1.  **Call**: Call section shows the parameters that were passed to the `lm()` function.
+
+2.  **Residuals**: Residuals represent the differences between the actual and predicted values of the dependent variable (`body_mass_g`). The summary shows statistics such as minimum, first quartile (1Q), median, third quartile (3Q), and maximum values of the residuals.
+
+3.  **Coefficients**: The coefficients table presents the estimated coefficients for each predictor variable. The `Estimate` column shows the estimated effect of each variable on the dependent variable. The `Std. Error` column indicates the standard error of the estimate, which measures the variability of the coefficient. The `t value` column represents the t-statistic, which assesses the significance of each coefficient. The `Pr(>|t|)` column provides the p-value, which indicates the probability of observing a t-statistic as extreme as the one calculated if the null hypothesis were true (null hypothesis: the coefficient is not significant).
+
+    -   The `(Intercept)` coefficient represents the estimated body mass when all the predictor variables are zero.
+
+    -   The `bill_length_mm`, `bill_depth_mm`, and `flipper_length_mm` coefficients indicate the estimated change in body mass associated with a one-unit increase in each respective predictor.
+
+    -   The `sexmale` coefficient represents the estimated difference in body mass between males and females (since it's a binary variable). Here `female` is the reference value, which means that males are `541.029 g` heavier than females.
+
+    The significance of each coefficient can be determined based on the corresponding p-value. In this case, the `(Intercept)`, `bill_depth_mm`, `flipper_length_mm`, and `sexmale` coefficients are all highly significant (p \< 0.001), indicating that they have a significant effect on the body mass. However, the `bill_length_mm` coefficient is not statistically significant (p = 0.619), suggesting that it may not have a significant effect on body mass.
+
+4.  **Residual standard error**: This value represents the standard deviation of the residuals (340.8), providing an estimate of the model's prediction error. ***A lower residual standard error indicates a better fit.***
+
+5.  **Multiple R-squared and Adjusted R-squared**: The multiple R-squared value (0.823) indicates the proportion of variance in the dependent variable that can be explained by the predictor variables. The adjusted R-squared (0.8208) adjusts the R-squared value for the number of predictors in the model, penalizing the addition of irrelevant predictors. ***A higher R-squared value indicates a better fit.***
+
+6.  **F-statistic and p-value**: The F-statistic tests the overall significance of the model by comparing the fit of the current model with a null model (no predictors). The associated p-value (\< 2.2e-16) suggests that the model is highly significant and provides a better fit than the null model. ***A low p-value indicates that the model is statistically significant.***
+
+In conclusion, this linear regression model suggests that the numerical features `bill_depth_mm`, `flipper_length_mm`, and the categorical feature `sex` are significant predictors of the body mass of penguins. However, `bill_length_mm` does not appear to be a significant predictor in this model.
+
+## Second model
+
+**In the second model**, we will regress body mass in grams, i.e., the body_mass_g column in the table below on three numeric features `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and three categorical features `species` (Adelie, Chinstrap, and Gentoo), `island` (Biscoe, Dream, and Torgersen), and `sex` (female and male). The formula for this second model will be
+
+$$body\_mass\_g \sim species + island + bill\_length\_mm + bill\_depth\_mm + flipper\_length\_mm + sex$$
+
+```{r}
+# Fit the linear model
+fit2 <- lm(body_mass_g ~ species + island + bill_length_mm + bill_depth_mm + flipper_length_mm + sex, data = df_penguins)
+
+# Get the summary of the model
+summary(fit2)
+```
+
+Similar to the model summary of `fit1` , `fit2` also have the same evaluation metrics; however, in the coefficient section now we have a few more rows related to the two additional features `species` and `island`.
+
+-   The `speciesChinstrap` and `speciesGentoo` coefficients represent the estimated differences in body mass between the corresponding penguin species and the reference category. Here the reference category is Adélie. Reference category is picked in alphabetical order.
+
+-   The `islandDream` and `islandTorgersen` coefficients represent the estimated differences in body mass between penguins from the corresponding islands and the reference island Biscoe.
+
+In this model, the following predictors are significant:
+
+-   `speciesChinstrap`, `speciesGentoo`, `bill_depth_mm`, `flipper_length_mm`, and `sexmale` have highly significant coefficients (p \< 0.01).
+
+-   `bill_length_mm` has a marginally significant coefficient (p = 0.011). *Bill length was not significant when it was used without `species` and `island` features* in the model.
+
+The significance of `islandDream` and `islandTorgersen` is not supported by the data, as indicated by non-significant p-values.
+
+## Comparing the two models
+
+We can make two important observations by comparing the two models we built above. First, changing features may influence the coefficient/significance of other features. We see that in the first model, `bill_length_mm` was not significant, but in the second model, it is marginally significant. Second, different sets of features may represent different proportions of variance in the dependent variable that the predictor variables can explain. The second model shows that R-squared values have increased to 0.8752 and 0.8721 from 0.823 and 0.8208. This means that the two additional variables helped capture more variance. Therefore, choosing an appropriate set of features that best describes the complexity of the data is important.
+
+# Building the linear regression model for predictive modeling
+
+Building a linear regression model for predictive modeling is no different from inferential modeling. However, while evaluating the model performance, we focus on the predictive accuracy of the unseen data (test data) rather than the significance of features in the training data. The set of features may influence the model's predictive performance; therefore, using the most informative features is important. However, while optimizing a model for the highest predictive performance, our metric is the overall prediction accuracy.
+
+We will again build two models with the same set of features as before. However, we need to split the data into training and test sets randomly. Conventionally the train and test splits are 80% and 20% of the data, respectively.
+
+### Train test split
+
+```{r}
+set.seed(123)  # Set a seed for reproducibility
+
+# Generate random indices for train-test split
+train_indices <- sample(1:nrow(df_penguins), round(0.8 * nrow(df_penguins)))
+
+# Create training set
+train_data <- df_penguins[train_indices, ]
+
+# Create test set by excluding the training indices
+test_data <- df_penguins[-train_indices, ]
+
+```
+
+Note:
+
+1.  We use the base R features to split the data into train and test sets. However, several R packages can do this in one line with more advanced features such as stratification. Examples of R packages are `tidymodels` and `caret`.
+
+2.  Since the process of random sampling and splitting the data is stochastic, it is recommended to do it multiple times, train and test the models on each split, and take the average of performance metrics. It will ensure that the effect that we see is not by chance.
+
+## First model
+
+**In the first model**, similar to before, we will regress `body_mass_g` on three numeric features `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and one categorical feature, `sex` (female and male). However, this time we will first train the model only on the training data and then test the model on the test data. So let's first build the model.
+
+```{r}
+# Fit the linear model
+fit1_train <- lm(body_mass_g ~ bill_length_mm + bill_depth_mm + flipper_length_mm + sex, data = train_data)
+
+# Get the summary of the model
+summary(fit1_train)
+```
+
+Now let's test the model on the test data. To test the model, we must first predict the values of our target using the features from the test dataset. Then the predicted target values are compared to the original target values from the test data set (the ground truth) to compute an accuracy metric.
+
+```{r}
+# Predict on the test data set.
+predict1 <- predict(fit1_train, newdata = test_data)
+
+# The predicted values. They are in the same unit as the original target i.e. body_mass_g
+cat(predict1)
+
+```
+
+1.  **Mean Squared Error (MSE):** MSE measures the average squared difference between the predicted and actual values. It provides a measure of the model's overall prediction error.
+
+```{r}
+mse <- mean((test_data$body_mass_g - predict1)^2)
+
+print(mse)
+```
+
+2.  **Root Mean Squared Error (RMSE):** RMSE is the square root of MSE and provides a more interpretable measure of the model's prediction error.
+
+```{r}
+rmse <- sqrt(mse)
+
+print(rmse)
+```
+
+3.  **Mean Absolute Error (MAE):** MAE measures the average absolute difference between the predicted and actual values. It represents the average magnitude of the prediction errors.
+
+```{r}
+mae <- mean(abs(test_data$body_mass_g - predict1))
+
+print(mae)
+```
+
+MSE, RMSE, and MAE give a measure of the prediction error, with lower values indicating better model performance and more accurate predictions. The RMSE is often preferred over MSE because it is in the same unit as the dependent variable, making it easier to interpret in the context of the problem. MAE does not square the prediction errors as the MSE does. Consequently, the MAE does not overly penalize larger errors, making it more robust to outliers in the data.
+
+## Second model
+
+**In the second model**, similar to before, we will regress `` body_mass_g` `` on three numeric features `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and three categorical features `species` (Adelie, Chinstrap, and Gentoo), `island` (Biscoe, Dream, and Torgersen), and `sex` (female and male). However, as we did in the first model above we will first train the model only on the training data and then test the model on the test data. So let's first build the model.
+
+```{r}
+# Fit the linear model
+fit2_train <- lm(body_mass_g ~ species + island + bill_length_mm + bill_depth_mm + flipper_length_mm + sex, data = train_data)
+
+# Get the summary of the model
+summary(fit2_train)
+```
+
+Now let's test the model on the test data.
+
+```{r}
+# Predict on the test data set.
+predict2 <- predict(fit2_train, newdata = test_data)
+
+# The predicted values. They are in the same unit as the original target i.e. body_mass_g
+cat(predict2)
+
+```
+
+And compute the accuracy metrics.
+
+1.  **Mean Squared Error (MSE)**
+
+```{r}
+mse <- mean((test_data$body_mass_g - predict2)^2)
+
+print(mse)
+```
+
+2.  **Root Mean Squared Error (RMSE)**
+
+```{r}
+rmse <- sqrt(mse)
+
+print(rmse)
+```
+
+3.  **Mean Absolute Error (MAE)**
+
+```{r}
+mae <- mean(abs(test_data$body_mass_g - predict2))
+
+print(mae)
+```
+
+Comparing the predictive performance of the two models, the difference between the metrics is minimal/negligible. Therefore, the inclusion or exclusion of species and island features does not have an appreciable effect on the predictive performance of the models based on the train test dataset used.
+
+------------------------------------------------------------------------
+
+# Extended theory
+
+## What are some real-life cases with linear relationships between the dependent and the independent variables?
+
+There are many real-life cases in which a linear relationship exists between the dependent and independent variables. Here are a few examples:
+
+The relationship between the weight of an object and the force needed to lift it. If we plot the weight of an object on the x-axis and the force required to lift it on the y-axis, we can use linear regression to model the relationship between the two variables.
+
+The relationship between the number of hours a student studies and their test scores. If we plot the number of hours a student studies on the x-axis and their test scores on the y-axis, we can use linear regression to model the relationship between the two variables.
+
+The relationship between the size of a company and its profitability. If we plot the size of a company on the x-axis and its profitability on the y-axis, we can use linear regression to model the relationship between the two variables.
+
+The relationship between the age of a car and its fuel efficiency. If we plot the age of a car on the x-axis and its fuel efficiency on the y-axis, we can use linear regression to model the relationship between the two variables.
+
+In each of these cases, there is a linear relationship between the dependent and independent variables, which can be modeled using linear regression.
+
+## What are the real-life cases where a linear regression will not work?
+
+Linear regression is not suitable for modeling relationships between variables that are not linear. Some examples of real-life cases where linear regression will not work include:
+
+The relationship between the temperature of a substance and its volume. The volume of a substance changes non-linearly with temperature, so linear regression would not be appropriate for modeling this relationship.
+
+The relationship between the price of a product and the demand for it. The demand for a product often follows an inverse relationship with price, so linear regression would not be appropriate for modeling this relationship.
+
+The relationship between the weight of an object and the time it takes to fall to the ground. The time it takes for an object to fall to the ground increases non-linearly with its weight, so linear regression would not be appropriate for modeling this relationship.
+
+The relationship between the age of a person and their risk of developing a certain disease. The risk of developing a disease often increases non-linearly with age, so linear regression would not be appropriate for modeling this relationship.
+
+In each of these cases, there is a non-linear relationship between the variables, and linear regression would not be able to accurately model this relationship. Instead, other techniques such as polynomial regression or logistic regression may be more appropriate.
+
+## What are some scientific, medical, or engineering breakthroughs where linear regression was used?
+
+Linear regression is a widely used statistical technique that has been applied to a variety of scientific, medical, and engineering fields. Here are a few examples of famous breakthroughs where linear regression was used:
+
+In the field of medicine, linear regression has been used to understand the relationship between various factors and the risk of developing certain diseases. For example, researchers have used linear regression to understand the relationship between diet and the risk of developing diabetes [@Panagiotakos2005-pi].
+
+In the field of engineering, linear regression has been used to understand the relationship between various factors and the strength of materials. For example, researchers have used linear regression to understand the relationship between the composition of steel and its strength [@Singh_Tumrate2021-po].
+
+In the field of economics, linear regression has been used to understand the relationship between various factors and the performance of stocks. For example, researchers have used linear regression to understand the relationship between a company's earnings and its stock price.
+
+In the field of psychology, linear regression has been used to understand the relationship between various factors and human behavior. For example, researchers have used linear regression to understand the relationship between personality traits and job performance.
+
+These are just a few examples of the many ways in which linear regression has been used to make scientific, medical, and engineering breakthroughs.
+
+```{=html}
+<!---
+## How is linear regression models are different from linear mixed-effects models?
+
+Linear regression models and linear mixed-effects models are similar in that they are both used to model the relationship between a dependent variable and one or more independent variables. However, there are a few key differences between the two types of models:
+
+Linear regression models assume that the errors between the observed and predicted values of the dependent variable are independent and identically distributed (i.i.d.), whereas linear mixed-effects models allow for the errors to be correlated and for the variance of the errors to vary across groups.
+
+Linear regression models are used to model the relationship between variables in a single dataset, whereas linear mixed-effects models are used to model the relationship between variables in multiple datasets that have a hierarchical structure. For example, linear mixed-effects models can be used to model the relationship between variables in a study with multiple subjects, where each subject has multiple observations.
+
+Linear regression models are estimated using ordinary least squares (OLS), whereas linear mixed-effects models are estimated using maximum likelihood estimation (MLE). This means that the parameters in a linear mixed-effects model are estimated by finding the values that maximize the likelihood of the data given the model, whereas the parameters in a linear regression model are estimated by minimizing the sum of the squared errors between the observed and predicted values of the dependent variable.
+
+Overall, linear regression models are suitable for modeling relationships between variables in a single dataset when the errors are i.i.d., whereas linear mixed-effects models are more suitable for modeling relationships between variables in multiple datasets with a hierarchical structure and correlated errors.
+-->
+```
+## How does multicollinearity affect linear regression? How to mitigate and interpret models built with multiple colinear variables.
+
+Multicollinearity is a situation in which two or more independent variables are highly correlated with each other. This can be a problem in linear regression because it can lead to unstable and unreliable estimates of the regression coefficients.
+
+There are a few ways that multicollinearity can affect linear regression:
+
+It can cause the standard errors of the regression coefficients to be inflated, leading to a decrease in the statistical power of the model.
+
+It can make it difficult to interpret the individual contributions of the independent variables to the dependent variable because the coefficients of the correlated variables will be correlated as well.
+
+It can make the model more sensitive to small changes in the data, leading to unstable predictions.
+
+To mitigate the effects of multicollinearity, you can do the following:
+
+Remove one or more of the correlated variables from the model.
+
+Use regularization techniques such as Lasso or Ridge regression, which can help to shrink the coefficients of correlated variables towards zero.
+
+Transform the correlated variables by taking their logarithm, square root, or other non-linear transformation.
+
+Use variable selection techniques such as backward elimination or forward selection to select a subset of uncorrelated variables for the model.
+
+To interpret a model built with multiple collinear variables, you can look at the R-squared value and the p-values of the individual variables to assess their contribution to the model. However, it is important to bear in mind that the estimates of the regression coefficients may be unstable and unreliable due to the presence of multicollinearity.
+
+```{=html}
+<!--
+## Is there any other method that resembles linear regression?
+
+There are several statistical techniques that resemble linear regression, in the sense that they are used to model the relationship between a dependent variable and one or more independent variables. Some examples of these techniques include:
+
+Polynomial regression: This technique is used to model relationships between variables that are non-linear. It involves fitting a polynomial function to the data, which can be used to make predictions about the dependent variable based on the independent variables.
+
+Logistic regression: This technique is used to model binary outcomes, such as whether a patient will recover from a disease or not. It involves fitting a logistic curve to the data, which can be used to estimate the probability of the dependent variable taking on one of the two possible values.
+
+Stepwise regression: This technique is used to select a subset of relevant independent variables for the model by adding or removing variables based on their statistical significance. It can be used to build a linear regression model with a smaller number of variables, which can be helpful in situations where there are many potential independent variables.
+
+Ridge regression: This technique is a variant of linear regression that adds a regularization term to the objective function. The regularization term helps to shrink the coefficients of correlated variables towards zero, which can help to reduce the effects of multicollinearity.
+
+Lasso regression: This technique is another variant of linear regression that adds a regularization term to the objective function. Unlike Ridge regression, which shrinks the coefficients of all variables towards zero, Lasso regression shrinks the coefficients of some variables all the way to zero, effectively eliminating them from the model. This can be helpful in situations where there are many correlated variables and we want to select a subset of the most important variables for the model.
+-->
+```
+# References
+
+::: {#refs}
+:::

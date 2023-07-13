@@ -14,17 +14,13 @@ Welcome to Data All The Way, *"yet another"* tutorial website with concepts, met
 
 </p>
 
-## Featured posts
+## Recent posts
 
 ---
 listing:
   type: grid
   sort: "date desc"
+  max-items: 6
   contents:
-    - "posts/008*/*.qmd"
-    - "posts/007*/*.qmd"
-    - "posts/006*/*.qmd"
-    - "posts/001-data-transformation/*.qmd"
-    - "posts/009*/*.qmd"
-    - "posts/010*/*.qmd"
+    - "posts/*/*.qmd"
 ---
