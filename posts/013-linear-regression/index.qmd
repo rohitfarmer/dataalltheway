@@ -28,13 +28,17 @@ bibliography: references.bib
 
 # Introduction
 
-Linear regression is a statistical method used to model the linear relationship between a dependent variable (target) and one or more independent variables (predictors/features). It is one of the most widely used techniques in predictive modeling and is often used to understand the underlying relationship between different variables and to make predictions based on this relationship.
+Linear regression is a statistical method used to model the **linear relationship** between a dependent variable (target) and one or more independent variables (predictors/features). It is one of the most widely used techniques to understand the underlying relationship between different variables and to make predictions based on this relationship.
 
-In linear regression, the goal is to find the **line of best fit** that minimizes the distance between the data points and the line. The line is represented by the equation $$Y = mX + b$$ {#eq-ymxc} $Y$ is the dependent variable, $X$ is the independent variable, $m$ is the slope of the line, and $b$ is the intercept. The slope represents the change in $Y$ for a given change in $X$, and the intercept is the point at which the line crosses the $Y-axis$.
+In linear regression, the goal is to find the **line of best fit** that minimizes the distance between the data points and the line. The line is represented by @eq-ymxc $$Y = mX + b$$ {#eq-ymxc}$Y$ is the dependent variable, $X$ is the independent variable, $m$ is the slope of the line, and $b$ is the intercept. The slope represents the change in $Y$ for a given change in $X$, and the intercept is the point at which the line crosses the $Y-axis$.
 
-To understand the mathematical reasoning behind linear regression, consider the simple example:
+@eq-ymxc models the relationship between a single predictor and a target. However, the same equation can be extended to accommodate multiple predictors in a multiple linear regression (@eq-multiple-ymxc).
 
-Suppose we have a dataset containing the weight and heights of a group of individuals. We can plot the data on a scatter plot and observe the relationship between weight and height (@fig-lineof-best-fit). If there is a linear relationship between the two variables, we can use linear regression to model this relationship. However, for the practical explanation in this tutorial we will use a more interesting and research based dataset than this simple example of linear relationship between age and height.
+$$Y = m1X1 + mnXn + b$$ {#eq-multiple-ymxc}
+
+To understand the mathematical reasoning behind linear regression, consider this simple example:
+
+Suppose we have a dataset containing the weight and heights of a group of individuals. We can plot the data on a scatter plot and observe the relationship between weight and height (@fig-lineof-best-fit). If there is a linear relationship between the two variables, we can use linear regression to model this relationship. However, for the practical explanation in this tutorial we will use a more interesting and research based dataset than this simple example of linear relationship between weight and height.
 
 ```{r}
 #| echo: false
@@ -81,7 +85,7 @@ ggplot(plot_data, aes(x = weight, y = height)) +
 
 # Dataset {#dataset}
 
-In this tutorial we will use ["palmerpenguins: Palmer Archipelago (Antarctica) Penguin Data"](%22https://cran.r-project.org/web/packages/palmerpenguins/index.html%22) by [Allison Horst](https://github.com/allisonhorst/palmerpenguins). The simplified version of Palmerpenguins dataset contains size measurements for 344 adult foraging Adélie, Chinstrap, and Gentoo penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica. The original data were collected and made available by Dr. Kristen Gorman and the Palmer Station Long Term Ecological Research (LTER) Program.
+In this tutorial we will use ["palmerpenguins: Palmer Archipelago (Antarctica) Penguin Data"](%22https://cran.r-project.org/web/packages/palmerpenguins/index.html%22) by [Allison Horst](https://github.com/allisonhorst/palmerpenguins) [@horst2020]. The simplified version of Palmerpenguins dataset contains size measurements for 344 adult foraging Adélie, Chinstrap, and Gentoo penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica. The original data were collected and made available by Dr. Kristen Gorman and the Palmer Station Long Term Ecological Research (LTER) Program [@Gorman2014].
 
 [![Meet the Palmer penguins. Artwork by \@allison_horst.](images/penguins.png){fig-align="center" width="531"}](https://allisonhorst.github.io/palmerpenguins/articles/art.html)
 
@@ -95,36 +99,73 @@ For this penguin data, the bill/culmen length and depth are measured as shown be
 
 ## Data filtering and transformation
 
-Before we can build our model(s) let's filter the data for non useful features or missing values. The unfiltered dataset contains 344 rows and 7 columns. We will first drop `year` column and then remove any row with no value for any features. Below is the code to load the dataset and filter.
+Before we can build our model(s) let's filter the data for non useful predictors or missing values. The unfiltered dataset contains 344 rows and 7 columns. We will first drop `year` column and then remove any row with no value for any predictors. Below is the code to load the dataset and filter.
 
 ```{r message=FALSE}
+#| label: tbl-penguins
+#| tbl-cap: Filtered dataset
+
 library(tidyverse)
+library(kableExtra)
 
 library(palmerpenguins)
 df_penguins <- penguins %>% dplyr::select(-c(year)) %>% na.omit()
 
-DT::datatable(df_penguins, options = list(pageLength = 5))
+df_penguins %>%  kbl() %>%
+  kable_paper("hover", full_width = F) %>%
+  scroll_box(width = "100%", height = "300px")
 ```
 
-After dropping the year column and filtering for the missing values (NAs), we are left with 333 rows and 7 columns 6 with features and 1 with the target.
+After dropping the year column and filtering for the missing values (NAs), we are left with 333 rows and 7 columns.
 
-***Note: In machine learning, especially while using multiple predictors/features, it's advised to transform all the numeric data so the values are on the same scale. However, since the three numeric features are on the same scale (i.e., mili meters) in this data set, it is not required.***
+***Note: In machine learning, especially while using multiple predictors/features, it's advised to transform all the numeric data so the values are on the same scale. However, since the three numeric features are on the same scale (i.e., milimeters) in this data set, it is not required.***
+
+## Exploratory plots
+
+It's always a good idea to visualize the data to get a better understanding of what we are working with. @fig-penguin-count shows the per species count of penguins by sex. And as you will see that we will be regressing body mass in grams on the remaining variables/predictors, let's visualize the relationship between body mass and the three numeric predictors per species in @fig-mass-predict.
+
+```{r}
+#| label: fig-penguin-count
+#| fig-cap: "Per species penguin count."
+ggplot(df_penguins, aes(x = sex, fill = species)) +
+  geom_bar(alpha = 0.8) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4"), 
+                    guide = "none") +
+  theme_minimal() +
+  facet_wrap(~species, ncol = 1) +
+  coord_flip()
+```
+
+```{r}
+#| label: fig-mass-predict
+#| fig-cap: "Scatter plot showing the relationship between body mass (y-axis) and bill depth, bill length, and flipper length (x-axis) per species (color and shape)."
+
+long_data <- df_penguins %>% dplyr::select(species, bill_length_mm, bill_depth_mm,	flipper_length_mm,	body_mass_g) %>%
+  gather(key = "predictor", value = "value", -c(species, body_mass_g))
+
+ggplot(data = long_data, aes(x = value, y = body_mass_g, color = species)) +
+  geom_point(aes(shape = species),
+             size = 2) +
+      geom_smooth(method="lm", se = FALSE) +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4")) +
+  facet_wrap(~ predictor, scales = "free_x")
+```
 
 # Building the linear regression model for inferential modeling
 
-Utilizing the dataset prepared above, we will first build two models with slightly different feature sets for inferential modeling, i.e., to understand how the features influence the model prediction and what features are more informative than the others.
+Utilizing the dataset prepared above, we will build two models with slightly different predictor sets for inferential modeling, i.e., to understand how the different sets of predictors influence the fitting of the model (model the complexity of data) and what predictors are more informative than the others.
 
 ## First model
 
-**In the first model**, we will regress body mass in grams, i.e., the body_mass_g column in the table below on three numeric features `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and one categorical feature `sex` (female and male).
+**In the first model**, we will regress body mass in grams, i.e., the `body_mass_g` column in @tbl-penguins on three numeric predictors `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and one categorical feature `sex` (female and male).
 
 We will use the `lm` function from the base R to fit the linear regression model and the `summary()` function to summarize the output of the model fitting. The summary provides several useful statistics that can be used to interpret the model.
 
-To execute the `lm()` function in R, we must provide a formula describing the model to fit and the input data. The formula for our model can be written as
+To execute the `lm()` function in R, we must provide a formula describing the model to fit and the input data. The formula for our model can be written as @eq-model-formula
 
 $$body\_mass\_g \sim bill\_length\_mm + bill\_depth\_mm + flipper\_length\_mm + sex$$ {#eq-model-formula}
 
-The variable on the right side of the tilde symbol is the target, and the variables on the left, separated by plus signs, are the features.
+The variable on the right side of the tilde symbol is the target, and the variables on the left, separated by plus signs, are the predictors.
 
 ```{r}
 # Fit the linear model
@@ -156,13 +197,57 @@ Let's go through the summary of our fitted linear regression model which typical
 
 6.  **F-statistic and p-value**: The F-statistic tests the overall significance of the model by comparing the fit of the current model with a null model (no predictors). The associated p-value (\< 2.2e-16) suggests that the model is highly significant and provides a better fit than the null model. ***A low p-value indicates that the model is statistically significant.***
 
-In conclusion, this linear regression model suggests that the numerical features `bill_depth_mm`, `flipper_length_mm`, and the categorical feature `sex` are significant predictors of the body mass of penguins. However, `bill_length_mm` does not appear to be a significant predictor in this model.
+In conclusion, this linear regression model suggests that the numerical predictors `bill_depth_mm`, `flipper_length_mm`, and the categorical feature `sex` are significant predictors of the body mass of penguins. However, `bill_length_mm` does not appear to be a significant predictor in this model.
+
+### Diagnostic plots
+
+In addition to the summary statistics we can also generates a set of diagnostic plots that can help assess the assumptions and evaluate the performance of the model. Let's interpret each of the common diagnostic plots typically produced by `plot(fit)` (@fig-res-fit to @fig-res-lev).
+
+```{r}
+#| label: fig-res-fit
+#| fig-cap: Residuals vs. Fitted. This plot shows the residuals (vertical axis) plotted against the predicted/fitted values (horizontal axis). It helps you examine the assumption of constant variance (homoscedasticity). In this plot, you would ideally want to see a random scatter of points with no discernible pattern or trend, indicating that the assumption of constant variance is reasonable.
+
+plot(fit1, which = 1)
+```
+
+```{r}
+#| label: fig-qq
+#| fig-cap: Normal Q-Q Plot. This plot assesses the assumption of normality of residuals. It compares the standardized residuals to the quantiles of a normal distribution. If the points lie approximately along a straight line, it suggests that the residuals are normally distributed. Deviations from the straight line indicate departures from normality.
+
+plot(fit1, which = 2)
+```
+
+```{r}
+#| label: fig-scale-loc
+#| fig-cap: Scale-Location Plot. This plot, also known as the spread-location plot, is used to evaluate the assumption of constant variance (homoscedasticity) similarly to the Residuals vs. Fitted plot. However, it provides a different perspective by plotting the square root of the standardized residuals against the fitted values. A reasonably constant spread of points with no discernible pattern indicates homoscedasticity.
+
+plot(fit1, which = 3)
+```
+
+```{r}
+#| label: fig-cooks
+#| fig-cap: Cook's Distance. Cook's distance is a measure of the influence of each observation on the model fit. The plot shows the Cook's distance values for each observation. Points with high Cook's distance may have a considerable impact on the model and should be further examined.
+
+plot(fit1, which = 4)
+```
+
+```{r}
+#| label: fig-res-lev
+#| fig-cap: Residuals vs. Leverage. This plot helps identify influential observations by plotting the standardized residuals against the leverage values. Leverage values measure how much an observation's predictor values differ from the average predictor values. Points that have both high leverage and high residuals are worth investigating as they may have a disproportionate impact on the model.
+
+plot(fit1, which = 5)
+```
+
+By examining these diagnostic plots, you can gain insights into the assumptions of the linear regression model and detect any potential issues such as heteroscedasticity, non-linearity, or influential observations.
+
+Note that the interpretation of the diagnostic plots can vary depending on the specific characteristics of your dataset and the context of your analysis. It is important to carefully examine these plots to assess the validity and performance of your linear regression model.
 
 ## Second model
 
-**In the second model**, we will regress body mass in grams, i.e., the body_mass_g column in the table below on three numeric features `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and three categorical features `species` (Adelie, Chinstrap, and Gentoo), `island` (Biscoe, Dream, and Torgersen), and `sex` (female and male). The formula for this second model will be
+**In the second model**, we will regress body mass in grams, i.e., the `body_mass_g` column in @tbl-penguins on three numeric predictors `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and three categorical predictors `species` (Adelie, Chinstrap, and Gentoo), `island` (Biscoe, Dream, and Torgersen), and `sex` (female and male). The formula for this second model will be @eq-second-model
 
-$$body\_mass\_g \sim species + island + bill\_length\_mm + bill\_depth\_mm + flipper\_length\_mm + sex$$
+$$body\_mass\_g \sim species + island + bill\_length\_mm + \\ 
+bill\_depth\_mm + flipper\_length\_mm + sex$$ {#eq-second-model}
 
 ```{r}
 # Fit the linear model
@@ -172,7 +257,7 @@ fit2 <- lm(body_mass_g ~ species + island + bill_length_mm + bill_depth_mm + fli
 summary(fit2)
 ```
 
-Similar to the model summary of `fit1` , `fit2` also have the same evaluation metrics; however, in the coefficient section now we have a few more rows related to the two additional features `species` and `island`.
+Similar to the model summary of `fit1` , `fit2` also have the same evaluation metrics; however, in the coefficient section now we have a few more rows related to the two additional predictors `species` and `island`.
 
 -   The `speciesChinstrap` and `speciesGentoo` coefficients represent the estimated differences in body mass between the corresponding penguin species and the reference category. Here the reference category is Adélie. Reference category is picked in alphabetical order.
 
@@ -182,19 +267,19 @@ In this model, the following predictors are significant:
 
 -   `speciesChinstrap`, `speciesGentoo`, `bill_depth_mm`, `flipper_length_mm`, and `sexmale` have highly significant coefficients (p \< 0.01).
 
--   `bill_length_mm` has a marginally significant coefficient (p = 0.011). *Bill length was not significant when it was used without `species` and `island` features* in the model.
+-   `bill_length_mm` has a marginally significant coefficient (p = 0.011). *Bill length was not significant when it was used without `species` and `island` predictors* in the model.
 
 The significance of `islandDream` and `islandTorgersen` is not supported by the data, as indicated by non-significant p-values.
 
 ## Comparing the two models
 
-We can make two important observations by comparing the two models we built above. First, changing features may influence the coefficient/significance of other features. We see that in the first model, `bill_length_mm` was not significant, but in the second model, it is marginally significant. Second, different sets of features may represent different proportions of variance in the dependent variable that the predictor variables can explain. The second model shows that R-squared values have increased to 0.8752 and 0.8721 from 0.823 and 0.8208. This means that the two additional variables helped capture more variance. Therefore, choosing an appropriate set of features that best describes the complexity of the data is important.
+We can make two important observations by comparing the two models we built above. First, changing predictors may influence the coefficient/significance of other predictors. We see that in the first model, `bill_length_mm` was not significant, but in the second model, it is marginally significant. Second, different sets of predictors may represent different proportions of variance in the dependent variable that the predictor variables can explain. The second model shows that R-squared values have increased to 0.8752 and 0.8721 from 0.823 and 0.8208. This means that the two additional variables helped capture more variance. Therefore, choosing an appropriate set of predictors that best describes the complexity of the data is important.
 
 # Building the linear regression model for predictive modeling
 
-Building a linear regression model for predictive modeling is no different from inferential modeling. However, while evaluating the model performance, we focus on the predictive accuracy of the unseen data (test data) rather than the significance of features in the training data. The set of features may influence the model's predictive performance; therefore, using the most informative features is important. However, while optimizing a model for the highest predictive performance, our metric is the overall prediction accuracy.
+Building a linear regression model for predictive modeling is no different from inferential modeling. However, while evaluating the model performance, we focus on the predictive accuracy of the unseen data (test data) rather than the significance of predictors in the training data. The set of predictors may influence the model's predictive performance; therefore, using the most informative predictors is important. However, while optimizing a model for the highest predictive performance, our metric is the overall prediction accuracy.
 
-We will again build two models with the same set of features as before. However, we need to split the data into training and test sets randomly. Conventionally the train and test splits are 80% and 20% of the data, respectively.
+We will again build two models with the same set of predictors as before. However, we need to split the data into training and test sets randomly. Conventionally the train and test splits are 80% and 20% of the data, respectively.
 
 ### Train test split
 
@@ -214,13 +299,13 @@ test_data <- df_penguins[-train_indices, ]
 
 Note:
 
-1.  We use the base R features to split the data into train and test sets. However, several R packages can do this in one line with more advanced features such as stratification. Examples of R packages are `tidymodels` and `caret`.
+1.  We use the base R predictors to split the data into train and test sets. However, several R packages can do this in one line with more advanced predictors such as stratification. Examples of R packages are `tidymodels` and `caret`.
 
 2.  Since the process of random sampling and splitting the data is stochastic, it is recommended to do it multiple times, train and test the models on each split, and take the average of performance metrics. It will ensure that the effect that we see is not by chance.
 
 ## First model
 
-**In the first model**, similar to before, we will regress `body_mass_g` on three numeric features `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and one categorical feature, `sex` (female and male). However, this time we will first train the model only on the training data and then test the model on the test data. So let's first build the model.
+**In the first model**, similar to before, we will regress `body_mass_g` on three numeric predictors `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and one categorical feature, `sex` (female and male). However, this time we will first train the model only on the training data and then test the model on the test data. So let's first build the model.
 
 ```{r}
 # Fit the linear model
@@ -230,7 +315,7 @@ fit1_train <- lm(body_mass_g ~ bill_length_mm + bill_depth_mm + flipper_length_m
 summary(fit1_train)
 ```
 
-Now let's test the model on the test data. To test the model, we must first predict the values of our target using the features from the test dataset. Then the predicted target values are compared to the original target values from the test data set (the ground truth) to compute an accuracy metric.
+Now let's test the model on the test data. To test the model, we must first predict the values of our target using the predictors from the test dataset. Then the predicted target values are compared to the original target values from the test data set (the ground truth) to compute an accuracy metric.
 
 ```{r}
 # Predict on the test data set.
@@ -269,7 +354,7 @@ MSE, RMSE, and MAE give a measure of the prediction error, with lower values ind
 
 ## Second model
 
-**In the second model**, similar to before, we will regress `` body_mass_g` `` on three numeric features `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and three categorical features `species` (Adelie, Chinstrap, and Gentoo), `island` (Biscoe, Dream, and Torgersen), and `sex` (female and male). However, as we did in the first model above we will first train the model only on the training data and then test the model on the test data. So let's first build the model.
+**In the second model**, similar to before, we will regress `` body_mass_g` `` on three numeric predictors `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, and three categorical predictors `species` (Adelie, Chinstrap, and Gentoo), `island` (Biscoe, Dream, and Torgersen), and `sex` (female and male). However, as we did in the first model above we will first train the model only on the training data and then test the model on the test data. So let's first build the model.
 
 ```{r}
 # Fit the linear model
@@ -316,7 +401,7 @@ mae <- mean(abs(test_data$body_mass_g - predict2))
 print(mae)
 ```
 
-Comparing the predictive performance of the two models, the difference between the metrics is minimal/negligible. Therefore, the inclusion or exclusion of species and island features does not have an appreciable effect on the predictive performance of the models based on the train test dataset used.
+Comparing the predictive performance of the two models, the difference between the metrics is minimal/negligible. Therefore, the inclusion or exclusion of species and island predictors does not have an appreciable effect on the predictive performance of the models based on the train test dataset used.
 
 ------------------------------------------------------------------------
 
