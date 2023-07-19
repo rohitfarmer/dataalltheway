@@ -14,7 +14,7 @@ format:
       toggle: true
 citation: true
 google-scholar: true
-jupyter: julia-1.8
+jupyter: julia-1.9
 ---
 
 ::: {.callout-note collapse="true"}
@@ -25,7 +25,7 @@ jupyter: julia-1.8
 
 # Introduction
 
-This article is an extension of [Farmer. 2022. “Non-Parametric Hypothesis Tests with Examples in R.” November 18, 2022](https://www.dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r). Please check out the parent article for the theoretical background.
+This article is an extension of [Farmer. 2022. "Non-Parametric Hypothesis Tests with Examples in R." November 18, 2022](https://www.dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r). Please check out the parent article for the theoretical background.
 
 -   Wilcoxon rank-sum (Mann-Whitney U test) (@sec-u-test)
 -   Wilcoxon signed-rank test (@sec-wilcox-test)
@@ -66,7 +66,7 @@ plot(
 )
 ```
 
-# Wilcoxon rank-sum (Mann-Whitney U test){#sec-u-test}
+# Wilcoxon rank-sum (Mann-Whitney U test) {#sec-u-test}
 
 ```{julia}
 mwut_results = MannWhitneyUTest(data[!, :USA], data[!, :Canada], )

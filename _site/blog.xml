@@ -45,6 +45,19 @@ Update history
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>Linear regression is a statistical method used to model the <strong>linear relationship</strong> between a dependent variable (target) and one or more independent variables (predictors/features). It is one of the most widely used techniques to understand the underlying relationship between different variables and to make predictions based on this relationship.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>If you are primarily interested in code examples, please follow the navigation on the right; alternatively, you can test live code on <a href="https://www.kaggle.com/code/rohitfarmer/linear-regression-with-examples-in-r">Kaggle</a>.</strong></p>
+</div>
+</div>
 <p>In linear regression, the goal is to find the <strong>line of best fit</strong> that minimizes the distance between the data points and the line. The line is represented by Equation&nbsp;1 <span id="eq-ymxc"><img src="https://latex.codecogs.com/png.latex?Y%20=%20mX%20+%20b%20%5Ctag%7B1%7D"></span><img src="https://latex.codecogs.com/png.latex?Y"> is the dependent variable, <img src="https://latex.codecogs.com/png.latex?X"> is the independent variable, <img src="https://latex.codecogs.com/png.latex?m"> is the slope of the line, and <img src="https://latex.codecogs.com/png.latex?b"> is the intercept. The slope represents the change in <img src="https://latex.codecogs.com/png.latex?Y"> for a given change in <img src="https://latex.codecogs.com/png.latex?X">, and the intercept is the point at which the line crosses the <img src="https://latex.codecogs.com/png.latex?Y-axis">.</p>
 <p>Equation&nbsp;1 models the relationship between a single predictor and a target. However, the same equation can be extended to accommodate multiple predictors in a multiple linear regression (Equation&nbsp;2).</p>
 <p><span id="eq-multiple-ymxc"><img src="https://latex.codecogs.com/png.latex?Y%20=%20m1X1%20+%20mnXn%20+%20b%20%5Ctag%7B2%7D"></span></p>
@@ -12807,74 +12820,6 @@ an Alternative to Web Servers for Scientific Software.”</span> Zenodo.
   <pubDate>Mon, 17 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>Classify the bitter or sweet taste of compounds</title>
-  <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Original Post
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This post is an identical copy of “About Dataset” at Kaggle: <a href="https://www.kaggle.com/dsv/4234193" class="uri">https://www.kaggle.com/dsv/4234193</a></p>
-</div>
-</div>
-<section id="context" class="level1">
-<h1>Context</h1>
-<p>Throughout human evolution, we have been drawn toward sweet-tasting foods and averted from bitter tastes - sweet is good or desirable, bitter is undesirable, ear wax or medicinal. Therefore, a better understanding of molecular features that determine the bitter-sweet taste of substances is crucial for identifying natural and synthetic compounds for various purposes.</p>
-</section>
-<section id="sources" class="level1">
-<h1>Sources</h1>
-<p><a href="https://www.kaggle.com/dsv/4234193">This dataset</a> is adapted from <a href="https://github.com/cosylabiiit/bittersweet" class="uri">https://github.com/cosylabiiit/bittersweet</a>, <a href="https://www.nature.com/articles/s41598-019-43664-y" class="uri">https://www.nature.com/articles/s41598-019-43664-y</a>. In chemoinformatics, molecules are often represented as compact <a href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> strings. In this dataset, SMILES structures, along with their names and targets (bitter, sweet, tasteless, and non-bitter), were obtained from the original study. Subsequently, SMILES were converted into canonical SMILES using RDKit, and the features (molecular descriptors, both 2D and 3D) were calculated using <a href="https://github.com/mordred-descriptor/mordred">Mordred</a>. Secondly, tasteless and non-bitter categories were merged into a single category of non-bitter-sweet. Finally, since many of the compounds were missing names, IUPAC names were fetched using <a href="https://pubchempy.readthedocs.io/en/latest/">PubChemPy</a> for all the compounds, and for still missing names, a generic compound + incrementor name was assigned.</p>
-</section>
-<section id="inspiration" class="level1">
-<h1>Inspiration</h1>
-<p>This is a classification dataset with the first three columns carrying names, SMILES, and canonical SMILES. Any of these columns can be used to refer to a molecule. The fourth column is the target (taste category). And all numeric features are from the 5th column until the end of the file. Many features have cells with string annotations due to errors produced by Mordred. Therefore, the following data science techniques can be learned while working on this dataset:</p>
-<ol type="1">
-<li>Data cleanup</li>
-<li>Features selection (since the number of features is quite large in proportion to the data points)</li>
-<li>Feature scaling/transformation/normalization</li>
-<li>Dimensionality reduction</li>
-<li>Binomial classification (bitter vs.&nbsp;sweet) - utilize non-bitter-sweet as a negative class.</li>
-<li>Multinomial classification (bitter vs.&nbsp;sweet vs.&nbsp;non-bitter-sweet)</li>
-<li>Since SMILES can be converted into molecular graphs, graph-based modeling should also be possible.</li>
-</ol>
-</section>
-<section id="initial-data-preparation" class="level1">
-<h1>Initial data preparation</h1>
-<p>A copy of the original dataset and the scripts and notebooks used to convert SMILES to canonical SMILES, generate features, fetch names, and export the final TSV file for Kaggle is loosely maintained at <a href="https://github.com/rohitfarmer/bittersweet" class="uri">https://github.com/rohitfarmer/bittersweet</a>.</p>
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@dataset{farmer2022,
-  author = {Farmer, Rohit},
-  publisher = {Kaggle},
-  title = {Classify the Bitter or Sweet Taste of Compounds},
-  date = {2022-10-15},
-  url = {https://www.kaggle.com/dsv/4234193},
-  doi = {10.34740/KAGGLE/DSV/4234193},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
-Farmer, Rohit. 2022. <span>“Classify the Bitter or Sweet Taste of
-Compounds.”</span> Kaggle. <a href="https://doi.org/10.34740/KAGGLE/DSV/4234193">https://doi.org/10.34740/KAGGLE/DSV/4234193</a>.
-</div></div></section></div> ]]></description>
-  <category>Datasets</category>
-  <category>Kaggle</category>
-  <category>Classification</category>
-  <guid>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</guid>
-  <pubDate>Sat, 15 Oct 2022 04:00:00 GMT</pubDate>
-</item>
-<item>
   <title>How to use Neovim or VIM editor as an IDE for R</title>
   <dc:creator>Rohit Farmer</dc:creator>
   <link>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</link>
@@ -13290,6 +13235,74 @@ for R.”</span> October 15, 2022. <a href="https://www.dataalltheway.com/posts/
   <pubDate>Sat, 15 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Classify the bitter or sweet taste of compounds</title>
+  <dc:creator>Rohit Farmer</dc:creator>
+  <link>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Original Post
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This post is an identical copy of “About Dataset” at Kaggle: <a href="https://www.kaggle.com/dsv/4234193" class="uri">https://www.kaggle.com/dsv/4234193</a></p>
+</div>
+</div>
+<section id="context" class="level1">
+<h1>Context</h1>
+<p>Throughout human evolution, we have been drawn toward sweet-tasting foods and averted from bitter tastes - sweet is good or desirable, bitter is undesirable, ear wax or medicinal. Therefore, a better understanding of molecular features that determine the bitter-sweet taste of substances is crucial for identifying natural and synthetic compounds for various purposes.</p>
+</section>
+<section id="sources" class="level1">
+<h1>Sources</h1>
+<p><a href="https://www.kaggle.com/dsv/4234193">This dataset</a> is adapted from <a href="https://github.com/cosylabiiit/bittersweet" class="uri">https://github.com/cosylabiiit/bittersweet</a>, <a href="https://www.nature.com/articles/s41598-019-43664-y" class="uri">https://www.nature.com/articles/s41598-019-43664-y</a>. In chemoinformatics, molecules are often represented as compact <a href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> strings. In this dataset, SMILES structures, along with their names and targets (bitter, sweet, tasteless, and non-bitter), were obtained from the original study. Subsequently, SMILES were converted into canonical SMILES using RDKit, and the features (molecular descriptors, both 2D and 3D) were calculated using <a href="https://github.com/mordred-descriptor/mordred">Mordred</a>. Secondly, tasteless and non-bitter categories were merged into a single category of non-bitter-sweet. Finally, since many of the compounds were missing names, IUPAC names were fetched using <a href="https://pubchempy.readthedocs.io/en/latest/">PubChemPy</a> for all the compounds, and for still missing names, a generic compound + incrementor name was assigned.</p>
+</section>
+<section id="inspiration" class="level1">
+<h1>Inspiration</h1>
+<p>This is a classification dataset with the first three columns carrying names, SMILES, and canonical SMILES. Any of these columns can be used to refer to a molecule. The fourth column is the target (taste category). And all numeric features are from the 5th column until the end of the file. Many features have cells with string annotations due to errors produced by Mordred. Therefore, the following data science techniques can be learned while working on this dataset:</p>
+<ol type="1">
+<li>Data cleanup</li>
+<li>Features selection (since the number of features is quite large in proportion to the data points)</li>
+<li>Feature scaling/transformation/normalization</li>
+<li>Dimensionality reduction</li>
+<li>Binomial classification (bitter vs.&nbsp;sweet) - utilize non-bitter-sweet as a negative class.</li>
+<li>Multinomial classification (bitter vs.&nbsp;sweet vs.&nbsp;non-bitter-sweet)</li>
+<li>Since SMILES can be converted into molecular graphs, graph-based modeling should also be possible.</li>
+</ol>
+</section>
+<section id="initial-data-preparation" class="level1">
+<h1>Initial data preparation</h1>
+<p>A copy of the original dataset and the scripts and notebooks used to convert SMILES to canonical SMILES, generate features, fetch names, and export the final TSV file for Kaggle is loosely maintained at <a href="https://github.com/rohitfarmer/bittersweet" class="uri">https://github.com/rohitfarmer/bittersweet</a>.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@dataset{farmer2022,
+  author = {Farmer, Rohit},
+  publisher = {Kaggle},
+  title = {Classify the Bitter or Sweet Taste of Compounds},
+  date = {2022-10-15},
+  url = {https://www.kaggle.com/dsv/4234193},
+  doi = {10.34740/KAGGLE/DSV/4234193},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
+Farmer, Rohit. 2022. <span>“Classify the Bitter or Sweet Taste of
+Compounds.”</span> Kaggle. <a href="https://doi.org/10.34740/KAGGLE/DSV/4234193">https://doi.org/10.34740/KAGGLE/DSV/4234193</a>.
+</div></div></section></div> ]]></description>
+  <category>Datasets</category>
+  <category>Kaggle</category>
+  <category>Classification</category>
+  <guid>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</guid>
+  <pubDate>Sat, 15 Oct 2022 04:00:00 GMT</pubDate>
+</item>
+<item>
   <title>How to download a shared file from Google Drive in R</title>
   <dc:creator>Rohit Farmer</dc:creator>
   <link>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</link>
@@ -13390,41 +13403,6 @@ Drive in R.”</span> October 14, 2022. <a href="https://www.dataalltheway.com/p
   <category>How To</category>
   <guid>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</guid>
   <pubDate>Fri, 14 Oct 2022 04:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Tweets from heads of governments and states</title>
-  <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<p>Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments (worldwide) followed by <a href="https://twitter.com/headoffice" class="uri">https://twitter.com/headoffice</a>. It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877" class="uri">https://doi.org/10.34740/KAGGLE/DSV/4208877</a> for the community to use.</p>
-<p>The dataset contains an Excel workbook per year with data points on the rows and features on the columns. Features include the timestamp (UTC), language in which the tweet is written, user id, user name, tweet id, and tweet text. The first version includes the data from October 2018 until September 15, 2022. After that, future releases will be quarterly. It is a textual dataset and is primarily useful for analyses related to natural language processing.</p>
-<p>In the Kaggle submission, I have also included a notebook (<a href="https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing" class="uri">https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing</a>) with the Python code that collected the tweets and the additional code that I used to pre-process the data before submission. After releasing the first data set, I updated the code and moved the bot from Python to R using the <code>rtweet</code> library instead of <code>tweepy</code>. I found <code>rtweet</code> to perform better, especially in filtering out duplicated tweets.</p>
-<p>In the current setup (<a href="https://github.com/rohitfarmer/government-tweets" class="uri">https://github.com/rohitfarmer/government-tweets</a>) that is still running on my Raspberry Pi 3B+, the main bot script runs every fifteen minutes via <code>crontab</code> and fetches data that is more recent than the latest tweet collected in the previous run. The data is stored in an SQLite database which is backed up to MEGA cloud storage via Rclone once every midnight ET.</p>
-<p>I enjoyed the process of creating the bot and being able to run it for a couple of years, and I hope I will soon find some time to look into the data and fetch some exciting insights. But, until then, the data is available to the data science community to utilize as they please. So, please open a discussion on the Kaggle page for questions, comments, or collaborations.</p>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@dataset{farmer2022,
-  author = {Farmer, Rohit},
-  publisher = {Kaggle},
-  title = {Tweets from Heads of Governments and States},
-  date = {2022-10-05},
-  url = {https://www.kaggle.com/dsv/4208877},
-  doi = {10.34740/KAGGLE/DSV/4208877},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
-Farmer, Rohit. 2022. <span>“Tweets from Heads of Governments and
-States.”</span> Kaggle. <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877">https://doi.org/10.34740/KAGGLE/DSV/4208877</a>.
-</div></div></section></div> ]]></description>
-  <category>Datasets</category>
-  <category>Kaggle</category>
-  <category>Twitter</category>
-  <guid>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</guid>
-  <pubDate>Wed, 05 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Data Transformation</title>
@@ -14155,6 +14133,41 @@ Farmer, Rohit. 2022. <span>“Data Transformation.”</span> October 5,
   <category>Concepts</category>
   <category>Data Transformation</category>
   <guid>https://www.dataalltheway.com/posts/001-data-transformation/index.html</guid>
+  <pubDate>Wed, 05 Oct 2022 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Tweets from heads of governments and states</title>
+  <dc:creator>Rohit Farmer</dc:creator>
+  <link>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>Since October 2018, I have been maintaining a bot written in Python and running on a Raspberry Pi 3B+ that collects tweets from heads of governments (worldwide) followed by <a href="https://twitter.com/headoffice" class="uri">https://twitter.com/headoffice</a>. It was an excellent exercise learning Python, Twitter API, SQLite database, and using a Raspberry Pi for hobby projects. I have now released the data on Kaggle at <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877" class="uri">https://doi.org/10.34740/KAGGLE/DSV/4208877</a> for the community to use.</p>
+<p>The dataset contains an Excel workbook per year with data points on the rows and features on the columns. Features include the timestamp (UTC), language in which the tweet is written, user id, user name, tweet id, and tweet text. The first version includes the data from October 2018 until September 15, 2022. After that, future releases will be quarterly. It is a textual dataset and is primarily useful for analyses related to natural language processing.</p>
+<p>In the Kaggle submission, I have also included a notebook (<a href="https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing" class="uri">https://www.kaggle.com/code/rohitfarmer/dont-run-tweet-collection-and-preprocessing</a>) with the Python code that collected the tweets and the additional code that I used to pre-process the data before submission. After releasing the first data set, I updated the code and moved the bot from Python to R using the <code>rtweet</code> library instead of <code>tweepy</code>. I found <code>rtweet</code> to perform better, especially in filtering out duplicated tweets.</p>
+<p>In the current setup (<a href="https://github.com/rohitfarmer/government-tweets" class="uri">https://github.com/rohitfarmer/government-tweets</a>) that is still running on my Raspberry Pi 3B+, the main bot script runs every fifteen minutes via <code>crontab</code> and fetches data that is more recent than the latest tweet collected in the previous run. The data is stored in an SQLite database which is backed up to MEGA cloud storage via Rclone once every midnight ET.</p>
+<p>I enjoyed the process of creating the bot and being able to run it for a couple of years, and I hope I will soon find some time to look into the data and fetch some exciting insights. But, until then, the data is available to the data science community to utilize as they please. So, please open a discussion on the Kaggle page for questions, comments, or collaborations.</p>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@dataset{farmer2022,
+  author = {Farmer, Rohit},
+  publisher = {Kaggle},
+  title = {Tweets from Heads of Governments and States},
+  date = {2022-10-05},
+  url = {https://www.kaggle.com/dsv/4208877},
+  doi = {10.34740/KAGGLE/DSV/4208877},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
+Farmer, Rohit. 2022. <span>“Tweets from Heads of Governments and
+States.”</span> Kaggle. <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877">https://doi.org/10.34740/KAGGLE/DSV/4208877</a>.
+</div></div></section></div> ]]></description>
+  <category>Datasets</category>
+  <category>Kaggle</category>
+  <category>Twitter</category>
+  <guid>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</guid>
   <pubDate>Wed, 05 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 </channel>

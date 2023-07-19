@@ -30,6 +30,10 @@ bibliography: references.bib
 
 Linear regression is a statistical method used to model the **linear relationship** between a dependent variable (target) and one or more independent variables (predictors/features). It is one of the most widely used techniques to understand the underlying relationship between different variables and to make predictions based on this relationship.
 
+::: callout-note
+**If you are primarily interested in code examples, please follow the navigation on the right; alternatively, you can test live code on [Kaggle](https://www.kaggle.com/code/rohitfarmer/linear-regression-with-examples-in-r).**
+:::
+
 In linear regression, the goal is to find the **line of best fit** that minimizes the distance between the data points and the line. The line is represented by @eq-ymxc $$Y = mX + b$$ {#eq-ymxc}$Y$ is the dependent variable, $X$ is the independent variable, $m$ is the slope of the line, and $b$ is the intercept. The slope represents the change in $Y$ for a given change in $X$, and the intercept is the point at which the line crosses the $Y-axis$.
 
 @eq-ymxc models the relationship between a single predictor and a target. However, the same equation can be extended to accommodate multiple predictors in a multiple linear regression (@eq-multiple-ymxc).

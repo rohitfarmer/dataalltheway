@@ -14,7 +14,7 @@ format:
       toggle: true
 citation: true
 google-scholar: true
-jupyter: julia-1.8
+jupyter: julia-1.9
 ---
 
 ::: {.callout-note collapse="true"}
