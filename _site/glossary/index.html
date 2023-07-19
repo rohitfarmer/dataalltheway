@@ -166,11 +166,19 @@ cookieconsent.run({
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#statistics-and-general-machine-learning" id="toc-statistics-and-general-machine-learning" class="nav-link active" data-scroll-target="#statistics-and-general-machine-learning">Statistics and general machine learning</a></li>
+  <li><a href="#artificial-neural-networks-ann-and-deep-learning" id="toc-artificial-neural-networks-ann-and-deep-learning" class="nav-link" data-scroll-target="#artificial-neural-networks-ann-and-deep-learning">Artificial neural networks (ANN) and deep learning</a></li>
+  <li><a href="#tree-based-methods" id="toc-tree-based-methods" class="nav-link" data-scroll-target="#tree-based-methods">Tree based methods</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -189,419 +197,827 @@ cookieconsent.run({
 
 </header>
 
+<section id="statistics-and-general-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="statistics-and-general-machine-learning">Statistics and general machine learning</h2>
 <div class="cell">
 <div class="cell-output-display">
 <table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Term</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Definition</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold; font-size: largerpx;">Term</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold; font-size: largerpx;">Definition</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">ANOVA</td>
+<td style="text-align: left; font-weight: bold;">ANOVA</td>
 <td style="text-align: left;">A statistical test used to compare the means of three or more groups.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Bar chart</td>
+<td style="text-align: left; font-weight: bold;">Bar chart</td>
 <td style="text-align: left;">A graph showing the frequencies of different categories, with the horizontal axis representing the categories and the vertical axis representing the frequencies.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Beta distribution</td>
+<td style="text-align: left; font-weight: bold;">Beta distribution</td>
 <td style="text-align: left;">A continuous distribution of probabilities that is defined on the interval between 0 and 1, and is often used in Bayesian statistics.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Between-subjects design</td>
+<td style="text-align: left; font-weight: bold;">Between-subjects design</td>
 <td style="text-align: left;">A research design in which different subjects are measured under different conditions or at different time points.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Binomial distribution</td>
+<td style="text-align: left; font-weight: bold;">Binomial distribution</td>
 <td style="text-align: left;">A distribution of probabilities for a discrete variable that has only two possible outcomes, such as heads or tails.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Box plot</td>
+<td style="text-align: left; font-weight: bold;">Box plot</td>
 <td style="text-align: left;">A graph showing the distribution of a set of data, with a box representing the middle 50% of the values and whiskers extending to the minimum and maximum values.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Central limit theorem</td>
+<td style="text-align: left; font-weight: bold;">Central limit theorem</td>
 <td style="text-align: left;">The statistical principle that states that the distribution of sample means will be approximately normal, regardless of the distribution of the population from which the samples are drawn.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Chi-square test</td>
+<td style="text-align: left; font-weight: bold;">Chi-square test</td>
 <td style="text-align: left;">A statistical test used to determine whether two categorical variables are related.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Cluster analysis</td>
+<td style="text-align: left; font-weight: bold;">Cluster analysis</td>
 <td style="text-align: left;">A statistical technique used to group data into clusters or groups based on similarity.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Cluster sampling</td>
+<td style="text-align: left; font-weight: bold;">Cluster sampling</td>
 <td style="text-align: left;">A sampling method in which the population is divided into groups or clusters, and a representative sample is selected from each cluster.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Confidence interval</td>
+<td style="text-align: left; font-weight: bold;">Confidence interval</td>
 <td style="text-align: left;">A range of values that is likely to contain the true value of a population parameter, with a certain level of confidence.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Confirmatory factor analysis</td>
+<td style="text-align: left; font-weight: bold;">Confirmatory factor analysis</td>
 <td style="text-align: left;">A statistical technique used to test the fit of a statistical model to the data, and to identify the underlying structure of a set of observed variables.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Continuous variable</td>
+<td style="text-align: left; font-weight: bold;">Continuous variable</td>
 <td style="text-align: left;">A variable that can take on any value within a given range.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Correlation</td>
+<td style="text-align: left; font-weight: bold;">Correlation</td>
 <td style="text-align: left;">A statistical relationship between two variables, measured by the strength and direction of the linear relationship between them.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Cox proportional hazards model</td>
+<td style="text-align: left; font-weight: bold;">Cox proportional hazards model</td>
 <td style="text-align: left;">A statistical model used to estimate the risk of an event occurring over time, taking into account the effects of multiple covariates.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Discrete variable</td>
+<td style="text-align: left; font-weight: bold;">Discrete variable</td>
 <td style="text-align: left;">A variable that can only take on specific, distinct values.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Discriminant analysis</td>
+<td style="text-align: left; font-weight: bold;">Discriminant analysis</td>
 <td style="text-align: left;">A statistical technique used to classify observations into different groups based on their characteristics.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Event history analysis</td>
+<td style="text-align: left; font-weight: bold;">Event history analysis</td>
 <td style="text-align: left;">A statistical technique used to analyze data on the timing and occurrence of events, such as transitions between different states or stages.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Exponential distribution</td>
+<td style="text-align: left; font-weight: bold;">Exponential distribution</td>
 <td style="text-align: left;">A continuous distribution of probabilities that represents the time between events occurring at a constant rate.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">F-distribution</td>
+<td style="text-align: left; font-weight: bold;">F-distribution</td>
 <td style="text-align: left;">A continuous distribution of probabilities that is used in hypothesis testing to compare the variances of two or more groups.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Factor analysis</td>
+<td style="text-align: left; font-weight: bold;">Factor analysis</td>
 <td style="text-align: left;">A statistical technique used to identify the underlying structure or patterns in a set of correlated variables.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Factorial ANOVA</td>
+<td style="text-align: left; font-weight: bold;">Factorial ANOVA</td>
 <td style="text-align: left;">A statistical test used to analyze the effects of two or more factors on a response variable, assuming that the data are normally distributed and the variances are equal.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Factorial design</td>
+<td style="text-align: left; font-weight: bold;">Factorial design</td>
 <td style="text-align: left;">A research design in which multiple treatment conditions are combined in a single study, allowing for the analysis of main effects and interactions.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Fixed effect</td>
+<td style="text-align: left; font-weight: bold;">Fixed effect</td>
 <td style="text-align: left;">A variable in a statistical model that is considered to be a fixed part of the model, and is not allowed to vary across different levels or groups.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Frequency distribution</td>
+<td style="text-align: left; font-weight: bold;">Frequency distribution</td>
 <td style="text-align: left;">A tabular summary of the data showing the number of occurrences of each unique value or range of values.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Friedman test</td>
+<td style="text-align: left; font-weight: bold;">Friedman test</td>
 <td style="text-align: left;">A nonparametric statistical test used to compare the means of two or more groups, when the data are not normally distributed or the variances are not equal, and the subjects are measured under multiple conditions or at multiple time points.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Generalizability</td>
+<td style="text-align: left; font-weight: bold;">Generalizability</td>
 <td style="text-align: left;">The extent to which the results of a study can be generalized to a larger population.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Generalized estimating equations</td>
+<td style="text-align: left; font-weight: bold;">Generalized estimating equations</td>
 <td style="text-align: left;">A statistical technique used to estimate the parameters of a statistical model when the data are correlated or unbalanced.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Generalized linear mixed model</td>
+<td style="text-align: left; font-weight: bold;">Generalized linear mixed model</td>
 <td style="text-align: left;">A statistical model that extends the generalized linear model to allow for both fixed and random effects.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Generalized linear model</td>
+<td style="text-align: left; font-weight: bold;">Generalized linear model</td>
 <td style="text-align: left;">A statistical model that extends the linear regression model to allow for non-normal distributions of the response variable.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Heteroscedasticity</td>
+<td style="text-align: left; font-weight: bold;">Heteroscedasticity</td>
 <td style="text-align: left;">A violation of the assumption of homogeneity of variance, where the variance of</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Histogram</td>
+<td style="text-align: left; font-weight: bold;">Histogram</td>
 <td style="text-align: left;">A graph showing the frequency distribution of a set of data, with the horizontal axis representing the values and the vertical axis representing the frequencies.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Hypothesis testing</td>
-<td style="text-align: left;">A statistical procedure used to evaluate the validity of a hypothesis or claim about a population, by comparing the observed data to what would be expected under the null hypothesis.</td>
+<td style="text-align: left; font-weight: bold;">Hyperparameter</td>
+<td style="text-align: left;">A parameter that is set before training a machine learning model, influencing the model's behavior and performance.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Interquartile range</td>
+<td style="text-align: left; font-weight: bold;">Hyperparameter Search</td>
+<td style="text-align: left;">The process of finding the optimal hyperparameter values for a machine learning model through methods like grid search, random search, or Bayesian optimization.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Hyperparameter Tuning</td>
+<td style="text-align: left;">The process of finding the best hyperparameter values for a machine learning model, often done using techniques like grid search or random search.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Hypothesis testing</td>
+<td style="text-align: left;">A statistical procedure used to evaluate the validity of a hypothesis or claim about a population, by comparing the observed data to what would be expected under the null hypothesis.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Imbalanced Class Handling</td>
+<td style="text-align: left;">Techniques used to deal with imbalanced class distributions in classification tasks, such as class weighting or resampling.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Interquartile range</td>
 <td style="text-align: left;">The difference between the upper and lower quartiles of a set of data.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Interval scale</td>
+<td style="text-align: left; font-weight: bold;">Interval scale</td>
 <td style="text-align: left;">A scale of measurement in which the categories have a numerical order and the intervals between the categories are equal, but there is no true zero point.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Item response theory</td>
+<td style="text-align: left; font-weight: bold;">Item response theory</td>
 <td style="text-align: left;">A statistical theory used to model the relationship between an individual's ability and their performance on a test or assessment.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Kruskal-Wallis test</td>
+<td style="text-align: left; font-weight: bold;">Kruskal-Wallis test</td>
 <td style="text-align: left;">A nonparametric statistical test used to compare the medians of three or more groups, when the data are not normally distributed or the variances are not equal.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Kurtosis</td>
+<td style="text-align: left; font-weight: bold;">Kurtosis</td>
 <td style="text-align: left;">A measure of the peakedness or flatness of a distribution, indicating whether it has a heavy or light tail.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Latent class analysis</td>
+<td style="text-align: left; font-weight: bold;">Latent class analysis</td>
 <td style="text-align: left;">A statistical technique used to identify unobserved or latent classes or groups within a population based on observed characteristics.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Latent growth curve model</td>
+<td style="text-align: left; font-weight: bold;">Latent growth curve model</td>
 <td style="text-align: left;">A statistical model that estimates individual differences in the rate and level of change over time.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Latent semantic analysis</td>
+<td style="text-align: left; font-weight: bold;">Latent semantic analysis</td>
 <td style="text-align: left;">A statistical technique used to analyze the relationships between words and documents in a text corpus.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Line chart</td>
+<td style="text-align: left; font-weight: bold;">Line chart</td>
 <td style="text-align: left;">A graph showing the trend or pattern in a set of data over time, with the horizontal axis representing the time and the vertical axis representing the values.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Logistic regression</td>
+<td style="text-align: left; font-weight: bold;">Logistic regression</td>
 <td style="text-align: left;">A statistical analysis used to predict the probability of a binary outcome, such as success or failure.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Longitudinal data analysis</td>
+<td style="text-align: left; font-weight: bold;">Longitudinal data analysis</td>
 <td style="text-align: left;">A statistical technique used to analyze data that are collected at multiple time points from the same subjects.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">MANOVA</td>
+<td style="text-align: left; font-weight: bold;">MANOVA</td>
 <td style="text-align: left;">A statistical test used to compare the means of two or more groups on multiple dependent variables, assuming that the data are normally distributed and the variances are equal.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Maximum likelihood estimation</td>
+<td style="text-align: left; font-weight: bold;">Maximum likelihood estimation</td>
 <td style="text-align: left;">A statistical technique used to estimate the parameters of a statistical model that maximizes the likelihood of the observed data.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">McNemar test</td>
+<td style="text-align: left; font-weight: bold;">McNemar test</td>
 <td style="text-align: left;">A statistical test used to compare the proportions of two groups on a dichotomous outcome, when the data are paired or matched.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Mean</td>
+<td style="text-align: left; font-weight: bold;">Mean</td>
 <td style="text-align: left;">The average of a set of numbers, calculated by adding all the numbers together and dividing by the number of items in the set.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Median</td>
+<td style="text-align: left; font-weight: bold;">Mean Absolute Error (MAE)</td>
+<td style="text-align: left;">A loss function used in regression tasks, calculated as the average absolute difference between predicted and actual values.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Mean Squared Error (MSE)</td>
+<td style="text-align: left;">A common loss function used in regression tasks, calculated as the average squared difference between predicted and actual values.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Mean Squared Logarithmic Error (MSLE)</td>
+<td style="text-align: left;">A loss function used in regression tasks, calculated as the average squared logarithmic difference between predicted and actual values.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Median</td>
 <td style="text-align: left;">The middle value in a set of numbers, where half the values are higher and half are lower.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Meta-analysis</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Meta-analysis</td>
 <td style="text-align: left;">A statistical technique used to synthesize and combine the results of multiple studies, in order to estimate the overall effect size and statistical significance of a research question.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Mixed ANOVA</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Mixed ANOVA</td>
 <td style="text-align: left;">A statistical test used to analyze data with a mixed design, where some subjects are measured under multiple conditions or at multiple time points, while others are only measured once.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Mixed effects model</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Mixed effects model</td>
 <td style="text-align: left;">A statistical model that includes both fixed and random effects, allowing for the analysis of both within- and between-group variations.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Mode</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Mode</td>
 <td style="text-align: left;">The most frequently occurring value in a set of numbers.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Multilevel modeling</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Multilevel modeling</td>
 <td style="text-align: left;">A statistical technique used to analyze data with a hierarchical or nested structure, such as data from individuals nested within groups.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Multinomial logistic regression</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Multinomial logistic regression</td>
 <td style="text-align: left;">A statistical analysis used to predict the probability of a categorical outcome with more than two categories.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Multiple regression</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Multiple regression</td>
 <td style="text-align: left;">A statistical analysis used to predict the value of a dependent variable based on the values of two or more independent variables.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Multivariate analysis</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Multivariate analysis</td>
 <td style="text-align: left;">A statistical analysis that involves the simultaneous study of multiple variables.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Nominal scale</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Nominal scale</td>
 <td style="text-align: left;">A scale of measurement in which the categories are mutually exclusive and do not have a numerical order.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Normality test</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Normality test</td>
 <td style="text-align: left;">A statistical test used to determine whether a set of data follows a normal distribution.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">One-way ANOVA</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">One-way ANOVA</td>
 <td style="text-align: left;">A statistical test used to compare the means of three or more groups, assuming that the data are normally distributed and the variances are equal.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Ordinal logistic regression</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Ordinal logistic regression</td>
 <td style="text-align: left;">A statistical analysis used to predict the probability of an ordinal outcome, such as a rating scale.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Ordinal scale</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Ordinal scale</td>
 <td style="text-align: left;">A scale of measurement in which the categories have a numerical order, but the intervals between the categories are not equal.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Outlier</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Outlier</td>
 <td style="text-align: left;">A value that is significantly higher or lower than the other values in a set of data.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">P-value</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">P-value</td>
 <td style="text-align: left;">The probability of obtaining a result as extreme or more extreme than the observed data, if the null hypothesis is true.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Panel data analysis</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Panel data analysis</td>
 <td style="text-align: left;">A statistical technique used to analyze data that are collected from the same subjects over multiple time points.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Partial correlation coefficient</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Partial correlation coefficient</td>
 <td style="text-align: left;">A statistical measure of the association between two variables, controlling for the effects of one or more other variables.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Pearson's correlation coefficient</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Pearson's correlation coefficient</td>
 <td style="text-align: left;">A statistical measure of the linear association between two continuous variables, ranging from -1 to 1.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Percentile</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Percentile</td>
 <td style="text-align: left;">The value below which a certain percentage of the data falls.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Point-biserial correlation coefficient</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Point-biserial correlation coefficient</td>
 <td style="text-align: left;">A statistical measure of the association between a continuous variable and a dichotomous variable.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Poisson distribution</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Poisson distribution</td>
 <td style="text-align: left;">A distribution of probabilities for a discrete variable that represents the number of events occurring in a fixed interval of time or space.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Power</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Power</td>
 <td style="text-align: left;">The probability of correctly rejecting the null hypothesis, given that it is false.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Principal component analysis</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Principal component analysis</td>
 <td style="text-align: left;">A statistical technique used to reduce the dimensionality of a data set by projecting the data onto a lower-dimensional space.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Probability</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Probability</td>
 <td style="text-align: left;">The likelihood or chance of an event occurring, expressed as a number between 0 and 1.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Quartile</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Quartile</td>
 <td style="text-align: left;">One of the three points that divide a set of data into four equal parts.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Random effect</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Random effect</td>
 <td style="text-align: left;">A variable in a statistical model that is allowed to vary across different levels or groups, but is not considered to be a fixed part of the model.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Random sampling</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Random sampling</td>
 <td style="text-align: left;">A sampling method in which each member of the population has an equal chance of being selected for the sample.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Range</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Range</td>
 <td style="text-align: left;">The difference between the highest and lowest values in a set of numbers.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Rasch model</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Rasch model</td>
 <td style="text-align: left;">A statistical model used in item response theory to measure an individual's ability or trait level based on their responses to a series of items.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Ratio scale</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Ratio scale</td>
 <td style="text-align: left;">A scale of measurement in which the categories have a numerical order, the intervals between the categories are equal, and there is a true zero point.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Regression</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Regression</td>
 <td style="text-align: left;">A statistical analysis used to predict the value of a dependent variable based on the value of one or more independent variables.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Repeated measures ANOVA</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Repeated measures ANOVA</td>
 <td style="text-align: left;">A statistical test used to compare the means of two or more groups, where the subjects are measured under multiple conditions or at multiple time points.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Repeated measures design</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Repeated measures design</td>
 <td style="text-align: left;">A research design in which the same subjects are measured under multiple conditions or at multiple time points.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Sampling</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Sampling</td>
 <td style="text-align: left;">The process of selecting a subset of a population for study, in order to make inferences about the population as a whole.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Scatter plot</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Scatter plot</td>
 <td style="text-align: left;">A graph showing the relationship between two numerical variables, with each data point represented by a dot plotted on the horizontal and vertical axes.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Skewness</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Skewness</td>
 <td style="text-align: left;">A measure of the asymmetry of a distribution, indicating whether it is skewed to the left or right.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Spearman's rank correlation coefficient</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Spearman's rank correlation coefficient</td>
 <td style="text-align: left;">A statistical measure of the monotonic association between two ordinal or continuous variables, ranging from -1 to 1.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Standard deviation</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Standard deviation</td>
 <td style="text-align: left;">A measure of the dispersion or spread of a set of numbers, calculated as the square root of the variance.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Stratified sampling</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Stratified sampling</td>
 <td style="text-align: left;">A sampling method in which the population is divided into subgroups or strata, and a representative sample is selected from each stratum.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Structural equation modeling</td>
-<td style="text-align: left;">A statistical technique used to test and estimate relationships between variables, both observed and latent.</td>
-</tr>
 <tr class="even">
-<td style="text-align: left;">Structural equation modeling</td>
+<td style="text-align: left; font-weight: bold;">Structural equation modeling</td>
 <td style="text-align: left;">A statistical technique used to test and estimate relationships between variables, both observed and latent.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Survival analysis</td>
+<td style="text-align: left; font-weight: bold;">Survival analysis</td>
 <td style="text-align: left;">A statistical technique used to analyze data on the time it takes for an event of interest to occur, such as death or failure.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Survival analysis</td>
-<td style="text-align: left;">A statistical technique used to analyze data on the time it takes for an event of interest to occur, such as death or failure.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">T-score</td>
+<td style="text-align: left; font-weight: bold;">T-score</td>
 <td style="text-align: left;">A standardized score used in hypothesis testing, calculated as the number of standard deviations a sample mean is from the hypothesized population mean.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">t-test</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">t-test</td>
 <td style="text-align: left;">A statistical test used to compare the means of two groups, assuming that the data are normally distributed and the variances are equal.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Time series analysis</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Time series analysis</td>
 <td style="text-align: left;">A statistical technique used to analyze data that are collected at regular intervals over time.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Type I error</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Type I error</td>
 <td style="text-align: left;">The error of rejecting the null hypothesis when it is true.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Type II error</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Type II error</td>
 <td style="text-align: left;">The error of failing to reject the null hypothesis when it is false.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Variance</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Variance</td>
 <td style="text-align: left;">A measure of the dispersion or spread of a set of numbers, calculated as the average of the squared differences from the mean.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Weibull distribution</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Weibull distribution</td>
 <td style="text-align: left;">A continuous distribution of probabilities that is often used to model failure times or lifespan data.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Wilcoxon rank-sum test</td>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Wilcoxon rank-sum test</td>
 <td style="text-align: left;">A nonparametric statistical test used to compare the medians of two groups, when the data are not normally distributed or the variances are not equal.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Z-score</td>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Z-score</td>
 <td style="text-align: left;">The number of standard deviations a value is from the mean of a distribution.</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="artificial-neural-networks-ann-and-deep-learning" class="level2">
+<h2 class="anchored" data-anchor-id="artificial-neural-networks-ann-and-deep-learning">Artificial neural networks (ANN) and deep learning</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold; font-size: largerpx;">Term</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold; font-size: largerpx;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Activation Function</td>
+<td style="text-align: left;">A function applied to the output of a neuron to introduce non-linearity in the network and determine the neuron's firing behavior.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Actor-Critic</td>
+<td style="text-align: left;">A hybrid reinforcement learning approach that combines value-based (Critic) and policy-based (Actor) methods to improve stability and efficiency.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Artificial Neural Network (ANN)</td>
+<td style="text-align: left;">A computational model inspired by the structure and function of biological neural networks, used for machine learning tasks.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Attention Mechanism</td>
+<td style="text-align: left;">A mechanism used in deep learning models, especially in natural language processing tasks, to focus on relevant parts of the input sequence.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Attention Score</td>
+<td style="text-align: left;">In the context of attention mechanisms, a score that reflects the relevance or importance of a particular part of the input data.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Autoencoder</td>
+<td style="text-align: left;">A type of neural network used for unsupervised learning, trained to reconstruct its input data and compress it into a lower-dimensional representation.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Backpropagation</td>
+<td style="text-align: left;">A learning algorithm used in training neural networks by adjusting the network's weights based on the error signal propagated backward from the output to the input layer.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Batch Normalization</td>
+<td style="text-align: left;">A technique used to improve the training and generalization of neural networks by normalizing the inputs of each layer in a mini-batch.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Batch Size</td>
+<td style="text-align: left;">The number of training samples processed together in one forward and backward pass during each epoch.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Convolutional Neural Network (CNN)</td>
+<td style="text-align: left;">A type of neural network specifically designed for image recognition and processing tasks, utilizing convolutional layers to detect patterns and features in images.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Data Augmentation</td>
+<td style="text-align: left;">A technique used to artificially increase the size of a dataset by applying transformations or modifications to the existing data.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Deep Q-Network (DQN)</td>
+<td style="text-align: left;">A deep learning algorithm used for reinforcement learning, combining Q-learning with a deep neural network to approximate the Q-values.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Dropout</td>
+<td style="text-align: left;">A regularization technique in deep learning where randomly selected neurons are ignored during training to reduce overfitting.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Early Stopping</td>
+<td style="text-align: left;">A regularization technique used during training to stop the learning process when the performance on a validation set stops improving.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Encoder-Decoder Architecture</td>
+<td style="text-align: left;">A neural network architecture where an encoder compresses the input data into a latent representation, and a decoder reconstructs the data from the latent space.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">End-to-End Learning</td>
+<td style="text-align: left;">A learning approach where a neural network is trained to directly map raw input data to output predictions without the need for intermediate feature engineering.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Epoch</td>
+<td style="text-align: left;">A single pass of the entire training dataset through the neural network during the training process.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Exploding Gradient Problem</td>
+<td style="text-align: left;">A problem occurring in deep neural networks during backpropagation, where the gradients of the loss function with respect to certain weights become excessively large, leading to unstable training.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Feedforward Neural Network</td>
+<td style="text-align: left;">A type of artificial neural network where the flow of data is unidirectional, moving from input to output through hidden layers.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Gated Recurrent Unit (GRU)</td>
+<td style="text-align: left;">Another variant of RNN similar to LSTM but with a simpler architecture and fewer parameters.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Generative Adversarial Network (GAN)</td>
+<td style="text-align: left;">A type of neural network architecture consisting of a generator and a discriminator, competing in a game to produce realistic synthetic data.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Gradient Descent</td>
+<td style="text-align: left;">An optimization algorithm used to find the optimal weights of a neural network by iteratively updating them in the direction of the steepest descent of the loss function.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Learning Rate</td>
+<td style="text-align: left;">A hyperparameter that controls the step size in gradient descent, determining how much the weights are updated in each iteration.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Learning Rate Scheduler</td>
+<td style="text-align: left;">A technique used to adjust the learning rate during training, allowing for faster convergence and better optimization.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Long Short-Term Memory (LSTM)</td>
+<td style="text-align: left;">A variant of RNN designed to alleviate the vanishing gradient problem and better capture long-range dependencies in sequential data.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Loss Function</td>
+<td style="text-align: left;">A measure used to evaluate how well the neural network's predictions match the actual targets during training.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Momentum</td>
+<td style="text-align: left;">A hyperparameter used to speed up the convergence of gradient descent by adding a fraction of the previous weight update to the current update.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Neuron (Node)</td>
+<td style="text-align: left;">A basic unit in an artificial neural network, responsible for receiving input, performing computations, and producing an output.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Overfitting</td>
+<td style="text-align: left;">A phenomenon where a neural network performs well on the training data but poorly on unseen or test data due to excessive memorization of noise in the training set.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Policy Gradient</td>
+<td style="text-align: left;">A method used in reinforcement learning to directly optimize the policy of an agent, often employed in situations with continuous action spaces.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Pooling Layer</td>
+<td style="text-align: left;">A layer in a CNN used to reduce the spatial dimensions of the feature maps and retain the most important information.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Recurrent Neural Network (RNN)</td>
+<td style="text-align: left;">A type of neural network that is capable of processing sequential data by maintaining hidden state information across time steps.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Reinforcement Learning</td>
+<td style="text-align: left;">A type of machine learning paradigm where an agent interacts with an environment to learn how to take actions to maximize cumulative rewards.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Self-Supervised Learning</td>
+<td style="text-align: left;">A training paradigm in which a model generates its own labels or supervision from the input data, often used to pre-train models before fine-tuning them on specific tasks.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Semi-Supervised Learning</td>
+<td style="text-align: left;">A learning paradigm where a model is trained on both labeled and unlabeled data, leveraging the unlabeled data to improve performance.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Softmax</td>
+<td style="text-align: left;">An activation function used in the output layer of a neural network for multi-class classification tasks, converting raw scores into probabilities.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Tensor</td>
+<td style="text-align: left;">A multi-dimensional array used to represent data in deep learning frameworks.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Transfer Learning</td>
+<td style="text-align: left;">A technique in deep learning where a pre-trained neural network is used as a starting point for a new task, often with some of its layers frozen to retain learned features.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Transformer</td>
+<td style="text-align: left;">A neural network architecture based on self-attention mechanisms, widely used in natural language processing tasks.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Underfitting</td>
+<td style="text-align: left;">A phenomenon where a neural network performs poorly on both the training and test data due to the model's simplicity and inability to capture the underlying patterns.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Unsupervised Learning</td>
+<td style="text-align: left;">A machine learning paradigm where a model is trained on unlabeled data to find underlying patterns and structures without explicit supervision.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Vanishing Gradient Problem</td>
+<td style="text-align: left;">A problem occurring in deep neural networks during backpropagation, where the gradients of the loss function with respect to certain weights become extremely small, hindering learning.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Word Embeddings</td>
+<td style="text-align: left;">A representation of words in a continuous vector space, learned from large textual corpora, used to capture semantic relationships between words.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Word2Vec</td>
+<td style="text-align: left;">A popular algorithm used to generate word embeddings from textual data, typically based on either Skip-gram or Continuous Bag of Words (CBOW) models.</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="tree-based-methods" class="level2">
+<h2 class="anchored" data-anchor-id="tree-based-methods">Tree based methods</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold; font-size: largerpx;">Term</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold; font-size: largerpx;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">AdaBoost (Adaptive Boosting)</td>
+<td style="text-align: left;">A boosting algorithm that assigns higher weights to misclassified samples in each iteration, emphasizing difficult-to-predict instances.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Bagging</td>
+<td style="text-align: left;">The process of training multiple models independently on different subsets of the training data and averaging their predictions, used in Random Forests.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Boosting</td>
+<td style="text-align: left;">An ensemble learning method that trains multiple weak learners sequentially, with each subsequent model focusing on correcting the errors of the previous ones.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">CART (Classification and Regression Trees)</td>
+<td style="text-align: left;">An algorithm for constructing decision trees that can be used for both classification and regression tasks.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">CatBoost</td>
+<td style="text-align: left;">A gradient boosting library that can handle categorical features directly, without the need for explicit encoding.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Categorical Feature Encoding</td>
+<td style="text-align: left;">Techniques to convert categorical variables into numerical form for decision trees, such as one-hot encoding or label encoding.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Classification Tree</td>
+<td style="text-align: left;">A decision tree used for classification tasks, where the output at each leaf node represents a class label.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Decision Boundary</td>
+<td style="text-align: left;">The boundary or threshold that separates different classes in a decision tree or other classification model.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Decision Path</td>
+<td style="text-align: left;">The sequence of feature-based decisions made from the root node to a specific leaf node in a decision tree, providing insights into how predictions are made.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Decision Stump</td>
+<td style="text-align: left;">A decision tree with only one level of internal nodes, used as a weak learner in boosting algorithms.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Decision Tree</td>
+<td style="text-align: left;">A hierarchical tree-like structure used for classification and regression tasks, where each internal node represents a decision based on a feature, and each leaf node represents the predicted output.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Early Stopping</td>
+<td style="text-align: left;">A regularization technique used during training to stop the learning process when the performance on a validation set stops improving.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Ensemble Aggregation</td>
+<td style="text-align: left;">The process of combining predictions from multiple decision trees or models to produce the final output.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Ensemble Learning</td>
+<td style="text-align: left;">A machine learning technique that combines multiple models to make predictions, often leading to improved accuracy and robustness.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Entropy</td>
+<td style="text-align: left;">A measure of the randomness or uncertainty in a dataset, used in information gain calculations.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Feature Importance</td>
+<td style="text-align: left;">A measure of the importance of each feature in a decision tree or ensemble model, indicating how much each feature contributes to the prediction.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Feature Split Importance</td>
+<td style="text-align: left;">A measure of how much a feature contributes to the decision-making process in a tree-based model, based on the number of times the feature is used for splitting and the resulting impurity reduction.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Gini Impurity</td>
+<td style="text-align: left;">A measure of the impurity or uncertainty in a dataset, used as a splitting criterion for decision trees in classification tasks.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Gradient Boosting</td>
+<td style="text-align: left;">A boosting algorithm that builds decision trees sequentially, where each new tree corrects the errors of the previous ones using gradient descent.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Information Gain</td>
+<td style="text-align: left;">A measure of the reduction in entropy achieved by a split, used as a splitting criterion for decision trees in classification tasks.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Interaction Depth</td>
+<td style="text-align: left;">The depth or number of interactions allowed between features in a tree-based model, often set to control model complexity.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Internal Node</td>
+<td style="text-align: left;">A node in a decision tree that contains a decision based on a feature, leading to further splits.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Leaf Node</td>
+<td style="text-align: left;">A terminal node in a decision tree that provides the final prediction or decision.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Leaf Sample Size</td>
+<td style="text-align: left;">The minimum number of samples required at a leaf node for the node to be considered valid and used for predictions.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">LightGBM</td>
+<td style="text-align: left;">Another optimized gradient boosting implementation, designed to be faster and more memory-efficient than XGBoost.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Missing Values Handling</td>
+<td style="text-align: left;">Strategies for dealing with missing values during the construction of decision trees, such as imputation or assigning them to the most common class.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Node Depth</td>
+<td style="text-align: left;">The depth or level of a node in a decision tree, representing the number of splits needed to reach that node from the root.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Node Impurity</td>
+<td style="text-align: left;">A measure of the impurity or homogeneity of the samples at a node, used to evaluate potential splits during decision tree construction.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Out-of-Bag Error</td>
+<td style="text-align: left;">The error rate of a random forest model calculated using the samples that were not used in a particular tree's training (out-of-bag samples).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Overfitting</td>
+<td style="text-align: left;">A phenomenon where a decision tree captures noise or irrelevant patterns in the training data, resulting in poor generalization to unseen data.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Pruned Tree</td>
+<td style="text-align: left;">A decision tree that has undergone pruning to remove branches that do not significantly contribute to the model's performance.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Pruning</td>
+<td style="text-align: left;">A technique used to reduce the size of a decision tree by removing branches that do not significantly contribute to the model's performance, helping to avoid overfitting.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Random Forest</td>
+<td style="text-align: left;">An ensemble learning method that builds multiple decision trees and combines their predictions to improve accuracy and reduce overfitting.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Regression Tree</td>
+<td style="text-align: left;">A decision tree used for regression tasks, where the output at each leaf node is a continuous value.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Root Node</td>
+<td style="text-align: left;">The topmost node of a decision tree, representing the initial split based on a feature.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Split</td>
+<td style="text-align: left;">The process of dividing the dataset at a node based on a feature and its threshold value.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Splitting Criterion</td>
+<td style="text-align: left;">A measure used to determine the best feature and threshold for a split, such as Gini impurity or information gain for classification, and mean squared error for regression.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Splitting Strategy</td>
+<td style="text-align: left;">The method used to choose the feature and threshold for splitting a node in a decision tree, such as best split, random split, or greedy split.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Termination Criteria</td>
+<td style="text-align: left;">Conditions used to stop the tree-building process, such as the maximum depth of the tree or the minimum number of samples required to split a node.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Tree Pruning</td>
+<td style="text-align: left;">A process that reduces the size of a decision tree by removing branches that do not contribute significantly to the model's performance, helping to avoid overfitting.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Underfitting</td>
+<td style="text-align: left;">A phenomenon where a decision tree is too simple to capture the underlying patterns in the training data, resulting in poor performance.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Variance Reduction</td>
+<td style="text-align: left;">The process of reducing the variance of predictions by averaging the outputs of multiple models, such as in random forests.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">XGBoost</td>
+<td style="text-align: left;">An optimized implementation of gradient boosting, known for its efficiency and high performance.</td>
 </tr>
 </tbody>
 </table>
@@ -611,6 +1027,7 @@ cookieconsent.run({
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
