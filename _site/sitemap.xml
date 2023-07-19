@@ -1,83 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.dataalltheway.com/index.html</loc>
-    <lastmod>2023-07-19T17:02:37.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/013-linear-regression/index.html</loc>
-    <lastmod>2023-07-19T17:02:34.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r/index.html</loc>
-    <lastmod>2023-07-19T17:02:21.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r/index.html</loc>
-    <lastmod>2023-07-19T17:02:16.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia/index.html</loc>
-    <lastmod>2023-07-19T17:02:12.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/008-build-a-singularity-container/index.html</loc>
-    <lastmod>2023-07-19T17:02:08.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</loc>
-    <lastmod>2023-07-19T17:02:03.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</loc>
-    <lastmod>2023-07-19T17:01:58.000Z</lastmod>
+    <loc>https://www.dataalltheway.com/bookmarks/index.html</loc>
+    <lastmod>2023-07-19T18:56:20.494Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</loc>
-    <lastmod>2023-07-19T17:01:56.000Z</lastmod>
+    <lastmod>2023-07-19T18:56:11.442Z</lastmod>
   </url>
   <url>
-    <loc>https://www.dataalltheway.com/bookmarks/index.html</loc>
-    <lastmod>2023-07-19T17:01:44.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/contact/index.html</loc>
-    <lastmod>2023-07-19T17:01:46.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/001-data-transformation/index.html</loc>
-    <lastmod>2023-07-19T17:01:54.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</loc>
-    <lastmod>2023-07-19T17:01:57.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</loc>
-    <lastmod>2023-07-19T17:02:01.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/007-open-data-for-datascience/index.html</loc>
-    <lastmod>2023-07-19T17:02:07.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/009-rules-for-naming-files/index.html</loc>
-    <lastmod>2023-07-19T17:02:10.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python/index.html</loc>
-    <lastmod>2023-07-19T17:02:13.000Z</lastmod>
+    <loc>https://www.dataalltheway.com/posts/013-linear-regression/index.html</loc>
+    <lastmod>2023-07-19T18:55:56.805Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia/index.html</loc>
-    <lastmod>2023-07-19T17:02:19.000Z</lastmod>
+    <lastmod>2023-07-19T18:55:46.565Z</lastmod>
   </url>
   <url>
-    <loc>https://www.dataalltheway.com/posts/012-type-inference-in-readr-and-arrow/index.html</loc>
-    <lastmod>2023-07-19T17:02:24.000Z</lastmod>
+    <loc>https://www.dataalltheway.com/posts/009-rules-for-naming-files/index.html</loc>
+    <lastmod>2023-07-19T18:55:40.653Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r/index.html</loc>
+    <lastmod>2023-07-19T18:55:36.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python/index.html</loc>
+    <lastmod>2023-07-19T18:55:27.569Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r/index.html</loc>
+    <lastmod>2023-07-19T18:55:18.581Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/index.html</loc>
+    <lastmod>2023-07-19T18:55:11.900Z</lastmod>
   </url>
   <url>
     <loc>https://www.dataalltheway.com/blog.html</loc>
-    <lastmod>2023-07-19T17:02:35.000Z</lastmod>
+    <lastmod>2023-07-19T18:55:07.164Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/contact/index.html</loc>
+    <lastmod>2023-07-19T18:55:05.348Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/glossary/index.html</loc>
+    <lastmod>2023-07-19T18:55:10.940Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/007-open-data-for-datascience/index.html</loc>
+    <lastmod>2023-07-19T18:55:15.545Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</loc>
+    <lastmod>2023-07-19T18:55:21.237Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia/index.html</loc>
+    <lastmod>2023-07-19T18:55:34.181Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/012-type-inference-in-readr-and-arrow/index.html</loc>
+    <lastmod>2023-07-19T18:55:39.665Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</loc>
+    <lastmod>2023-07-19T18:55:43.909Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</loc>
+    <lastmod>2023-07-19T18:55:48.305Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/008-build-a-singularity-container/index.html</loc>
+    <lastmod>2023-07-19T18:56:09.818Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/001-data-transformation/index.html</loc>
+    <lastmod>2023-07-19T18:56:15.162Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</loc>
+    <lastmod>2023-07-19T18:56:18.446Z</lastmod>
   </url>
 </urlset>

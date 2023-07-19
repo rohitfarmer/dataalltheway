@@ -1,0 +1,18 @@
+---
+title: Glossary
+page-layout: full
+title-block-banner: false
+toc: true
+toc-depth: 3
+---
+
+```{r}
+#| echo: false
+suppressMessages(library(tidyverse))
+suppressMessages(library(readxl))
+suppressMessages(library(kableExtra))
+glos_dat <- readxl::read_xlsx("glossary.xlsx")
+glos_dat %>%
+  kbl() %>%
+  kable_paper("hover", full_width = F)
+```
