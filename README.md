@@ -1,5 +1,7 @@
 # Data All The Way
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7a35d80e-e047-4ba3-a70d-fc4d207d232b/deploy-status)](https://app.netlify.com/sites/dataalltheway/deploys)
+
 This repository is for the Quarto website code for <https://dataalltheway.com/>, a tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics.
 
 ## Example blog post YAML header
@@ -28,6 +30,9 @@ citation: true
   #url: "https://doi.org/10.5281/zenodo.7232109"
 bibliography: "references.bib"
 google-scholar: true
+execute: 
+  eval: true
+draft: true
 ---
 ```
 
@@ -35,8 +40,10 @@ google-scholar: true
 
 In the posts folder, make a folder with the name that will go on the URL. The name of the folder need not be the same as the title of the post, as the title of a post can be way longer than what would look better on the URL. Prefix the name with the serial number 00N to make it easier to order as per the name of the posts. This serial number needs not correspond to the order in which the posts are updated. Most posts will likely get updated at a later date. Inside the folder, create an `index.qmd` file.
 
-    00N-title-of-the-post
-      index.qmd
+```         
+00N-title-of-the-post
+  index.qmd
+```
 
 ## Helpful websites
 
@@ -47,8 +54,10 @@ In the posts folder, make a folder with the name that will go on the URL. The na
 
 ### Callouts
 
-    ::: {.callout-note collapse="true"}
-    ### Updates
+```         
+::: {.callout-note collapse="true"}
+### Updates
 
-    2022-10-25
-    :::
+2022-10-25
+:::
+```
