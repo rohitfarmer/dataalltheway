@@ -1,6 +1,6 @@
 ---
 title: "Linear regression for inferential and predictive modeling with examples in Julia"
-description: "A tutorial on building and interpreting linear regression models for inferential and predictive modeling with examples in R."
+description: "A tutorial on building and interpreting linear regression models for inferential and predictive modeling with examples in Julia."
 author: 
     - name: "Dhruva Sambrani"
       orcid: "0000-0001-6254-4757"
@@ -12,7 +12,6 @@ format:
 jupyter: julia-1.9
 citation: true
 google-scholar: true
-draft: false
 execute: 
   eval: true
 ---

@@ -145,7 +145,7 @@ background-color: null;
 font-style: inherit;">DataFrame</span>(PalmerPenguins.<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">load</span>()))</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div><div style="float: left;"><span>333×7 DataFrame</span></div><div style="float: right;"><span style="font-style: italic;">308 rows omitted</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
 <table class="data-frame table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
@@ -443,7 +443,7 @@ background-color: null;
 font-style: inherit;">first</span>(data, <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">20</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <div><div style="float: left;"><span>20×7 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
 <table class="data-frame table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
@@ -749,7 +749,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">false</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="24">
 <p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-5-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -767,7 +767,7 @@ background-color: null;
 font-style: inherit;">+</span> p[<span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>linear_model (generic function with 1 method)</code></pre>
 </div>
 </div>
@@ -893,7 +893,7 @@ font-style: inherit;">return</span> p</span>
 <span id="cb8-27"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>plot_corrs (generic function with 1 method)</code></pre>
 </div>
 </div>
@@ -936,7 +936,7 @@ font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"body_mass_g"</span></span>
 <span id="cb10-8">)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="27">
 <p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-8-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -962,7 +962,7 @@ background-color: null;
 font-style: inherit;">+</span> sex),</span>
 <span id="cb11-3">    data,</span>
 <span id="cb11-4">)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>StatsModels.TableRegressionModel{LinearModel{GLM.LmResp{Vector{Float64}}, GLM.DensePredChol{Float64, LinearAlgebra.CholeskyPivoted{Float64, Matrix{Float64}, Vector{Int64}}}}, Matrix{Float64}}
 
 body_mass_g ~ 1 + bill_depth_mm + bill_length_mm + flipper_length_mm + sex
@@ -984,7 +984,7 @@ sex: male            541.029      51.7098   10.46    &lt;1e-21    439.304     64
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ftest</span>(fit_model_1.model)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>F-test against the null model:
 F-statistic: 381.30 on 333 observations and 4 degrees of freedom, p-value: &lt;1e-99</code></pre>
 </div>
@@ -1026,7 +1026,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">false</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="31">
 <p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -1040,7 +1040,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"qqplot of the standardized residuals"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="32">
 <p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-13-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -1064,7 +1064,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">false</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="33">
 <p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-14-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -1131,7 +1131,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">false</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="34">
 <p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-15-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
@@ -1175,7 +1175,7 @@ background-color: null;
 font-style: inherit;">+</span> sex),</span>
 <span id="cb20-3">    data,</span>
 <span id="cb20-4">)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>StatsModels.TableRegressionModel{LinearModel{GLM.LmResp{Vector{Float64}}, GLM.DensePredChol{Float64, LinearAlgebra.CholeskyPivoted{Float64, Matrix{Float64}, Vector{Int64}}}}, Matrix{Float64}}
 
 body_mass_g ~ 1 + species + island + bill_depth_mm + bill_length_mm + flipper_length_mm + sex
@@ -1204,7 +1204,7 @@ sex: male             387.224     48.1382    8.04    &lt;1e-13    292.521    481
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ftest</span>(fit_model_1.model, fit_model_2.model)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>F-test: 2 models fitted on 333 observations
 ──────────────────────────────────────────────────────────────────────────────
      DOF  ΔDOF            SSR            ΔSSR      R²     ΔR²       F*   p(&gt;F)
@@ -1288,7 +1288,7 @@ font-style: inherit;">:</span>]</span>
 <span id="cb24-8"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">end</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>partition_data (generic function with 2 methods)</code></pre>
 </div>
 </div>
