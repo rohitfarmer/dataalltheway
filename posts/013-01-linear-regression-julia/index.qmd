@@ -4,7 +4,7 @@ description: "A tutorial on building and interpreting linear regression models f
 author: 
     - name: "Dhruva Sambrani"
       orcid: "0000-0001-6254-4757"
-date: "2023-08-09"
+date: "2023-08-15"
 categories: [Linear Regression, Inferential Modeling, Predictive Modeling, Julia]
 format:
   html:
@@ -12,15 +12,15 @@ format:
 jupyter: julia-1.9
 citation: true
 google-scholar: true
-draft: true
+draft: false
 execute: 
-  eval: false
+  eval: true
 ---
 
 ::: {.callout-note collapse="true"}
 ### Update history
 
-2023-08-09 First draft
+2023-08-15 First draft
 :::
 
 # Introduction
@@ -50,6 +50,7 @@ using StatsBase
 Let us also drop the rows which have any missing data.
 
 ```{julia}
+ENV["DATADEPS_ALWAYS_ACCEPT"] = "true" # needed for downloading data without confirmation
 data = dropmissing(DataFrame(PalmerPenguins.load()))
 ```
 

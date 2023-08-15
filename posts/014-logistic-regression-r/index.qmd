@@ -1,0 +1,151 @@
+---
+title: "Logistic regression for inferential and predictive modeling"
+description: "A tutorial on building and interpreting logistic regression models for inferential and predictive modeling with examples in R."
+author: 
+    - name: "Rohit Farmer"
+      orcid: "0000-0003-4197-3047"
+date: "2023-08-13"
+categories: [Logistic Regression, Inferential Modeling, Predictive Modeling, R]
+format:
+  html:
+    code-fold: false
+    code-tools:
+      source: false
+      toggle: true
+execute: 
+  eval: true
+citation: true
+google-scholar: true
+draft: true
+#bibliography: references.bib
+---
+
+::: {.callout-note collapse="true"}
+### Update history
+
+2023-08-13 First draft
+:::
+
+# Introduction
+
+Logistic regression is a type of statistical model used for binary classification problems, where the outcome variable can only have two possible classes (e.g., yes/no, true/false, 0/1). It estimates the probability that an instance belongs to a particular class based on one or more predictor variables (features). The main idea behind logistic regression is to transform the output of a linear regression into a range between 0 and 1, using a special function called the logistic or sigmoid function.
+
+Let's assume we have a binary classification problem, where the output variable is represented by $y$ (either 0 or 1), and $X$ represents the input feature vector. The goal of logistic regression is to find a linear relationship between $X$ and the log-odds of the probability of $y$ being 1.
+
+The log-odds (also called the logit) is given by:
+
+$$
+logit(p)=log(\frac{p}{1-p})
+$$
+
+where $p$ is the probability of $y$ being 1. The logit function takes a probability value and maps it to a range between $−\infty$ and $+\infty$.
+
+Next, we model the relationship between the log-odds and the input features $X$ using a linear equation:
+
+$$
+logit(p)=\beta_0+\beta_1x_1+\beta_2x_2+...+\beta_nx_n
+$$
+
+where $x_1,x_2,…,x_n$ are the input features, and $\beta_0,\beta_1,...,\beta_n$ are the coefficients of the model that need to be estimated.
+
+To obtain the probability $p$, we apply the logistic (sigmoid) function to both sides of the equation:
+
+$$p=\frac{1}{1+e−^{(\beta_0+\beta_1x_1+\beta_2x_2+...+\beta_nx_n)}}$$
+
+The logistic function $σ(z)=\frac{1}{1+e^{−z}}$ maps any value $z$ to a range between `0` and `1`, which makes it suitable for representing probabilities.
+
+Now, given a labeled dataset with input features $X$ and corresponding binary labels $y$, the logistic regression model aims to find the optimal values for the coefficients $\beta_0,\beta_1,...,\beta_n$ that best fit the data, typically using optimization algorithms like gradient descent or maximum likelihood estimation.
+
+**Multinomial Logistic Regression:** Multinomial logistic regression, also known as softmax regression, is an extension of logistic regression for multi-class classification problems, where the outcome variable can take more than two possible classes. It generalizes the logistic function to handle multiple classes using the softmax function.
+
+In multinomial logistic regression, we have $K$ classes, and the goal is to find the probability that an instance belongs to each class.
+
+For each class $k$, we model the log-odds of $y$ being class $k$ as a linear equation:
+
+$$logit(p_k)=\beta_{0k}+\beta_{1k}x_1+\beta_{2k}x_2+...+\beta_{nk}x_n$$
+
+where $p_k$ is the probability of $y$ being class $k$, and $x_1,x_2,...,x_n$ are the input features as before. $\beta_0k,\beta_{1k},...,\beta_{nk}$ are the coefficients specific to class $k$ that need to be estimated.
+
+To obtain the probability $p_k$, we apply the softmax function to the log-odds: $$
+p_k=\frac{e^{logit(p_k)}}{\sum_{j=1}^Ke^{logit(p_j)}}
+$$ The softmax function takes a vector of log-odds (scores) and maps it to a vector of probabilities, ensuring that the probabilities for all classes sum to `1`.
+
+Similarly to logistic regression, the multinomial logistic regression model aims to find the optimal values for the coefficients $\beta0_k,\beta1_k,...,\beta_{nk}$ that best fit the data, often using optimization algorithms like gradient descent or maximum likelihood estimation.
+
+In summary, logistic regression and multinomial logistic regression are powerful tools for binary and multi-class classification problems, respectively. By modeling the relationship between input features and the probabilities of class labels using the logistic and softmax functions, they provide a probabilistic framework for making predictions based on data.
+
+# Dataset {#dataset}
+
+In this tutorial we will use ["palmerpenguins: Palmer Archipelago (Antarctica) Penguin Data"](%22https://cran.r-project.org/web/packages/palmerpenguins/index.html%22) by [Allison Horst](https://github.com/allisonhorst/palmerpenguins) [@horst2020]. The simplified version of Palmerpenguins dataset contains size measurements for 344 adult foraging Adélie, Chinstrap, and Gentoo penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica. The original data were collected and made available by Dr. Kristen Gorman and the Palmer Station Long Term Ecological Research (LTER) Program [@Gorman2014].
+
+[![Meet the Palmer penguins. Artwork by \@allison_horst.](../013-linear-regression/images/penguins.png){fig-align="center" width="531"}](https://allisonhorst.github.io/palmerpenguins/articles/art.html)
+
+## Culmen measurements
+
+What are culmen length & depth? The culmen is "the upper ridge of a bird's beak" (definition from Oxford Languages). In the simplified `penguins` subset, culmen length and depth have been updated to variables named `bill_length_mm` and `bill_depth_mm`.
+
+For this penguin data, the bill/culmen length and depth are measured as shown below.
+
+[![Culmen measurements. Artwork by \@allison_horst.](../013-linear-regression/images/culmen_depth.png){fig-align="center" width="548"}](https://allisonhorst.github.io/palmerpenguins/articles/art.html)
+
+## Data filtering and transformation
+
+Before we can build our model(s) let's filter the data for non useful predictors or missing values. The unfiltered dataset contains 344 rows and 7 columns. We will first drop `year` column and then remove any row with no value for any predictors. Below is the code to load the dataset and filter.
+
+```{r message=FALSE}
+#| label: tbl-penguins
+#| tbl-cap: Filtered dataset
+
+library(tidyverse)
+library(kableExtra)
+library(plotly)
+library(ggfortify)
+
+library(palmerpenguins)
+df_penguins <- penguins %>% dplyr::select(-c(year)) %>% na.omit()
+
+df_penguins %>%  kbl() %>%
+  kable_paper("hover", full_width = F) %>%
+  scroll_box(width = "100%", height = "300px")
+```
+
+After dropping the year column and filtering for the missing values (NAs), we are left with 333 rows and 7 columns.
+
+## Exploratory plots
+
+It's always a good idea to visualize the data to get a better understanding of what we are working with. @fig-penguin-count shows the per species count of penguins by sex. And as you will see that we will be regressing body mass in grams on the remaining variables/predictors, let's visualize the relationship between body mass and the three numeric predictors per species in @fig-mass-predict.
+
+```{r}
+#| label: fig-penguin-count
+#| fig-cap: "Per species penguin count."
+sp_count <- ggplot(df_penguins, aes(x = sex, fill = species)) +
+  geom_bar(alpha = 0.8) +
+  theme_minimal() +
+  facet_wrap(~species, ncol = 1) +
+  coord_flip()
+ggplotly(sp_count)
+```
+
+## Outlier detection
+
+```{r}
+min_max_scale <- function(x) {
+  (x - min(x)) / (max(x) - min(x))
+}
+
+
+long_data <- df_penguins %>% 
+  dplyr::select(species, sex, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g) %>% 
+  gather(key = "predictor", value = "value", -c(species, sex))
+
+plt_outlier <- ggplot(long_data, aes(x = species, y=value, fill = species)) + 
+  geom_boxplot() +
+  facet_wrap(~ predictor, scales = "free_y")
+
+ggplotly(plt_outlier)
+```
+
+```{r}
+pca_res <- prcomp(dplyr::select(df_penguins, where(is.numeric)), scale = TRUE)
+ggplotly(autoplot(pca_res, color = "sex", data = df_penguins))
+```

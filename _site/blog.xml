@@ -17,7 +17,1304 @@
 <width>144</width>
 </image>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Thu, 13 Jul 2023 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 15 Aug 2023 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Linear regression for inferential and predictive modeling with examples in Julia</title>
+  <dc:creator>Dhruva Sambrani</dc:creator>
+  <link>https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Update history
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>2023-08-15 First draft</p>
+</div>
+</div>
+</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This article is an extension of <a href="https://www.dataalltheway.com/posts/013-linear-regression">Farmer, Rohit. 2023. “Linear Regression for Inferential and Predictive Modeling.” July 13, 2023.</a> . Please check out the parent article for the theoretical background.</p>
+<section id="import-packages" class="level2">
+<h2 class="anchored" data-anchor-id="import-packages">Import Packages</h2>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Pkg</span></span>
+<span id="cb1-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Pkg</span>.<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">activate</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"."</span>)</span>
+<span id="cb1-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">IJulia</span></span>
+<span id="cb1-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">PalmerPenguins </span></span>
+<span id="cb1-5"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">DataFrames</span></span>
+<span id="cb1-6"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Statistics</span></span>
+<span id="cb1-7"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Plots</span></span>
+<span id="cb1-8"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Pipe</span></span>
+<span id="cb1-9"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">LsqFit</span></span>
+<span id="cb1-10"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">GLM</span></span>
+<span id="cb1-11"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">StatsPlots</span></span>
+<span id="cb1-12"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Statistics</span></span>
+<span id="cb1-13"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">StatsBase</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  Activating new project at `~/sandbox/dataalltheway/posts/013-01-linear-regression-julia`</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="getting-the-data" class="level1">
+<h1>Getting the data</h1>
+<p>Let us also drop the rows which have any missing data.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">ENV</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"DATADEPS_ALWAYS_ACCEPT"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"true"</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># needed for downloading data without confirmation</span></span>
+<span id="cb3-2">data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dropmissing</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">DataFrame</span>(PalmerPenguins.<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">load</span>()))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div><div style="float: left;"><span>333×7 DataFrame</span></div><div style="float: right;"><span style="font-style: italic;">308 rows omitted</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
+<table class="data-frame table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header header">
+<th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Row</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">species</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">island</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">bill_length_mm</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">body_mass_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">sex</th>
+</tr>
+<tr class="odd subheader headerLastRow">
+<th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;"></th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="Int64">Int64</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="Int64">Int64</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String7">String7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">1</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.1</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: right;">3750</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">2</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.5</td>
+<td style="text-align: right;">17.4</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">3800</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">3</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">40.3</td>
+<td style="text-align: right;">18.0</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">3250</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">4</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">36.7</td>
+<td style="text-align: right;">19.3</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: right;">3450</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">5</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.3</td>
+<td style="text-align: right;">20.6</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: right;">3650</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">6</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">38.9</td>
+<td style="text-align: right;">17.8</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: right;">3625</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">7</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.2</td>
+<td style="text-align: right;">19.6</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">4675</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">8</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">41.1</td>
+<td style="text-align: right;">17.6</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: right;">3200</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">9</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">38.6</td>
+<td style="text-align: right;">21.2</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: right;">3800</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">10</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">34.6</td>
+<td style="text-align: right;">21.1</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">4400</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">11</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">36.6</td>
+<td style="text-align: right;">17.8</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: right;">3700</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">12</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">38.7</td>
+<td style="text-align: right;">19.0</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">3450</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">13</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">42.5</td>
+<td style="text-align: right;">20.7</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: right;">4500</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+<td style="text-align: right;">⋮</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">322</td>
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">45.2</td>
+<td style="text-align: right;">16.6</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: right;">3250</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">323</td>
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">49.3</td>
+<td style="text-align: right;">19.9</td>
+<td style="text-align: right;">203</td>
+<td style="text-align: right;">4050</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">324</td>
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">50.2</td>
+<td style="text-align: right;">18.8</td>
+<td style="text-align: right;">202</td>
+<td style="text-align: right;">3800</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">325</td>
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">45.6</td>
+<td style="text-align: right;">19.4</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: right;">3525</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">326</td>
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">51.9</td>
+<td style="text-align: right;">19.5</td>
+<td style="text-align: right;">206</td>
+<td style="text-align: right;">3950</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">327</td>
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">46.8</td>
+<td style="text-align: right;">16.5</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: right;">3650</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">328</td>
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">45.7</td>
+<td style="text-align: right;">17.0</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">3650</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">329</td>
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">55.8</td>
+<td style="text-align: right;">19.8</td>
+<td style="text-align: right;">207</td>
+<td style="text-align: right;">4000</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">330</td>
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">43.5</td>
+<td style="text-align: right;">18.1</td>
+<td style="text-align: right;">202</td>
+<td style="text-align: right;">3400</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">331</td>
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">49.6</td>
+<td style="text-align: right;">18.2</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: right;">3775</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">332</td>
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">50.8</td>
+<td style="text-align: right;">19.0</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: right;">4100</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">333</td>
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">Dream</td>
+<td style="text-align: right;">50.2</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">3775</td>
+<td style="text-align: left;">female</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>The data already does not include the <code>year</code> data, and so we don’t need to change anything.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">first</span>(data, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div><div style="float: left;"><span>20×7 DataFrame</span></div><div style="clear: both;"></div></div><div class="data-frame" style="overflow-x: scroll;">
+<table class="data-frame table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header header">
+<th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Row</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">species</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">island</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">bill_length_mm</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">bill_depth_mm</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">flipper_length_mm</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">body_mass_g</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">sex</th>
+</tr>
+<tr class="odd subheader headerLastRow">
+<th class="rowNumber" data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;"></th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String15">String15</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="Float64">Float64</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="Int64">Int64</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="Int64">Int64</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th" title="InlineStrings.String7">String7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">1</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.1</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: right;">3750</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">2</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.5</td>
+<td style="text-align: right;">17.4</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">3800</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">3</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">40.3</td>
+<td style="text-align: right;">18.0</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">3250</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">4</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">36.7</td>
+<td style="text-align: right;">19.3</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: right;">3450</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">5</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.3</td>
+<td style="text-align: right;">20.6</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: right;">3650</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">6</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">38.9</td>
+<td style="text-align: right;">17.8</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: right;">3625</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">7</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">39.2</td>
+<td style="text-align: right;">19.6</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">4675</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">8</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">41.1</td>
+<td style="text-align: right;">17.6</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: right;">3200</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">9</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">38.6</td>
+<td style="text-align: right;">21.2</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: right;">3800</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">10</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">34.6</td>
+<td style="text-align: right;">21.1</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">4400</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">11</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">36.6</td>
+<td style="text-align: right;">17.8</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: right;">3700</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">12</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">38.7</td>
+<td style="text-align: right;">19.0</td>
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">3450</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">13</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">42.5</td>
+<td style="text-align: right;">20.7</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: right;">4500</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">14</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">34.4</td>
+<td style="text-align: right;">18.4</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: right;">3325</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">15</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Torgersen</td>
+<td style="text-align: right;">46.0</td>
+<td style="text-align: right;">21.5</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: right;">4200</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">16</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">37.8</td>
+<td style="text-align: right;">18.3</td>
+<td style="text-align: right;">174</td>
+<td style="text-align: right;">3400</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">17</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">37.7</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">3600</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">18</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">35.9</td>
+<td style="text-align: right;">19.2</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: right;">3800</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">19</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">38.2</td>
+<td style="text-align: right;">18.1</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: right;">3950</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td class="rowNumber" style="text-align: right; font-weight: bold;">20</td>
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">Biscoe</td>
+<td style="text-align: right;">38.8</td>
+<td style="text-align: right;">17.2</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">3800</td>
+<td style="text-align: left;">male</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="exploratory-plots" class="level1">
+<h1>Exploratory Plots</h1>
+<p>We <code>groupby</code> <code>species</code> and <code>sex</code>, <code>select</code>ing the length of number of rows. Then, we simply find the <code>unique</code> rows.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1">g_data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@pipe</span> data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">groupby</span>(_, [<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>species, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>sex]) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">combine</span>(_, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>sex<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=&gt;</span>length<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=&gt;:</span>counts) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-4">    unique</span>
+<span id="cb5-5">labels <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">zip</span>(g_data[!, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>species], g_data[!, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>sex])) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span> (i,j)</span>
+<span id="cb5-6">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>(i)<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">-</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>(j)<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb5-7"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span>
+<span id="cb5-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(labels, g_data[!, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>counts], st<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=:</span>bar, title<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Counts"</span>, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">false</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-5-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1">@. <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">linear_model</span>(x, p) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> p[<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> p[<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>linear_model (generic function with 1 method)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot_corrs</span>(data, variable)</span>
+<span id="cb8-2">    p <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(title<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>variable)</span>
+<span id="cb8-3">    ds1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@pipe</span> data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb8-4">        _[!, [<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>species, variable, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>body_mass_g]] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb8-5">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">groupby</span>(_, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>species)</span>
+<span id="cb8-6"></span>
+<span id="cb8-7">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> sdf <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> ds1</span>
+<span id="cb8-8">        color <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">palette</span>(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>auto)[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(p.series_list)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">÷</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]</span>
+<span id="cb8-9">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scatter!</span>(sdf[!, variable], sdf[!, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>body_mass_g],</span>
+<span id="cb8-10">            label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>sdf[!, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>species][<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>],</span>
+<span id="cb8-11">            markersize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,</span>
+<span id="cb8-12">            color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>color</span>
+<span id="cb8-13">        )</span>
+<span id="cb8-14">        fit <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">curve_fit</span>(</span>
+<span id="cb8-15">            linear_model,</span>
+<span id="cb8-16">            sdf[!, variable], sdf[!, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>body_mass_g], [<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>., <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>.],</span>
+<span id="cb8-17">        )</span>
+<span id="cb8-18">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot!</span>(</span>
+<span id="cb8-19">            sdf[!, variable],</span>
+<span id="cb8-20">            <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">linear_model</span>(sdf[!, variable], fit.param),</span>
+<span id="cb8-21">            label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>sdf[!, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>species][<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>],</span>
+<span id="cb8-22">            lw <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,</span>
+<span id="cb8-23">            color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>color</span>
+<span id="cb8-24">        )</span>
+<span id="cb8-25">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span>
+<span id="cb8-26">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> p</span>
+<span id="cb8-27"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>plot_corrs (generic function with 1 method)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(</span>
+<span id="cb10-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot_corrs</span>(data, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>bill_depth_mm),</span>
+<span id="cb10-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot_corrs</span>(data, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>bill_length_mm),</span>
+<span id="cb10-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot_corrs</span>(data, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>flipper_length_mm),</span>
+<span id="cb10-5">    layout<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>),</span>
+<span id="cb10-6">    size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1300</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">400</span>),</span>
+<span id="cb10-7">    ylabel<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"body_mass_g"</span></span>
+<span id="cb10-8">)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-8-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="first-model" class="level1">
+<h1>First Model</h1>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1">fit_model_1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lm</span>(</span>
+<span id="cb11-2">    <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@formula</span>(body_mass_g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> bill_depth_mm <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> bill_length_mm <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> flipper_length_mm <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> sex),</span>
+<span id="cb11-3">    data,</span>
+<span id="cb11-4">)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>StatsModels.TableRegressionModel{LinearModel{GLM.LmResp{Vector{Float64}}, GLM.DensePredChol{Float64, LinearAlgebra.CholeskyPivoted{Float64, Matrix{Float64}, Vector{Int64}}}}, Matrix{Float64}}
+
+body_mass_g ~ 1 + bill_depth_mm + bill_length_mm + flipper_length_mm + sex
+
+Coefficients:
+────────────────────────────────────────────────────────────────────────────────────
+                         Coef.  Std. Error      t  Pr(&gt;|t|)   Lower 95%    Upper 95%
+────────────────────────────────────────────────────────────────────────────────────
+(Intercept)        -2288.46      631.58     -3.62    0.0003  -3530.92    -1046.01
+bill_depth_mm        -86.0882     15.5698   -5.53    &lt;1e-07   -116.718     -55.4589
+bill_length_mm        -2.32868     4.6843   -0.50    0.6194    -11.5437      6.88638
+flipper_length_mm     38.8258      2.44776  15.86    &lt;1e-41     34.0105     43.6411
+sex: male            541.029      51.7098   10.46    &lt;1e-21    439.304     642.753
+────────────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+<p>We can do the ftest against the null model as</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ftest</span>(fit_model_1.model)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>F-test against the null model:
+F-statistic: 381.30 on 333 observations and 4 degrees of freedom, p-value: &lt;1e-99</code></pre>
+</div>
+</div>
+<section id="diagnostic-plots" class="level2">
+<h2 class="anchored" data-anchor-id="diagnostic-plots">Diagnostic Plots</h2>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1">x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(fit_model_1)</span>
+<span id="cb15-2">y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">residuals</span>(fit_model_1)</span>
+<span id="cb15-3">ystd <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(y))<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">std</span>(y);</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scatter</span>(x, y, title<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Residuals vs Prediction"</span>, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">false</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">qqplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Normal</span>(), ystd, title<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"qqplot of the standardized residuals"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-13-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scatter</span>(x, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sqrt</span>.(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">abs</span>.(ystd)), ylabel<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"√(Std Residuals)"</span>, xlabel<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Prediction"</span>, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">false</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-14-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1">cdist <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cooksdistance</span>(fit_model_1)</span>
+<span id="cb19-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(cdist, st<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=:</span>sticks, title<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cook's Distance"</span>, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>)</span>
+<span id="cb19-3">high_dist <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">findall</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">&gt;</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.02</span>), cdist)</span>
+<span id="cb19-4">hist_dist_annots <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(high_dist) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">do</span> i</span>
+<span id="cb19-5">    (i, cdist[i]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.002</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">text</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">string</span>(i), <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>))</span>
+<span id="cb19-6"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span>
+<span id="cb19-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">annotate!</span>(hist_dist_annots)</span>
+<span id="cb19-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">hline!</span>([<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.02</span>], linestyle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=:</span>dash, label<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">false</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-15-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Unimplemented function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The leverage function is not implemented in the <code>GLM.jl</code> package yet, but there is a <a href="https://github.com/JuliaStats/GLM.jl/pull/510">PR in draft</a>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="second-model" class="level1">
+<h1>Second Model</h1>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1">fit_model_2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lm</span>(</span>
+<span id="cb20-2">    <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@formula</span>(body_mass_g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> species <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> island <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> bill_depth_mm <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> bill_length_mm <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> flipper_length_mm <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> sex),</span>
+<span id="cb20-3">    data,</span>
+<span id="cb20-4">)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>StatsModels.TableRegressionModel{LinearModel{GLM.LmResp{Vector{Float64}}, GLM.DensePredChol{Float64, LinearAlgebra.CholeskyPivoted{Float64, Matrix{Float64}, Vector{Int64}}}}, Matrix{Float64}}
+
+body_mass_g ~ 1 + species + island + bill_depth_mm + bill_length_mm + flipper_length_mm + sex
+
+Coefficients:
+──────────────────────────────────────────────────────────────────────────────────
+                         Coef.  Std. Error      t  Pr(&gt;|t|)   Lower 95%  Upper 95%
+──────────────────────────────────────────────────────────────────────────────────
+(Intercept)         -1500.03     575.822    -2.61    0.0096  -2632.85    -367.207
+species: Chinstrap   -260.306     88.5506   -2.94    0.0035   -434.513    -86.0996
+species: Gentoo       987.761    137.238     7.20    &lt;1e-11    717.771   1257.75
+island: Dream         -13.1031    58.5407   -0.22    0.8230   -128.271    102.065
+island: Torgersen     -48.0636    60.9215   -0.79    0.4307   -167.915     71.7881
+bill_depth_mm          67.5754    19.8213    3.41    0.0007     28.5808   106.57
+bill_length_mm         18.1893     7.13639   2.55    0.0113      4.1498    32.2288
+flipper_length_mm      16.2385     2.93946   5.52    &lt;1e-07     10.4557    22.0213
+sex: male             387.224     48.1382    8.04    &lt;1e-13    292.521    481.927
+──────────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+</section>
+<section id="comparing-the-two-models" class="level1">
+<h1>Comparing the two models</h1>
+<p><code>GLM.jl</code> provides an interface to run an FTest to compare if either model is better than the other.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ftest</span>(fit_model_1.model, fit_model_2.model)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>F-test: 2 models fitted on 333 observations
+──────────────────────────────────────────────────────────────────────────────
+     DOF  ΔDOF            SSR            ΔSSR      R²     ΔR²       F*   p(&gt;F)
+──────────────────────────────────────────────────────────────────────────────
+[1]    6        38099290.7809                  0.8230                         
+[2]   10     4  26859432.2504  -11239858.5304  0.8752  0.0522  33.8960  &lt;1e-22
+──────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+<p>Inferring this test is left as an exercise to the reader, with reference to <a href="https://dataalltheway.com/posts/010-parametric-hypothesis-tests-r/#sec-f-test">the previous blogpost on Parametric tests</a>.</p>
+</section>
+<section id="using-the-model-as-a-prediction" class="level1">
+<h1>Using the model as a prediction</h1>
+<p>This is also left as an exercise to the reader. You can partition the data using the following function:</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Random</span></span>
+<span id="cb24-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">partition_data</span>(data, train_frac <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>)</span>
+<span id="cb24-3">    n <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(data)</span>
+<span id="cb24-4">    idx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">shuffle</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>n)</span>
+<span id="cb24-5">    train_idx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@view</span> idx[<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">floor</span>(<span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Int</span>, train_frac<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>n)]</span>
+<span id="cb24-6">    test_idx <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@view</span> idx[(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">floor</span>(<span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Int</span>, train_frac<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>n)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>n]</span>
+<span id="cb24-7">    data[train_idx, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>], data[test_idx, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>]</span>
+<span id="cb24-8"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">end</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>partition_data (generic function with 2 methods)</code></pre>
+</div>
+</div>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sambrani2023,
+  author = {Sambrani, Dhruva},
+  title = {Linear Regression for Inferential and Predictive Modeling
+    with Examples in {Julia}},
+  date = {2023-08-15},
+  url = {https://www.dataalltheway.com/posts/013-01-linear-regression-julia},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambrani2023" class="csl-entry quarto-appendix-citeas">
+Sambrani, Dhruva. 2023. <span>“Linear Regression for Inferential and
+Predictive Modeling with Examples in Julia.”</span> August 15, 2023. <a href="https://www.dataalltheway.com/posts/013-01-linear-regression-julia">https://www.dataalltheway.com/posts/013-01-linear-regression-julia</a>.
+</div></div></section></div> ]]></description>
+  <category>Linear Regression</category>
+  <category>Inferential Modeling</category>
+  <category>Predictive Modeling</category>
+  <category>Julia</category>
+  <guid>https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index.html</guid>
+  <pubDate>Tue, 15 Aug 2023 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Linear regression for inferential and predictive modeling</title>
   <dc:creator>Rohit Farmer</dc:creator>
