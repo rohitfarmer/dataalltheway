@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="keywords" content="data science, machine learning, statistics, tutorials, code examples">
+<meta name="description" content="Data All The Way: A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics.">
 
 <title>Data All The Way</title>
 <style>
@@ -69,20 +71,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-recentPosts .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-description','listing-date','listing-author','listing-reading-time','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-recentPosts'] = new List('listing-recentPosts', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -125,15 +127,15 @@ cookieconsent.run({
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://www.dataalltheway.com/logo-nobg.png">
+<meta property="og:title" content="Data All The Way">
+<meta property="og:description" content="Data All The Way: A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics.">
+<meta property="og:image" content="https://www.dataalltheway.com/images/logo-nobg.png">
 <meta property="og:site-name" content="Data All The Way">
 <meta property="og:image:height" content="556">
 <meta property="og:image:width" content="915">
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://www.dataalltheway.com/logo-nobg.png">
+<meta name="twitter:title" content="Data All The Way">
+<meta name="twitter:description" content="Data All The Way: A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics.">
+<meta name="twitter:image" content="https://www.dataalltheway.com/images/logo-nobg.png">
 <meta name="twitter:image-height" content="556">
 <meta name="twitter:image-width" content="915">
 <meta name="twitter:card" content="summary_large_image">
@@ -146,6 +148,9 @@ cookieconsent.run({
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./favicon.ico" alt="Data All The Way logo: 0 1 digits on a black background." class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Data All The Way</span>
     </a>
@@ -157,8 +162,8 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html" rel="" target="">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="./posts.html" rel="" target="">
+ <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./bookmarks/index.html" rel="" target="">
@@ -195,6 +200,11 @@ cookieconsent.run({
 </ul>
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -211,29 +221,39 @@ cookieconsent.run({
 
 
 <p>
-</p><p><img src="logo-nobg.png" alt="The logo for data all the way website." align="right" width="260" style="padding: 10px 10px 10px 10px;"></p>
-<p>Welcome to Data All The Way, <em>“yet another”</em> tutorial website with concepts, methods, and example code on data science, statistics, and machine learning. All the posts with example code accompany a Kaggle or Google Colab notebook for a live demo. In addition, posts are citable, and some posts are hosted on Zenodo with a permanent DOI and indexed in <a href="https://zenodo.org/communities/data-all-the-way/">Data All The Way community</a>. If you want to become a contributing author, please write to <strong>rohit [dot] farmer [at] dataalltheway [dot] com</strong>. Comments and suggestions are always welcomed. To learn more about my other projects and research, please visit <a href="https://rohitfarmer.com" class="uri">https://rohitfarmer.com</a>.</p>
-<blockquote class="blockquote">
-<p><em>I intend to write blog posts that are as complete and explanatory as possible. However, many posts could just be codes with a minimal description initially, eventually evolving into more complete articles. Therefore, most posts here are in a state of continuous development with a history of updates.</em></p>
-</blockquote>
+</p><p><img src="images/logo-nobg.png" alt="The logo for data all the way website." align="right" width="260" style="padding: 10px 10px 10px 10px;"></p>
+<p>Welcome to Data All The Way, <em>“yet another”</em> tutorial website with concepts, methods, and example code on data science, statistics, and machine learning.</p>
+<p>All the posts with example code accompany a Kaggle or Google Colab notebook for a live demo. In addition, posts are citable, and some posts are hosted on Zenodo with a permanent DOI and indexed in <a href="https://zenodo.org/communities/data-all-the-way/">Data All The Way community</a>.</p>
 <p></p>
-<section id="recent-posts" class="level2">
-<h2 class="anchored" data-anchor-id="recent-posts">Recent posts</h2>
-
-
-
-</section>
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<p><br></p>
+<section id="recent-posts" class="level2" style="text-align: center;">
+<h2 style="text-align: center;" class="anchored" data-anchor-id="recent-posts">Recent Posts</h2>
+<div id="listing-recentPosts" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
 <div class="g-col-1" data-index="0" data-categories="Linear Regression,Inferential Modeling,Predictive Modeling,Julia" data-listing-date-sort="1692072000000" data-listing-file-modified-sort="1692127868558" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <a href="./posts/013-01-linear-regression-julia/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/013-01-linear-regression-julia/index_files/figure-html/cell-5-output-1.svg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Linear regression for inferential and predictive modeling with examples in Julia
 </h5>
+<div class="listing-reading-time card-text text-muted">
+2 min
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Linear Regression'); return false;">
+Linear Regression
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Inferential Modeling'); return false;">
+Inferential Modeling
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Predictive Modeling'); return false;">
+Predictive Modeling
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Julia'); return false;">
+Julia
+</div>
+</div>
 <div class="card-text listing-description">
 A tutorial on building and interpreting linear regression models for inferential and predictive modeling with examples in Julia.
 </div>
@@ -249,14 +269,30 @@ Aug 15, 2023
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="Linear Regression,Inferential Modeling,Predictive Modeling,R" data-listing-date-sort="1689220800000" data-listing-file-modified-sort="1689792815706" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="24">
+<div class="g-col-1" data-index="1" data-categories="Linear Regression,Inferential Modeling,Predictive Modeling,R" data-listing-date-sort="1689220800000" data-listing-file-modified-sort="1694204966705" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="24">
 <a href="./posts/013-linear-regression/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/013-linear-regression/index_files/figure-html/fig-lineof-best-fit-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Linear regression for inferential and predictive modeling
 </h5>
+<div class="listing-reading-time card-text text-muted">
+24 min
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Linear Regression'); return false;">
+Linear Regression
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Inferential Modeling'); return false;">
+Inferential Modeling
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Predictive Modeling'); return false;">
+Predictive Modeling
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+</div>
 <div class="card-text listing-description">
 A tutorial on building and interpreting linear regression models for inferential and predictive modeling with examples in R.
 </div>
@@ -275,11 +311,36 @@ Jul 13, 2023
 <div class="g-col-1" data-index="2" data-categories="How To,Parametric Tests,T-test,Z-test,F-test,ANOVA,Python" data-listing-date-sort="1673240400000" data-listing-file-modified-sort="1689792815698" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <a href="./posts/010-02-parametric-hypothesis-tests-python/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Parametric hypothesis tests with examples in Python
 </h5>
+<div class="listing-reading-time card-text text-muted">
+2 min
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('How To'); return false;">
+How To
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Parametric Tests'); return false;">
+Parametric Tests
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('T-test'); return false;">
+T-test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z-test'); return false;">
+Z-test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('F-test'); return false;">
+F-test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ANOVA'); return false;">
+ANOVA
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
+Python
+</div>
+</div>
 <div class="card-text listing-description">
 A tutorial on parametric hypothesis tests with examples in Python.
 </div>
@@ -298,11 +359,33 @@ Jan 9, 2023
 <div class="g-col-1" data-index="3" data-categories="How To,Non-parametric Tests,Wilcoxon Test,Mann Whitney U Test,Kruskal-Wallis Test,Julia" data-listing-date-sort="1669784400000" data-listing-file-modified-sort="1689792815702" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <a href="./posts/011-01-non-parametric-hypothesis-tests-julia/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/011-01-non-parametric-hypothesis-tests-julia/index_files/figure-html/cell-4-output-1.svg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Non-parametric hypothesis tests with examples in Julia
 </h5>
+<div class="listing-reading-time card-text text-muted">
+1 min
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('How To'); return false;">
+How To
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Non-parametric Tests'); return false;">
+Non-parametric Tests
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Wilcoxon Test'); return false;">
+Wilcoxon Test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Mann Whitney U Test'); return false;">
+Mann Whitney U Test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Kruskal-Wallis Test'); return false;">
+Kruskal-Wallis Test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Julia'); return false;">
+Julia
+</div>
+</div>
 <div class="card-text listing-description">
 A tutorial on non-parametric hypothesis tests with examples in Julia.
 </div>
@@ -321,11 +404,21 @@ Nov 30, 2022
 <div class="g-col-1" data-index="4" data-categories="Readr,Apache Arrow" data-listing-date-sort="1669006800000" data-listing-file-modified-sort="1689792815702" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
 <a href="./posts/012-type-inference-in-readr-and-arrow/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/012-type-inference-in-readr-and-arrow/images/readr_hex.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Type inference in readr and arrow
 </h5>
+<div class="listing-reading-time card-text text-muted">
+9 min
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Readr'); return false;">
+Readr
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Apache Arrow'); return false;">
+Apache Arrow
+</div>
+</div>
 <div class="card-text listing-description">
 A discussion on how CSV type inference works in the R packages readr and arrow, and the differences between the two.
 </div>
@@ -344,11 +437,30 @@ Nov 21, 2022
 <div class="g-col-1" data-index="5" data-categories="How To,Non-parametric Tests,Wilcoxon Test,Mann Whitney U Test,Kruskal-Wallis Test" data-listing-date-sort="1668747600000" data-listing-file-modified-sort="1689792815702" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
 <a href="./posts/011-non-parametric-hypothesis-tests-r/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/011-non-parametric-hypothesis-tests-r/index_files/figure-html/fig-co2-emission-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Non-parametric hypothesis tests with examples in R
 </h5>
+<div class="listing-reading-time card-text text-muted">
+10 min
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('How To'); return false;">
+How To
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Non-parametric Tests'); return false;">
+Non-parametric Tests
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Wilcoxon Test'); return false;">
+Wilcoxon Test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Mann Whitney U Test'); return false;">
+Mann Whitney U Test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Kruskal-Wallis Test'); return false;">
+Kruskal-Wallis Test
+</div>
+</div>
 <div class="card-text listing-description">
 A tutorial on non-parametric hypothesis tests with examples in R.
 </div>
@@ -364,11 +476,148 @@ Nov 18, 2022
 </div>
 </a>
 </div>
+<div class="g-col-1" data-index="6" data-categories="How To,Parametric Tests,T-test,Z-test,F-test,Julia" data-listing-date-sort="1668661200000" data-listing-file-modified-sort="1689792815698" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<a href="./posts/010-01-parametric-hypothesis-tests-julia/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Parametric hypothesis tests with examples in Julia
+</h5>
+<div class="listing-reading-time card-text text-muted">
+4 min
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('How To'); return false;">
+How To
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Parametric Tests'); return false;">
+Parametric Tests
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('T-test'); return false;">
+T-test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z-test'); return false;">
+Z-test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('F-test'); return false;">
+F-test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Julia'); return false;">
+Julia
+</div>
+</div>
+<div class="card-text listing-description">
+A tutorial on parametric hypothesis tests with examples in Julia.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Dhruva Sambrani
+</div>
+<div class="listing-date">
+Nov 17, 2022
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="7" data-categories="How To,Parametric Tests,T-test,Z-test,F-test,ANOVA" data-listing-date-sort="1668056400000" data-listing-file-modified-sort="1689792815698" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14">
+<a href="./posts/010-parametric-hypothesis-tests-r/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Parametric hypothesis tests with examples in R
+</h5>
+<div class="listing-reading-time card-text text-muted">
+14 min
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('How To'); return false;">
+How To
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Parametric Tests'); return false;">
+Parametric Tests
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('T-test'); return false;">
+T-test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Z-test'); return false;">
+Z-test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('F-test'); return false;">
+F-test
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('ANOVA'); return false;">
+ANOVA
+</div>
+</div>
+<div class="card-text listing-description">
+A tutorial on parametric hypothesis tests with examples in R.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Rohit Farmer
+</div>
+<div class="listing-date">
+Nov 10, 2022
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="8" data-categories="How To,Files and Folders" data-listing-date-sort="1667448000000" data-listing-file-modified-sort="1689792815694" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<a href="./posts/009-rules-for-naming-files/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Rules for naming files and folders that are cross platform and helpful in datascience
+</h5>
+<div class="listing-reading-time card-text text-muted">
+3 min
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('How To'); return false;">
+How To
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Files and Folders'); return false;">
+Files and Folders
+</div>
+</div>
+<div class="card-text listing-description">
+Rules for naming files and folders that are cross platform and helpful in datascience.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Rohit Farmer
+</div>
+<div class="listing-date">
+Nov 3, 2022
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
-</div></main> <!-- /main -->
+</div>
+</section>
+<section id="get-involved" class="level2" style="text-align: center;">
+<h2 style="text-align: center;" class="anchored" data-anchor-id="get-involved">Get Involved</h2>
+<section id="do-you-like-to-write-and-want-to-become-a-contributing-author" class="level3">
+<h3 class="anchored" data-anchor-id="do-you-like-to-write-and-want-to-become-a-contributing-author">Do you like to write and want to become a contributing author?</h3>
+<p><strong>Email: rohit [dot] farmer [at] dataalltheway [dot] com</strong></p>
+<p>Comments and suggestions are always welcomed</p>
+
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

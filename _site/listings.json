@@ -22,7 +22,7 @@
     ]
   },
   {
-    "listing": "/blog.html",
+    "listing": "/posts.html",
     "items": [
       "/posts/013-01-linear-regression-julia/index.html",
       "/posts/013-linear-regression/index.html",

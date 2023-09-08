@@ -1,0 +1,19 @@
+---
+title: Posts
+description: "Blog posts contain concepts, methods, and example code on data science, statistics, and machine learning. All the posts with example code also accompany a Kaggle or Google Colab notebook for a live demo."
+keywords: easy-to-follow tutorials, example code, live demo, statistics, machine learning
+listing:
+  contents: posts
+  sort: "date desc"
+  type: table
+  categories: cloud
+  sort-ui: true
+  filter-ui: true
+  feed: true
+  table-hover: true
+  table-striped: true
+  fields: [date, title, author, reading-time]
+page-layout: full
+title-block-banner: true
+comments: false
+---

@@ -1,7 +1,9 @@
 ---
 title: Glossary
+description: "Data science, statistics, and machine learning glossary"
+keywords: glossary, data science terms, statistics terms, machine learning terms
 page-layout: full
-title-block-banner: false
+title-block-banner: true
 toc: true
 toc-depth: 3
 ---

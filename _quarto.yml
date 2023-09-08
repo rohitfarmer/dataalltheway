@@ -5,11 +5,16 @@ website:
   favicon: favicon.ico
   title: "Data All The Way"
   site-url: https://www.dataalltheway.com
-  image: "logo-nobg.png"
+  image: "images/logo-nobg.png"
   description: "Data All The Way: A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics."
+  reader-mode: true
+  back-to-top-navigation: true
   navbar:
+    background: primary
+    logo: favicon.ico
+    logo-alt: "Data All The Way logo: 0 1 digits on a black background."
     right:
-      - blog.qmd
+      - posts.qmd
       - bookmarks/index.qmd
       - glossary/index.qmd
       - contact/index.qmd

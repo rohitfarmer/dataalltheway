@@ -1,7 +1,9 @@
 ---
 title: Contact
+description: "If you have a suggestion or want to contribute, please get in touch."
+keywords: contact, want to write, contribute an article
 page-layout: full
-title-block-banner: false
+title-block-banner: true
 ---
 
 The best way to contact me is by email at **rohit \[dot\] farmer \[at\] dataalltheway \[dot\] com**.
