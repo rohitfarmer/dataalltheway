@@ -4,7 +4,7 @@ description: "A comparison between frequentist and bayesian statistics."
 author: 
     - name: "Rohit Farmer"
       orcid: "0000-0003-4197-3047"
-date: "2023-09-13"
+date: "2023-09-12"
 keywords: Frequentist Statistics, Bayesian Statistics, Frequentist vs. Bayesian Stastistics
 categories: [Frequentist Statistics, Bayesian Statistics]
 format:

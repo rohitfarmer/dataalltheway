@@ -17,7 +17,7 @@
 <width>144</width>
 </image>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Wed, 13 Sep 2023 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 12 Sep 2023 04:00:00 GMT</lastBuildDate>
 <item>
   <title>Frequentist vs. Bayesian Statistics</title>
   <dc:creator>Rohit Farmer</dc:creator>
@@ -131,18 +131,18 @@ Update history
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2023,
   author = {Farmer, Rohit},
   title = {Frequentist Vs. {Bayesian} {Statistics}},
-  date = {2023-09-13},
+  date = {2023-09-12},
   url = {https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2023" class="csl-entry quarto-appendix-citeas">
 Farmer, Rohit. 2023. <span>“Frequentist Vs. Bayesian Statistics.”</span>
-September 13, 2023. <a href="https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html">https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html</a>.
+September 12, 2023. <a href="https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html">https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html</a>.
 </div></div></section></div> ]]></description>
   <category>Frequentist Statistics</category>
   <category>Bayesian Statistics</category>
   <guid>https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html</guid>
-  <pubDate>Wed, 13 Sep 2023 04:00:00 GMT</pubDate>
+  <pubDate>Tue, 12 Sep 2023 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Linear regression for inferential and predictive modeling with examples in Julia</title>
