@@ -16,18 +16,17 @@ listing:
     sort: "date desc"
     max-items: 9
     contents:
-      - "posts/*/*.qmd"
+      - "posts"
     fields: [title, description, date, author, reading-time, categories]
 ---
 
 <p>
 
-
 <img src="images/logo-nobg.png" alt="The logo for data all the way website." align="right" width="260" style="padding: 10px 10px 10px 10px;"/>
 
-Welcome to Data All The Way, *"yet another"* tutorial website with concepts, methods, and example code on data science, statistics, and machine learning. 
+Welcome to Data All The Way, *"yet another"* tutorial website with concepts, methods, and example code on data science, statistics, and machine learning.
 
-All the posts with example code accompany a Kaggle or Google Colab notebook for a live demo. In addition, posts are citable, and some posts are hosted on Zenodo with a permanent DOI and indexed in [Data All The Way community](https://zenodo.org/communities/data-all-the-way/). 
+All the posts with example code accompany a Kaggle or Google Colab notebook for a live demo. In addition, posts are citable, and some posts are hosted on Zenodo with a permanent DOI and indexed in [Data All The Way community](https://zenodo.org/communities/data-all-the-way/).
 
 </p>
 
@@ -39,7 +38,9 @@ All the posts with example code accompany a Kaggle or Google Colab notebook for 
 :::
 
 ## Get Involved {style="text-align: center;"}
+
 ### Do you like to write and want to become a contributing author?
+
 **Email: rohit \[dot\] farmer \[at\] dataalltheway \[dot\] com**
 
-Comments and suggestions are always welcomed 
+Comments and suggestions are always welcomed

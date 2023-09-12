@@ -52,7 +52,7 @@ format:
       dark: darkly
     css: styles.css
 
-editor: visual
+editor: source
 
 
 

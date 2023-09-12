@@ -16,6 +16,7 @@ author:
     #affiliations:
     #  - name: "https://www.dataalltheway.com"
 date: "2022-10-14"
+keywords: Frequentist Statistics, Bayesian Statistics, Frequentist vs. Bayesian Stastistics
 categories: [How To, Etc]
 format:
   html:

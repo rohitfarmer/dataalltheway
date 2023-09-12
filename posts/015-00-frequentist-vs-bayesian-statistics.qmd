@@ -1,0 +1,95 @@
+---
+title: "Frequentist vs. Bayesian Statistics"
+description: "A comparison between frequentist and bayesian statistics."
+author: 
+    - name: "Rohit Farmer"
+      orcid: "0000-0003-4197-3047"
+date: "2023-09-13"
+keywords: Frequentist Statistics, Bayesian Statistics, Frequentist vs. Bayesian Stastistics
+categories: [Frequentist Statistics, Bayesian Statistics]
+format:
+  html:
+    code-fold: false
+    code-tools:
+      source: false
+      toggle: true
+execute: 
+  eval: true
+citation: true
+google-scholar: true
+---
+
+::: {.callout-note collapse="true"}
+### Update history
+
+2023-09-12 First draft
+:::
+
+
+
+Statistical analysis serves as the backbone of decision-making in a variety of fields, including finance, healthcare, marketing, and scientific research. One of the fundamental debates in the field of statistics is the choice between the Frequentist and Bayesian approaches. Though both are used to answer similar questions, the philosophical underpinnings, assumptions, and methods of each approach differ significantly. This article aims to provide an in-depth comparison between Frequentist and Bayesian statistics, their assumptions, usages, and relative advantages and disadvantages.
+
+## Philosophical Underpinnings
+
+### Frequentist Statistics
+
+In Frequentist statistics, probabilities represent long-term frequencies of events. The approach is objective, emphasizing observable data and rejecting subjective beliefs. Parameters are considered fixed but unknown, and the data are considered random.
+
+### Bayesian Statistics
+
+Contrastingly, Bayesian statistics views probability as a degree of belief or confidence, allowing for subjectivity. Parameters are not fixed but are described by probability distributions. The data, once observed, are considered fixed.
+
+## Assumptions
+
+### Frequentist Assumptions 
+
+1. **Independence:**  Observations are generally assumed to be independent of one another. 
+2. **Identically Distributed:**  Data come from the same probability distribution. 
+3. **Large Samples:**  The approach often assumes large sample sizes for the Law of Large Numbers and Central Limit Theorem to hold.
+
+### Bayesian Assumptions 
+
+1. **Prior Knowledge:**  Requires a prior probability distribution for the parameters. 
+2. **Likelihood:**  Assumption about how the data are generated. 
+3. **Computational Complexity:**  Advanced Bayesian models often assume that computational resources for approximation are available (e.g., Markov Chain Monte Carlo methods).
+
+## Usage in Statistical Analysis
+
+### Frequentist Statistics 
+
+1. **Hypothesis Testing:**  Commonly used for null hypothesis significance testing (NHST). 
+2. **Confidence Intervals:**  Provides an interval estimate of a parameter. 
+3. **Regression Analysis:**  Used to understand relationships between variables.
+
+### Bayesian Statistics 
+
+1. **Bayesian Inference:**  Used to update the probability for a hypothesis as evidence becomes available. 
+2. **Credible Intervals:**  Provides an interval within which an unobserved parameter value falls with a particular subjective probability. 
+3. **Predictive Modeling:**  Widely used in machine learning and data science for building probabilistic models.
+
+## Points of Divergence 
+
+1. **Interpretation of Probability:**  Frequentists interpret probability as a long-term frequency, whereas Bayesians view it as a degree of belief. 
+2. **Use of Prior Information:**  Bayesians incorporate prior beliefs into their analyses; Frequentists do not. 
+3. **Flexibility:**  Bayesian methods are more flexible but often computationally more intensive. 
+4. **Statistical Significance:**  Frequentists rely on p-values and significance levels, whereas Bayesians rely on the posterior distribution. 
+5. **Sample Size:**  Bayesian methods are often more robust with smaller sample sizes due to the inclusion of prior information.
+
+## Suitability for Specific Cases
+
+### Frequentist Approach 
+
+1. **Clinical Trials:**  In medical research where the sample size is large and the stakes are high, Frequentist statistics are often preferred. 
+2. **Quality Control:**  Used in manufacturing to monitor quality based on repeated sampling. 
+3. **Economic Forecasting:**  Used for long-term predictions based on large datasets.
+
+### Bayesian Approach 
+
+1. **Natural Language Processing:**  Bayesian methods like Naive Bayes are commonly used in text classification tasks. 
+2. **Stock Market Analysis:**  Bayesian methods can incorporate new information quickly, making them useful for stock market analysis. 
+3. **Climate Modeling:**  Due to the high level of uncertainty and the use of prior scientific understanding, Bayesian methods are often employed.
+
+## Conclusion
+
+Frequentist and Bayesian statistics offer different perspectives and tools for statistical analysis. The choice between the two approaches often depends on the specific questions being asked, the data at hand, and the domain of application. While Frequentist methods excel in settings with large datasets and clearly defined sampling procedures, Bayesian methods offer the advantage of incorporating prior information and dealing with uncertainty more explicitly. Thus, understanding the assumptions and utilities of each approach is crucial for effective statistical analysis.
+

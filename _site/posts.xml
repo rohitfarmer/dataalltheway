@@ -17,7 +17,133 @@
 <width>144</width>
 </image>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Tue, 15 Aug 2023 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 13 Sep 2023 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Frequentist vs. Bayesian Statistics</title>
+  <dc:creator>Rohit Farmer</dc:creator>
+  <link>https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Update history
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>2023-09-12 First draft</p>
+</div>
+</div>
+</div>
+<p>Statistical analysis serves as the backbone of decision-making in a variety of fields, including finance, healthcare, marketing, and scientific research. One of the fundamental debates in the field of statistics is the choice between the Frequentist and Bayesian approaches. Though both are used to answer similar questions, the philosophical underpinnings, assumptions, and methods of each approach differ significantly. This article aims to provide an in-depth comparison between Frequentist and Bayesian statistics, their assumptions, usages, and relative advantages and disadvantages.</p>
+<section id="philosophical-underpinnings" class="level2">
+<h2 class="anchored" data-anchor-id="philosophical-underpinnings">Philosophical Underpinnings</h2>
+<section id="frequentist-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="frequentist-statistics">Frequentist Statistics</h3>
+<p>In Frequentist statistics, probabilities represent long-term frequencies of events. The approach is objective, emphasizing observable data and rejecting subjective beliefs. Parameters are considered fixed but unknown, and the data are considered random.</p>
+</section>
+<section id="bayesian-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="bayesian-statistics">Bayesian Statistics</h3>
+<p>Contrastingly, Bayesian statistics views probability as a degree of belief or confidence, allowing for subjectivity. Parameters are not fixed but are described by probability distributions. The data, once observed, are considered fixed.</p>
+</section>
+</section>
+<section id="assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="assumptions">Assumptions</h2>
+<section id="frequentist-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="frequentist-assumptions">Frequentist Assumptions</h3>
+<ol type="1">
+<li><strong>Independence:</strong> Observations are generally assumed to be independent of one another.</li>
+<li><strong>Identically Distributed:</strong> Data come from the same probability distribution.</li>
+<li><strong>Large Samples:</strong> The approach often assumes large sample sizes for the Law of Large Numbers and Central Limit Theorem to hold.</li>
+</ol>
+</section>
+<section id="bayesian-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="bayesian-assumptions">Bayesian Assumptions</h3>
+<ol type="1">
+<li><strong>Prior Knowledge:</strong> Requires a prior probability distribution for the parameters.</li>
+<li><strong>Likelihood:</strong> Assumption about how the data are generated.</li>
+<li><strong>Computational Complexity:</strong> Advanced Bayesian models often assume that computational resources for approximation are available (e.g., Markov Chain Monte Carlo methods).</li>
+</ol>
+</section>
+</section>
+<section id="usage-in-statistical-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="usage-in-statistical-analysis">Usage in Statistical Analysis</h2>
+<section id="frequentist-statistics-1" class="level3">
+<h3 class="anchored" data-anchor-id="frequentist-statistics-1">Frequentist Statistics</h3>
+<ol type="1">
+<li><strong>Hypothesis Testing:</strong> Commonly used for null hypothesis significance testing (NHST).</li>
+<li><strong>Confidence Intervals:</strong> Provides an interval estimate of a parameter.</li>
+<li><strong>Regression Analysis:</strong> Used to understand relationships between variables.</li>
+</ol>
+</section>
+<section id="bayesian-statistics-1" class="level3">
+<h3 class="anchored" data-anchor-id="bayesian-statistics-1">Bayesian Statistics</h3>
+<ol type="1">
+<li><strong>Bayesian Inference:</strong> Used to update the probability for a hypothesis as evidence becomes available.</li>
+<li><strong>Credible Intervals:</strong> Provides an interval within which an unobserved parameter value falls with a particular subjective probability.</li>
+<li><strong>Predictive Modeling:</strong> Widely used in machine learning and data science for building probabilistic models.</li>
+</ol>
+</section>
+</section>
+<section id="points-of-divergence" class="level2">
+<h2 class="anchored" data-anchor-id="points-of-divergence">Points of Divergence</h2>
+<ol type="1">
+<li><strong>Interpretation of Probability:</strong> Frequentists interpret probability as a long-term frequency, whereas Bayesians view it as a degree of belief.</li>
+<li><strong>Use of Prior Information:</strong> Bayesians incorporate prior beliefs into their analyses; Frequentists do not.</li>
+<li><strong>Flexibility:</strong> Bayesian methods are more flexible but often computationally more intensive.</li>
+<li><strong>Statistical Significance:</strong> Frequentists rely on p-values and significance levels, whereas Bayesians rely on the posterior distribution.</li>
+<li><strong>Sample Size:</strong> Bayesian methods are often more robust with smaller sample sizes due to the inclusion of prior information.</li>
+</ol>
+</section>
+<section id="suitability-for-specific-cases" class="level2">
+<h2 class="anchored" data-anchor-id="suitability-for-specific-cases">Suitability for Specific Cases</h2>
+<section id="frequentist-approach" class="level3">
+<h3 class="anchored" data-anchor-id="frequentist-approach">Frequentist Approach</h3>
+<ol type="1">
+<li><strong>Clinical Trials:</strong> In medical research where the sample size is large and the stakes are high, Frequentist statistics are often preferred.</li>
+<li><strong>Quality Control:</strong> Used in manufacturing to monitor quality based on repeated sampling.</li>
+<li><strong>Economic Forecasting:</strong> Used for long-term predictions based on large datasets.</li>
+</ol>
+</section>
+<section id="bayesian-approach" class="level3">
+<h3 class="anchored" data-anchor-id="bayesian-approach">Bayesian Approach</h3>
+<ol type="1">
+<li><strong>Natural Language Processing:</strong> Bayesian methods like Naive Bayes are commonly used in text classification tasks.</li>
+<li><strong>Stock Market Analysis:</strong> Bayesian methods can incorporate new information quickly, making them useful for stock market analysis.</li>
+<li><strong>Climate Modeling:</strong> Due to the high level of uncertainty and the use of prior scientific understanding, Bayesian methods are often employed.</li>
+</ol>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Frequentist and Bayesian statistics offer different perspectives and tools for statistical analysis. The choice between the two approaches often depends on the specific questions being asked, the data at hand, and the domain of application. While Frequentist methods excel in settings with large datasets and clearly defined sampling procedures, Bayesian methods offer the advantage of incorporating prior information and dealing with uncertainty more explicitly. Thus, understanding the assumptions and utilities of each approach is crucial for effective statistical analysis.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{farmer2023,
+  author = {Farmer, Rohit},
+  title = {Frequentist Vs. {Bayesian} {Statistics}},
+  date = {2023-09-13},
+  url = {https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2023" class="csl-entry quarto-appendix-citeas">
+Farmer, Rohit. 2023. <span>“Frequentist Vs. Bayesian Statistics.”</span>
+September 13, 2023. <a href="https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html">https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html</a>.
+</div></div></section></div> ]]></description>
+  <category>Frequentist Statistics</category>
+  <category>Bayesian Statistics</category>
+  <guid>https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html</guid>
+  <pubDate>Wed, 13 Sep 2023 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Linear regression for inferential and predictive modeling with examples in Julia</title>
   <dc:creator>Dhruva Sambrani</dc:creator>
