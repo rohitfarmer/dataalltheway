@@ -27,7 +27,7 @@ website:
       - icon: mastodon
         href: https://fosstodon.org\@swatantra
       - icon: rss
-        href: blog.xml
+        href: posts.xml
   page-footer: 
     left: "<b><a href = 'https://creativecommons.org/licenses/by-nc-sa/4.0/'>Copyright CC BY-NC-SA 4.0</a></b>"
     right: '<a href = "https://dataalltheway.com/contact/"><b>Contact</b></a>'
