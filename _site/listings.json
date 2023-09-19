@@ -2,7 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
-      "/posts/015-00-frequentist-vs-bayesian-statistics.html",
+      "/posts/015-00-frequentist-vs-bayesian-statistics/index.html",
       "/posts/013-01-linear-regression-julia/index.html",
       "/posts/013-linear-regression/index.html",
       "/posts/010-02-parametric-hypothesis-tests-python/index.html",
@@ -25,7 +25,7 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/015-00-frequentist-vs-bayesian-statistics.html",
+      "/posts/015-00-frequentist-vs-bayesian-statistics/index.html",
       "/posts/013-01-linear-regression-julia/index.html",
       "/posts/013-linear-regression/index.html",
       "/posts/010-02-parametric-hypothesis-tests-python/index.html",

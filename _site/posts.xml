@@ -6,13 +6,13 @@
       version="2.0">
 <channel>
 <title>Data All The Way</title>
-<link>https://www.dataalltheway.com/posts.html</link>
-<atom:link href="https://www.dataalltheway.com/posts.xml" rel="self" type="application/rss+xml"/>
+<link>https://dataalltheway.com/posts.html</link>
+<atom:link href="https://dataalltheway.com/posts.xml" rel="self" type="application/rss+xml"/>
 <description>Blog posts contain concepts, methods, and example code on data science, statistics, and machine learning. All the posts with example code also accompany a Kaggle or Google Colab notebook for a live demo.</description>
 <image>
-<url>https://www.dataalltheway.com/images/logo-nobg.png</url>
+<url>https://dataalltheway.com/images/logo-nobg.png</url>
 <title>Data All The Way</title>
-<link>https://www.dataalltheway.com/posts.html</link>
+<link>https://dataalltheway.com/posts.html</link>
 <height>88</height>
 <width>144</width>
 </image>
@@ -21,7 +21,7 @@
 <item>
   <title>Frequentist vs. Bayesian Statistics</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html</link>
+  <link>https://dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics/index.html</link>
   <description><![CDATA[ 
 
 
@@ -132,22 +132,22 @@ Update history
   author = {Farmer, Rohit},
   title = {Frequentist Vs. {Bayesian} {Statistics}},
   date = {2023-09-12},
-  url = {https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html},
+  url = {https://dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2023" class="csl-entry quarto-appendix-citeas">
 Farmer, Rohit. 2023. <span>“Frequentist Vs. Bayesian Statistics.”</span>
-September 12, 2023. <a href="https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html">https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html</a>.
+September 12, 2023. <a href="https://dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics">https://dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics</a>.
 </div></div></section></div> ]]></description>
   <category>Frequentist Statistics</category>
   <category>Bayesian Statistics</category>
-  <guid>https://www.dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics.html</guid>
+  <guid>https://dataalltheway.com/posts/015-00-frequentist-vs-bayesian-statistics/index.html</guid>
   <pubDate>Tue, 12 Sep 2023 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Linear regression for inferential and predictive modeling with examples in Julia</title>
   <dc:creator>Dhruva Sambrani</dc:creator>
-  <link>https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index.html</link>
+  <link>https://dataalltheway.com/posts/013-01-linear-regression-julia/index.html</link>
   <description><![CDATA[ 
 
 
@@ -876,7 +876,7 @@ font-style: inherit;">=</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">false</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
-<p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-5-output-1.svg" class="img-fluid"></p>
+<p><img src="https://dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-5-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="5">
@@ -1063,7 +1063,7 @@ background-color: null;
 font-style: inherit;">"body_mass_g"</span></span>
 <span id="cb10-8">)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
-<p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-8-output-1.svg" class="img-fluid"></p>
+<p><img src="https://dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-8-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -1153,7 +1153,7 @@ font-style: inherit;">=</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">false</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
-<p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
+<p><img src="https://dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="12">
@@ -1167,7 +1167,7 @@ font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"qqplot of the standardized residuals"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
-<p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-13-output-1.svg" class="img-fluid"></p>
+<p><img src="https://dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-13-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="13">
@@ -1191,7 +1191,7 @@ font-style: inherit;">=</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">false</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
-<p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-14-output-1.svg" class="img-fluid"></p>
+<p><img src="https://dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-14-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="14">
@@ -1258,7 +1258,7 @@ font-style: inherit;">=</span><span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">false</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
-<p><img src="https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-15-output-1.svg" class="img-fluid"></p>
+<p><img src="https://dataalltheway.com/posts/013-01-linear-regression-julia/index_files/figure-html/cell-15-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
@@ -1427,24 +1427,24 @@ font-style: inherit;">end</span></span></code></pre></div>
   title = {Linear Regression for Inferential and Predictive Modeling
     with Examples in {Julia}},
   date = {2023-08-15},
-  url = {https://www.dataalltheway.com/posts/013-01-linear-regression-julia},
+  url = {https://dataalltheway.com/posts/013-01-linear-regression-julia},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambrani2023" class="csl-entry quarto-appendix-citeas">
 Sambrani, Dhruva. 2023. <span>“Linear Regression for Inferential and
-Predictive Modeling with Examples in Julia.”</span> August 15, 2023. <a href="https://www.dataalltheway.com/posts/013-01-linear-regression-julia">https://www.dataalltheway.com/posts/013-01-linear-regression-julia</a>.
+Predictive Modeling with Examples in Julia.”</span> August 15, 2023. <a href="https://dataalltheway.com/posts/013-01-linear-regression-julia">https://dataalltheway.com/posts/013-01-linear-regression-julia</a>.
 </div></div></section></div> ]]></description>
   <category>Linear Regression</category>
   <category>Inferential Modeling</category>
   <category>Predictive Modeling</category>
   <category>Julia</category>
-  <guid>https://www.dataalltheway.com/posts/013-01-linear-regression-julia/index.html</guid>
+  <guid>https://dataalltheway.com/posts/013-01-linear-regression-julia/index.html</guid>
   <pubDate>Tue, 15 Aug 2023 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Linear regression for inferential and predictive modeling</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/013-linear-regression/index.html</link>
+  <link>https://dataalltheway.com/posts/013-linear-regression/index.html</link>
   <description><![CDATA[ 
 
 
@@ -1490,7 +1490,7 @@ Note
 <div class="cell-output-display">
 <div id="fig-lineof-best-fit" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-lineof-best-fit-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-lineof-best-fit-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;1: The line (red) of best fit between weight and height. The blue dots are the data points and the green lines shows the distance between the data points and the line.</figcaption>
 </figure>
 </div>
@@ -1502,7 +1502,7 @@ Note
 <p>In this tutorial we will use <a href="&quot;https://cran.r-project.org/web/packages/palmerpenguins/index.html&quot;">“palmerpenguins: Palmer Archipelago (Antarctica) Penguin Data”</a> by <a href="https://github.com/allisonhorst/palmerpenguins">Allison Horst</a> <span class="citation" data-cites="horst2020">(Horst, Hill, and Gorman 2020)</span>. The simplified version of Palmerpenguins dataset contains size measurements for 344 adult foraging Adélie, Chinstrap, and Gentoo penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica. The original data were collected and made available by Dr.&nbsp;Kristen Gorman and the Palmer Station Long Term Ecological Research (LTER) Program <span class="citation" data-cites="Gorman2014">(Gorman, Williams, and Fraser 2014)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://allisonhorst.github.io/palmerpenguins/articles/art.html"><img src="https://www.dataalltheway.com/posts/013-linear-regression/images/penguins.png" class="img-fluid figure-img" width="531"></a></p>
+<p><a href="https://allisonhorst.github.io/palmerpenguins/articles/art.html"><img src="https://dataalltheway.com/posts/013-linear-regression/images/penguins.png" class="img-fluid figure-img" width="531"></a></p>
 <figcaption class="figure-caption">Meet the Palmer penguins. Artwork by @allison_horst.</figcaption>
 </figure>
 </div>
@@ -1512,7 +1512,7 @@ Note
 <p>For this penguin data, the bill/culmen length and depth are measured as shown below.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://allisonhorst.github.io/palmerpenguins/articles/art.html"><img src="https://www.dataalltheway.com/posts/013-linear-regression/images/culmen_depth.png" class="img-fluid figure-img" width="548"></a></p>
+<p><a href="https://allisonhorst.github.io/palmerpenguins/articles/art.html"><img src="https://dataalltheway.com/posts/013-linear-regression/images/culmen_depth.png" class="img-fluid figure-img" width="548"></a></p>
 <figcaption class="figure-caption">Culmen measurements. Artwork by @allison_horst.</figcaption>
 </figure>
 </div>
@@ -4666,7 +4666,7 @@ font-style: inherit;">coord_flip</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-penguin-count" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-penguin-count-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-penguin-count-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;2: Per species penguin count.</figcaption>
 </figure>
 </div>
@@ -4772,7 +4772,7 @@ font-style: inherit;">"free_x"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-mass-predict" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-mass-predict-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-mass-predict-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;3: Scatter plot showing the relationship between body mass (y-axis) and bill depth, bill length, and flipper length (x-axis) per species (color and shape).</figcaption>
 </figure>
 </div>
@@ -4871,7 +4871,7 @@ font-style: inherit;">1</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-res-fit" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-res-fit-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-res-fit-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;4: Residuals vs.&nbsp;Fitted. This plot shows the residuals (vertical axis) plotted against the predicted/fitted values (horizontal axis). It helps you examine the assumption of constant variance (homoscedasticity). In this plot, you would ideally want to see a random scatter of points with no discernible pattern or trend, indicating that the assumption of constant variance is reasonable.</figcaption>
 </figure>
 </div>
@@ -4888,7 +4888,7 @@ font-style: inherit;">2</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-qq" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-qq-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-qq-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;5: Normal Q-Q Plot. This plot assesses the assumption of normality of residuals. It compares the standardized residuals to the quantiles of a normal distribution. If the points lie approximately along a straight line, it suggests that the residuals are normally distributed. Deviations from the straight line indicate departures from normality.</figcaption>
 </figure>
 </div>
@@ -4905,7 +4905,7 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-scale-loc" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-scale-loc-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-scale-loc-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;6: Scale-Location Plot. This plot, also known as the spread-location plot, is used to evaluate the assumption of constant variance (homoscedasticity) similarly to the Residuals vs.&nbsp;Fitted plot. However, it provides a different perspective by plotting the square root of the standardized residuals against the fitted values. A reasonably constant spread of points with no discernible pattern indicates homoscedasticity.</figcaption>
 </figure>
 </div>
@@ -4922,7 +4922,7 @@ font-style: inherit;">4</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-cooks" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-cooks-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-cooks-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;7: Cook’s Distance. Cook’s distance is a measure of the influence of each observation on the model fit. The plot shows the Cook’s distance values for each observation. Points with high Cook’s distance may have a considerable impact on the model and should be further examined.</figcaption>
 </figure>
 </div>
@@ -4939,7 +4939,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-res-lev" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-res-lev-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://dataalltheway.com/posts/013-linear-regression/index_files/figure-html/fig-res-lev-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;8: Residuals vs.&nbsp;Leverage. This plot helps identify influential observations by plotting the standardized residuals against the leverage values. Leverage values measure how much an observation’s predictor values differ from the average predictor values. Points that have both high leverage and high residuals are worth investigating as they may have a disproportionate impact on the model.</figcaption>
 </figure>
 </div>
@@ -5485,24 +5485,24 @@ Singh Tumrate, Charanjeet, Shambo Roy Chowdhury, and Dhaneshwar Mishra. 2021. <s
   author = {Farmer, Rohit},
   title = {Linear Regression for Inferential and Predictive Modeling},
   date = {2023-07-13},
-  url = {https://www.dataalltheway.com/posts/013-linear-regression},
+  url = {https://dataalltheway.com/posts/013-linear-regression},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2023" class="csl-entry quarto-appendix-citeas">
 Farmer, Rohit. 2023. <span>“Linear Regression for Inferential and
-Predictive Modeling.”</span> July 13, 2023. <a href="https://www.dataalltheway.com/posts/013-linear-regression">https://www.dataalltheway.com/posts/013-linear-regression</a>.
+Predictive Modeling.”</span> July 13, 2023. <a href="https://dataalltheway.com/posts/013-linear-regression">https://dataalltheway.com/posts/013-linear-regression</a>.
 </div></div></section></div> ]]></description>
   <category>Linear Regression</category>
   <category>Inferential Modeling</category>
   <category>Predictive Modeling</category>
   <category>R</category>
-  <guid>https://www.dataalltheway.com/posts/013-linear-regression/index.html</guid>
+  <guid>https://dataalltheway.com/posts/013-linear-regression/index.html</guid>
   <pubDate>Thu, 13 Jul 2023 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Parametric hypothesis tests with examples in Python</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python/index.html</link>
+  <link>https://dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python/index.html</link>
   <description><![CDATA[ 
 
 
@@ -5949,12 +5949,12 @@ p-value:  0.033309935710150805</code></pre>
   author = {Farmer, Rohit},
   title = {Parametric Hypothesis Tests with Examples in {Python}},
   date = {2023-01-09},
-  url = {https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python},
+  url = {https://dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2023" class="csl-entry quarto-appendix-citeas">
 Farmer, Rohit. 2023. <span>“Parametric Hypothesis Tests with Examples in
-Python.”</span> January 9, 2023. <a href="https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python">https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python</a>.
+Python.”</span> January 9, 2023. <a href="https://dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python">https://dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python</a>.
 </div></div></section></div> ]]></description>
   <category>How To</category>
   <category>Parametric Tests</category>
@@ -5963,13 +5963,13 @@ Python.”</span> January 9, 2023. <a href="https://www.dataalltheway.com/posts/
   <category>F-test</category>
   <category>ANOVA</category>
   <category>Python</category>
-  <guid>https://www.dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python/index.html</guid>
+  <guid>https://dataalltheway.com/posts/010-02-parametric-hypothesis-tests-python/index.html</guid>
   <pubDate>Mon, 09 Jan 2023 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Non-parametric hypothesis tests with examples in Julia</title>
   <dc:creator>Dhruva Sambrani</dc:creator>
-  <link>https://www.dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia/index.html</link>
+  <link>https://dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia/index.html</link>
   <description><![CDATA[ 
 
 
@@ -6914,7 +6914,7 @@ background-color: null;
 font-style: inherit;">400</span>)</span>
 <span id="cb4-7">)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<p><img src="https://www.dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia/index_files/figure-html/cell-4-output-1.svg" class="img-fluid"></p>
+<p><img src="https://dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia/index_files/figure-html/cell-4-output-1.svg" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -7082,12 +7082,12 @@ Details:
   author = {Sambrani, Dhruva},
   title = {Non-Parametric Hypothesis Tests with Examples in {Julia}},
   date = {2022-11-30},
-  url = {https://www.dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia},
+  url = {https://dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambrani2022" class="csl-entry quarto-appendix-citeas">
 Sambrani, Dhruva. 2022. <span>“Non-Parametric Hypothesis Tests with
-Examples in Julia.”</span> November 30, 2022. <a href="https://www.dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia">https://www.dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia</a>.
+Examples in Julia.”</span> November 30, 2022. <a href="https://dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia">https://dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia</a>.
 </div></div></section></div> ]]></description>
   <category>How To</category>
   <category>Non-parametric Tests</category>
@@ -7095,13 +7095,13 @@ Examples in Julia.”</span> November 30, 2022. <a href="https://www.dataallthew
   <category>Mann Whitney U Test</category>
   <category>Kruskal-Wallis Test</category>
   <category>Julia</category>
-  <guid>https://www.dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia/index.html</guid>
+  <guid>https://dataalltheway.com/posts/011-01-non-parametric-hypothesis-tests-julia/index.html</guid>
   <pubDate>Wed, 30 Nov 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Type inference in readr and arrow</title>
   <dc:creator>Nic Crane</dc:creator>
-  <link>https://www.dataalltheway.com/posts/012-type-inference-in-readr-and-arrow/index.html</link>
+  <link>https://dataalltheway.com/posts/012-type-inference-in-readr-and-arrow/index.html</link>
   <description><![CDATA[ 
 
 
@@ -7128,7 +7128,7 @@ Update history
 <p>In this blog post, I’m going to discuss how CSV type inference works in the R packages <a href="https://readr.tidyverse.org/">readr</a> and <a href="https://arrow.apache.org/docs/r/">arrow</a>, and highlight the differences between the two.</p>
 <p>Before I get started though, I’d like to acknowledge that this post is an exercise in examining the underlying mechanics of the two packages. In practice, I’ve found that when working with datasets small enough to fit in-memory, it’s much more fruitful to either read in the data first and then manipulate it into the required shape, or just specify the column types up front. Still, the strategies for automatic guessing are interesting to explore.</p>
 <p align="center">
-</p><p><img src="https://www.dataalltheway.com/posts/012-type-inference-in-readr-and-arrow/images/readr_hex.png" class="img-fluid" width="200"> <img src="https://www.dataalltheway.com/posts/012-type-inference-in-readr-and-arrow/images/arrow-logo_hex_black-txt_white-bg.png" class="img-fluid" width="200"></p>
+</p><p><img src="https://dataalltheway.com/posts/012-type-inference-in-readr-and-arrow/images/readr_hex.png" class="img-fluid" width="200"> <img src="https://dataalltheway.com/posts/012-type-inference-in-readr-and-arrow/images/arrow-logo_hex_black-txt_white-bg.png" class="img-fluid" width="200"></p>
 <p></p>
 </section>
 <section id="how-does-type-inference-work-in-readr" class="level1">
@@ -8049,13 +8049,13 @@ November 21, 2022. <a href="https://thisisnic.github.io/2022/11/21/type-inferenc
 </div></div></section></div> ]]></description>
   <category>Readr</category>
   <category>Apache Arrow</category>
-  <guid>https://www.dataalltheway.com/posts/012-type-inference-in-readr-and-arrow/index.html</guid>
+  <guid>https://dataalltheway.com/posts/012-type-inference-in-readr-and-arrow/index.html</guid>
   <pubDate>Mon, 21 Nov 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Non-parametric hypothesis tests with examples in R</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r/index.html</link>
+  <link>https://dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r/index.html</link>
   <description><![CDATA[ 
 
 
@@ -8289,7 +8289,7 @@ font-style: inherit;">1</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-co2-emission" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r/index_files/figure-html/fig-co2-emission-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r/index_files/figure-html/fig-co2-emission-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;1: Global CO<sub>2</sub> emissions from cement production</figcaption>
 </figure>
 </div>
@@ -8741,25 +8741,25 @@ Andrew, Robbie. 2022. <span>“Global CO2 Emissions from Cement Production.”</
   author = {Farmer, Rohit},
   title = {Non-Parametric Hypothesis Tests with Examples in {R}},
   date = {2022-11-18},
-  url = {https://www.dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r},
+  url = {https://dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Farmer, Rohit. 2022. <span>“Non-Parametric Hypothesis Tests with
-Examples in R.”</span> November 18, 2022. <a href="https://www.dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r">https://www.dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r</a>.
+Examples in R.”</span> November 18, 2022. <a href="https://dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r">https://dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r</a>.
 </div></div></section></div> ]]></description>
   <category>How To</category>
   <category>Non-parametric Tests</category>
   <category>Wilcoxon Test</category>
   <category>Mann Whitney U Test</category>
   <category>Kruskal-Wallis Test</category>
-  <guid>https://www.dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r/index.html</guid>
+  <guid>https://dataalltheway.com/posts/011-non-parametric-hypothesis-tests-r/index.html</guid>
   <pubDate>Fri, 18 Nov 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Parametric hypothesis tests with examples in Julia</title>
   <dc:creator>Dhruva Sambrani</dc:creator>
-  <link>https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia/index.html</link>
+  <link>https://dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia/index.html</link>
   <description><![CDATA[ 
 
 
@@ -10116,12 +10116,12 @@ Tukey’s HSD Test
   author = {Sambrani, Dhruva},
   title = {Parametric Hypothesis Tests with Examples in {Julia}},
   date = {2022-11-17},
-  url = {https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia},
+  url = {https://dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sambrani2022" class="csl-entry quarto-appendix-citeas">
 Sambrani, Dhruva. 2022. <span>“Parametric Hypothesis Tests with Examples
-in Julia.”</span> November 17, 2022. <a href="https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia">https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia</a>.
+in Julia.”</span> November 17, 2022. <a href="https://dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia">https://dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia</a>.
 </div></div></section></div> ]]></description>
   <category>How To</category>
   <category>Parametric Tests</category>
@@ -10129,13 +10129,13 @@ in Julia.”</span> November 17, 2022. <a href="https://www.dataalltheway.com/po
   <category>Z-test</category>
   <category>F-test</category>
   <category>Julia</category>
-  <guid>https://www.dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia/index.html</guid>
+  <guid>https://dataalltheway.com/posts/010-01-parametric-hypothesis-tests-julia/index.html</guid>
   <pubDate>Thu, 17 Nov 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Parametric hypothesis tests with examples in R</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r/index.html</link>
+  <link>https://dataalltheway.com/posts/010-parametric-hypothesis-tests-r/index.html</link>
   <description><![CDATA[ 
 
 
@@ -11385,12 +11385,12 @@ Wright, Carrie, Qier Meng, Leah Jager, Margaret Taub, and Stephanie. Hicks. 2020
   author = {Farmer, Rohit},
   title = {Parametric Hypothesis Tests with Examples in {R}},
   date = {2022-11-10},
-  url = {https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r},
+  url = {https://dataalltheway.com/posts/010-parametric-hypothesis-tests-r},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Farmer, Rohit. 2022. <span>“Parametric Hypothesis Tests with Examples in
-R.”</span> November 10, 2022. <a href="https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r">https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r</a>.
+R.”</span> November 10, 2022. <a href="https://dataalltheway.com/posts/010-parametric-hypothesis-tests-r">https://dataalltheway.com/posts/010-parametric-hypothesis-tests-r</a>.
 </div></div></section></div> ]]></description>
   <category>How To</category>
   <category>Parametric Tests</category>
@@ -11398,13 +11398,13 @@ R.”</span> November 10, 2022. <a href="https://www.dataalltheway.com/posts/010
   <category>Z-test</category>
   <category>F-test</category>
   <category>ANOVA</category>
-  <guid>https://www.dataalltheway.com/posts/010-parametric-hypothesis-tests-r/index.html</guid>
+  <guid>https://dataalltheway.com/posts/010-parametric-hypothesis-tests-r/index.html</guid>
   <pubDate>Thu, 10 Nov 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Rules for naming files and folders that are cross platform and helpful in datascience</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/009-rules-for-naming-files/index.html</link>
+  <link>https://dataalltheway.com/posts/009-rules-for-naming-files/index.html</link>
   <description><![CDATA[ 
 
 
@@ -11492,22 +11492,22 @@ font-style: inherit;">/path/to/folder/exploring-flow</span></span></code></pre><
   title = {Rules for Naming Files and Folders That Are Cross Platform
     and Helpful in Datascience},
   date = {2022-11-03},
-  url = {https://www.dataalltheway.com/posts/009-rules-for-naming-files},
+  url = {https://dataalltheway.com/posts/009-rules-for-naming-files},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Farmer, Rohit. 2022. <span>“Rules for Naming Files and Folders That Are
-Cross Platform and Helpful in Datascience.”</span> November 3, 2022. <a href="https://www.dataalltheway.com/posts/009-rules-for-naming-files">https://www.dataalltheway.com/posts/009-rules-for-naming-files</a>.
+Cross Platform and Helpful in Datascience.”</span> November 3, 2022. <a href="https://dataalltheway.com/posts/009-rules-for-naming-files">https://dataalltheway.com/posts/009-rules-for-naming-files</a>.
 </div></div></section></div> ]]></description>
   <category>How To</category>
   <category>Files and Folders</category>
-  <guid>https://www.dataalltheway.com/posts/009-rules-for-naming-files/index.html</guid>
+  <guid>https://dataalltheway.com/posts/009-rules-for-naming-files/index.html</guid>
   <pubDate>Thu, 03 Nov 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to build a Singularity container for machine learning, data science, and chemistry</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/008-build-a-singularity-container/index.html</link>
+  <link>https://dataalltheway.com/posts/008-build-a-singularity-container/index.html</link>
   <description><![CDATA[ 
 
 
@@ -12451,13 +12451,13 @@ font-style: inherit;">len</span>(gpus))</span></code></pre></div>
   title = {How to Build a {Singularity} Container for Machine Learning,
     Data Science, and Chemistry},
   date = {2022-10-31},
-  url = {https://www.dataalltheway.com/posts/008-build-a-singularity-container},
+  url = {https://dataalltheway.com/posts/008-build-a-singularity-container},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Farmer, Rohit. 2022. <span>“How to Build a Singularity Container for
 Machine Learning, Data Science, and Chemistry.”</span> October 31, 2022.
-<a href="https://www.dataalltheway.com/posts/008-build-a-singularity-container">https://www.dataalltheway.com/posts/008-build-a-singularity-container</a>.
+<a href="https://dataalltheway.com/posts/008-build-a-singularity-container">https://dataalltheway.com/posts/008-build-a-singularity-container</a>.
 </div></div></section></div> ]]></description>
   <category>How To</category>
   <category>Singularity</category>
@@ -12465,13 +12465,13 @@ Machine Learning, Data Science, and Chemistry.”</span> October 31, 2022.
   <category>Data Science</category>
   <category>Machine Learning</category>
   <category>Chemistry</category>
-  <guid>https://www.dataalltheway.com/posts/008-build-a-singularity-container/index.html</guid>
+  <guid>https://dataalltheway.com/posts/008-build-a-singularity-container/index.html</guid>
   <pubDate>Mon, 31 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Sources of open data for statistics, data science, and machine learning</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/007-open-data-for-datascience/index.html</link>
+  <link>https://dataalltheway.com/posts/007-open-data-for-datascience/index.html</link>
   <description><![CDATA[ 
 
 
@@ -13851,7 +13851,7 @@ font-style: inherit;">1</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-mawplot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/007-open-data-for-datascience/index_files/figure-html/fig-mawplot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://dataalltheway.com/posts/007-open-data-for-datascience/index_files/figure-html/fig-mawplot-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;1: Maryland Average Wage Per Job (Current Dollars): 2010-2020</figcaption>
 </figure>
 </div>
@@ -14133,12 +14133,12 @@ Rohit Farmer. 2022a. <span>“Classify the Bitter or Sweet Taste of Compounds.�
   title = {Sources of Open Data for Statistics, Data Science, and
     Machine Learning},
   date = {2022-10-25},
-  url = {https://www.dataalltheway.com/posts/007-open-data-for-datascience},
+  url = {https://dataalltheway.com/posts/007-open-data-for-datascience},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Farmer, Rohit. 2022. <span>“Sources of Open Data for Statistics, Data
-Science, and Machine Learning.”</span> October 25, 2022. <a href="https://www.dataalltheway.com/posts/007-open-data-for-datascience">https://www.dataalltheway.com/posts/007-open-data-for-datascience</a>.
+Science, and Machine Learning.”</span> October 25, 2022. <a href="https://dataalltheway.com/posts/007-open-data-for-datascience">https://dataalltheway.com/posts/007-open-data-for-datascience</a>.
 </div></div></section></div> ]]></description>
   <category>How To</category>
   <category>Open Data</category>
@@ -14146,13 +14146,13 @@ Science, and Machine Learning.”</span> October 25, 2022. <a href="https://www.
   <category>Statistics</category>
   <category>Data Science</category>
   <category>Machine Learning</category>
-  <guid>https://www.dataalltheway.com/posts/007-open-data-for-datascience/index.html</guid>
+  <guid>https://dataalltheway.com/posts/007-open-data-for-datascience/index.html</guid>
   <pubDate>Tue, 25 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>A case for using Google Colab notebooks as an alternative to web servers for scientific software</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</link>
+  <link>https://dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</link>
   <description><![CDATA[ 
 
 
@@ -14239,13 +14239,13 @@ an Alternative to Web Servers for Scientific Software.”</span> Zenodo.
   <category>Google Colab</category>
   <category>Jupyter Notebooks</category>
   <category>Scientific Software</category>
-  <guid>https://www.dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</guid>
+  <guid>https://dataalltheway.com/posts/006-google-colab-for-scientific-software/index.html</guid>
   <pubDate>Mon, 17 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Classify the bitter or sweet taste of compounds</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</link>
+  <link>https://dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</link>
   <description><![CDATA[ 
 
 
@@ -14307,13 +14307,13 @@ Compounds.”</span> Kaggle. <a href="https://doi.org/10.34740/KAGGLE/DSV/423419
   <category>Datasets</category>
   <category>Kaggle</category>
   <category>Classification</category>
-  <guid>https://www.dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</guid>
+  <guid>https://dataalltheway.com/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html</guid>
   <pubDate>Sat, 15 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to use Neovim or VIM editor as an IDE for R</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</link>
+  <link>https://dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</link>
   <description><![CDATA[ 
 
 
@@ -14712,23 +14712,23 @@ font-style: inherit;"># Opens an external window to display a portion of the tib
   author = {Farmer, Rohit},
   title = {How to Use {Neovim} or {VIM} Editor as an {IDE} for {R}},
   date = {2022-10-15},
-  url = {https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r},
+  url = {https://dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Farmer, Rohit. 2022. <span>“How to Use Neovim or VIM Editor as an IDE
-for R.”</span> October 15, 2022. <a href="https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r">https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r</a>.
+for R.”</span> October 15, 2022. <a href="https://dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r">https://dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r</a>.
 </div></div></section></div> ]]></description>
   <category>How To</category>
   <category>IDE</category>
   <category>R</category>
-  <guid>https://www.dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</guid>
+  <guid>https://dataalltheway.com/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html</guid>
   <pubDate>Sat, 15 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How to download a shared file from Google Drive in R</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</link>
+  <link>https://dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</link>
   <description><![CDATA[ 
 
 
@@ -14816,21 +14816,21 @@ font-style: inherit;">"hdstim-example-data.rds"</span>)))</span></code></pre></d
   author = {Farmer, Rohit},
   title = {How to Download a Shared File from {Google} {Drive} in {R}},
   date = {2022-10-14},
-  url = {https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r},
+  url = {https://dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Farmer, Rohit. 2022. <span>“How to Download a Shared File from Google
-Drive in R.”</span> October 14, 2022. <a href="https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r">https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r</a>.
+Drive in R.”</span> October 14, 2022. <a href="https://dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r">https://dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r</a>.
 </div></div></section></div> ]]></description>
   <category>How To</category>
-  <guid>https://www.dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</guid>
+  <guid>https://dataalltheway.com/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html</guid>
   <pubDate>Fri, 14 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Tweets from heads of governments and states</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</link>
+  <link>https://dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</link>
   <description><![CDATA[ 
 
 
@@ -14859,13 +14859,13 @@ States.”</span> Kaggle. <a href="https://doi.org/10.34740/KAGGLE/DSV/4208877">
   <category>Datasets</category>
   <category>Kaggle</category>
   <category>Twitter</category>
-  <guid>https://www.dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</guid>
+  <guid>https://dataalltheway.com/posts/002-tweets-from-heads-of-governments-and-states/index.html</guid>
   <pubDate>Wed, 05 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Data Transformation</title>
   <dc:creator>Rohit Farmer</dc:creator>
-  <link>https://www.dataalltheway.com/posts/001-data-transformation/index.html</link>
+  <link>https://dataalltheway.com/posts/001-data-transformation/index.html</link>
   <description><![CDATA[ 
 
 
@@ -15088,7 +15088,7 @@ font-style: inherit;">"Feature"</span>)</span>
 <div class="cell-output cell-output-display">
 <div id="fig-log-hist-pos" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/001-data-transformation/index_files/figure-html/fig-log-hist-pos-output-1.png" width="662" height="470" class="figure-img"></p>
+<p><img src="https://dataalltheway.com/posts/001-data-transformation/index_files/figure-html/fig-log-hist-pos-output-1.png" width="662" height="470" class="figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;1: Histogram of the positively skewed data and its log transformation. The skewness for the non-transformed data (left) is 0.9 and for the log-transformed data (right) is 0.2.</figcaption>
 </figure>
 </div>
@@ -15172,7 +15172,7 @@ font-style: inherit;">"Feature"</span>)</span>
 <div class="cell-output cell-output-display">
 <div id="fig-log-hist-neg" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/001-data-transformation/index_files/figure-html/fig-log-hist-neg-output-1.png" width="662" height="470" class="figure-img"></p>
+<p><img src="https://dataalltheway.com/posts/001-data-transformation/index_files/figure-html/fig-log-hist-neg-output-1.png" width="662" height="470" class="figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;2: Histogram of the negatively skewed data and its log transformation. The skewness for the non-transformed data (left) is -0.9 and for the log-transformed data (right) is -1.2.</figcaption>
 </figure>
 </div>
@@ -15267,7 +15267,7 @@ font-style: inherit;">"Feature"</span>)</span>
 <div class="cell-output cell-output-display">
 <div id="fig-pow-hist-neg" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/001-data-transformation/index_files/figure-html/fig-pow-hist-neg-output-1.png" width="666" height="470" class="figure-img"></p>
+<p><img src="https://dataalltheway.com/posts/001-data-transformation/index_files/figure-html/fig-pow-hist-neg-output-1.png" width="666" height="470" class="figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;3: Histogram of the negatively skewed data and its power transformation. Data is raised to the power ot 6. The skewness for the non-transformed data (left) is -0.9 and for the power-transformed data (right) is -0.3.</figcaption>
 </figure>
 </div>
@@ -15438,7 +15438,7 @@ font-style: inherit;">"Feature"</span>)</span>
 <div class="cell-output cell-output-display">
 <div id="fig-arc-hist-pos" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/001-data-transformation/index_files/figure-html/fig-arc-hist-pos-output-1.png" width="662" height="470" class="figure-img"></p>
+<p><img src="https://dataalltheway.com/posts/001-data-transformation/index_files/figure-html/fig-arc-hist-pos-output-1.png" width="662" height="470" class="figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;4: Histogram of the positively skewed data and its arcsinh transformation. The skewness for the non-transformed data (left) is 0.9 and for the arcsinh-transformed data (right) is 0.3.</figcaption>
 </figure>
 </div>
@@ -15522,7 +15522,7 @@ font-style: inherit;">"Feature"</span>)</span>
 <div class="cell-output cell-output-display">
 <div id="fig-arc-hist-neg" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://www.dataalltheway.com/posts/001-data-transformation/index_files/figure-html/fig-arc-hist-neg-output-1.png" width="662" height="470" class="figure-img"></p>
+<p><img src="https://dataalltheway.com/posts/001-data-transformation/index_files/figure-html/fig-arc-hist-neg-output-1.png" width="662" height="470" class="figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;5: Histogram of the negatively skewed data and its arcsinh transformation. The skewness for the non-transformed data (left) is -0.9 and for the arcsinh-transformed data (right) is -0.3.</figcaption>
 </figure>
 </div>
@@ -15581,16 +15581,16 @@ font-style: inherit;">"Feature"</span>)</span>
   author = {Farmer, Rohit},
   title = {Data {Transformation}},
   date = {2022-10-05},
-  url = {https://www.dataalltheway.com/posts/001-data-transformation},
+  url = {https://dataalltheway.com/posts/001-data-transformation},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-farmer2022" class="csl-entry quarto-appendix-citeas">
 Farmer, Rohit. 2022. <span>“Data Transformation.”</span> October 5,
-2022. <a href="https://www.dataalltheway.com/posts/001-data-transformation">https://www.dataalltheway.com/posts/001-data-transformation</a>.
+2022. <a href="https://dataalltheway.com/posts/001-data-transformation">https://dataalltheway.com/posts/001-data-transformation</a>.
 </div></div></section></div> ]]></description>
   <category>Concepts</category>
   <category>Data Transformation</category>
-  <guid>https://www.dataalltheway.com/posts/001-data-transformation/index.html</guid>
+  <guid>https://dataalltheway.com/posts/001-data-transformation/index.html</guid>
   <pubDate>Wed, 05 Oct 2022 04:00:00 GMT</pubDate>
 </item>
 </channel>

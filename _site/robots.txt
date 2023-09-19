@@ -1,1 +1,1 @@
-Sitemap: https://www.dataalltheway.com/sitemap.xml
+Sitemap: https://dataalltheway.com/sitemap.xml
