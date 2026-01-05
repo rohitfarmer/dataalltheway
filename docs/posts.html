@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="easy-to-follow tutorials, example code, live demo, statistics, machine learning">
 <meta name="description" content="Blog posts contain concepts, methods, and example code on data science, statistics, and machine learning. All the posts with example code also accompany a Kaggle or Google Colab notebook for a live demo.">
 
 <title>Posts – Data All The Way</title>
@@ -47,7 +46,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d84305896e4e68fed5b59a02e9beb880.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3073951b4cfae310525a79b6a8ca025e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -86,7 +85,8 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-date','listing-title','listing-author','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
+      page: 10,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
@@ -220,16 +220,6 @@ window.Quarto = {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/rohitfarmer"> <i class="bi bi-twitter" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://fosstodon.org\@swatantra"> <i class="bi bi-mastodon" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
     <a class="nav-link" href="./posts.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
@@ -267,13 +257,6 @@ window.Quarto = {
       
     </div>
     
-
-  <div>
-    <div class="keywords">
-      <div class="block-title">Keywords</div>
-      <p>easy-to-follow tutorials, example code, live demo, statistics, machine learning</p>
-    </div>
-  </div>
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
@@ -342,7 +325,7 @@ Reading Time
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="RnJlcXVlbnRpc3QlMjBTdGF0aXN0aWNzJTJDQmF5ZXNpYW4lMjBTdGF0aXN0aWNz" data-listing-date-sort="1694491200000" data-listing-file-modified-sort="1766084019579" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="626" data-listing-title-sort="Frequentist vs. Bayesian Statistics" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-categories="RnJlcXVlbnRpc3QlMjBTdGF0aXN0aWNzJTJDQmF5ZXNpYW4lMjBTdGF0aXN0aWNz" data-listing-date-sort="1694491200000" data-listing-file-modified-sort="1767648323462" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="626" data-listing-title-sort="Frequentist vs. Bayesian Statistics" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Sep 12, 2023</span>
@@ -359,7 +342,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="1" data-categories="TGluZWFyJTIwUmVncmVzc2lvbiUyQ0luZmVyZW50aWFsJTIwTW9kZWxpbmclMkNQcmVkaWN0aXZlJTIwTW9kZWxpbmclMkNS" data-listing-date-sort="1689220800000" data-listing-file-modified-sort="1766084019578" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="24" data-listing-word-count-sort="4784" data-listing-title-sort="Linear regression for inferential and predictive modeling" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="1" data-categories="TGluZWFyJTIwUmVncmVzc2lvbiUyQ0luZmVyZW50aWFsJTIwTW9kZWxpbmclMkNQcmVkaWN0aXZlJTIwTW9kZWxpbmclMkNS" data-listing-date-sort="1689220800000" data-listing-file-modified-sort="1767648323461" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="24" data-listing-word-count-sort="4784" data-listing-title-sort="Linear regression for inferential and predictive modeling" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Jul 13, 2023</span>
@@ -376,7 +359,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="2" data-categories="SG93JTIwVG8lMkNQYXJhbWV0cmljJTIwVGVzdHMlMkNULXRlc3QlMkNaLXRlc3QlMkNGLXRlc3QlMkNBTk9WQSUyQ1B5dGhvbg==" data-listing-date-sort="1673240400000" data-listing-file-modified-sort="1766084019569" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="259" data-listing-title-sort="Parametric hypothesis tests with examples in Python" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="2" data-categories="SG93JTIwVG8lMkNQYXJhbWV0cmljJTIwVGVzdHMlMkNULXRlc3QlMkNaLXRlc3QlMkNGLXRlc3QlMkNBTk9WQSUyQ1B5dGhvbg==" data-listing-date-sort="1673240400000" data-listing-file-modified-sort="1767648323450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="259" data-listing-title-sort="Parametric hypothesis tests with examples in Python" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Jan 9, 2023</span>
@@ -393,7 +376,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="3" data-categories="UmVhZHIlMkNBcGFjaGUlMjBBcnJvdw==" data-listing-date-sort="1669006800000" data-listing-file-modified-sort="1766084019573" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1758" data-listing-title-sort="Type inference in readr and arrow" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="3" data-categories="UmVhZHIlMkNBcGFjaGUlMjBBcnJvdw==" data-listing-date-sort="1669006800000" data-listing-file-modified-sort="1767648323452" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1758" data-listing-title-sort="Type inference in readr and arrow" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Nov 21, 2022</span>
@@ -410,7 +393,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="4" data-categories="SG93JTIwVG8lMkNOb24tcGFyYW1ldHJpYyUyMFRlc3RzJTJDV2lsY294b24lMjBUZXN0JTJDTWFubiUyMFdoaXRuZXklMjBVJTIwVGVzdCUyQ0tydXNrYWwtV2FsbGlzJTIwVGVzdA==" data-listing-date-sort="1668747600000" data-listing-file-modified-sort="1766084019571" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1833" data-listing-title-sort="Non-parametric hypothesis tests with examples in R" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="4" data-categories="SG93JTIwVG8lMkNOb24tcGFyYW1ldHJpYyUyMFRlc3RzJTJDV2lsY294b24lMjBUZXN0JTJDTWFubiUyMFdoaXRuZXklMjBVJTIwVGVzdCUyQ0tydXNrYWwtV2FsbGlzJTIwVGVzdA==" data-listing-date-sort="1668747600000" data-listing-file-modified-sort="1767648323450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1833" data-listing-title-sort="Non-parametric hypothesis tests with examples in R" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Nov 18, 2022</span>
@@ -427,7 +410,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="5" data-categories="SG93JTIwVG8lMkNQYXJhbWV0cmljJTIwVGVzdHMlMkNULXRlc3QlMkNaLXRlc3QlMkNGLXRlc3QlMkNBTk9WQQ==" data-listing-date-sort="1668056400000" data-listing-file-modified-sort="1766084019570" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2642" data-listing-title-sort="Parametric hypothesis tests with examples in R" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="5" data-categories="SG93JTIwVG8lMkNQYXJhbWV0cmljJTIwVGVzdHMlMkNULXRlc3QlMkNaLXRlc3QlMkNGLXRlc3QlMkNBTk9WQQ==" data-listing-date-sort="1668056400000" data-listing-file-modified-sort="1767648323450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2642" data-listing-title-sort="Parametric hypothesis tests with examples in R" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Nov 10, 2022</span>
@@ -444,7 +427,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="6" data-categories="SG93JTIwVG8lMkNGaWxlcyUyMGFuZCUyMEZvbGRlcnM=" data-listing-date-sort="1667448000000" data-listing-file-modified-sort="1766084019567" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="403" data-listing-title-sort="Rules for naming files and folders that are cross platform and helpful in datascience" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="6" data-categories="SG93JTIwVG8lMkNGaWxlcyUyMGFuZCUyMEZvbGRlcnM=" data-listing-date-sort="1667448000000" data-listing-file-modified-sort="1767648323450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="403" data-listing-title-sort="Rules for naming files and folders that are cross platform and helpful in datascience" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Nov 3, 2022</span>
@@ -461,7 +444,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="7" data-categories="SG93JTIwVG8lMkNTaW5ndWxhcml0eSUyQ0NvbnRhaW5lciUyQ0RhdGElMjBTY2llbmNlJTJDTWFjaGluZSUyMExlYXJuaW5nJTJDQ2hlbWlzdHJ5" data-listing-date-sort="1667188800000" data-listing-file-modified-sort="1766084019567" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2014" data-listing-title-sort="How to build a Singularity container for machine learning, data science, and chemistry" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="7" data-categories="SG93JTIwVG8lMkNTaW5ndWxhcml0eSUyQ0NvbnRhaW5lciUyQ0RhdGElMjBTY2llbmNlJTJDTWFjaGluZSUyMExlYXJuaW5nJTJDQ2hlbWlzdHJ5" data-listing-date-sort="1667188800000" data-listing-file-modified-sort="1767648323450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2014" data-listing-title-sort="How to build a Singularity container for machine learning, data science, and chemistry" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Oct 31, 2022</span>
@@ -478,7 +461,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="8" data-categories="SG93JTIwVG8lMkNPcGVuJTIwRGF0YSUyQ0RhdGFzZXRzJTJDU3RhdGlzdGljcyUyQ0RhdGElMjBTY2llbmNlJTJDTWFjaGluZSUyMExlYXJuaW5n" data-listing-date-sort="1666670400000" data-listing-file-modified-sort="1766084019567" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1870" data-listing-title-sort="Sources of open data for statistics, data science, and machine learning" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="8" data-categories="SG93JTIwVG8lMkNPcGVuJTIwRGF0YSUyQ0RhdGFzZXRzJTJDU3RhdGlzdGljcyUyQ0RhdGElMjBTY2llbmNlJTJDTWFjaGluZSUyMExlYXJuaW5n" data-listing-date-sort="1666670400000" data-listing-file-modified-sort="1767648323449" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1870" data-listing-title-sort="Sources of open data for statistics, data science, and machine learning" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Oct 25, 2022</span>
@@ -495,7 +478,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="9" data-categories="R29vZ2xlJTIwQ29sYWIlMkNKdXB5dGVyJTIwTm90ZWJvb2tzJTJDU2NpZW50aWZpYyUyMFNvZnR3YXJl" data-listing-date-sort="1665979200000" data-listing-file-modified-sort="1766084019566" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="499" data-listing-title-sort="A case for using Google Colab notebooks as an alternative to web servers for scientific software" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="9" data-categories="R29vZ2xlJTIwQ29sYWIlMkNKdXB5dGVyJTIwTm90ZWJvb2tzJTJDU2NpZW50aWZpYyUyMFNvZnR3YXJl" data-listing-date-sort="1665979200000" data-listing-file-modified-sort="1767648323449" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="499" data-listing-title-sort="A case for using Google Colab notebooks as an alternative to web servers for scientific software" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Oct 17, 2022</span>
@@ -512,7 +495,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="10" data-categories="RGF0YXNldHMlMkNLYWdnbGUlMkNDbGFzc2lmaWNhdGlvbg==" data-listing-date-sort="1665806400000" data-listing-file-modified-sort="1766084019566" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="349" data-listing-title-sort="Classify the bitter or sweet taste of compounds" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="10" data-categories="RGF0YXNldHMlMkNLYWdnbGUlMkNDbGFzc2lmaWNhdGlvbg==" data-listing-date-sort="1665806400000" data-listing-file-modified-sort="1767648323449" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="349" data-listing-title-sort="Classify the bitter or sweet taste of compounds" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Oct 15, 2022</span>
@@ -529,7 +512,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="11" data-categories="SG93JTIwVG8lMkNJREUlMkNS" data-listing-date-sort="1665806400000" data-listing-file-modified-sort="1766084019565" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2092" data-listing-title-sort="How to use Neovim or VIM editor as an IDE for R" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="11" data-categories="SG93JTIwVG8lMkNJREUlMkNS" data-listing-date-sort="1665806400000" data-listing-file-modified-sort="1767648323449" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2092" data-listing-title-sort="How to use Neovim or VIM editor as an IDE for R" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Oct 15, 2022</span>
@@ -546,7 +529,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="12" data-categories="SG93JTIwVG8=" data-listing-date-sort="1665720000000" data-listing-file-modified-sort="1766084019565" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="159" data-listing-title-sort="How to download a shared file from Google Drive in R" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="12" data-categories="SG93JTIwVG8=" data-listing-date-sort="1665720000000" data-listing-file-modified-sort="1767648323448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="159" data-listing-title-sort="How to download a shared file from Google Drive in R" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Oct 14, 2022</span>
@@ -563,24 +546,7 @@ Reading Time
 
 </tr>
 
-<tr data-index="13" data-categories="RGF0YXNldHMlMkNLYWdnbGUlMkNUd2l0dGVy" data-listing-date-sort="1664942400000" data-listing-file-modified-sort="1766084019565" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="336" data-listing-title-sort="Tweets from heads of governments and states" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-date">Oct 5, 2022</span>
-</td>
-<td>
-<a href="./posts/002-tweets-from-heads-of-governments-and-states/index.html" class="title listing-title">Tweets from heads of governments and states</a>
-</td>
-<td>
-<span class="listing-author">Rohit Farmer</span>
-</td>
-<td>
-<span class="listing-reading-time">2 min</span>
-</td>
-
-</tr>
-
-<tr data-index="14" data-categories="Q29uY2VwdHMlMkNEYXRhJTIwVHJhbnNmb3JtYXRpb24=" data-listing-date-sort="1664942400000" data-listing-file-modified-sort="1766084019564" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2345" data-listing-title-sort="Data Transformation" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="13" data-categories="Q29uY2VwdHMlMkNEYXRhJTIwVHJhbnNmb3JtYXRpb24=" data-listing-date-sort="1664942400000" data-listing-file-modified-sort="1767648323448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2345" data-listing-title-sort="Data Transformation" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <span class="listing-date">Oct 5, 2022</span>
@@ -597,9 +563,29 @@ Reading Time
 
 </tr>
 
+<tr data-index="14" data-categories="RGF0YXNldHMlMkNLYWdnbGUlMkNUd2l0dGVy" data-listing-date-sort="1664942400000" data-listing-file-modified-sort="1767648323448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="336" data-listing-title-sort="Tweets from heads of governments and states" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">Oct 5, 2022</span>
+</td>
+<td>
+<a href="./posts/002-tweets-from-heads-of-governments-and-states/index.html" class="title listing-title">Tweets from heads of governments and states</a>
+</td>
+<td>
+<span class="listing-author">Rohit Farmer</span>
+</td>
+<td>
+<span class="listing-reading-time">2 min</span>
+</td>
+
+</tr>
+
 </tbody>
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

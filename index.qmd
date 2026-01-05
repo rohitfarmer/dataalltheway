@@ -10,32 +10,16 @@ twitter-card:
 page-layout: full
 title-block-banner: false
 comments: false
-listing:
-  - id: allposts
-    contents: posts
-    sort: "date desc"
-    type: table
-    categories: numbered
-    page-size: 10
-    sort-ui: true
-    filter-ui: true
-    feed: true
-    table-hover: true
-    table-striped: true
-    fields: [date, title, author, reading-time]
 ---
 
 ```{=html}
 <img src="images/logo-nobg.png" alt="The logo for data all the way website." align="right" width="260" style="padding: 10px 10px 10px 10px;"/>
 
-<p>Welcome to Data All The Way, *"yet another"* tutorial website with concepts, methods, and example code on data science, statistics, and machine learning.</p>
+<p>Welcome to Data All The Way, <i>"yet another"</i> tutorial website with concepts, methods, and example code on data science, statistics, and machine learning.</p>
 
 <p>All the posts with example code accompany a Kaggle or Google Colab notebook for a live demo. In addition, posts are citable, and some posts are hosted on Zenodo with a permanent DOI and indexed in <a href="https://zenodo.org/communities/data-all-the-way/">Data All The Way community</a>.</p>
 ```
 
-If you want to get involved and contribute a blog post, please send an email to Rohit Farmer at [rohit.farmer@dataalltheway.com](mailto:rohit.farmer@dataalltheway.com).
+If you want to get involved and contribute a blog post, please send an email to Rohit Farmer at [rohit@rohitfarmer.com](mailto:rohit@rohitfarmer.com).
 
-
-::: {#allposts}
-:::
 
