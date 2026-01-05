@@ -18,16 +18,12 @@ website:
     logo: favicon.ico
     logo-alt: "Data All The Way logo: 0 1 digits on a black background."
     right:
-      - posts.qmd
       - bookmarks/index.qmd
       - glossary/index.qmd
       - contact/index.qmd
       - icon: github
         href: https://github.com/rohitfarmer/dataalltheway
       - icon: twitter
-        href: https://twitter.com/rohitfarmer
-      - icon: mastodon
-        href: https://fosstodon.org\@swatantra
       - icon: rss
         href: posts.xml
   page-footer: 

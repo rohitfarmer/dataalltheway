@@ -1,6 +1,6 @@
 ---
 description: "Data All The Way: A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics."
-keywords:  data science, machine learning, statistics, tutorials, code examples
+#keywords:  data science, machine learning, statistics, tutorials, code examples
 open-graph:
   title: "Data All The Way"
   image: images/logo-nobg.png
@@ -11,36 +11,31 @@ page-layout: full
 title-block-banner: false
 comments: false
 listing:
-  - id: recentPosts
-    type: grid
+  - id: allposts
+    contents: posts
     sort: "date desc"
-    max-items: 9
-    contents:
-      - "posts"
-    fields: [title, description, date, author, reading-time, categories]
+    type: table
+    categories: numbered
+    page-size: 10
+    sort-ui: true
+    filter-ui: true
+    feed: true
+    table-hover: true
+    table-striped: true
+    fields: [date, title, author, reading-time]
 ---
 
-<p>
-
+```{=html}
 <img src="images/logo-nobg.png" alt="The logo for data all the way website." align="right" width="260" style="padding: 10px 10px 10px 10px;"/>
 
-Welcome to Data All The Way, *"yet another"* tutorial website with concepts, methods, and example code on data science, statistics, and machine learning.
+<p>Welcome to Data All The Way, *"yet another"* tutorial website with concepts, methods, and example code on data science, statistics, and machine learning.</p>
 
-All the posts with example code accompany a Kaggle or Google Colab notebook for a live demo. In addition, posts are citable, and some posts are hosted on Zenodo with a permanent DOI and indexed in [Data All The Way community](https://zenodo.org/communities/data-all-the-way/).
+<p>All the posts with example code accompany a Kaggle or Google Colab notebook for a live demo. In addition, posts are citable, and some posts are hosted on Zenodo with a permanent DOI and indexed in <a href="https://zenodo.org/communities/data-all-the-way/">Data All The Way community</a>.</p>
+```
 
-</p>
+If you want to get involved and contribute a blog post, please send an email to Rohit Farmer at [rohit.farmer@dataalltheway.com](mailto:rohit.farmer@dataalltheway.com).
 
-<br>
 
-## Recent Posts {style="text-align: center;"}
-
-::: {#recentPosts}
+::: {#allposts}
 :::
 
-## Get Involved {style="text-align: center;"}
-
-### Do you like to write and want to become a contributing author?
-
-**Email: rohit \[dot\] farmer \[at\] dataalltheway \[dot\] com**
-
-Comments and suggestions are always welcomed

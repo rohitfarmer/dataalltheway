@@ -1,0 +1,20 @@
+{
+  "listing": "/index.html",
+  "items": [
+    "/posts/015-00-frequentist-vs-bayesian-statistics/index.html",
+    "/posts/013-linear-regression/index.html",
+    "/posts/010-02-parametric-hypothesis-tests-python/index.html",
+    "/posts/012-type-inference-in-readr-and-arrow/index.html",
+    "/posts/011-non-parametric-hypothesis-tests-r/index.html",
+    "/posts/010-parametric-hypothesis-tests-r/index.html",
+    "/posts/009-rules-for-naming-files/index.html",
+    "/posts/008-build-a-singularity-container/index.html",
+    "/posts/007-open-data-for-datascience/index.html",
+    "/posts/006-google-colab-for-scientific-software/index.html",
+    "/posts/005-classify-the-bitter-or-sweet-taste-of-compounds/index.html",
+    "/posts/004-how-to-use-neovim-or-vim-editor-as-an-ide-for-r/index.html",
+    "/posts/003-how-to-download-a-shared-file-from-googledrive-in-r/index.html",
+    "/posts/001-data-transformation/index.html",
+    "/posts/002-tweets-from-heads-of-governments-and-states/index.html"
+  ]
+}
