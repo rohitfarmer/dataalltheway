@@ -11,7 +11,7 @@ website:
   site-url: https://dataalltheway.com
   image: "images/logo-nobg.png"
   description: "Data All The Way: A tutorial website with concepts, methods, and example code on various data science, statistics, and machine learning topics."
-  reader-mode: true
+  reader-mode: false
   back-to-top-navigation: true
   navbar:
     background: primary
@@ -21,15 +21,12 @@ website:
       - posts.qmd
       - bookmarks/index.qmd
       - glossary/index.qmd
-      - contact/index.qmd
       - icon: github
         href: https://github.com/rohitfarmer/dataalltheway
       - icon: rss
         href: posts.xml
   page-footer: 
-    left: "<b><a href = 'https://creativecommons.org/licenses/by-nc-sa/4.0/'>Copyright CC BY-NC-SA 4.0</a></b>"
-    right: '<a href = "https://dataalltheway.com/contact/"><b>Contact</b></a>'
-    center: "<b>Made with ✌️❤️☕  </b>"
+    center: "<b><a href = 'https://creativecommons.org/licenses/by-nc-sa/4.0/'>Copyright CC BY-NC-SA 4.0</a></b>"
     border: true
     background: dark
   cookie-consent:
@@ -47,8 +44,8 @@ website:
 
 format:
   html:
-    theme: materia
-    css: styles.css
+    theme: zephyr
+    fontsize: 1.2em
 
 editor: source
 

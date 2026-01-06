@@ -1,7 +1,6 @@
 ---
 title: Bookmarks
 description: "Links and references to external articles, blog posts, and stack exchange threads"
-keywords: external links, statistics bookmarks, machine learning bookmarks
 page-layout: full
 title-block-banner: true
 toc: true
